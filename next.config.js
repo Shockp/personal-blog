@@ -85,10 +85,10 @@ const nextConfig = {
     ];
   },
 
-  // Webpack configuration
-  webpack: config => {
-    // Add custom webpack configuration here
-    return config;
+  // Turbopack configuration
+  turbopack: {
+    // Turbopack handles most optimizations automatically
+    // Add custom configurations here if needed
   },
 
   // Environment variables to expose to the browser
