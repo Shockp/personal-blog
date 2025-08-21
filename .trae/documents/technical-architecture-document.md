@@ -54,26 +54,27 @@ graph TD
 
 ## 3. Route Definitions
 
-| Route | Purpose |
-|-------|---------|
-| / | Home page with hero section and featured content |
-| /blog | Blog listing page with search and filtering |
-| /blog/[slug] | Individual blog post detail page |
-| /projects | Project portfolio showcase page |
-| /projects/[slug] | Individual project detail page |
-| /skills | Skills and expertise visualization page |
-| /resume | Interactive resume with PDF download |
-| /about | Personal introduction and background |
-| /contact | Contact form and professional inquiries |
-| /api/comments | API endpoint for comment system |
-| /api/contact | API endpoint for contact form submission |
-| /api/likes | API endpoint for like/reaction functionality |
+| Route            | Purpose                                          |
+| ---------------- | ------------------------------------------------ |
+| /                | Home page with hero section and featured content |
+| /blog            | Blog listing page with search and filtering      |
+| /blog/[slug]     | Individual blog post detail page                 |
+| /projects        | Project portfolio showcase page                  |
+| /projects/[slug] | Individual project detail page                   |
+| /skills          | Skills and expertise visualization page          |
+| /resume          | Interactive resume with PDF download             |
+| /about           | Personal introduction and background             |
+| /contact         | Contact form and professional inquiries          |
+| /api/comments    | API endpoint for comment system                  |
+| /api/contact     | API endpoint for contact form submission         |
+| /api/likes       | API endpoint for like/reaction functionality     |
 
 ## 4. API Definitions
 
 ### 4.1 Core API
 
 **Comment System**
+
 ```
 POST /api/comments
 ```
@@ -94,6 +95,7 @@ Response:
 | timestamp | string | Comment creation timestamp |
 
 Example:
+
 ```json
 {
   "postSlug": "next-js-performance-tips",
@@ -103,6 +105,7 @@ Example:
 ```
 
 **Like/Reaction System**
+
 ```
 POST /api/likes
 ```
@@ -121,6 +124,7 @@ Response:
 | likeCount | number | Updated like count |
 
 **Contact Form**
+
 ```
 POST /api/contact
 ```
@@ -151,19 +155,19 @@ graph TD
     F --> G[Edge Functions]
     G --> H[External APIs]
     G --> I[File System]
-    
+
     subgraph "Static Generation"
         D
         J[Markdown Processing]
         K[Image Optimization]
     end
-    
+
     subgraph "Dynamic Features"
         E
         F
         G
     end
-    
+
     subgraph "Data Sources"
         I
         L[Content Files]
@@ -196,7 +200,7 @@ erDiagram
         boolean published
         string featuredImage
     }
-    
+
     PROJECT {
         string slug PK
         string title
@@ -209,7 +213,7 @@ erDiagram
         date createdAt
         boolean featured
     }
-    
+
     COMMENT {
         string id PK
         string postSlug FK
@@ -220,7 +224,7 @@ erDiagram
         boolean approved
         string ipAddress
     }
-    
+
     LIKE {
         string id PK
         string contentId FK
@@ -228,7 +232,7 @@ erDiagram
         string ipAddress
         date createdAt
     }
-    
+
     CONTACT_MESSAGE {
         string id PK
         string name
@@ -243,40 +247,43 @@ erDiagram
 ### 6.2 Data Definition Language
 
 **Blog Post Frontmatter Structure**
+
 ```yaml
 ---
-title: "Advanced Next.js Performance Optimization Techniques"
-excerpt: "Learn how to optimize your Next.js applications for maximum performance"
-author: "Your Name"
-publishedAt: "2024-01-15"
-updatedAt: "2024-01-16"
-tags: ["nextjs", "performance", "optimization", "react"]
-category: "tutorial"
+title: 'Advanced Next.js Performance Optimization Techniques'
+excerpt: 'Learn how to optimize your Next.js applications for maximum performance'
+author: 'Your Name'
+publishedAt: '2024-01-15'
+updatedAt: '2024-01-16'
+tags: ['nextjs', 'performance', 'optimization', 'react']
+category: 'tutorial'
 published: true
-featuredImage: "/images/blog/nextjs-performance.jpg"
+featuredImage: '/images/blog/nextjs-performance.jpg'
 seo:
-  title: "Next.js Performance Optimization Guide"
-  description: "Complete guide to optimizing Next.js applications"
-  keywords: ["nextjs", "performance", "web development"]
+  title: 'Next.js Performance Optimization Guide'
+  description: 'Complete guide to optimizing Next.js applications'
+  keywords: ['nextjs', 'performance', 'web development']
 ---
 ```
 
 **Project Frontmatter Structure**
+
 ```yaml
 ---
-title: "E-commerce Platform"
-description: "Full-stack e-commerce solution with modern technologies"
-technologies: ["Next.js", "TypeScript", "Prisma", "PostgreSQL"]
-demoUrl: "https://demo.example.com"
-githubUrl: "https://github.com/username/project"
-featuredImage: "/images/projects/ecommerce-platform.jpg"
-createdAt: "2024-01-01"
+title: 'E-commerce Platform'
+description: 'Full-stack e-commerce solution with modern technologies'
+technologies: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL']
+demoUrl: 'https://demo.example.com'
+githubUrl: 'https://github.com/username/project'
+featuredImage: '/images/projects/ecommerce-platform.jpg'
+createdAt: '2024-01-01'
 featured: true
-status: "completed"
+status: 'completed'
 ---
 ```
 
 **Comment Storage (JSON)**
+
 ```json
 {
   "id": "comment_123",
@@ -291,6 +298,7 @@ status: "completed"
 ```
 
 **Skills Data Structure**
+
 ```json
 {
   "categories": [
@@ -326,6 +334,7 @@ status: "completed"
 ## 7. Deployment Configuration
 
 **Vercel Configuration (vercel.json)**
+
 ```json
 {
   "framework": "nextjs",
@@ -356,6 +365,7 @@ status: "completed"
 ```
 
 **Environment Variables**
+
 ```env
 NEXT_PUBLIC_SITE_URL=https://yourdomain.com
 NEXT_PUBLIC_SITE_NAME="Your Name - Technology Blog"

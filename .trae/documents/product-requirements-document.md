@@ -4,9 +4,9 @@
 
 A comprehensive personal technology blog and portfolio website that serves as both a professional showcase and an interactive platform for sharing technology insights. The platform enables visitor engagement without mandatory registration while establishing a professional online presence for career development.
 
-* **Primary Purpose**: Create a personal blog focused on technology news, trends, and commentary while showcasing projects, skills, and professional resume.
+- **Primary Purpose**: Create a personal blog focused on technology news, trends, and commentary while showcasing projects, skills, and professional resume.
 
-* **Target Market**: Technology professionals, potential employers, industry peers, and technology enthusiasts seeking insights and professional networking.
+- **Target Market**: Technology professionals, potential employers, industry peers, and technology enthusiasts seeking insights and professional networking.
 
 ## 2. Core Features
 
@@ -84,17 +84,17 @@ graph TD
 
 ### 4.1 Design Style
 
-* **Primary Colors**: Professional blue (#2563eb) and dark gray (#1f2937) for technology aesthetic
+- **Primary Colors**: Professional blue (#2563eb) and dark gray (#1f2937) for technology aesthetic
 
-* **Secondary Colors**: Light gray (#f8fafc) for backgrounds, green (#10b981) for accents
+- **Secondary Colors**: Light gray (#f8fafc) for backgrounds, green (#10b981) for accents
 
-* **Button Style**: Rounded corners with subtle shadows, hover animations for interactivity
+- **Button Style**: Rounded corners with subtle shadows, hover animations for interactivity
 
-* **Typography**: Inter font family for headings, system fonts for body text, 16px base size
+- **Typography**: Inter font family for headings, system fonts for body text, 16px base size
 
-* **Layout Style**: Card-based design with clean grid layouts, top navigation with mobile hamburger menu
+- **Layout Style**: Card-based design with clean grid layouts, top navigation with mobile hamburger menu
 
-* **Icons**: Lucide React icons for consistency, technology-specific icons for skills section
+- **Icons**: Lucide React icons for consistency, technology-specific icons for skills section
 
 ### 4.2 Page Design Overview
 
@@ -117,37 +117,36 @@ The website is mobile-first with responsive design optimized for all device size
 
 ### 5.1 Performance Requirements
 
-* Page load time under 3 seconds on average connection
+- Page load time under 3 seconds on average connection
 
-* Mobile optimization with perfect responsive design
+- Mobile optimization with perfect responsive design
 
-* SEO score of 90+ on Google PageSpeed Insights
+- SEO score of 90+ on Google PageSpeed Insights
 
-* Image optimization for faster loading times
+- Image optimization for faster loading times
 
-* Efficient caching strategies for improved performance
+- Efficient caching strategies for improved performance
 
 ### 5.2 Security & Functionality
 
-* HTTPS enforcement with automatic SSL certificates
+- HTTPS enforcement with automatic SSL certificates
 
-* Comment spam protection without blocking legitimate users
+- Comment spam protection without blocking legitimate users
 
-* Secure contact forms with proper validation
+- Secure contact forms with proper validation
 
-* Social media integration for cross-platform sharing
+- Social media integration for cross-platform sharing
 
-* Search functionality across blog posts and projects
+- Search functionality across blog posts and projects
 
 ### 5.3 Content Management
 
-* Markdown-based content with frontmatter metadata
+- Markdown-based content with frontmatter metadata
 
-* Draft and scheduled publishing capabilities
+- Draft and scheduled publishing capabilities
 
-* Content categorization with tags and categories
+- Content categorization with tags and categories
 
-* Image upload and optimization for blog posts
+- Image upload and optimization for blog posts
 
-* Code syntax highlighting for technical content
-
+- Code syntax highlighting for technical content

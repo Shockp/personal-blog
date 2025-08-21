@@ -1,26 +1,108 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
+  /* Light theme colors */
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0f172a;
+  --muted: #f8fafc;
+  --muted-foreground: #64748b;
+  --border: #e2e8f0;
+  --input: #f1f5f9;
+  --primary: #0ea5e9;
+  --primary-foreground: #ffffff;
+  --secondary: #f1f5f9;
+  --secondary-foreground: #0f172a;
+  --accent: #d946ef;
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --ring: #0ea5e9;
+  --radius: 0.5rem;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), 'Fira Code', monospace;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #020617;
+    --foreground: #f8fafc;
+    --muted: #0f172a;
+    --muted-foreground: #94a3b8;
+    --border: #1e293b;
+    --input: #1e293b;
+    --primary: #38bdf8;
+    --primary-foreground: #020617;
+    --secondary: #1e293b;
+    --secondary-foreground: #f8fafc;
+    --accent: #e879f9;
+    --accent-foreground: #020617;
+    --destructive: #f87171;
+    --destructive-foreground: #020617;
+    --ring: #38bdf8;
   }
+}
+
+* {
+  border-color: var(--border);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--muted);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--muted-foreground);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--foreground);
+}
+
+/* Focus styles */
+:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+/* Selection styles */
+::selection {
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+
+/* Smooth transitions */
+* {
+  transition-property:
+    color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
 }

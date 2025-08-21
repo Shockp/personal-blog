@@ -6,22 +6,33 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint . --ext .ts,.tsx,.js,.jsx --fix",
+    "lint:check": "eslint . --ext .ts,.tsx,.js,.jsx",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "check": "npm run lint:check && npm run format:check && npm run build"
   },
   "dependencies": {
+    "next": "15.5.0",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "next": "15.5.0"
+    "zod": "^4.0.17"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
+    "@tailwindcss/typography": "^0.5.16",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4",
+    "@typescript-eslint/eslint-plugin": "^8.40.0",
+    "@typescript-eslint/parser": "^8.40.0",
     "eslint": "^9",
     "eslint-config-next": "15.5.0",
-    "@eslint/eslintrc": "^3"
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
+    "prettier": "^3.6.2",
+    "tailwindcss": "^4",
+    "typescript": "^5"
   }
 }

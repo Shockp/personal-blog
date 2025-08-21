@@ -9,18 +9,18 @@ graph TD
     C --> D[Markdown Content Files]
     C --> E[Image Optimization]
     B --> F[Vercel Deployment]
-    
+
     subgraph "Frontend Layer"
         B
         C
     end
-    
+
     subgraph "Content Layer"
         D
         G[Frontmatter Metadata]
         H[Static Assets]
     end
-    
+
     subgraph "Deployment Platform"
         F
         I[Vercel CDN]
@@ -30,19 +30,19 @@ graph TD
 
 ## 2. Technology Description
 
-* **Frontend**: Next.js\@15 + TypeScript + React\@18
+- **Frontend**: Next.js\@15 + TypeScript + React\@18
 
-* **Styling**: Tailwind CSS\@3 for responsive design
+- **Styling**: Tailwind CSS\@3 for responsive design
 
-* **Content Management**: Markdown files with gray-matter for frontmatter parsing
+- **Content Management**: Markdown files with gray-matter for frontmatter parsing
 
-* **Build Tool**: Next.js built-in bundler with Turbopack
+- **Build Tool**: Next.js built-in bundler with Turbopack
 
-* **Deployment**: Vercel with automatic deployments from Git
+- **Deployment**: Vercel with automatic deployments from Git
 
-* **Image Processing**: Next.js Image component with automatic optimization
+- **Image Processing**: Next.js Image component with automatic optimization
 
-* **Syntax Highlighting**: Prism.js for code blocks in blog posts
+- **Syntax Highlighting**: Prism.js for code blocks in blog posts
 
 ## 3. Route Definitions
 
@@ -110,12 +110,12 @@ interface BlogPost {
 
 ```yaml
 ---
-title: "Getting Started with Next.js 15"
-excerpt: "Learn the basics of Next.js 15 and its new features"
-publishedAt: "2024-01-15"
-category: "tutorial"
-tags: ["nextjs", "react", "web-development"]
-featuredImage: "/images/blog/nextjs-15-guide.jpg"
+title: 'Getting Started with Next.js 15'
+excerpt: 'Learn the basics of Next.js 15 and its new features'
+publishedAt: '2024-01-15'
+category: 'tutorial'
+tags: ['nextjs', 'react', 'web-development']
+featuredImage: '/images/blog/nextjs-15-guide.jpg'
 ---
 ```
 
@@ -133,21 +133,22 @@ const postsDirectory = path.join(process.cwd(), 'content/posts');
 
 export function getAllPosts(): BlogPost[] {
   const fileNames = fs.readdirSync(postsDirectory);
-  const allPostsData = fileNames.map((fileName) => {
+  const allPostsData = fileNames.map(fileName => {
     const slug = fileName.replace(/\.md$/, '');
     const fullPath = path.join(postsDirectory, fileName);
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     const { data, content } = matter(fileContents);
-    
+
     return {
       slug,
       content,
       ...data,
     } as BlogPost;
   });
-  
-  return allPostsData.sort((a, b) => 
-    new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+
+  return allPostsData.sort(
+    (a, b) =>
+      new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
   );
 }
 
@@ -156,7 +157,7 @@ export function getPostBySlug(slug: string): BlogPost | null {
     const fullPath = path.join(postsDirectory, `${slug}.md`);
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     const { data, content } = matter(fileContents);
-    
+
     return {
       slug,
       content,
@@ -181,7 +182,7 @@ export async function markdownToHtml(markdown: string): Promise<string> {
     .use(prism)
     .use(html, { sanitize: false })
     .process(markdown);
-  
+
   return result.toString();
 }
 ```
@@ -303,4 +304,3 @@ module.exports = nextConfig;
 2. Static pages generated for all blog posts
 3. Optimized assets and images
 4. Deploy to Vercel with automatic
-
