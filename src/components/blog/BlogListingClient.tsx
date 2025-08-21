@@ -322,13 +322,13 @@ export default function BlogListingClient({
             placeholder='Search posts...'
             value={searchQuery}
             onChange={e => setSearchQuery(e.target.value)}
-            className='w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:border-blue-500'
+            className='w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:border-blue-500 text-sm sm:text-base min-h-[44px]'
             aria-label='Search blog posts'
           />
         </div>
 
         {/* Filters and Controls */}
-        <div className='flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4'>
+        <div className='flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3 sm:gap-4'>
           {/* Tag Filter */}
           <div className='flex-1'>
             <h3 className='text-sm font-medium text-gray-700 dark:text-gray-300 mb-2'>
@@ -390,10 +390,10 @@ export default function BlogListingClient({
         <EmptyState searchQuery={searchQuery} selectedTag={selectedTag} />
       ) : (
         <div
-          className={`grid gap-8 ${
+          className={`grid ${
             viewMode === 'grid'
-              ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'
-              : 'grid-cols-1'
+              ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6'
+              : 'grid-cols-1 gap-8'
           }`}
         >
           {paginatedPosts.map((post, index) => (

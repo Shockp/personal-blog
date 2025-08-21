@@ -158,24 +158,24 @@ export default function AboutPage() {
 
       <div className='min-h-screen bg-white dark:bg-gray-900'>
         {/* Hero Section - Personal Introduction */}
-        <section className='relative bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-20 sm:py-32'>
+        <section className='relative bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-12 sm:py-20 lg:py-32'>
           <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-            <div className='grid grid-cols-1 lg:grid-cols-2 gap-12 items-center'>
+            <div className='grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center'>
               {/* Text Content */}
               <div className='text-center lg:text-left'>
-                <h1 className='text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-6'>
+                <h1 className='text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6'>
                   Hi, I&apos;m{' '}
                   <span className='bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent'>
                     Adrian
                   </span>
                 </h1>
-                <p className='text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed'>
+                <p className='text-lg sm:text-xl text-gray-600 dark:text-gray-300 mb-6 sm:mb-8 leading-relaxed px-2 sm:px-0'>
                   A passionate web developer with over 5 years of experience
                   creating modern, user-friendly applications. I specialize in
                   React, TypeScript, and building scalable web solutions that
                   make a difference.
                 </p>
-                <div className='flex flex-col sm:flex-row gap-4 justify-center lg:justify-start'>
+                <div className='flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-5 justify-center lg:justify-start'>
                   <Link
                     href='/blog'
                     className='inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-200 group'
@@ -210,32 +210,34 @@ export default function AboutPage() {
         </section>
 
         {/* Skills & Expertise Section */}
-        <section className='py-20 bg-gray-50 dark:bg-gray-800'>
+        <section className='py-12 sm:py-16 lg:py-20 bg-gray-50 dark:bg-gray-800'>
           <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-            <div className='text-center mb-16'>
-              <h2 className='text-3xl font-bold text-gray-900 dark:text-white mb-4'>
+            <div className='text-center mb-10 sm:mb-12 lg:mb-16'>
+              <h2 className='text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4'>
                 Skills & Expertise
               </h2>
-              <p className='text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto'>
+              <p className='text-base sm:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto px-2 sm:px-0'>
                 I&apos;m passionate about staying current with the latest
                 technologies and best practices in web development.
               </p>
             </div>
 
-            <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8'>
               {skills.map((skill, index) => {
                 const IconComponent = skill.icon;
                 return (
                   <div
                     key={index}
-                    className='bg-white dark:bg-gray-900 rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-200'
+                    className='bg-white dark:bg-gray-900 rounded-lg p-4 sm:p-6 shadow-md hover:shadow-lg transition-shadow duration-200'
                   >
-                    <div className='flex items-center mb-4'>
-                      <div className={`p-3 rounded-lg ${skill.color} mr-4`}>
-                        <IconComponent className='w-6 h-6 text-white' />
+                    <div className='flex items-center mb-3 sm:mb-4'>
+                      <div
+                        className={`p-2 sm:p-3 rounded-lg ${skill.color} mr-3 sm:mr-4`}
+                      >
+                        <IconComponent className='w-5 h-5 sm:w-6 sm:h-6 text-white' />
                       </div>
                       <div className='flex-1'>
-                        <h3 className='text-lg font-semibold text-gray-900 dark:text-white'>
+                        <h3 className='text-base sm:text-lg font-semibold text-gray-900 dark:text-white'>
                           {skill.name}
                         </h3>
                         <div className='mt-2'>
@@ -245,7 +247,7 @@ export default function AboutPage() {
                               style={{ width: `${skill.level}%` }}
                             ></div>
                           </div>
-                          <span className='text-sm text-gray-500 dark:text-gray-400 mt-1 block'>
+                          <span className='text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-1 block'>
                             {skill.level}% Proficiency
                           </span>
                         </div>
@@ -327,20 +329,20 @@ export default function AboutPage() {
         {/* Contact Information Section */}
         <section
           id='contact'
-          className='py-20 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900'
+          className='py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900'
         >
           <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-            <div className='text-center mb-16'>
-              <h2 className='text-3xl font-bold text-gray-900 dark:text-white mb-4'>
+            <div className='text-center mb-10 sm:mb-12 lg:mb-16'>
+              <h2 className='text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4'>
                 Let&apos;s Connect
               </h2>
-              <p className='text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto'>
+              <p className='text-base sm:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto px-2 sm:px-0'>
                 I&apos;m always interested in new opportunities and
                 collaborations. Feel free to reach out!
               </p>
             </div>
 
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6'>
               {/* Email */}
               <div className='bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-200 text-center'>
                 <div className='bg-blue-100 dark:bg-blue-900/20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4'>

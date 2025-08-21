@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import Link from 'next/link';
-import { ArrowRight, BookOpen, Users, Zap } from 'lucide-react';
+import { ArrowRight, BookOpen, Users } from 'lucide-react';
 import { getAllPosts } from '@/lib/posts';
 import PostCard from '@/components/blog/PostCard';
 
@@ -124,42 +124,35 @@ export default async function Home() {
           aria-labelledby='hero-heading'
         >
           <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-            <div className='text-center'>
-              <h1
-                id='hero-heading'
-                className='text-4xl sm:text-6xl font-bold text-gray-900 dark:text-white mb-6'
-              >
-                Hi, I&apos;m{' '}
-                <span className='bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent'>
-                  Adrian
-                </span>
-              </h1>
-              <p className='text-xl sm:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto'>
-                A passionate developer sharing insights about modern web
-                development, React, TypeScript, and building amazing user
-                experiences.
-              </p>
-              <div
-                className='flex flex-col sm:flex-row gap-4 justify-center items-center'
-                role='group'
-                aria-label='Main navigation actions'
-              >
+            <div className='text-center space-y-6 sm:space-y-8'>
+              <div className='space-y-3 sm:space-y-4'>
+                <h1 className='text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white leading-tight'>
+                  Hi, I&apos;m{' '}
+                  <span className='bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent'>
+                    Adrian
+                  </span>
+                </h1>
+                <p className='text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-4 sm:px-0'>
+                  A passionate developer crafting digital experiences with
+                  modern technologies
+                </p>
+              </div>
+              <div className='flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4 sm:px-0'>
                 <Link
                   href='/blog'
-                  className='inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-200 group'
-                  aria-label='Read my blog posts'
+                  className='w-full sm:w-auto inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl min-h-[44px] text-base sm:text-lg'
                 >
-                  <BookOpen className='w-5 h-5 mr-2' />
+                  <BookOpen className='mr-2 h-5 w-5' />
                   Read My Blog
-                  <ArrowRight className='w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-200' />
                 </Link>
                 <Link
                   href='/about'
-                  className='inline-flex items-center px-6 py-3 border-2 border-gray-300 dark:border-gray-600 hover:border-blue-600 dark:hover:border-blue-400 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium rounded-lg transition-colors duration-200 group'
-                  aria-label='Learn more about me'
+                  className='w-full sm:w-auto group inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 border-2 border-gray-300 dark:border-gray-600 hover:border-blue-600 dark:hover:border-blue-400 text-gray-700 dark:text-gray-300 font-semibold rounded-lg transition-all duration-200 hover:shadow-lg min-h-[44px] text-base sm:text-lg'
                 >
-                  <Users className='w-5 h-5 mr-2 text-gray-700 dark:text-gray-300' />
-                  About Me
+                  <Users className='mr-2 h-5 w-5 text-gray-500 dark:text-gray-400' />
+                  <span className='group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200'>
+                    About Me
+                  </span>
                 </Link>
               </div>
             </div>
@@ -168,20 +161,20 @@ export default async function Home() {
 
         {/* Recent Posts Section */}
         <section
-          className='py-16 bg-white dark:bg-gray-900'
+          className='py-12 sm:py-16 lg:py-20 bg-gray-50 dark:bg-gray-900'
           aria-labelledby='recent-posts-heading'
         >
           <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-            <div className='text-center mb-12'>
+            <div className='text-center mb-8 sm:mb-10 lg:mb-12'>
               <h2
                 id='recent-posts-heading'
-                className='text-3xl font-bold text-gray-900 dark:text-white mb-4'
+                className='text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4'
               >
-                Latest Posts
+                Recent Posts
               </h2>
-              <p className='text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto'>
-                Discover insights, tutorials, and thoughts on modern web
-                development
+              <p className='text-base sm:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto px-4 sm:px-0'>
+                Discover my latest thoughts on web development, technology, and
+                programming best practices.
               </p>
             </div>
 
@@ -210,20 +203,18 @@ export default async function Home() {
               </div>
             </Suspense>
 
-            <div className='text-center mt-12'>
+            <div className='flex justify-center mt-8 sm:mt-10 lg:mt-12 px-4 sm:px-0'>
               <Link
                 href='/blog'
-                className='inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none transition-colors duration-200'
+                className='w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-200 group min-h-[44px] text-base sm:text-lg'
                 prefetch={false}
               >
                 View All Posts
-                <ArrowRight className='ml-2 h-4 w-4' />
+                <ArrowRight className='ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-200' />
               </Link>
             </div>
           </div>
         </section>
-
-
       </main>
     </>
   );

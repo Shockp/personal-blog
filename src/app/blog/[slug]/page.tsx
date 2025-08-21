@@ -241,56 +241,56 @@ export default async function PostPage({ params }: PostPageProps) {
       />
 
       <div className='min-h-screen bg-white dark:bg-gray-900'>
-        <div className='max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8'>
+        <div className='max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8'>
           {/* Back to Blog Link */}
-          <div className='mb-8'>
+          <div className='mb-6 sm:mb-8'>
             <Link
               href='/blog'
-              className='inline-flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors cursor-pointer'
+              className='inline-flex items-center gap-2 text-sm sm:text-base text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors cursor-pointer min-h-[44px] py-2'
             >
-              <ArrowLeft className='w-4 h-4' />
+              <ArrowLeft className='w-4 h-4 sm:w-5 sm:h-5' />
               Back to Blog
             </Link>
           </div>
 
           {/* Post Header */}
-          <header className='mb-8'>
-            <h1 className='text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4 leading-tight'>
+          <header className='mb-6 sm:mb-8'>
+            <h1 className='text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4 leading-tight'>
               {post.title}
             </h1>
 
-            <p className='text-xl text-gray-600 dark:text-gray-300 mb-6 leading-relaxed'>
+            <p className='text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-4 sm:mb-6 leading-relaxed'>
               {post.description}
             </p>
 
             {/* Post Metadata */}
-            <div className='flex flex-wrap items-center gap-6 text-sm text-gray-500 dark:text-gray-400'>
-              <div className='flex items-center gap-2'>
-                <Calendar className='w-4 h-4' />
+            <div className='flex flex-wrap items-center gap-3 sm:gap-4 md:gap-6 text-xs sm:text-sm text-gray-500 dark:text-gray-400'>
+              <div className='flex items-center gap-1.5 sm:gap-2'>
+                <Calendar className='w-3.5 h-3.5 sm:w-4 sm:h-4' />
                 <time dateTime={post.date}>{formatDate(post.date)}</time>
               </div>
 
-              <div className='flex items-center gap-2'>
-                <Clock className='w-4 h-4' />
+              <div className='flex items-center gap-1.5 sm:gap-2'>
+                <Clock className='w-3.5 h-3.5 sm:w-4 sm:h-4' />
                 <span>{readingTime} min read</span>
               </div>
 
-              <div className='flex items-center gap-2'>
-                <User className='w-4 h-4' />
+              <div className='flex items-center gap-1.5 sm:gap-2'>
+                <User className='w-3.5 h-3.5 sm:w-4 sm:h-4' />
                 <span>{post.author}</span>
               </div>
             </div>
 
             {/* Tags */}
             {post.tags.length > 0 && (
-              <div className='flex items-center gap-2 mt-4'>
-                <Tag className='w-4 h-4 text-gray-500 dark:text-gray-400' />
-                <div className='flex flex-wrap gap-2'>
+              <div className='flex items-start gap-2 mt-3 sm:mt-4'>
+                <Tag className='w-3.5 h-3.5 sm:w-4 sm:h-4 text-gray-500 dark:text-gray-400 mt-1 flex-shrink-0' />
+                <div className='flex flex-wrap gap-1.5 sm:gap-2'>
                   {post.tags.map(tag => (
                     <Link
                       key={tag}
                       href={`/blog?tag=${encodeURIComponent(tag)}`}
-                      className='px-3 py-1 text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors cursor-pointer'
+                      className='px-2 sm:px-3 py-1 text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors cursor-pointer min-h-[24px] flex items-center'
                     >
                       {tag}
                     </Link>
@@ -301,7 +301,7 @@ export default async function PostPage({ params }: PostPageProps) {
           </header>
 
           {/* Post Content */}
-          <div className='mb-12'>
+          <div className='mb-8 sm:mb-10 lg:mb-12'>
             <PostContent
               content={post.content}
               title={post.title}
@@ -313,18 +313,18 @@ export default async function PostPage({ params }: PostPageProps) {
 
           {/* Post Navigation */}
           {(previousPost || nextPost) && (
-            <nav className='border-t border-gray-200 dark:border-gray-700 pt-8 mb-12'>
-              <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
+            <nav className='border-t border-gray-200 dark:border-gray-700 pt-6 sm:pt-8 mb-8 sm:mb-10 lg:mb-12'>
+              <div className='grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6'>
                 {previousPost && (
                   <Link
                     href={`/blog/${previousPost.slug}`}
-                    className='group p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-gray-300 dark:hover:border-gray-600 transition-colors cursor-pointer'
+                    className='group p-3 sm:p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-gray-300 dark:hover:border-gray-600 transition-colors cursor-pointer min-h-[80px] flex flex-col justify-center'
                   >
-                    <div className='flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mb-2'>
-                      <ArrowLeft className='w-4 h-4' />
+                    <div className='flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-gray-500 dark:text-gray-400 mb-1.5 sm:mb-2'>
+                      <ArrowLeft className='w-3.5 h-3.5 sm:w-4 sm:h-4' />
                       Previous Post
                     </div>
-                    <h3 className='font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors'>
+                    <h3 className='text-sm sm:text-base font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors leading-tight'>
                       {previousPost.title}
                     </h3>
                   </Link>
@@ -333,13 +333,13 @@ export default async function PostPage({ params }: PostPageProps) {
                 {nextPost && (
                   <Link
                     href={`/blog/${nextPost.slug}`}
-                    className='group p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-gray-300 dark:hover:border-gray-600 transition-colors cursor-pointer md:text-right'
+                    className='group p-3 sm:p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-gray-300 dark:hover:border-gray-600 transition-colors cursor-pointer md:text-right min-h-[80px] flex flex-col justify-center'
                   >
-                    <div className='flex items-center justify-end gap-2 text-sm text-gray-500 dark:text-gray-400 mb-2'>
-                      Next Post
-                      <ArrowRight className='w-4 h-4' />
+                    <div className='flex items-center justify-start md:justify-end gap-1.5 sm:gap-2 text-xs sm:text-sm text-gray-500 dark:text-gray-400 mb-1.5 sm:mb-2'>
+                      <span className='md:order-2'>Next Post</span>
+                      <ArrowRight className='w-3.5 h-3.5 sm:w-4 sm:h-4 md:order-1' />
                     </div>
-                    <h3 className='font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors'>
+                    <h3 className='text-sm sm:text-base font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors leading-tight text-left md:text-right'>
                       {nextPost.title}
                     </h3>
                   </Link>
@@ -350,24 +350,24 @@ export default async function PostPage({ params }: PostPageProps) {
 
           {/* Related Posts */}
           {relatedPosts.length > 0 && (
-            <section className='border-t border-gray-200 dark:border-gray-700 pt-8'>
-              <h2 className='text-2xl font-bold text-gray-900 dark:text-white mb-6'>
+            <section className='border-t border-gray-200 dark:border-gray-700 pt-6 sm:pt-8'>
+              <h2 className='text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6'>
                 Related Posts
               </h2>
-              <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
+              <div className='grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6'>
                 {relatedPosts.map(relatedPost => (
                   <Link
                     key={relatedPost.slug}
                     href={`/blog/${relatedPost.slug}`}
-                    className='group p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-gray-300 dark:hover:border-gray-600 transition-colors cursor-pointer'
+                    className='group p-3 sm:p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-gray-300 dark:hover:border-gray-600 transition-colors cursor-pointer min-h-[120px] flex flex-col'
                   >
-                    <h3 className='font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors mb-2'>
+                    <h3 className='text-sm sm:text-base font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors mb-2 leading-tight flex-shrink-0'>
                       {relatedPost.title}
                     </h3>
-                    <p className='text-sm text-gray-600 dark:text-gray-300 mb-3'>
+                    <p className='text-xs sm:text-sm text-gray-600 dark:text-gray-300 mb-3 leading-relaxed flex-grow line-clamp-2'>
                       {relatedPost.description}
                     </p>
-                    <div className='flex items-center justify-between text-xs text-gray-500 dark:text-gray-400'>
+                    <div className='flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 flex-shrink-0'>
                       <span>{formatDate(relatedPost.date)}</span>
                       <span>{relatedPost.readingTime} min read</span>
                     </div>

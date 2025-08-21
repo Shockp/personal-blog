@@ -78,7 +78,7 @@ export default function PostCard({
     >
       <Link
         href={`/blog/${slug}`}
-        className='block focus:outline-none h-full flex flex-col'
+        className='block focus:outline-none h-full flex flex-col min-h-[44px]'
         aria-label={`Read full article: ${title}`}
       >
         {/* Featured Image */}
@@ -98,21 +98,21 @@ export default function PostCard({
         )}
 
         {/* Content */}
-        <div className='p-6 flex-1 flex flex-col'>
+        <div className='p-4 sm:p-6 flex-1 flex flex-col'>
           {/* Meta information */}
-          <div className='flex flex-wrap items-center gap-4 text-sm text-gray-600 dark:text-gray-400 mb-3'>
+          <div className='flex flex-col xs:flex-row xs:items-center gap-2 xs:gap-4 text-sm text-gray-600 dark:text-gray-400 mb-3'>
+            {/* Reading time */}
+            <div className='flex items-center gap-1 order-1 xs:order-2'>
+              <Clock className='w-4 h-4' aria-hidden='true' />
+              <span className='font-medium'>{readingTime} min read</span>
+            </div>
+
             {/* Date */}
-            <div className='flex items-center gap-1'>
+            <div className='flex items-center gap-1 order-2 xs:order-1'>
               <Calendar className='w-4 h-4' aria-hidden='true' />
               <time dateTime={date} className='font-medium'>
                 {formattedDate}
               </time>
-            </div>
-
-            {/* Reading time */}
-            <div className='flex items-center gap-1'>
-              <Clock className='w-4 h-4' aria-hidden='true' />
-              <span className='font-medium'>{readingTime} min read</span>
             </div>
 
             {/* Author */}
@@ -128,9 +128,9 @@ export default function PostCard({
           <h2
             id={`post-title-${slug}`}
             className='
-              text-xl font-bold text-gray-900 dark:text-white mb-3 
+              text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-3 
               group-hover:text-blue-600 dark:group-hover:text-blue-400 
-              transition-colors duration-200 line-clamp-2
+              transition-colors duration-200 line-clamp-2 leading-tight
             '
           >
             {title}
@@ -139,7 +139,7 @@ export default function PostCard({
           {/* Description */}
           <p
             className='
-            text-gray-600 dark:text-gray-300 line-clamp-3 
+            text-sm sm:text-base text-gray-600 dark:text-gray-300 line-clamp-3 
             leading-relaxed mb-4
           '
           >
@@ -148,17 +148,17 @@ export default function PostCard({
 
           {/* Tags */}
           {tags && tags.length > 0 && (
-            <div className='flex flex-wrap gap-2' role='list'>
-              {tags.map(tag => (
+            <div className='flex flex-wrap gap-1.5 sm:gap-2' role='list'>
+              {tags.slice(0, 3).map(tag => (
                 <button
                   key={tag}
                   onClick={e => handleTagClick(tag, e)}
                   className='
-                    inline-flex items-center px-2.5 py-1 rounded-full text-xs 
+                    inline-flex items-center px-2 sm:px-2.5 py-1 sm:py-0.5 rounded-full text-xs 
                     font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 
                     dark:text-blue-300 hover:bg-blue-200 dark:hover:bg-blue-900/50 
                     transition-colors duration-200 focus:outline-none 
-                    cursor-pointer
+                    cursor-pointer min-h-[24px]
                   '
                   role='listitem'
                   aria-label={`Filter posts by ${tag} tag`}
@@ -167,6 +167,11 @@ export default function PostCard({
                   #{tag}
                 </button>
               ))}
+              {tags.length > 3 && (
+                <span className='inline-flex items-center px-2 sm:px-2.5 py-1 sm:py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200 min-h-[24px]'>
+                  +{tags.length - 3} more
+                </span>
+              )}
             </div>
           )}
         </div>
