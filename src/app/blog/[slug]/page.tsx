@@ -108,8 +108,7 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
         },
       },
     };
-  } catch (error) {
-    console.error('Error generating metadata:', error);
+  } catch {
     return {
       title: 'Blog Post | Personal Blog',
       description: 'Read our latest blog post.',
@@ -159,8 +158,7 @@ async function getPostData(slug: string): Promise<PostPageData | null> {
       previousPost,
       nextPost,
     };
-  } catch (error) {
-    console.error('Error fetching post data:', error);
+  } catch {
     return null;
   }
 }

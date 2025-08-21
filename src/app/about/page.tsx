@@ -117,7 +117,7 @@ export default function AboutPage() {
               {/* Text Content */}
               <div className="text-center lg:text-left">
                 <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-                  Hi, I'm{' '}
+                  Hi, I&apos;m{' '}
                   <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                     Adrian
                   </span>
@@ -169,7 +169,7 @@ export default function AboutPage() {
                 Skills & Expertise
               </h2>
               <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                I'm passionate about staying current with the latest technologies and best practices in web development.
+                I&apos;m passionate about staying current with the latest technologies and best practices in web development.
               </p>
             </div>
 
@@ -269,10 +269,10 @@ export default function AboutPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-                Let's Connect
+                Let&apos;s Connect
               </h2>
               <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                I'm always interested in new opportunities and collaborations. Feel free to reach out!
+                I&apos;m always interested in new opportunities and collaborations. Feel free to reach out!
               </p>
             </div>
 
@@ -286,7 +286,7 @@ export default function AboutPage() {
                   Email
                 </h3>
                 <p className="text-gray-600 dark:text-gray-400 mb-4">
-                  Let's discuss your project
+                  Let&apos;s discuss your project
                 </p>
                 <a
                   href="mailto:adrian@example.com"

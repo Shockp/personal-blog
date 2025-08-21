@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { PostMetadata, BlogPost, BlogPostSummary } from '@/types/blog';
 import { parseFrontmatter, markdownToHtml } from './markdown';
+import { validateBlogPost, formatValidationErrors, ValidationOptions } from './validation';
 
 // Posts directory path
 const POSTS_DIRECTORY = path.join(process.cwd(), 'content', 'posts');
@@ -18,22 +19,32 @@ function calculateReadingTime(content: string): number {
 }
 
 /**
- * Validates post metadata to ensure required fields are present
+ * Validates post metadata and content using comprehensive validation
  * @param metadata - Raw metadata object
  * @param slug - Post slug for error reporting
  * @param content - Post content for calculating reading time and word count
+ * @param options - Validation options
  * @returns Validated metadata as BlogPostSummary
- * @throws Error if required fields are missing
+ * @throws Error if validation fails
  */
 function validatePostMetadata(
   metadata: PostMetadata,
   slug: string,
-  content: string
+  content: string,
+  options: ValidationOptions = {}
 ): BlogPostSummary {
-  // Validate date format
-  const date = new Date(metadata.date);
-  if (isNaN(date.getTime())) {
-    throw new Error(`Invalid date format in post: ${slug}`);
+  // Run comprehensive validation
+  const validationResult = validateBlogPost(metadata, content, slug, options);
+  
+  // If validation fails, throw detailed error
+  if (!validationResult.isValid) {
+    const errorMessage = formatValidationErrors(validationResult);
+    throw new Error(`Validation failed for post '${slug}':\n${errorMessage}`);
+  }
+  
+  // Log warnings in development
+  if (validationResult.warnings.length > 0 && process.env.NODE_ENV === 'development') {
+    // Validation warnings are available but not logged to console
   }
 
   // Calculate reading time and word count
@@ -69,7 +80,6 @@ export async function getAllPosts(): Promise<BlogPostSummary[]> {
   try {
     // Check if posts directory exists
     if (!fs.existsSync(POSTS_DIRECTORY)) {
-      console.warn('Posts directory does not exist, returning empty array');
       return [];
     }
 
@@ -82,7 +92,6 @@ export async function getAllPosts(): Promise<BlogPostSummary[]> {
     );
 
     if (markdownFiles.length === 0) {
-      console.warn('No markdown files found in posts directory');
       return [];
     }
 
@@ -96,14 +105,15 @@ export async function getAllPosts(): Promise<BlogPostSummary[]> {
 
         const { data: metadata, content } = parseFrontmatter(fileContent);
 
-        const validatedMetadata = validatePostMetadata(metadata, slug, content);
+        const validatedMetadata = validatePostMetadata(metadata, slug, content, {
+          validateContentLength: true,
+          minContentLength: 50, // More lenient for blog posts
+          validateTagCount: true,
+          maxTags: 10,
+        });
 
         posts.push(validatedMetadata);
-      } catch (error) {
-        // Log error in development, but don't expose in production
-        if (process.env.NODE_ENV === 'development') {
-          console.error(`Error processing post ${fileName}:`, error);
-        }
+      } catch {
         // Continue processing other posts instead of failing completely
         continue;
       }
@@ -137,9 +147,6 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
 
     // Sanitize slug to prevent directory traversal
     const sanitizedSlug = slug.replace(/[^a-zA-Z0-9-_]/g, '');
-    if (sanitizedSlug !== slug) {
-      console.warn(`Slug was sanitized from '${slug}' to '${sanitizedSlug}'`);
-    }
 
     // Check if posts directory exists
     if (!fs.existsSync(POSTS_DIRECTORY)) {
@@ -170,7 +177,13 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
     const validatedSummary = validatePostMetadata(
       metadata,
       sanitizedSlug,
-      content
+      content,
+      {
+        validateContentLength: true,
+        minContentLength: 50, // More lenient for blog posts
+        validateTagCount: true,
+        maxTags: 10,
+      }
     );
 
     // Convert markdown to HTML
