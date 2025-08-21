@@ -36,24 +36,22 @@
   --font-mono: var(--font-jetbrains-mono), 'Fira Code', monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #020617;
-    --foreground: #f8fafc;
-    --muted: #0f172a;
-    --muted-foreground: #94a3b8;
-    --border: #1e293b;
-    --input: #1e293b;
-    --primary: #38bdf8;
-    --primary-foreground: #020617;
-    --secondary: #1e293b;
-    --secondary-foreground: #f8fafc;
-    --accent: #e879f9;
-    --accent-foreground: #020617;
-    --destructive: #f87171;
-    --destructive-foreground: #020617;
-    --ring: #38bdf8;
-  }
+.dark {
+  --background: #020617;
+  --foreground: #f8fafc;
+  --muted: #0f172a;
+  --muted-foreground: #94a3b8;
+  --border: #1e293b;
+  --input: #1e293b;
+  --primary: #38bdf8;
+  --primary-foreground: #020617;
+  --secondary: #1e293b;
+  --secondary-foreground: #f8fafc;
+  --accent: #e879f9;
+  --accent-foreground: #020617;
+  --destructive: #f87171;
+  --destructive-foreground: #020617;
+  --ring: #38bdf8;
 }
 
 * {

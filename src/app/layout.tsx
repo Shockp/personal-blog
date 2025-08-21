@@ -9,6 +9,9 @@ import '@/lib/env';
 import Navigation from '@/components/layout/Navigation';
 import Footer from '@/components/layout/Footer';
 
+// Theme provider
+import { ThemeProvider } from '@/contexts/ThemeContext';
+
 const inter = Inter({
   variable: '--font-inter',
   subsets: ['latin'],
@@ -80,24 +83,26 @@ export default function RootLayout({
         className={`${inter.variable} ${merriweather.variable} font-sans antialiased min-h-screen flex flex-col`}
         suppressHydrationWarning
       >
-        {/* Skip to main content link for accessibility */}
-        <a
-          href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-600 text-white px-4 py-2 rounded-md z-50 transition-all duration-200"
-        >
-          Skip to main content
-        </a>
-        
-        {/* Navigation Header */}
-        <Navigation />
-        
-        {/* Main Content Area */}
-        <main id="main-content" className="flex-1" role="main">
-          {children}
-        </main>
-        
-        {/* Footer */}
-        <Footer />
+        <ThemeProvider>
+          {/* Skip to main content link for accessibility */}
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-600 text-white px-4 py-2 rounded-md z-50 transition-all duration-200"
+          >
+            Skip to main content
+          </a>
+          
+          {/* Navigation Header */}
+          <Navigation />
+          
+          {/* Main Content Area */}
+          <main id="main-content" className="flex-1" role="main">
+            {children}
+          </main>
+          
+          {/* Footer */}
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );
