@@ -70,6 +70,7 @@ export default function PostCard({
         border border-gray-200 dark:border-gray-700 overflow-hidden
         hover:-translate-y-1 focus-within:ring-2 focus-within:ring-blue-500 
         focus-within:ring-offset-2 dark:focus-within:ring-offset-gray-800
+        h-full flex flex-col
         ${className}
       `}
       role='article'
@@ -77,7 +78,7 @@ export default function PostCard({
     >
       <Link
         href={`/blog/${slug}`}
-        className='block focus:outline-none'
+        className='block focus:outline-none h-full flex flex-col'
         aria-label={`Read full article: ${title}`}
       >
         {/* Featured Image */}
@@ -97,7 +98,7 @@ export default function PostCard({
         )}
 
         {/* Content */}
-        <div className='p-6'>
+        <div className='p-6 flex-1 flex flex-col'>
           {/* Meta information */}
           <div className='flex flex-wrap items-center gap-4 text-sm text-gray-600 dark:text-gray-400 mb-3'>
             {/* Date */}
@@ -138,8 +139,8 @@ export default function PostCard({
           {/* Description */}
           <p
             className='
-            text-gray-600 dark:text-gray-300 mb-4 line-clamp-3 
-            leading-relaxed
+            text-gray-600 dark:text-gray-300 line-clamp-3 
+            leading-relaxed mb-4
           '
           >
             {description}
