@@ -1,29 +1,31 @@
 /**
- * Core blog post interface with all metadata and content
+ * Blog post metadata interface
+ * @interface PostMetadata
  */
-export interface BlogPost {
-  /** Unique identifier for the post (URL-friendly) */
+export interface PostMetadata {
+  /** Unique identifier for the post */
   slug: string;
   /** Post title */
   title: string;
-  /** Brief description or excerpt */
+  /** Post description/excerpt */
   description: string;
-  /** Publication date in YYYY-MM-DD format */
+  /** Publication date in ISO format */
   date: string;
-  /** Array of tags associated with the post */
+  /** Array of tags */
   tags: string[];
-  /** Author name */
-  author: string;
-  /** Optional featured image URL */
+  /** Featured image URL (optional) */
   image?: string;
-  /** Whether the post is published (visible to public) */
-  published: boolean;
-  /** Full HTML content of the post */
-  content: string;
-  /** Estimated reading time in minutes */
+  /** Reading time in minutes */
   readingTime: number;
-  /** Total word count */
-  wordCount: number;
+}
+
+/**
+ * Complete blog post interface
+ * @interface BlogPost
+ */
+export interface BlogPost extends PostMetadata {
+  /** Markdown content */
+  content: string;
 }
 
 /**
