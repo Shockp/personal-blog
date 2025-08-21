@@ -224,7 +224,7 @@ export function calculateReadingTime(content: string): number {
 - Implement responsive navigation header
 - Add footer component
 - Configure global styles and fonts
-- Implement dark mode support (optional)
+- Implement light/dark mode support
 
 **Security Headers**:
 
