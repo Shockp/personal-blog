@@ -69,7 +69,7 @@ export default function Header() {
           <nav className='hidden md:flex items-center space-x-6 lg:space-x-8'>
             <Link
               href='/'
-              className={`text-sm lg:text-base font-medium transition-colors duration-200 px-2 py-2 rounded-md min-h-[44px] flex items-center ${
+              className={`text-sm lg:text-base font-medium transition-colors duration-200 px-3 py-2 rounded-md min-h-[44px] flex items-center ${
                 pathname === '/'
                   ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20'
                   : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800'
@@ -79,7 +79,7 @@ export default function Header() {
             </Link>
             <Link
               href='/blog'
-              className={`text-sm lg:text-base font-medium transition-colors duration-200 px-2 py-2 rounded-md min-h-[44px] flex items-center ${
+              className={`text-sm lg:text-base font-medium transition-colors duration-200 px-3 py-2 rounded-md min-h-[44px] flex items-center ${
                 pathname === '/blog'
                   ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20'
                   : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800'
@@ -89,7 +89,7 @@ export default function Header() {
             </Link>
             <Link
               href='/about'
-              className={`text-sm lg:text-base font-medium transition-colors duration-200 px-2 py-2 rounded-md min-h-[44px] flex items-center ${
+              className={`text-sm lg:text-base font-medium transition-colors duration-200 px-3 py-2 rounded-md min-h-[44px] flex items-center ${
                 pathname === '/about'
                   ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20'
                   : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800'
