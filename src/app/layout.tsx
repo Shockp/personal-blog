@@ -6,7 +6,7 @@ import './globals.css';
 import '@/lib/env';
 
 // Layout components
-import Navigation from '@/components/layout/Navigation';
+import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 
 // Theme provider
@@ -86,20 +86,20 @@ export default function RootLayout({
         <ThemeProvider>
           {/* Skip to main content link for accessibility */}
           <a
-            href="#main-content"
-            className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-600 text-white px-4 py-2 rounded-md z-50 transition-all duration-200"
+            href='#main-content'
+            className='sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-600 text-white px-4 py-2 rounded-md z-50 transition-all duration-200'
           >
             Skip to main content
           </a>
-          
+
           {/* Navigation Header */}
-          <Navigation />
-          
+          <Header />
+
           {/* Main Content Area */}
-          <main id="main-content" className="flex-1" role="main">
+          <main id='main-content' className='flex-1' role='main'>
             {children}
           </main>
-          
+
           {/* Footer */}
           <Footer />
         </ThemeProvider>
