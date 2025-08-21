@@ -3,7 +3,7 @@ title: 'Getting Started with Next.js 14: A Complete Guide'
 description: 'Learn how to build modern web applications with Next.js 14, covering app router, server components, and best practices for performance optimization.'
 date: '2024-01-15'
 tags: ['nextjs', 'react', 'web-development', 'javascript']
-author: 'Blog Author'
+author: 'Adrián Feito Blázquez'
 ---
 
 # Getting Started with Next.js 14: A Complete Guide

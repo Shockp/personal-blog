@@ -405,11 +405,11 @@ export default function AboutPage() {
                     LinkedIn
                   </a>
                   <a
-                    href='https://twitter.com/adrian'
+                    href='https://x.com/adrian'
                     className='text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors duration-200'
-                    aria-label='Twitter Profile'
+                    aria-label='X Profile'
                   >
-                    Twitter
+                    X
                   </a>
                 </div>
               </div>

@@ -3,7 +3,7 @@ title: 'TypeScript Tips and Tricks: Advanced Patterns for Better Code'
 description: 'Explore advanced TypeScript patterns, utility types, and techniques to write more robust and type-safe applications.'
 date: '2024-01-05'
 tags: ['typescript', 'javascript', 'programming', 'web-development']
-author: 'Blog Author'
+author: 'Adrián Feito Blázquez'
 ---
 
 # TypeScript Tips and Tricks: Advanced Patterns

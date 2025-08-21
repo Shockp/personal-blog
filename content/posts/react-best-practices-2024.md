@@ -3,7 +3,7 @@ title: 'React Best Practices for 2024: Writing Clean and Maintainable Code'
 description: 'Discover the latest React best practices for 2024, including component design patterns, state management strategies, and performance optimization techniques.'
 date: '2024-01-10'
 tags: ['react', 'best-practices', 'javascript', 'frontend']
-author: 'Blog Author'
+author: 'Adrián Feito Blázquez'
 ---
 
 # React Best Practices for 2024

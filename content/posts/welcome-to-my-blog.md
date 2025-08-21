@@ -3,6 +3,7 @@ title: 'Welcome to My Blog: A Journey Through Technology'
 description: 'Welcome to my personal blog where I share insights about web development, programming best practices, and the latest trends in technology.'
 date: '2024-01-01'
 tags: ['welcome', 'introduction', 'web-development', 'programming']
+author: 'Adrián Feito Blázquez'
 ---
 
 # Welcome to My Blog!

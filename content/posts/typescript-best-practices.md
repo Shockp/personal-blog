@@ -3,6 +3,7 @@ title: 'TypeScript Best Practices: Writing Better Code in 2024'
 description: 'Master TypeScript with these essential best practices covering type safety, code organization, performance, and maintainability for modern applications.'
 date: '2024-01-12'
 tags: ['typescript', 'best-practices', 'javascript', 'web-development']
+author: 'Adrián Feito Blázquez'
 ---
 
 # TypeScript Best Practices: Writing Better Code in 2024

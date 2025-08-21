@@ -6,7 +6,7 @@ import rehypeHighlight from 'rehype-highlight';
 import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
 import DOMPurify from 'dompurify';
-import { Share, Twitter, Linkedin, Facebook, Copy, Check } from 'lucide-react';
+import { Share, Linkedin, Facebook, Copy, Check } from 'lucide-react';
 import 'highlight.js/styles/github.css';
 import 'highlight.js/styles/github-dark.css';
 
@@ -121,10 +121,10 @@ export default function PostContent({
   }, [tocItems]);
 
   // Social sharing functions
-  const shareOnTwitter = () => {
+  const shareOnX = () => {
     const text = `Check out this article: ${title}`;
-    const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
-    window.open(twitterUrl, '_blank', 'noopener,noreferrer');
+    const xUrl = `https://x.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+    window.open(xUrl, '_blank', 'noopener,noreferrer');
   };
 
   const shareOnLinkedIn = () => {
@@ -451,12 +451,14 @@ export default function PostContent({
                 </div>
                 <div className='flex items-center gap-3'>
                   <button
-                    onClick={shareOnTwitter}
+                    onClick={shareOnX}
                     className='flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors cursor-pointer'
-                    aria-label='Share on Twitter'
+                    aria-label='Share on X'
                   >
-                    <Twitter className='w-4 h-4' />
-                    <span className='hidden sm:inline'>Twitter</span>
+                    <svg className='w-4 h-4' fill='currentColor' viewBox='0 0 24 24' aria-hidden='true'>
+                      <path d='M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z' />
+                    </svg>
+                    <span className='hidden sm:inline'>X</span>
                   </button>
                   <button
                     onClick={shareOnLinkedIn}
