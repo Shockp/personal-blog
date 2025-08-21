@@ -52,9 +52,7 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
 
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
     const postUrl = `${baseUrl}/blog/${slug}`;
-    const imageUrl = post.image
-      ? `${baseUrl}${post.image}`
-      : `${baseUrl}/api/og?title=${encodeURIComponent(post.title)}`;
+    const imageUrl = `${baseUrl}/api/og?title=${encodeURIComponent(post.title)}`;
 
     return {
       title: `${post.title} | Personal Blog`,
@@ -214,7 +212,7 @@ export default async function PostPage({ params }: PostPageProps) {
     '@type': 'BlogPosting',
     headline: post.title,
     description: post.description,
-    image: post.image ? `${baseUrl}${post.image}` : undefined,
+    image: undefined,
     author: {
       '@type': 'Person',
       name: post.author,
@@ -302,16 +300,7 @@ export default async function PostPage({ params }: PostPageProps) {
             )}
           </header>
 
-          {/* Featured Image */}
-          {post.image && (
-            <div className='mb-8'>
-              <img
-                src={post.image}
-                alt={post.title}
-                className='w-full h-64 md:h-96 object-cover rounded-lg shadow-lg'
-              />
-            </div>
-          )}
+
 
           {/* Post Content */}
           <div className='mb-12'>

@@ -218,9 +218,6 @@ export function PostCardSkeleton() {
       border-gray-200 dark:border-gray-700 overflow-hidden animate-pulse
     '
     >
-      {/* Image skeleton */}
-      <div className='aspect-video w-full bg-gray-200 dark:bg-gray-700' />
-
       {/* Content skeleton */}
       <div className='p-6'>
         {/* Meta skeleton */}
