@@ -38,7 +38,11 @@ export default function Header() {
 
   return (
     <header
-      className='bg-white dark:bg-gray-900 shadow-sm border-b border-gray-200 dark:border-gray-700'
+      className='shadow-sm border-b'
+      style={{
+        backgroundColor: 'var(--nav-background)',
+        borderColor: 'var(--nav-border)',
+      }}
       onKeyDown={handleKeyDown}
     >
       <nav
@@ -59,7 +63,10 @@ export default function Header() {
                   A
                 </span>
               </div>
-              <span className='font-bold text-lg sm:text-xl text-gray-900 dark:text-white'>
+              <span
+                className='font-bold text-lg sm:text-xl'
+                style={{ color: 'var(--foreground)' }}
+              >
                 Adrian
               </span>
             </Link>
@@ -69,31 +76,81 @@ export default function Header() {
           <nav className='hidden md:flex items-center space-x-6 lg:space-x-8'>
             <Link
               href='/'
-              className={`text-sm lg:text-base font-medium transition-colors duration-200 px-3 py-2 rounded-md min-h-[44px] flex items-center ${
-                pathname === '/'
-                  ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20'
-                  : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800'
-              }`}
+              className='text-sm lg:text-base font-medium transition-all duration-200 px-3 py-2 rounded-md min-h-[44px] flex items-center'
+              style={{
+                color:
+                  pathname === '/'
+                    ? 'var(--nav-active-text)'
+                    : 'var(--nav-text)',
+                backgroundColor:
+                  pathname === '/' ? 'var(--nav-active-bg)' : 'transparent',
+              }}
+              onMouseEnter={e => {
+                if (pathname !== '/') {
+                  e.currentTarget.style.backgroundColor = 'var(--nav-hover-bg)';
+                  e.currentTarget.style.color = 'var(--nav-text-hover)';
+                }
+              }}
+              onMouseLeave={e => {
+                if (pathname !== '/') {
+                  e.currentTarget.style.backgroundColor = 'transparent';
+                  e.currentTarget.style.color = 'var(--nav-text)';
+                }
+              }}
             >
               Home
             </Link>
             <Link
               href='/blog'
-              className={`text-sm lg:text-base font-medium transition-colors duration-200 px-3 py-2 rounded-md min-h-[44px] flex items-center ${
-                pathname === '/blog'
-                  ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20'
-                  : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800'
-              }`}
+              className='text-sm lg:text-base font-medium transition-all duration-200 px-3 py-2 rounded-md min-h-[44px] flex items-center'
+              style={{
+                color:
+                  pathname === '/blog'
+                    ? 'var(--nav-active-text)'
+                    : 'var(--nav-text)',
+                backgroundColor:
+                  pathname === '/blog' ? 'var(--nav-active-bg)' : 'transparent',
+              }}
+              onMouseEnter={e => {
+                if (pathname !== '/blog') {
+                  e.currentTarget.style.backgroundColor = 'var(--nav-hover-bg)';
+                  e.currentTarget.style.color = 'var(--nav-text-hover)';
+                }
+              }}
+              onMouseLeave={e => {
+                if (pathname !== '/blog') {
+                  e.currentTarget.style.backgroundColor = 'transparent';
+                  e.currentTarget.style.color = 'var(--nav-text)';
+                }
+              }}
             >
               Blog
             </Link>
             <Link
               href='/about'
-              className={`text-sm lg:text-base font-medium transition-colors duration-200 px-3 py-2 rounded-md min-h-[44px] flex items-center ${
-                pathname === '/about'
-                  ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20'
-                  : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800'
-              }`}
+              className='text-sm lg:text-base font-medium transition-all duration-200 px-3 py-2 rounded-md min-h-[44px] flex items-center'
+              style={{
+                color:
+                  pathname === '/about'
+                    ? 'var(--nav-active-text)'
+                    : 'var(--nav-text)',
+                backgroundColor:
+                  pathname === '/about'
+                    ? 'var(--nav-active-bg)'
+                    : 'transparent',
+              }}
+              onMouseEnter={e => {
+                if (pathname !== '/about') {
+                  e.currentTarget.style.backgroundColor = 'var(--nav-hover-bg)';
+                  e.currentTarget.style.color = 'var(--nav-text-hover)';
+                }
+              }}
+              onMouseLeave={e => {
+                if (pathname !== '/about') {
+                  e.currentTarget.style.backgroundColor = 'transparent';
+                  e.currentTarget.style.color = 'var(--nav-text)';
+                }
+              }}
             >
               About
             </Link>
@@ -105,7 +162,18 @@ export default function Header() {
             <ThemeToggle />
             <button
               onClick={toggleMenu}
-              className='inline-flex items-center justify-center p-2 rounded-md text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500 min-h-[44px] min-w-[44px]'
+              className='inline-flex items-center justify-center p-2 rounded-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-inset min-h-[44px] min-w-[44px]'
+              style={{
+                color: 'var(--nav-text)',
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.backgroundColor = 'var(--nav-hover-bg)';
+                e.currentTarget.style.color = 'var(--nav-text-hover)';
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.backgroundColor = 'transparent';
+                e.currentTarget.style.color = 'var(--nav-text)';
+              }}
               aria-expanded={isMenuOpen}
               aria-label={isMenuOpen ? 'Close main menu' : 'Open main menu'}
               aria-controls='mobile-menu'
@@ -131,14 +199,36 @@ export default function Header() {
           role='menu'
           aria-labelledby='mobile-menu-button'
         >
-          <div className='px-4 pt-3 pb-4 space-y-2 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 shadow-lg'>
+          <div
+            className='px-4 pt-3 pb-4 space-y-2 border-t shadow-lg'
+            style={{
+              backgroundColor: 'var(--nav-background)',
+              borderColor: 'var(--nav-border)',
+            }}
+          >
             <Link
               href='/'
-              className={`block px-4 py-3 rounded-lg text-base font-medium transition-colors duration-200 min-h-[44px] flex items-center ${
-                isActiveLink('/')
-                  ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20'
-                  : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800'
-              }`}
+              className='block px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 min-h-[44px] flex items-center'
+              style={{
+                color: isActiveLink('/')
+                  ? 'var(--nav-active-text)'
+                  : 'var(--nav-text)',
+                backgroundColor: isActiveLink('/')
+                  ? 'var(--nav-active-bg)'
+                  : 'transparent',
+              }}
+              onMouseEnter={e => {
+                if (!isActiveLink('/')) {
+                  e.currentTarget.style.backgroundColor = 'var(--nav-hover-bg)';
+                  e.currentTarget.style.color = 'var(--nav-text-hover)';
+                }
+              }}
+              onMouseLeave={e => {
+                if (!isActiveLink('/')) {
+                  e.currentTarget.style.backgroundColor = 'transparent';
+                  e.currentTarget.style.color = 'var(--nav-text)';
+                }
+              }}
               onClick={closeMenu}
               role='menuitem'
               aria-current={isActiveLink('/') ? 'page' : undefined}
@@ -147,11 +237,27 @@ export default function Header() {
             </Link>
             <Link
               href='/blog'
-              className={`block px-4 py-3 rounded-lg text-base font-medium transition-colors duration-200 min-h-[44px] flex items-center ${
-                isActiveLink('/blog')
-                  ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20'
-                  : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800'
-              }`}
+              className='block px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 min-h-[44px] flex items-center'
+              style={{
+                color: isActiveLink('/blog')
+                  ? 'var(--nav-active-text)'
+                  : 'var(--nav-text)',
+                backgroundColor: isActiveLink('/blog')
+                  ? 'var(--nav-active-bg)'
+                  : 'transparent',
+              }}
+              onMouseEnter={e => {
+                if (!isActiveLink('/blog')) {
+                  e.currentTarget.style.backgroundColor = 'var(--nav-hover-bg)';
+                  e.currentTarget.style.color = 'var(--nav-text-hover)';
+                }
+              }}
+              onMouseLeave={e => {
+                if (!isActiveLink('/blog')) {
+                  e.currentTarget.style.backgroundColor = 'transparent';
+                  e.currentTarget.style.color = 'var(--nav-text)';
+                }
+              }}
               onClick={closeMenu}
               role='menuitem'
               aria-current={isActiveLink('/blog') ? 'page' : undefined}
@@ -160,11 +266,27 @@ export default function Header() {
             </Link>
             <Link
               href='/about'
-              className={`block px-4 py-3 rounded-lg text-base font-medium transition-colors duration-200 min-h-[44px] flex items-center ${
-                isActiveLink('/about')
-                  ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20'
-                  : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800'
-              }`}
+              className='block px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 min-h-[44px] flex items-center'
+              style={{
+                color: isActiveLink('/about')
+                  ? 'var(--nav-active-text)'
+                  : 'var(--nav-text)',
+                backgroundColor: isActiveLink('/about')
+                  ? 'var(--nav-active-bg)'
+                  : 'transparent',
+              }}
+              onMouseEnter={e => {
+                if (!isActiveLink('/about')) {
+                  e.currentTarget.style.backgroundColor = 'var(--nav-hover-bg)';
+                  e.currentTarget.style.color = 'var(--nav-text-hover)';
+                }
+              }}
+              onMouseLeave={e => {
+                if (!isActiveLink('/about')) {
+                  e.currentTarget.style.backgroundColor = 'transparent';
+                  e.currentTarget.style.color = 'var(--nav-text)';
+                }
+              }}
               onClick={closeMenu}
               role='menuitem'
               aria-current={isActiveLink('/about') ? 'page' : undefined}

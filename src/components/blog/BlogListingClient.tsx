@@ -24,10 +24,13 @@ const EmptyState = ({
     <div className='mx-auto w-24 h-24 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center mb-6'>
       <Search className='w-12 h-12 text-gray-400' />
     </div>
-    <h3 className='text-xl font-semibold text-gray-900 dark:text-white mb-2'>
+    <h3
+      className='text-xl font-semibold mb-2'
+      style={{ color: 'var(--text-primary)' }}
+    >
       {searchQuery || selectedTag ? 'No posts found' : 'No blog posts yet'}
     </h3>
-    <p className='text-gray-600 dark:text-gray-400 max-w-md mx-auto'>
+    <p className='max-w-md mx-auto' style={{ color: 'var(--text-secondary)' }}>
       {searchQuery
         ? `No posts match your search for "${searchQuery}"`
         : selectedTag
@@ -53,8 +56,9 @@ const TagFilter = ({
       className={`px-3 py-1 rounded-full text-sm font-medium transition-colors duration-200 focus:outline-none cursor-pointer ${
         selectedTag === ''
           ? 'bg-blue-600 text-white'
-          : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+          : 'bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700'
       }`}
+      style={selectedTag === '' ? {} : { color: 'var(--text-secondary)' }}
     >
       All Posts
     </button>
@@ -65,8 +69,9 @@ const TagFilter = ({
         className={`px-3 py-1 rounded-full text-sm font-medium transition-colors duration-200 focus:outline-none cursor-pointer ${
           selectedTag === tag
             ? 'bg-blue-600 text-white'
-            : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+            : 'bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700'
         }`}
+        style={selectedTag === tag ? {} : { color: 'var(--text-secondary)' }}
       >
         {tag}
       </button>
@@ -150,8 +155,13 @@ const SortDropdown = ({
                   className={`w-full text-left px-4 py-2 text-sm hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200 first:rounded-t-lg last:rounded-b-lg focus:outline-none cursor-pointer ${
                     currentOption?.value === option.value
                       ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400'
-                      : 'text-gray-700 dark:text-gray-300'
+                      : ''
                   }`}
+                  style={
+                    currentOption?.value === option.value
+                      ? {}
+                      : { color: 'var(--text-secondary)' }
+                  }
                   role='option'
                   aria-selected={currentOption?.value === option.value}
                 >
@@ -265,7 +275,7 @@ export default function BlogListingClient({
       filtered = filtered.filter(
         post =>
           post.title.toLowerCase().includes(query) ||
-          post.excerpt.toLowerCase().includes(query) ||
+          post.description.toLowerCase().includes(query) ||
           post.tags?.some(tag => tag.toLowerCase().includes(query))
       );
     }
@@ -331,7 +341,10 @@ export default function BlogListingClient({
         <div className='flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3 sm:gap-4'>
           {/* Tag Filter */}
           <div className='flex-1'>
-            <h3 className='text-sm font-medium text-gray-700 dark:text-gray-300 mb-2'>
+            <h3
+              className='text-sm font-medium mb-2'
+              style={{ color: 'var(--text-secondary)' }}
+            >
               Filter by Tag:
             </h3>
             <TagFilter
@@ -354,8 +367,11 @@ export default function BlogListingClient({
                 className={`p-2 transition-colors duration-200 focus:outline-none cursor-pointer ${
                   viewMode === 'grid'
                     ? 'bg-blue-600 text-white'
-                    : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700'
+                    : 'bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700'
                 }`}
+                style={
+                  viewMode === 'grid' ? {} : { color: 'var(--text-secondary)' }
+                }
                 aria-label='Grid view'
               >
                 <Grid className='w-4 h-4' />
@@ -365,8 +381,11 @@ export default function BlogListingClient({
                 className={`p-2 transition-colors duration-200 focus:outline-none cursor-pointer ${
                   viewMode === 'list'
                     ? 'bg-blue-600 text-white'
-                    : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700'
+                    : 'bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700'
                 }`}
+                style={
+                  viewMode === 'list' ? {} : { color: 'var(--text-secondary)' }
+                }
                 aria-label='List view'
               >
                 <List className='w-4 h-4' />
@@ -378,7 +397,7 @@ export default function BlogListingClient({
 
       {/* Results Count */}
       <div className='mb-6'>
-        <p className='text-sm text-gray-600 dark:text-gray-400'>
+        <p className='text-sm' style={{ color: 'var(--text-secondary)' }}>
           {filteredAndSortedPosts.length === 0
             ? 'No posts found'
             : `Showing ${paginatedPosts.length} of ${filteredAndSortedPosts.length} post${filteredAndSortedPosts.length === 1 ? '' : 's'}`}

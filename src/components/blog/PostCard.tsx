@@ -65,14 +65,24 @@ export default function PostCard({
   return (
     <article
       className={`
-        group relative bg-white dark:bg-gray-800 rounded-xl shadow-sm 
-        hover:shadow-lg dark:shadow-gray-900/20 transition-all duration-300 
-        border border-gray-200 dark:border-gray-700 overflow-hidden
-        hover:-translate-y-1 focus-within:ring-2 focus-within:ring-blue-500 
-        focus-within:ring-offset-2 dark:focus-within:ring-offset-gray-800
-        h-full flex flex-col
+        group relative rounded-xl transition-all duration-300 
+        overflow-hidden hover:-translate-y-1 focus-within:ring-2 focus-within:ring-blue-500 
+        focus-within:ring-offset-2 h-full flex flex-col
         ${className}
       `}
+      style={{
+        backgroundColor: 'var(--card-background)',
+        borderColor: 'var(--card-border)',
+        borderWidth: '1px',
+        borderStyle: 'solid',
+        boxShadow: 'var(--card-shadow)',
+      }}
+      onMouseEnter={e => {
+        e.currentTarget.style.boxShadow = 'var(--card-hover-shadow)';
+      }}
+      onMouseLeave={e => {
+        e.currentTarget.style.boxShadow = 'var(--card-shadow)';
+      }}
       role='article'
       aria-labelledby={`post-title-${slug}`}
     >
@@ -100,7 +110,10 @@ export default function PostCard({
         {/* Content */}
         <div className='p-4 sm:p-6 flex-1 flex flex-col'>
           {/* Meta information */}
-          <div className='flex flex-col xs:flex-row xs:items-center gap-2 xs:gap-4 text-sm text-gray-600 dark:text-gray-400 mb-3'>
+          <div
+            className='flex flex-col xs:flex-row xs:items-center gap-2 xs:gap-4 text-sm mb-3'
+            style={{ color: 'var(--card-text-secondary)' }}
+          >
             {/* Reading time */}
             <div className='flex items-center gap-1 order-1 xs:order-2'>
               <Clock className='w-4 h-4' aria-hidden='true' />
@@ -127,21 +140,22 @@ export default function PostCard({
           {/* Title */}
           <h2
             id={`post-title-${slug}`}
-            className='
-              text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-3 
-              group-hover:text-blue-600 dark:group-hover:text-blue-400 
-              transition-colors duration-200 line-clamp-2 leading-tight
-            '
+            className='text-lg sm:text-xl font-bold mb-3 transition-colors duration-200 line-clamp-2 leading-tight'
+            style={{ color: 'var(--card-text)' }}
+            onMouseEnter={e => {
+              e.currentTarget.style.color = 'var(--primary)';
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.color = 'var(--card-text)';
+            }}
           >
             {title}
           </h2>
 
           {/* Description */}
           <p
-            className='
-            text-sm sm:text-base text-gray-600 dark:text-gray-300 line-clamp-3 
-            leading-relaxed mb-4
-          '
+            className='text-sm sm:text-base line-clamp-3 leading-relaxed mb-4'
+            style={{ color: 'var(--card-text-secondary)' }}
           >
             {description}
           </p>
@@ -153,13 +167,18 @@ export default function PostCard({
                 <button
                   key={tag}
                   onClick={e => handleTagClick(tag, e)}
-                  className='
-                    inline-flex items-center px-2 sm:px-2.5 py-1 sm:py-0.5 rounded-full text-xs 
-                    font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 
-                    dark:text-blue-300 hover:bg-blue-200 dark:hover:bg-blue-900/50 
-                    transition-colors duration-200 focus:outline-none 
-                    cursor-pointer min-h-[24px]
-                  '
+                  className='inline-flex items-center px-2 sm:px-2.5 py-1 sm:py-0.5 rounded-full text-xs font-medium transition-colors duration-200 focus:outline-none cursor-pointer min-h-[24px]'
+                  style={{
+                    backgroundColor: 'var(--tag-bg)',
+                    color: 'var(--tag-text)',
+                  }}
+                  onMouseEnter={e => {
+                    e.currentTarget.style.backgroundColor =
+                      'var(--tag-hover-bg)';
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.backgroundColor = 'var(--tag-bg)';
+                  }}
                   role='listitem'
                   aria-label={`Filter posts by ${tag} tag`}
                   tabIndex={onTagClick ? 0 : -1}
@@ -168,7 +187,13 @@ export default function PostCard({
                 </button>
               ))}
               {tags.length > 3 && (
-                <span className='inline-flex items-center px-2 sm:px-2.5 py-1 sm:py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200 min-h-[24px]'>
+                <span
+                  className='inline-flex items-center px-2 sm:px-2.5 py-1 sm:py-0.5 rounded-full text-xs font-medium min-h-[24px]'
+                  style={{
+                    backgroundColor: 'var(--tag-secondary-bg)',
+                    color: 'var(--tag-secondary-text)',
+                  }}
+                >
                   +{tags.length - 3} more
                 </span>
               )}
@@ -184,10 +209,8 @@ export default function PostCard({
         '
         >
           <span
-            className='
-            text-sm font-medium text-blue-600 dark:text-blue-400 
-            flex items-center gap-1
-          '
+            className='text-sm font-medium flex items-center gap-1'
+            style={{ color: 'var(--primary)' }}
           >
             Read more
             <svg
@@ -218,34 +241,65 @@ export default function PostCard({
 export function PostCardSkeleton() {
   return (
     <div
-      className='
-      bg-white dark:bg-gray-800 rounded-xl shadow-sm border 
-      border-gray-200 dark:border-gray-700 overflow-hidden animate-pulse
-    '
+      className='rounded-xl overflow-hidden animate-pulse'
+      style={{
+        backgroundColor: 'var(--card-background)',
+        borderColor: 'var(--card-border)',
+        borderWidth: '1px',
+        borderStyle: 'solid',
+        boxShadow: 'var(--card-shadow)',
+      }}
     >
       {/* Content skeleton */}
       <div className='p-6'>
         {/* Meta skeleton */}
         <div className='flex gap-4 mb-3'>
-          <div className='h-4 bg-gray-200 dark:bg-gray-700 rounded w-24' />
-          <div className='h-4 bg-gray-200 dark:bg-gray-700 rounded w-20' />
-          <div className='h-4 bg-gray-200 dark:bg-gray-700 rounded w-16' />
+          <div
+            className='h-4 rounded w-24'
+            style={{ backgroundColor: 'var(--muted)' }}
+          />
+          <div
+            className='h-4 rounded w-20'
+            style={{ backgroundColor: 'var(--muted)' }}
+          />
+          <div
+            className='h-4 rounded w-16'
+            style={{ backgroundColor: 'var(--muted)' }}
+          />
         </div>
 
         {/* Title skeleton */}
-        <div className='h-6 bg-gray-200 dark:bg-gray-700 rounded mb-3' />
+        <div
+          className='h-6 rounded mb-3'
+          style={{ backgroundColor: 'var(--muted)' }}
+        />
 
         {/* Description skeleton */}
         <div className='space-y-2 mb-4'>
-          <div className='h-4 bg-gray-200 dark:bg-gray-700 rounded' />
-          <div className='h-4 bg-gray-200 dark:bg-gray-700 rounded w-3/4' />
+          <div
+            className='h-4 rounded'
+            style={{ backgroundColor: 'var(--muted)' }}
+          />
+          <div
+            className='h-4 rounded w-3/4'
+            style={{ backgroundColor: 'var(--muted)' }}
+          />
         </div>
 
         {/* Tags skeleton */}
         <div className='flex gap-2'>
-          <div className='h-6 bg-gray-200 dark:bg-gray-700 rounded-full w-16' />
-          <div className='h-6 bg-gray-200 dark:bg-gray-700 rounded-full w-20' />
-          <div className='h-6 bg-gray-200 dark:bg-gray-700 rounded-full w-14' />
+          <div
+            className='h-6 rounded-full w-16'
+            style={{ backgroundColor: 'var(--muted)' }}
+          />
+          <div
+            className='h-6 rounded-full w-20'
+            style={{ backgroundColor: 'var(--muted)' }}
+          />
+          <div
+            className='h-6 rounded-full w-14'
+            style={{ backgroundColor: 'var(--muted)' }}
+          />
         </div>
       </div>
     </div>

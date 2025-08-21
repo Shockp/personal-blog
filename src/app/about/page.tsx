@@ -1,4 +1,5 @@
-import type { Metadata } from 'next';
+'use client';
+
 import {
   Mail,
   MapPin,
@@ -12,33 +13,7 @@ import {
   ExternalLink,
 } from 'lucide-react';
 import Link from 'next/link';
-
-export const metadata: Metadata = {
-  title: 'About | Personal Blog',
-  description:
-    'Learn more about Adrian, a passionate web developer specializing in React, TypeScript, and modern web technologies.',
-  keywords: [
-    'about',
-    'developer',
-    'web development',
-    'react',
-    'typescript',
-    'nextjs',
-  ],
-  openGraph: {
-    title: 'About Adrian | Personal Blog',
-    description:
-      'Learn more about Adrian, a passionate web developer specializing in React, TypeScript, and modern web technologies.',
-    type: 'profile',
-    url: '/about',
-  },
-  twitter: {
-    card: 'summary',
-    title: 'About Adrian | Personal Blog',
-    description:
-      'Learn more about Adrian, a passionate web developer specializing in React, TypeScript, and modern web technologies.',
-  },
-};
+import { useEffect } from 'react';
 
 /**
  * About Page Component
@@ -53,6 +28,20 @@ export const metadata: Metadata = {
  * - Accessibility features and semantic HTML
  */
 export default function AboutPage() {
+  // Handle metadata for client component
+  useEffect(() => {
+    document.title = 'About | Personal Blog';
+
+    // Update meta description
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute(
+        'content',
+        'Learn more about Adrian, a passionate web developer specializing in React, TypeScript, and modern web technologies.'
+      );
+    }
+  }, []);
+
   // Structured data for SEO
   const structuredData = {
     '@context': 'https://schema.org',
@@ -158,7 +147,12 @@ export default function AboutPage() {
 
       <div className='min-h-screen bg-white dark:bg-gray-900'>
         {/* Hero Section - Personal Introduction */}
-        <section className='relative bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-12 sm:py-20 lg:py-32'>
+        <section
+          className='relative py-12 sm:py-20 lg:py-32'
+          style={{
+            background: `linear-gradient(to bottom right, var(--about-gradient-from), var(--about-gradient-via), var(--about-gradient-to))`,
+          }}
+        >
           <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
             <div className='grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center'>
               {/* Text Content */}
@@ -213,10 +207,16 @@ export default function AboutPage() {
         <section className='py-12 sm:py-16 lg:py-20 bg-gray-50 dark:bg-gray-800'>
           <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
             <div className='text-center mb-10 sm:mb-12 lg:mb-16'>
-              <h2 className='text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4'>
+              <h2
+                className='text-2xl sm:text-3xl font-bold mb-3 sm:mb-4'
+                style={{ color: 'var(--text-primary)' }}
+              >
                 Skills & Expertise
               </h2>
-              <p className='text-base sm:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto px-2 sm:px-0'>
+              <p
+                className='text-base sm:text-lg max-w-2xl mx-auto px-2 sm:px-0'
+                style={{ color: 'var(--text-secondary)' }}
+              >
                 I&apos;m passionate about staying current with the latest
                 technologies and best practices in web development.
               </p>
@@ -237,7 +237,10 @@ export default function AboutPage() {
                         <IconComponent className='w-5 h-5 sm:w-6 sm:h-6 text-white' />
                       </div>
                       <div className='flex-1'>
-                        <h3 className='text-base sm:text-lg font-semibold text-gray-900 dark:text-white'>
+                        <h3
+                          className='text-base sm:text-lg font-semibold'
+                          style={{ color: 'var(--text-primary)' }}
+                        >
                           {skill.name}
                         </h3>
                         <div className='mt-2'>
@@ -247,7 +250,10 @@ export default function AboutPage() {
                               style={{ width: `${skill.level}%` }}
                             ></div>
                           </div>
-                          <span className='text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-1 block'>
+                          <span
+                            className='text-xs sm:text-sm mt-1 block'
+                            style={{ color: 'var(--text-muted)' }}
+                          >
                             {skill.level}% Proficiency
                           </span>
                         </div>
@@ -264,10 +270,16 @@ export default function AboutPage() {
         <section className='py-20 bg-white dark:bg-gray-900'>
           <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
             <div className='text-center mb-16'>
-              <h2 className='text-3xl font-bold text-gray-900 dark:text-white mb-4'>
+              <h2
+                className='text-3xl font-bold mb-4'
+                style={{ color: 'var(--text-primary)' }}
+              >
                 Professional Background
               </h2>
-              <p className='text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto'>
+              <p
+                className='text-lg max-w-2xl mx-auto'
+                style={{ color: 'var(--text-secondary)' }}
+              >
                 My journey in web development has been filled with exciting
                 challenges and continuous learning.
               </p>
@@ -292,25 +304,43 @@ export default function AboutPage() {
                     <div className='bg-gray-50 dark:bg-gray-800 rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-200'>
                       <div className='flex items-center mb-3'>
                         <Calendar className='w-5 h-5 text-blue-600 mr-2' />
-                        <span className='text-sm font-medium text-blue-600 dark:text-blue-400'>
+                        <span
+                          className='text-sm font-medium'
+                          style={{ color: 'var(--text-accent)' }}
+                        >
                           {experience.period}
                         </span>
                       </div>
-                      <h3 className='text-xl font-bold text-gray-900 dark:text-white mb-2'>
+                      <h3
+                        className='text-xl font-bold mb-2'
+                        style={{ color: 'var(--text-primary)' }}
+                      >
                         {experience.title}
                       </h3>
-                      <p className='text-lg text-gray-600 dark:text-gray-300 mb-3'>
+                      <p
+                        className='text-lg mb-3'
+                        style={{ color: 'var(--text-secondary)' }}
+                      >
                         {experience.company}
                       </p>
-                      <p className='text-gray-600 dark:text-gray-400 mb-4'>
+                      <p
+                        className='mb-4'
+                        style={{ color: 'var(--text-secondary)' }}
+                      >
                         {experience.description}
                       </p>
                       <div className='space-y-2'>
-                        <h4 className='font-semibold text-gray-900 dark:text-white flex items-center'>
+                        <h4
+                          className='font-semibold flex items-center'
+                          style={{ color: 'var(--text-primary)' }}
+                        >
                           <Award className='w-4 h-4 mr-2' />
                           Key Achievements:
                         </h4>
-                        <ul className='list-disc list-inside text-gray-600 dark:text-gray-400 space-y-1'>
+                        <ul
+                          className='list-disc list-inside space-y-1'
+                          style={{ color: 'var(--text-secondary)' }}
+                        >
                           {experience.achievements.map(
                             (achievement, achievementIndex) => (
                               <li key={achievementIndex}>{achievement}</li>
@@ -329,7 +359,10 @@ export default function AboutPage() {
         {/* Contact Information Section */}
         <section
           id='contact'
-          className='py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900'
+          className='py-12 sm:py-16 lg:py-20'
+          style={{
+            background: `linear-gradient(to bottom right, var(--about-gradient-from), var(--about-gradient-via), var(--about-gradient-to))`,
+          }}
         >
           <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
             <div className='text-center mb-10 sm:mb-12 lg:mb-16'>
@@ -348,15 +381,25 @@ export default function AboutPage() {
                 <div className='bg-blue-100 dark:bg-blue-900/20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4'>
                   <Mail className='w-8 h-8 text-blue-600' />
                 </div>
-                <h3 className='text-lg font-semibold text-gray-900 dark:text-white mb-2'>
+                <h3
+                  className='text-lg font-semibold mb-2'
+                  style={{ color: 'var(--text-primary)' }}
+                >
                   Email
                 </h3>
-                <p className='text-gray-600 dark:text-gray-400 mb-4'>
+                <p className='mb-4' style={{ color: 'var(--text-secondary)' }}>
                   Let&apos;s discuss your project
                 </p>
                 <a
                   href='mailto:adrian@example.com'
-                  className='text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 font-medium transition-colors duration-200'
+                  className='font-medium transition-colors duration-200'
+                  style={{ color: 'var(--text-accent)' }}
+                  onMouseEnter={e =>
+                    (e.currentTarget.style.color = 'var(--text-primary)')
+                  }
+                  onMouseLeave={e =>
+                    (e.currentTarget.style.color = 'var(--text-accent)')
+                  }
                 >
                   adrian@example.com
                 </a>
@@ -367,13 +410,19 @@ export default function AboutPage() {
                 <div className='bg-green-100 dark:bg-green-900/20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4'>
                   <MapPin className='w-8 h-8 text-green-600' />
                 </div>
-                <h3 className='text-lg font-semibold text-gray-900 dark:text-white mb-2'>
+                <h3
+                  className='text-lg font-semibold mb-2'
+                  style={{ color: 'var(--text-primary)' }}
+                >
                   Location
                 </h3>
-                <p className='text-gray-600 dark:text-gray-400 mb-4'>
+                <p className='mb-4' style={{ color: 'var(--text-secondary)' }}>
                   Available for remote work
                 </p>
-                <p className='text-gray-700 dark:text-gray-300 font-medium'>
+                <p
+                  className='font-medium'
+                  style={{ color: 'var(--text-primary)' }}
+                >
                   San Francisco, CA
                 </p>
               </div>
@@ -383,30 +432,54 @@ export default function AboutPage() {
                 <div className='bg-purple-100 dark:bg-purple-900/20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4'>
                   <Globe className='w-8 h-8 text-purple-600' />
                 </div>
-                <h3 className='text-lg font-semibold text-gray-900 dark:text-white mb-2'>
+                <h3
+                  className='text-lg font-semibold mb-2'
+                  style={{ color: 'var(--text-primary)' }}
+                >
                   Social Media
                 </h3>
-                <p className='text-gray-600 dark:text-gray-400 mb-4'>
+                <p className='mb-4' style={{ color: 'var(--text-secondary)' }}>
                   Follow my journey
                 </p>
                 <div className='flex justify-center space-x-4'>
                   <a
                     href='https://github.com/adrian'
-                    className='text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors duration-200'
+                    className='transition-colors duration-200'
+                    style={{ color: 'var(--text-secondary)' }}
+                    onMouseEnter={e =>
+                      (e.currentTarget.style.color = 'var(--text-primary)')
+                    }
+                    onMouseLeave={e =>
+                      (e.currentTarget.style.color = 'var(--text-secondary)')
+                    }
                     aria-label='GitHub Profile'
                   >
                     GitHub
                   </a>
                   <a
                     href='https://linkedin.com/in/adrian'
-                    className='text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors duration-200'
+                    className='transition-colors duration-200'
+                    style={{ color: 'var(--text-secondary)' }}
+                    onMouseEnter={e =>
+                      (e.currentTarget.style.color = 'var(--text-primary)')
+                    }
+                    onMouseLeave={e =>
+                      (e.currentTarget.style.color = 'var(--text-secondary)')
+                    }
                     aria-label='LinkedIn Profile'
                   >
                     LinkedIn
                   </a>
                   <a
                     href='https://x.com/adrian'
-                    className='text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors duration-200'
+                    className='transition-colors duration-200'
+                    style={{ color: 'var(--text-secondary)' }}
+                    onMouseEnter={e =>
+                      (e.currentTarget.style.color = 'var(--text-primary)')
+                    }
+                    onMouseLeave={e =>
+                      (e.currentTarget.style.color = 'var(--text-secondary)')
+                    }
                     aria-label='X Profile'
                   >
                     X

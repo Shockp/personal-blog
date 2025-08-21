@@ -13,13 +13,22 @@ export default function NotFound() {
     <div className='min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900'>
       <div className='max-w-md w-full space-y-8 text-center'>
         <div>
-          <h1 className='text-9xl font-bold text-gray-300 dark:text-gray-700'>
+          <h1
+            className='text-9xl font-bold'
+            style={{ color: 'var(--text-muted)' }}
+          >
             404
           </h1>
-          <h2 className='mt-6 text-3xl font-bold text-gray-900 dark:text-white'>
+          <h2
+            className='mt-6 text-3xl font-bold'
+            style={{ color: 'var(--text-primary)' }}
+          >
             Page Not Found
           </h2>
-          <p className='mt-2 text-sm text-gray-600 dark:text-gray-400'>
+          <p
+            className='mt-2 text-sm'
+            style={{ color: 'var(--text-secondary)' }}
+          >
             Sorry, we couldn&apos;t find the page you&apos;re looking for.
           </p>
         </div>
@@ -32,7 +41,8 @@ export default function NotFound() {
           </Link>
           <Link
             href='/blog'
-            className='w-full flex justify-center py-2 px-4 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none transition-colors'
+            className='w-full flex justify-center py-2 px-4 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm text-sm font-medium bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none transition-colors'
+            style={{ color: 'var(--text-secondary)' }}
           >
             Browse blog posts
           </Link>

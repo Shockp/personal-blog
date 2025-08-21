@@ -16,7 +16,7 @@ export interface MarkdownOptions {
   /** Whether to sanitize HTML output (default: true) */
   sanitize?: boolean;
   /** Custom DOMPurify configuration */
-  purifyConfig?: any;
+  purifyConfig?: DOMPurify.Config;
 }
 
 /**
@@ -106,7 +106,10 @@ export async function markdownToHtml(
       };
 
       const config = { ...defaultConfig, ...purifyConfig };
-      htmlContent = purify.sanitize(htmlContent, config) as unknown as string;
+      htmlContent = purify.sanitize(
+        htmlContent,
+        config as any
+      ) as unknown as string;
     }
 
     return htmlContent;
@@ -229,7 +232,7 @@ export function parseFrontmatter(markdownContent: string): FrontmatterResult {
     // Ensure tags are strings if provided
     if (data.tags) {
       const invalidTags = data.tags.filter(
-        (tag: any) => typeof tag !== 'string'
+        (tag: unknown) => typeof tag !== 'string'
       );
       if (invalidTags.length > 0) {
         throw new Error('All tags must be strings');

@@ -162,7 +162,8 @@ export default function PostContent({
       return (
         <h1
           id={id}
-          className='text-4xl font-bold mb-6 text-gray-900 dark:text-white'
+          className='text-4xl font-bold mb-6'
+          style={{ color: 'var(--text-primary)' }}
           {...props}
         >
           {children}
@@ -181,7 +182,8 @@ export default function PostContent({
       return (
         <h2
           id={id}
-          className='text-3xl font-semibold mb-4 mt-8 text-gray-900 dark:text-white'
+          className='text-3xl font-semibold mb-4 mt-8'
+          style={{ color: 'var(--text-primary)' }}
           {...props}
         >
           {children}
@@ -200,7 +202,8 @@ export default function PostContent({
       return (
         <h3
           id={id}
-          className='text-2xl font-semibold mb-3 mt-6 text-gray-900 dark:text-white'
+          className='text-2xl font-semibold mb-3 mt-6'
+          style={{ color: 'var(--text-primary)' }}
           {...props}
         >
           {children}
@@ -219,7 +222,8 @@ export default function PostContent({
       return (
         <h4
           id={id}
-          className='text-xl font-semibold mb-2 mt-5 text-gray-900 dark:text-white'
+          className='text-xl font-semibold mb-2 mt-5'
+          style={{ color: 'var(--text-primary)' }}
           {...props}
         >
           {children}
@@ -238,7 +242,8 @@ export default function PostContent({
       return (
         <h5
           id={id}
-          className='text-lg font-semibold mb-2 mt-4 text-gray-900 dark:text-white'
+          className='text-lg font-semibold mb-2 mt-4'
+          style={{ color: 'var(--text-primary)' }}
           {...props}
         >
           {children}
@@ -257,7 +262,8 @@ export default function PostContent({
       return (
         <h6
           id={id}
-          className='text-base font-semibold mb-2 mt-3 text-gray-900 dark:text-white'
+          className='text-base font-semibold mb-2 mt-3'
+          style={{ color: 'var(--text-primary)' }}
           {...props}
         >
           {children}
@@ -271,7 +277,8 @@ export default function PostContent({
       children?: React.ReactNode;
     }) => (
       <p
-        className='mb-4 text-gray-700 dark:text-gray-300 leading-relaxed'
+        className='mb-4 leading-relaxed'
+        style={{ color: 'var(--text-secondary)' }}
         {...props}
       >
         {children}
@@ -288,7 +295,14 @@ export default function PostContent({
       return (
         <a
           href={href}
-          className='text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline transition-colors'
+          className='underline transition-colors'
+          style={{ color: 'var(--text-accent)' }}
+          onMouseEnter={e =>
+            (e.currentTarget.style.color = 'var(--text-primary)')
+          }
+          onMouseLeave={e =>
+            (e.currentTarget.style.color = 'var(--text-accent)')
+          }
           {...(isExternal && {
             target: '_blank',
             rel: 'noopener noreferrer',
@@ -306,7 +320,8 @@ export default function PostContent({
       children?: React.ReactNode;
     }) => (
       <ul
-        className='mb-4 ml-6 list-disc text-gray-700 dark:text-gray-300'
+        className='mb-4 ml-6 list-disc'
+        style={{ color: 'var(--text-secondary)' }}
         {...props}
       >
         {children}
@@ -319,7 +334,8 @@ export default function PostContent({
       children?: React.ReactNode;
     }) => (
       <ol
-        className='mb-4 ml-6 list-decimal text-gray-700 dark:text-gray-300'
+        className='mb-4 ml-6 list-decimal'
+        style={{ color: 'var(--text-secondary)' }}
         {...props}
       >
         {children}
@@ -342,7 +358,8 @@ export default function PostContent({
       children?: React.ReactNode;
     }) => (
       <blockquote
-        className='border-l-4 border-gray-300 dark:border-gray-600 pl-4 my-4 italic text-gray-600 dark:text-gray-400'
+        className='border-l-4 border-gray-300 dark:border-gray-600 pl-4 my-4 italic'
+        style={{ color: 'var(--text-muted)' }}
         {...props}
       >
         {children}
@@ -359,7 +376,8 @@ export default function PostContent({
       if (inline) {
         return (
           <code
-            className='bg-gray-100 dark:bg-gray-800 px-1 py-0.5 rounded text-sm font-mono text-gray-800 dark:text-gray-200'
+            className='bg-gray-100 dark:bg-gray-800 px-1 py-0.5 rounded text-sm font-mono'
+            style={{ color: 'var(--text-primary)' }}
             {...props}
           >
             {children}
@@ -394,7 +412,10 @@ export default function PostContent({
         {showToc && tocItems.length > 0 && (
           <aside className='lg:w-64 lg:flex-shrink-0'>
             <div className='sticky top-8'>
-              <h3 className='text-lg font-semibold mb-4 text-gray-900 dark:text-white'>
+              <h3
+                className='text-lg font-semibold mb-4'
+                style={{ color: 'var(--text-primary)' }}
+              >
                 Table of Contents
               </h3>
               <nav className='space-y-1' aria-label='Table of contents'>
@@ -402,12 +423,24 @@ export default function PostContent({
                   <a
                     key={item.id}
                     href={`#${item.id}`}
-                    className={`block py-1 text-sm transition-colors hover:text-blue-600 dark:hover:text-blue-400 ${
-                      activeHeading === item.id
-                        ? 'text-blue-600 dark:text-blue-400 font-medium'
-                        : 'text-gray-600 dark:text-gray-400'
-                    }`}
-                    style={{ paddingLeft: `${(item.level - 1) * 12}px` }}
+                    className='block py-1 text-sm transition-colors font-medium'
+                    style={{
+                      color:
+                        activeHeading === item.id
+                          ? 'var(--text-accent)'
+                          : 'var(--text-secondary)',
+                      fontWeight: activeHeading === item.id ? '500' : '400',
+                      paddingLeft: `${(item.level - 1) * 12}px`,
+                    }}
+                    onMouseEnter={e =>
+                      (e.currentTarget.style.color = 'var(--text-accent)')
+                    }
+                    onMouseLeave={e =>
+                      (e.currentTarget.style.color =
+                        activeHeading === item.id
+                          ? 'var(--text-accent)'
+                          : 'var(--text-secondary)')
+                    }
                     onClick={e => {
                       e.preventDefault();
                       const element = document.getElementById(item.id);
@@ -455,7 +488,12 @@ export default function PostContent({
                     className='flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors cursor-pointer'
                     aria-label='Share on X'
                   >
-                    <svg className='w-4 h-4' fill='currentColor' viewBox='0 0 24 24' aria-hidden='true'>
+                    <svg
+                      className='w-4 h-4'
+                      fill='currentColor'
+                      viewBox='0 0 24 24'
+                      aria-hidden='true'
+                    >
                       <path d='M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z' />
                     </svg>
                     <span className='hidden sm:inline'>X</span>

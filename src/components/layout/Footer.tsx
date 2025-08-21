@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 
 /**
@@ -17,10 +19,16 @@ export default function Footer() {
         <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
           {/* About Section */}
           <div>
-            <h3 className='text-sm font-semibold text-gray-900 dark:text-white tracking-wider uppercase'>
+            <h3
+              className='text-sm font-semibold tracking-wider uppercase'
+              style={{ color: 'var(--text-primary)' }}
+            >
               About
             </h3>
-            <p className='mt-4 text-base text-gray-600 dark:text-gray-400'>
+            <p
+              className='mt-4 text-base'
+              style={{ color: 'var(--text-secondary)' }}
+            >
               A personal blog sharing thoughts, experiences, and insights on
               technology, life, and everything in between.
             </p>
@@ -28,7 +36,10 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className='text-sm font-semibold text-gray-900 dark:text-white tracking-wider uppercase'>
+            <h3
+              className='text-sm font-semibold tracking-wider uppercase'
+              style={{ color: 'var(--text-primary)' }}
+            >
               Quick Links
             </h3>
             <nav aria-label='Footer navigation'>
@@ -36,7 +47,14 @@ export default function Footer() {
                 <li>
                   <Link
                     href='/'
-                    className='text-base text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 focus:outline-none'
+                    className='text-base transition-colors duration-200 focus:outline-none'
+                    style={{ color: 'var(--text-secondary)' }}
+                    onMouseEnter={e =>
+                      (e.currentTarget.style.color = 'var(--text-accent)')
+                    }
+                    onMouseLeave={e =>
+                      (e.currentTarget.style.color = 'var(--text-secondary)')
+                    }
                     aria-label='Go to home page'
                   >
                     Home
@@ -45,7 +63,14 @@ export default function Footer() {
                 <li>
                   <Link
                     href='/blog'
-                    className='text-base text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 focus:outline-none'
+                    className='text-base transition-colors duration-200 focus:outline-none'
+                    style={{ color: 'var(--text-secondary)' }}
+                    onMouseEnter={e =>
+                      (e.currentTarget.style.color = 'var(--text-accent)')
+                    }
+                    onMouseLeave={e =>
+                      (e.currentTarget.style.color = 'var(--text-secondary)')
+                    }
                     aria-label='Go to blog posts'
                   >
                     Posts
@@ -54,7 +79,14 @@ export default function Footer() {
                 <li>
                   <Link
                     href='/about'
-                    className='text-base text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 focus:outline-none'
+                    className='text-base transition-colors duration-200 focus:outline-none'
+                    style={{ color: 'var(--text-secondary)' }}
+                    onMouseEnter={e =>
+                      (e.currentTarget.style.color = 'var(--text-accent)')
+                    }
+                    onMouseLeave={e =>
+                      (e.currentTarget.style.color = 'var(--text-secondary)')
+                    }
                     aria-label='Go to about page'
                   >
                     About
@@ -63,7 +95,14 @@ export default function Footer() {
                 <li>
                   <Link
                     href='/contact'
-                    className='text-base text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 focus:outline-none'
+                    className='text-base transition-colors duration-200 focus:outline-none'
+                    style={{ color: 'var(--text-secondary)' }}
+                    onMouseEnter={e =>
+                      (e.currentTarget.style.color = 'var(--text-accent)')
+                    }
+                    onMouseLeave={e =>
+                      (e.currentTarget.style.color = 'var(--text-secondary)')
+                    }
                     aria-label='Go to contact page'
                   >
                     Contact
@@ -75,13 +114,23 @@ export default function Footer() {
 
           {/* Social Links */}
           <div>
-            <h3 className='text-sm font-semibold text-gray-900 dark:text-white tracking-wider uppercase'>
+            <h3
+              className='text-sm font-semibold tracking-wider uppercase'
+              style={{ color: 'var(--text-primary)' }}
+            >
               Connect
             </h3>
             <div className='mt-4 flex space-x-6'>
               <a
                 href='https://x.com'
-                className='text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 focus:outline-none'
+                className='transition-colors duration-200 focus:outline-none'
+                style={{ color: 'var(--text-secondary)' }}
+                onMouseEnter={e =>
+                  (e.currentTarget.style.color = 'var(--text-accent)')
+                }
+                onMouseLeave={e =>
+                  (e.currentTarget.style.color = 'var(--text-secondary)')
+                }
                 aria-label='Follow on X (opens in new tab)'
                 target='_blank'
                 rel='noopener noreferrer'
@@ -97,7 +146,14 @@ export default function Footer() {
               </a>
               <a
                 href='https://github.com'
-                className='text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 focus:outline-none'
+                className='transition-colors duration-200 focus:outline-none'
+                style={{ color: 'var(--text-secondary)' }}
+                onMouseEnter={e =>
+                  (e.currentTarget.style.color = 'var(--text-accent)')
+                }
+                onMouseLeave={e =>
+                  (e.currentTarget.style.color = 'var(--text-secondary)')
+                }
                 aria-label='Follow on GitHub (opens in new tab)'
                 target='_blank'
                 rel='noopener noreferrer'
@@ -117,7 +173,14 @@ export default function Footer() {
               </a>
               <a
                 href='https://linkedin.com'
-                className='text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 focus:outline-none'
+                className='transition-colors duration-200 focus:outline-none'
+                style={{ color: 'var(--text-secondary)' }}
+                onMouseEnter={e =>
+                  (e.currentTarget.style.color = 'var(--text-accent)')
+                }
+                onMouseLeave={e =>
+                  (e.currentTarget.style.color = 'var(--text-secondary)')
+                }
                 aria-label='Connect on LinkedIn (opens in new tab)'
                 target='_blank'
                 rel='noopener noreferrer'
@@ -141,8 +204,11 @@ export default function Footer() {
 
         {/* Copyright */}
         <div className='mt-8 border-t border-gray-200 dark:border-gray-700 pt-8'>
-          <p className='text-base text-gray-600 dark:text-gray-400 text-center'>
-            &copy; {currentYear} Adrián Feito Blázquez. All rights reserved.
+          <p
+            className='text-base text-center'
+            style={{ color: 'var(--text-secondary)' }}
+          >
+            &copy; {currentYear} Adrian. All rights reserved.
           </p>
         </div>
       </div>

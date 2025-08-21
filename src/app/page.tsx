@@ -6,12 +6,24 @@ import PostCard from '@/components/blog/PostCard';
 
 // Optimized skeleton component for better performance
 const PostCardSkeleton = () => (
-  <div className='bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden animate-pulse'>
-    <div className='h-48 bg-gray-200 dark:bg-gray-700'></div>
+  <div
+    className='rounded-lg shadow-md overflow-hidden animate-pulse'
+    style={{ backgroundColor: 'var(--card-background)' }}
+  >
+    <div className='h-48' style={{ backgroundColor: 'var(--muted)' }}></div>
     <div className='p-6'>
-      <div className='h-4 bg-gray-200 dark:bg-gray-700 rounded mb-2'></div>
-      <div className='h-4 bg-gray-200 dark:bg-gray-700 rounded w-3/4 mb-4'></div>
-      <div className='h-3 bg-gray-200 dark:bg-gray-700 rounded w-1/2'></div>
+      <div
+        className='h-4 rounded mb-2'
+        style={{ backgroundColor: 'var(--muted)' }}
+      ></div>
+      <div
+        className='h-4 rounded w-3/4 mb-4'
+        style={{ backgroundColor: 'var(--muted)' }}
+      ></div>
+      <div
+        className='h-3 rounded w-1/2'
+        style={{ backgroundColor: 'var(--muted)' }}
+      ></div>
     </div>
   </div>
 );
@@ -120,19 +132,28 @@ export default async function Home() {
       <main className='min-h-screen'>
         {/* Hero Section */}
         <section
-          className='relative bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-20 sm:py-32'
+          className='relative py-20 sm:py-32'
+          style={{
+            background: `linear-gradient(to bottom right, var(--hero-gradient-from), var(--hero-gradient-to))`,
+          }}
           aria-labelledby='hero-heading'
         >
           <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
             <div className='text-center space-y-6 sm:space-y-8'>
               <div className='space-y-3 sm:space-y-4'>
-                <h1 className='text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white leading-tight'>
+                <h1
+                  className='text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight'
+                  style={{ color: 'var(--foreground)' }}
+                >
                   Hi, I&apos;m{' '}
                   <span className='bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent'>
                     Adrian
                   </span>
                 </h1>
-                <p className='text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-4 sm:px-0'>
+                <p
+                  className='text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto px-4 sm:px-0'
+                  style={{ color: 'var(--muted-foreground)' }}
+                >
                   A passionate developer crafting digital experiences with
                   modern technologies
                 </p>
@@ -140,17 +161,28 @@ export default async function Home() {
               <div className='flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4 sm:px-0'>
                 <Link
                   href='/blog'
-                  className='w-full sm:w-auto inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl min-h-[44px] text-base sm:text-lg'
+                  className='w-full sm:w-auto inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 font-semibold rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl min-h-[44px] text-base sm:text-lg'
+                  style={{
+                    backgroundColor: 'var(--primary)',
+                    color: 'var(--primary-foreground)',
+                  }}
                 >
                   <BookOpen className='mr-2 h-5 w-5' />
                   Read My Blog
                 </Link>
                 <Link
                   href='/about'
-                  className='w-full sm:w-auto group inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 border-2 border-gray-300 dark:border-gray-600 hover:border-blue-600 dark:hover:border-blue-400 text-gray-700 dark:text-gray-300 font-semibold rounded-lg transition-all duration-200 hover:shadow-lg min-h-[44px] text-base sm:text-lg'
+                  className='w-full sm:w-auto group inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 border-2 font-semibold rounded-lg transition-all duration-200 hover:shadow-lg min-h-[44px] text-base sm:text-lg'
+                  style={{
+                    borderColor: 'var(--border)',
+                    color: 'var(--foreground)',
+                  }}
                 >
-                  <Users className='mr-2 h-5 w-5 text-gray-500 dark:text-gray-400' />
-                  <span className='group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200'>
+                  <Users
+                    className='mr-2 h-5 w-5'
+                    style={{ color: 'var(--muted-foreground)' }}
+                  />
+                  <span className='transition-colors duration-200'>
                     About Me
                   </span>
                 </Link>
@@ -161,18 +193,23 @@ export default async function Home() {
 
         {/* Recent Posts Section */}
         <section
-          className='py-12 sm:py-16 lg:py-20 bg-gray-50 dark:bg-gray-900'
+          className='py-12 sm:py-16 lg:py-20'
+          style={{ backgroundColor: 'var(--muted)' }}
           aria-labelledby='recent-posts-heading'
         >
           <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
             <div className='text-center mb-8 sm:mb-10 lg:mb-12'>
               <h2
                 id='recent-posts-heading'
-                className='text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4'
+                className='text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4'
+                style={{ color: 'var(--foreground)' }}
               >
                 Recent Posts
               </h2>
-              <p className='text-base sm:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto px-4 sm:px-0'>
+              <p
+                className='text-base sm:text-lg max-w-2xl mx-auto px-4 sm:px-0'
+                style={{ color: 'var(--muted-foreground)' }}
+              >
                 Discover my latest thoughts on web development, technology, and
                 programming best practices.
               </p>
@@ -206,7 +243,11 @@ export default async function Home() {
             <div className='flex justify-center mt-8 sm:mt-10 lg:mt-12 px-4 sm:px-0'>
               <Link
                 href='/blog'
-                className='w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-200 group min-h-[44px] text-base sm:text-lg'
+                className='w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 font-medium rounded-lg transition-all duration-200 group min-h-[44px] text-base sm:text-lg'
+                style={{
+                  backgroundColor: 'var(--primary)',
+                  color: 'var(--primary-foreground)',
+                }}
                 prefetch={false}
               >
                 View All Posts

@@ -1,23 +1,66 @@
 @import 'tailwindcss';
 
 :root {
-  /* Light theme colors */
+  /* Light theme colors - Pure white and very light */
   --background: #ffffff;
-  --foreground: #0f172a;
-  --muted: #f8fafc;
-  --muted-foreground: #64748b;
-  --border: #e2e8f0;
-  --input: #f1f5f9;
-  --primary: #0ea5e9;
+  --foreground: #000000;
+  --muted: #fafafa;
+  --muted-foreground: #525252;
+  --border: #e5e5e5;
+  --input: #ffffff;
+  --primary: #2563eb;
   --primary-foreground: #ffffff;
-  --secondary: #f1f5f9;
-  --secondary-foreground: #0f172a;
-  --accent: #d946ef;
-  --accent-foreground: #ffffff;
-  --destructive: #ef4444;
+  --secondary: #f5f5f5;
+  --secondary-foreground: #000000;
+  --accent: #f0f9ff;
+  --accent-foreground: #000000;
+  --destructive: #dc2626;
   --destructive-foreground: #ffffff;
-  --ring: #0ea5e9;
+  --ring: #2563eb;
   --radius: 0.5rem;
+
+  /* Light theme specific variables */
+  --card-background: #ffffff;
+  --card-border: #e5e5e5;
+  --hover-background: #fafafa;
+  --active-background: #f5f5f5;
+  --hero-gradient-from: #f0f9ff;
+  --hero-gradient-to: #fef7ff;
+  --about-gradient-from: #f0f9ff;
+  --about-gradient-via: #ffffff;
+  --about-gradient-to: #fef7ff;
+
+  /* Card specific variables */
+  --card-text: #000000;
+  --card-text-secondary: #525252;
+  --card-hover-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --card-shadow:
+    0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --tag-bg: #dbeafe;
+  --tag-text: #1e40af;
+  --tag-hover-bg: #bfdbfe;
+  --tag-secondary-bg: #f5f5f5;
+  --tag-secondary-text: #525252;
+
+  /* Navigation specific variables */
+  --nav-background: #ffffff;
+  --nav-border: #e5e5e5;
+  --nav-text: #000000;
+  --nav-text-hover: #2563eb;
+  --nav-active-bg: #dbeafe;
+  --nav-active-text: #1d4ed8;
+  --nav-hover-bg: #fafafa;
+
+  /* Text color variables */
+  --text-primary: #111827;
+  --text-secondary: #6b7280;
+  --text-muted: #9ca3af;
+  --text-accent: #2563eb;
+  --text-accent-hover: #1d4ed8;
+  --text-success: #059669;
+  --text-warning: #d97706;
+  --text-error: #dc2626;
 }
 
 @theme inline {
@@ -37,21 +80,64 @@
 }
 
 .dark {
-  --background: #020617;
-  --foreground: #f8fafc;
-  --muted: #0f172a;
-  --muted-foreground: #94a3b8;
-  --border: #1e293b;
-  --input: #1e293b;
-  --primary: #38bdf8;
-  --primary-foreground: #020617;
-  --secondary: #1e293b;
-  --secondary-foreground: #f8fafc;
-  --accent: #e879f9;
-  --accent-foreground: #020617;
-  --destructive: #f87171;
-  --destructive-foreground: #020617;
-  --ring: #38bdf8;
+  /* Dark theme colors - Very dark and elegant */
+  --background: #000000;
+  --foreground: #ffffff;
+  --muted: #0a0a0a;
+  --muted-foreground: #a1a1aa;
+  --border: #1a1a1a;
+  --input: #1a1a1a;
+  --primary: #3b82f6;
+  --primary-foreground: #ffffff;
+  --secondary: #1a1a1a;
+  --secondary-foreground: #ffffff;
+  --accent: #1a1a1a;
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --ring: #3b82f6;
+
+  /* Dark theme specific variables */
+  --card-background: #0a0a0a;
+  --card-border: #1a1a1a;
+  --hover-background: #0a0a0a;
+  --active-background: #1a1a1a;
+  --hero-gradient-from: #000000;
+  --hero-gradient-to: #0f0f23;
+  --about-gradient-from: #111111;
+  --about-gradient-via: #1a1a1a;
+  --about-gradient-to: #0f0f23;
+
+  /* Card specific variables */
+  --card-text: #ffffff;
+  --card-text-secondary: #a1a1aa;
+  --card-hover-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+  --card-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  --tag-bg: #1e3a8a;
+  --tag-text: #93c5fd;
+  --tag-hover-bg: #1d4ed8;
+  --tag-secondary-bg: #1a1a1a;
+  --tag-secondary-text: #a1a1aa;
+
+  /* Navigation specific variables */
+  --nav-background: #000000;
+  --nav-border: #1a1a1a;
+  --nav-text: #ffffff;
+  --nav-text-hover: #60a5fa;
+  --nav-active-bg: #1d4ed8;
+  --nav-active-text: #ffffff;
+  --nav-hover-bg: #0a0a0a;
+
+  /* Text color variables */
+  --text-primary: #f9fafb;
+  --text-secondary: #d1d5db;
+  --text-muted: #9ca3af;
+  --text-accent: #60a5fa;
+  --text-accent-hover: #93c5fd;
+  --text-success: #10b981;
+  --text-warning: #f59e0b;
+  --text-error: #f87171;
 }
 
 * {

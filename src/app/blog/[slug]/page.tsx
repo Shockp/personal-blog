@@ -1,4 +1,5 @@
-import { Metadata } from 'next';
+'use client';
+
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import {
@@ -9,15 +10,18 @@ import {
   User,
   Tag,
 } from 'lucide-react';
-import { getPostBySlug, getAllPosts } from '@/lib/posts';
+
 import { BlogPost, BlogPostSummary } from '@/types/blog';
 import PostContent from '@/components/blog/PostContent';
+import { useEffect, useState } from 'react';
 
 interface PostPageProps {
-  params: { slug: string };
+  params: {
+    slug: string;
+  };
 }
 
-interface PostPageData {
+interface PostData {
   post: BlogPost;
   relatedPosts: BlogPostSummary[];
   previousPost: BlogPostSummary | null;
@@ -25,164 +29,23 @@ interface PostPageData {
 }
 
 /**
- * Generate static params for all blog posts
+ * Get post data with related posts and navigation
  */
-export async function generateStaticParams() {
-  const posts = await getAllPosts();
-  return posts.map(post => ({
-    slug: post.slug,
-  }));
-}
-
-/**
- * Generate metadata for SEO optimization
- */
-export async function generateMetadata({
-  params,
-}: PostPageProps): Promise<Metadata> {
-  const { slug } = params;
-
-  try {
-    const post = await getPostBySlug(slug);
-
-    if (!post) {
-      return {
-        title: 'Post Not Found',
-        description: 'The requested blog post could not be found.',
-      };
-    }
-
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
-    const postUrl = `${baseUrl}/blog/${slug}`;
-    const imageUrl = `${baseUrl}/api/og?title=${encodeURIComponent(post.title)}`;
-
-    return {
-      title: `${post.title} | Personal Blog`,
-      description: post.description,
-      keywords: post.tags.join(', '),
-      authors: [{ name: post.author }],
-      creator: post.author,
-      publisher: 'Personal Blog',
-      formatDetection: {
-        email: false,
-        address: false,
-        telephone: false,
-      },
-      metadataBase: new URL(baseUrl),
-      alternates: {
-        canonical: postUrl,
-      },
-      openGraph: {
-        title: post.title,
-        description: post.description,
-        url: postUrl,
-        siteName: 'Personal Blog',
-        images: [
-          {
-            url: imageUrl,
-            width: 1200,
-            height: 630,
-            alt: post.title,
-          },
-        ],
-        locale: 'en_US',
-        type: 'article',
-        publishedTime: post.date,
-        authors: [post.author],
-        tags: post.tags,
-      },
-      twitter: {
-        card: 'summary_large_image',
-        title: post.title,
-        description: post.description,
-        images: [imageUrl],
-        creator: '@yourusername', // Replace with actual Twitter handle
-      },
-      robots: {
-        index: post.published,
-        follow: post.published,
-        googleBot: {
-          index: post.published,
-          follow: post.published,
-          'max-video-preview': -1,
-          'max-image-preview': 'large',
-          'max-snippet': -1,
-        },
-      },
-    };
-  } catch {
-    return {
-      title: 'Blog Post | Personal Blog',
-      description: 'Read our latest blog post.',
-    };
-  }
-}
-
-/**
- * Get post data and related content
- */
-async function getPostData(slug: string): Promise<PostPageData | null> {
-  try {
-    const [post, allPosts] = await Promise.all([
-      getPostBySlug(slug),
-      getAllPosts(),
-    ]);
-
-    if (!post) {
-      return null;
-    }
-
-    // Find current post index for navigation
-    const currentIndex = allPosts.findIndex(p => p.slug === slug);
-    const previousPost =
-      currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : null;
-    const nextPost = currentIndex > 0 ? allPosts[currentIndex - 1] : null;
-
-    // Find related posts based on shared tags
-    const relatedPosts = allPosts
-      .filter(p => p.slug !== slug && p.published)
-      .filter(p => p.tags.some(tag => post.tags.includes(tag)))
-      .sort((a, b) => {
-        // Sort by number of shared tags
-        const aSharedTags = a.tags.filter(tag =>
-          post.tags.includes(tag)
-        ).length;
-        const bSharedTags = b.tags.filter(tag =>
-          post.tags.includes(tag)
-        ).length;
-        return bSharedTags - aSharedTags;
-      })
-      .slice(0, 4);
-
-    return {
-      post,
-      relatedPosts,
-      previousPost,
-      nextPost,
-    };
-  } catch {
-    return null;
-  }
-}
 
 /**
  * Format date for display
  */
 function formatDate(dateString: string): string {
-  try {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-    });
-  } catch {
-    return dateString;
-  }
+  const date = new Date(dateString);
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
 }
 
 /**
- * Calculate reading time
+ * Calculate reading time based on content
  */
 function calculateReadingTime(content: string): number {
   const wordsPerMinute = 200;
@@ -193,9 +56,54 @@ function calculateReadingTime(content: string): number {
 /**
  * Individual Post Page Component
  */
-export default async function PostPage({ params }: PostPageProps) {
+export default function PostPage({ params }: PostPageProps) {
   const { slug } = params;
-  const postData = await getPostData(slug);
+  const [postData, setPostData] = useState<PostData | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchPostData() {
+      try {
+        const response = await fetch(`/api/posts/${slug}`);
+        if (response.ok) {
+          const data = await response.json();
+          setPostData(data);
+          // Set document metadata
+          document.title = `${data.title} | Personal Blog`;
+          const metaDescription = document.querySelector(
+            'meta[name="description"]'
+          );
+          if (metaDescription) {
+            metaDescription.setAttribute('content', data.description);
+          } else {
+            const meta = document.createElement('meta');
+            meta.name = 'description';
+            meta.content = data.description;
+            document.head.appendChild(meta);
+          }
+        } else {
+          setPostData(null);
+        }
+      } catch {
+        setPostData(null);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchPostData();
+  }, [slug]);
+
+  if (loading) {
+    return (
+      <div className='min-h-screen bg-white dark:bg-gray-900 flex items-center justify-center'>
+        <div className='text-center'>
+          <div className='animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4'></div>
+          <p style={{ color: 'var(--text-secondary)' }}>Loading post...</p>
+        </div>
+      </div>
+    );
+  }
 
   if (!postData) {
     notFound();
@@ -204,7 +112,7 @@ export default async function PostPage({ params }: PostPageProps) {
   const { post, relatedPosts, previousPost, nextPost } = postData;
   const readingTime = calculateReadingTime(post.content);
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
-  const postUrl = `${baseUrl}/blog/slug`;
+  const postUrl = `${baseUrl}/blog/${slug}`;
 
   // JSON-LD structured data
   const jsonLd = {
@@ -246,7 +154,14 @@ export default async function PostPage({ params }: PostPageProps) {
           <div className='mb-6 sm:mb-8'>
             <Link
               href='/blog'
-              className='inline-flex items-center gap-2 text-sm sm:text-base text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors cursor-pointer min-h-[44px] py-2'
+              className='inline-flex items-center gap-2 text-sm sm:text-base transition-colors cursor-pointer min-h-[44px] py-2'
+              style={{ color: 'var(--text-secondary)' }}
+              onMouseEnter={e =>
+                (e.currentTarget.style.color = 'var(--text-primary)')
+              }
+              onMouseLeave={e =>
+                (e.currentTarget.style.color = 'var(--text-secondary)')
+              }
             >
               <ArrowLeft className='w-4 h-4 sm:w-5 sm:h-5' />
               Back to Blog
@@ -255,16 +170,25 @@ export default async function PostPage({ params }: PostPageProps) {
 
           {/* Post Header */}
           <header className='mb-6 sm:mb-8'>
-            <h1 className='text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4 leading-tight'>
+            <h1
+              className='text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 leading-tight'
+              style={{ color: 'var(--text-primary)' }}
+            >
               {post.title}
             </h1>
 
-            <p className='text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-4 sm:mb-6 leading-relaxed'>
+            <p
+              className='text-base sm:text-lg md:text-xl mb-4 sm:mb-6 leading-relaxed'
+              style={{ color: 'var(--text-secondary)' }}
+            >
               {post.description}
             </p>
 
             {/* Post Metadata */}
-            <div className='flex flex-wrap items-center gap-3 sm:gap-4 md:gap-6 text-xs sm:text-sm text-gray-500 dark:text-gray-400'>
+            <div
+              className='flex flex-wrap items-center gap-3 sm:gap-4 md:gap-6 text-xs sm:text-sm'
+              style={{ color: 'var(--text-muted)' }}
+            >
               <div className='flex items-center gap-1.5 sm:gap-2'>
                 <Calendar className='w-3.5 h-3.5 sm:w-4 sm:h-4' />
                 <time dateTime={post.date}>{formatDate(post.date)}</time>
@@ -284,13 +208,17 @@ export default async function PostPage({ params }: PostPageProps) {
             {/* Tags */}
             {post.tags.length > 0 && (
               <div className='flex items-start gap-2 mt-3 sm:mt-4'>
-                <Tag className='w-3.5 h-3.5 sm:w-4 sm:h-4 text-gray-500 dark:text-gray-400 mt-1 flex-shrink-0' />
+                <Tag
+                  className='w-3.5 h-3.5 sm:w-4 sm:h-4 mt-1 flex-shrink-0'
+                  style={{ color: 'var(--text-muted)' }}
+                />
                 <div className='flex flex-wrap gap-1.5 sm:gap-2'>
                   {post.tags.map(tag => (
                     <Link
                       key={tag}
                       href={`/blog?tag=${encodeURIComponent(tag)}`}
-                      className='px-2 sm:px-3 py-1 text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors cursor-pointer min-h-[24px] flex items-center'
+                      className='px-2 sm:px-3 py-1 text-xs font-medium bg-gray-100 dark:bg-gray-800 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors cursor-pointer min-h-[24px] flex items-center'
+                      style={{ color: 'var(--text-secondary)' }}
                     >
                       {tag}
                     </Link>
@@ -320,11 +248,17 @@ export default async function PostPage({ params }: PostPageProps) {
                     href={`/blog/${previousPost.slug}`}
                     className='group p-3 sm:p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-gray-300 dark:hover:border-gray-600 transition-colors cursor-pointer min-h-[80px] flex flex-col justify-center'
                   >
-                    <div className='flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-gray-500 dark:text-gray-400 mb-1.5 sm:mb-2'>
+                    <div
+                      className='flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm mb-1.5 sm:mb-2'
+                      style={{ color: 'var(--text-muted)' }}
+                    >
                       <ArrowLeft className='w-3.5 h-3.5 sm:w-4 sm:h-4' />
                       Previous Post
                     </div>
-                    <h3 className='text-sm sm:text-base font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors leading-tight'>
+                    <h3
+                      className='text-sm sm:text-base font-semibold transition-colors leading-tight'
+                      style={{ color: 'var(--text-primary)' }}
+                    >
                       {previousPost.title}
                     </h3>
                   </Link>
@@ -335,11 +269,17 @@ export default async function PostPage({ params }: PostPageProps) {
                     href={`/blog/${nextPost.slug}`}
                     className='group p-3 sm:p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-gray-300 dark:hover:border-gray-600 transition-colors cursor-pointer md:text-right min-h-[80px] flex flex-col justify-center'
                   >
-                    <div className='flex items-center justify-start md:justify-end gap-1.5 sm:gap-2 text-xs sm:text-sm text-gray-500 dark:text-gray-400 mb-1.5 sm:mb-2'>
+                    <div
+                      className='flex items-center justify-start md:justify-end gap-1.5 sm:gap-2 text-xs sm:text-sm mb-1.5 sm:mb-2'
+                      style={{ color: 'var(--text-muted)' }}
+                    >
                       <span className='md:order-2'>Next Post</span>
                       <ArrowRight className='w-3.5 h-3.5 sm:w-4 sm:h-4 md:order-1' />
                     </div>
-                    <h3 className='text-sm sm:text-base font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors leading-tight text-left md:text-right'>
+                    <h3
+                      className='text-sm sm:text-base font-semibold transition-colors leading-tight text-left md:text-right'
+                      style={{ color: 'var(--text-primary)' }}
+                    >
                       {nextPost.title}
                     </h3>
                   </Link>
@@ -351,7 +291,10 @@ export default async function PostPage({ params }: PostPageProps) {
           {/* Related Posts */}
           {relatedPosts.length > 0 && (
             <section className='border-t border-gray-200 dark:border-gray-700 pt-6 sm:pt-8'>
-              <h2 className='text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6'>
+              <h2
+                className='text-xl sm:text-2xl font-bold mb-4 sm:mb-6'
+                style={{ color: 'var(--text-primary)' }}
+              >
                 Related Posts
               </h2>
               <div className='grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6'>
@@ -361,13 +304,22 @@ export default async function PostPage({ params }: PostPageProps) {
                     href={`/blog/${relatedPost.slug}`}
                     className='group p-3 sm:p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-gray-300 dark:hover:border-gray-600 transition-colors cursor-pointer min-h-[120px] flex flex-col'
                   >
-                    <h3 className='text-sm sm:text-base font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors mb-2 leading-tight flex-shrink-0'>
+                    <h3
+                      className='text-sm sm:text-base font-semibold transition-colors mb-2 leading-tight flex-shrink-0'
+                      style={{ color: 'var(--text-primary)' }}
+                    >
                       {relatedPost.title}
                     </h3>
-                    <p className='text-xs sm:text-sm text-gray-600 dark:text-gray-300 mb-3 leading-relaxed flex-grow line-clamp-2'>
+                    <p
+                      className='text-xs sm:text-sm mb-3 leading-relaxed flex-grow line-clamp-2'
+                      style={{ color: 'var(--text-secondary)' }}
+                    >
                       {relatedPost.description}
                     </p>
-                    <div className='flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 flex-shrink-0'>
+                    <div
+                      className='flex items-center justify-between text-xs flex-shrink-0'
+                      style={{ color: 'var(--text-muted)' }}
+                    >
                       <span>{formatDate(relatedPost.date)}</span>
                       <span>{relatedPost.readingTime} min read</span>
                     </div>

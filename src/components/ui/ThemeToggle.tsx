@@ -36,7 +36,12 @@ export default function ThemeToggle() {
     <button
       ref={buttonRef}
       onClick={handleClick}
-      className='p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:text-blue-400 dark:hover:bg-gray-800 focus:outline-none transition-all duration-500 cursor-pointer'
+      className='p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none transition-all duration-500 cursor-pointer'
+      style={{ color: 'var(--text-secondary)' }}
+      onMouseEnter={e => (e.currentTarget.style.color = 'var(--text-accent)')}
+      onMouseLeave={e =>
+        (e.currentTarget.style.color = 'var(--text-secondary)')
+      }
       aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
       title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
     >

@@ -60,9 +60,11 @@ export function isValidISODate(dateString: string): boolean {
 
   // Validate that it's a real date
   const date = new Date(dateString);
+  const datePart = dateString.split('T')[0];
   return (
     !isNaN(date.getTime()) &&
-    date.toISOString().startsWith(dateString.split('T')[0])
+    !!datePart &&
+    date.toISOString().startsWith(datePart)
   );
 }
 
@@ -84,6 +86,7 @@ export function validateFrontmatter(
     errors.push({
       field: 'frontmatter',
       message: `Post '${slug}' has no frontmatter or invalid frontmatter format`,
+      code: 'MISSING_FRONTMATTER',
     });
     return { isValid: false, errors, warnings };
   }
@@ -96,16 +99,19 @@ export function validateFrontmatter(
       errors.push({
         field,
         message: `Required field '${field}' is missing in post '${slug}'`,
+        code: 'MISSING_REQUIRED_FIELD',
       });
     } else if (typeof frontmatter[field] !== 'string') {
       errors.push({
         field,
         message: `Field '${field}' must be a string in post '${slug}'`,
+        code: 'INVALID_FIELD_TYPE',
       });
     } else if (frontmatter[field].trim().length === 0) {
       errors.push({
         field,
         message: `Field '${field}' cannot be empty in post '${slug}'`,
+        code: 'EMPTY_FIELD',
       });
     }
   }
@@ -116,12 +122,14 @@ export function validateFrontmatter(
       warnings.push({
         field: 'title',
         message: `Title is very long (${frontmatter.title.length} characters) in post '${slug}'. Consider shortening for better SEO.`,
+        code: 'TITLE_TOO_LONG',
       });
     }
     if (frontmatter.title.length < 10) {
       warnings.push({
         field: 'title',
         message: `Title is very short (${frontmatter.title.length} characters) in post '${slug}'. Consider making it more descriptive.`,
+        code: 'TITLE_TOO_SHORT',
       });
     }
   }
@@ -132,22 +140,28 @@ export function validateFrontmatter(
       warnings.push({
         field: 'description',
         message: `Description is very long (${frontmatter.description.length} characters) in post '${slug}'. Consider shortening for better SEO.`,
+        code: 'DESCRIPTION_TOO_LONG',
       });
     }
     if (frontmatter.description.length < 50) {
       warnings.push({
         field: 'description',
         message: `Description is short (${frontmatter.description.length} characters) in post '${slug}'. Consider making it more descriptive.`,
+        code: 'DESCRIPTION_TOO_SHORT',
       });
     }
   }
 
   // Validate date format
   if (frontmatter.date) {
-    if (!isValidISODate(frontmatter.date)) {
+    if (
+      typeof frontmatter.date !== 'string' ||
+      !isValidISODate(frontmatter.date)
+    ) {
       errors.push({
         field: 'date',
         message: `Invalid date format '${frontmatter.date}' in post '${slug}'. Use ISO format (YYYY-MM-DD).`,
+        code: 'INVALID_DATE_FORMAT',
       });
     } else {
       // Check if date is in the future
@@ -157,6 +171,7 @@ export function validateFrontmatter(
         warnings.push({
           field: 'date',
           message: `Post date '${frontmatter.date}' is in the future in post '${slug}'.`,
+          code: 'FUTURE_DATE',
         });
       }
     }
@@ -168,6 +183,7 @@ export function validateFrontmatter(
       errors.push({
         field: 'tags',
         message: `Tags must be an array in post '${slug}'`,
+        code: 'INVALID_TAGS_TYPE',
       });
     } else {
       // Check each tag
@@ -176,16 +192,19 @@ export function validateFrontmatter(
           errors.push({
             field: 'tags',
             message: `Tag at index ${index} must be a string in post '${slug}'`,
+            code: 'INVALID_TAG_TYPE',
           });
         } else if (tag.trim().length === 0) {
           errors.push({
             field: 'tags',
             message: `Tag at index ${index} cannot be empty in post '${slug}'`,
+            code: 'EMPTY_TAG',
           });
         } else if (tag.length > 50) {
           warnings.push({
             field: 'tags',
             message: `Tag '${tag}' is very long (${tag.length} characters) in post '${slug}'`,
+            code: 'TAG_TOO_LONG',
           });
         }
       });
@@ -195,6 +214,7 @@ export function validateFrontmatter(
         warnings.push({
           field: 'tags',
           message: `Post '${slug}' has many tags (${frontmatter.tags.length}). Consider reducing for better organization.`,
+          code: 'TOO_MANY_TAGS',
         });
       }
 
@@ -206,6 +226,7 @@ export function validateFrontmatter(
         warnings.push({
           field: 'tags',
           message: `Post '${slug}' has duplicate tags (case-insensitive).`,
+          code: 'DUPLICATE_TAGS',
         });
       }
     }
@@ -217,11 +238,13 @@ export function validateFrontmatter(
       errors.push({
         field: 'author',
         message: `Author must be a string in post '${slug}'`,
+        code: 'INVALID_AUTHOR_TYPE',
       });
     } else if (frontmatter.author.trim().length === 0) {
       errors.push({
         field: 'author',
         message: `Author cannot be empty in post '${slug}'`,
+        code: 'EMPTY_AUTHOR',
       });
     }
   }
@@ -234,6 +257,7 @@ export function validateFrontmatter(
     errors.push({
       field: 'published',
       message: `Published field must be a boolean in post '${slug}'`,
+      code: 'INVALID_PUBLISHED_TYPE',
     });
   }
 
@@ -265,6 +289,7 @@ export function validateContent(
     errors.push({
       field: 'content',
       message: `Post '${slug}' has no content`,
+      code: 'MISSING_CONTENT',
     });
     return { isValid: false, errors, warnings };
   }
@@ -277,12 +302,14 @@ export function validateContent(
       errors.push({
         field: 'content',
         message: `Content is too short (${trimmedContent.length} characters, minimum ${opts.minContentLength}) in post '${slug}'`,
+        code: 'CONTENT_TOO_SHORT',
       });
     }
     if (trimmedContent.length > opts.maxContentLength) {
       errors.push({
         field: 'content',
         message: `Content is too long (${trimmedContent.length} characters, maximum ${opts.maxContentLength}) in post '${slug}'`,
+        code: 'CONTENT_TOO_LONG',
       });
     }
   }
@@ -293,6 +320,7 @@ export function validateContent(
     warnings.push({
       field: 'content',
       message: `Post '${slug}' has no headings. Consider adding headings for better structure.`,
+      code: 'NO_HEADINGS',
     });
   }
 
@@ -303,6 +331,7 @@ export function validateContent(
     warnings.push({
       field: 'content',
       message: `Post '${slug}' has ${longParagraphs.length} very long paragraph(s). Consider breaking them up for better readability.`,
+      code: 'LONG_PARAGRAPHS',
     });
   }
 
@@ -312,6 +341,7 @@ export function validateContent(
     errors.push({
       field: 'content',
       message: `Post '${slug}' has unclosed code blocks (unmatched \`\`\`)`,
+      code: 'UNCLOSED_CODE_BLOCKS',
     });
   }
 
@@ -331,12 +361,15 @@ export function validateContent(
  * @returns Combined validation result
  */
 export function validateBlogPost(
-  frontmatter: any,
+  frontmatter: unknown,
   content: string,
   slug: string,
   options: ValidationOptions = {}
 ): ValidationResult {
-  const frontmatterResult = validateFrontmatter(frontmatter, slug);
+  const frontmatterResult = validateFrontmatter(
+    frontmatter as Record<string, unknown>,
+    slug
+  );
   const contentResult = validateContent(content, slug, options);
 
   return {
@@ -383,7 +416,8 @@ export function formatValidationErrors(result: ValidationResult): string {
  */
 export function createValidationError(
   field: string,
-  message: string
+  message: string,
+  code: string = 'GENERIC_ERROR'
 ): BlogPostValidationError {
-  return { field, message };
+  return { field, message, code };
 }
