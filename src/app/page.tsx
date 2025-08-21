@@ -155,10 +155,10 @@ export default async function Home() {
                 </Link>
                 <Link
                   href='/about'
-                  className='inline-flex items-center px-6 py-3 border-2 border-gray-300 dark:border-gray-600 hover:border-blue-600 dark:hover:border-blue-400 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium rounded-lg transition-colors duration-200'
+                  className='inline-flex items-center px-6 py-3 border-2 border-gray-300 dark:border-gray-600 hover:border-blue-600 dark:hover:border-blue-400 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium rounded-lg transition-colors duration-200 group'
                   aria-label='Learn more about me'
                 >
-                  <Users className='w-5 h-5 mr-2' />
+                  <Users className='w-5 h-5 mr-2 text-gray-700 dark:text-gray-300' />
                   About Me
                 </Link>
               </div>
