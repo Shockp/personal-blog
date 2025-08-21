@@ -73,7 +73,7 @@ export interface BlogPostFrontmatter {
   /** Whether the post is published (default: true) */
   published?: boolean;
   /** Any additional custom fields */
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 /**

@@ -1,321 +1,243 @@
 import fs from 'fs';
 import path from 'path';
-import { markdownToHtml, parseFrontmatter } from './markdown';
+import { PostMetadata, BlogPost, BlogPostSummary } from '@/types/blog';
+import { parseFrontmatter, markdownToHtml } from './markdown';
 
-/**
- * Interface for a blog post with metadata
- */
-export interface BlogPost {
-  slug: string;
-  title: string;
-  description: string;
-  date: string;
-  tags: string[];
-  author: string;
-  image?: string;
-  published: boolean;
-  content: string;
-  readingTime: number;
-  wordCount: number;
-}
-
-/**
- * Interface for blog post summary (without full content)
- */
-export interface BlogPostSummary {
-  slug: string;
-  title: string;
-  description: string;
-  date: string;
-  tags: string[];
-  author: string;
-  image?: string;
-  published: boolean;
-  readingTime: number;
-  wordCount: number;
-}
-
-/**
- * The directory where blog posts are stored
- */
+// Posts directory path
 const POSTS_DIRECTORY = path.join(process.cwd(), 'content', 'posts');
 
 /**
- * Retrieves all blog post files from the posts directory.
- * 
- * @returns {string[]} Array of markdown file names
- * 
- * @example
- * ```typescript
- * const postFiles = getPostFiles();
- * console.log(postFiles); // ['my-first-post.md', 'another-post.md']
- * ```
+ * Calculates estimated reading time for content
+ * @param content - The text content to analyze
+ * @returns Reading time in minutes
  */
-export function getPostFiles(): string[] {
+function calculateReadingTime(content: string): number {
+  const wordsPerMinute = 200;
+  const words = content.trim().split(/\s+/).length;
+  return Math.ceil(words / wordsPerMinute);
+}
+
+/**
+ * Validates post metadata to ensure required fields are present
+ * @param metadata - Raw metadata object
+ * @param slug - Post slug for error reporting
+ * @param content - Post content for calculating reading time and word count
+ * @returns Validated metadata as BlogPostSummary
+ * @throws Error if required fields are missing
+ */
+function validatePostMetadata(
+  metadata: PostMetadata,
+  slug: string,
+  content: string
+): BlogPostSummary {
+  // Validate date format
+  const date = new Date(metadata.date);
+  if (isNaN(date.getTime())) {
+    throw new Error(`Invalid date format in post: ${slug}`);
+  }
+
+  // Calculate reading time and word count
+  const readingTime = calculateReadingTime(content);
+  const wordCount = content.trim().split(/\s+/).length;
+
+  const result: BlogPostSummary = {
+    slug,
+    title: metadata.title,
+    description: metadata.description,
+    date: metadata.date,
+    tags: metadata.tags || [],
+    author: metadata.author || 'Anonymous',
+    published: metadata.published !== false,
+    readingTime,
+    wordCount,
+  };
+
+  // Only add image if it exists
+  if (metadata.image) {
+    result.image = metadata.image;
+  }
+
+  return result;
+}
+
+/**
+ * Retrieves all blog posts with metadata
+ * @returns Promise resolving to array of BlogPostSummary
+ * @throws Error if posts directory is inaccessible or posts are malformed
+ */
+export async function getAllPosts(): Promise<BlogPostSummary[]> {
   try {
+    // Check if posts directory exists
     if (!fs.existsSync(POSTS_DIRECTORY)) {
-      console.warn(`Posts directory does not exist: ${POSTS_DIRECTORY}`);
+      console.warn('Posts directory does not exist, returning empty array');
       return [];
     }
-    
-    return fs
-      .readdirSync(POSTS_DIRECTORY)
-      .filter(file => file.endsWith('.md'))
-      .sort((a, b) => b.localeCompare(a)); // Sort by filename descending
-  } catch (error) {
-    console.error('Error reading posts directory:', error);
-    return [];
-  }
-}
 
-/**
- * Reads and processes a single blog post by filename.
- * 
- * @param filename - The markdown filename (with or without .md extension)
- * @returns {Promise<BlogPost>} The processed blog post
- * 
- * @example
- * ```typescript
- * const post = await getPostByFilename('my-first-post.md');
- * console.log(post.title);
- * ```
- */
-export async function getPostByFilename(filename: string): Promise<BlogPost> {
-  const fullPath = path.join(POSTS_DIRECTORY, filename.endsWith('.md') ? filename : `${filename}.md`);
-  
-  if (!fs.existsSync(fullPath)) {
-    throw new Error(`Post file not found: ${filename}`);
-  }
-  
-  try {
-    const fileContent = fs.readFileSync(fullPath, 'utf8');
-    const frontmatter = parseFrontmatter(fileContent);
-    const htmlContent = await markdownToHtml(fileContent.split('---').slice(2).join('---').trim());
-    
-    // Calculate reading time and word count
-    const wordCount = fileContent.trim().split(/\s+/).length;
-    const readingTime = Math.ceil(wordCount / 200);
-    
-    // Generate slug from filename (remove .md extension)
-    const slug = filename.replace(/\.md$/, '');
-    
-    return {
-      slug,
-      title: frontmatter.title,
-      description: frontmatter.description,
-      date: frontmatter.date,
-      tags: frontmatter.tags || [],
-      author: frontmatter.author || 'Anonymous',
-      ...(frontmatter.image && { image: frontmatter.image }),
-      published: frontmatter.published !== false,
-      content: htmlContent,
-      readingTime,
-      wordCount,
-    };
-  } catch (error) {
-    throw new Error(`Error processing post ${filename}: ${error instanceof Error ? error.message : 'Unknown error'}`);
-  }
-}
+    // Read all files from posts directory
+    const fileNames = fs.readdirSync(POSTS_DIRECTORY);
 
-/**
- * Retrieves a blog post by its slug.
- * 
- * @param slug - The post slug
- * @returns {Promise<BlogPost>} The blog post
- * 
- * @example
- * ```typescript
- * const post = await getPostBySlug('my-first-post');
- * console.log(post.title);
- * ```
- */
-export async function getPostBySlug(slug: string): Promise<BlogPost> {
-  const filename = `${slug}.md`;
-  return getPostByFilename(filename);
-}
+    // Filter for markdown files only
+    const markdownFiles = fileNames.filter(
+      fileName => fileName.endsWith('.md') || fileName.endsWith('.mdx')
+    );
 
-/**
- * Retrieves all blog posts with full content.
- * 
- * @param includeUnpublished - Whether to include unpublished posts (default: false)
- * @returns {Promise<BlogPost[]>} Array of all blog posts
- * 
- * @example
- * ```typescript
- * const posts = await getAllPosts();
- * const allPosts = await getAllPosts(true); // Include unpublished
- * ```
- */
-export async function getAllPosts(includeUnpublished: boolean = false): Promise<BlogPost[]> {
-  const filenames = getPostFiles();
-  const posts: BlogPost[] = [];
-  
-  for (const filename of filenames) {
-    try {
-      const post = await getPostByFilename(filename);
-      
-      if (includeUnpublished || post.published) {
-        posts.push(post);
-      }
-    } catch (error) {
-      console.error(`Error processing post ${filename}:`, error);
-      // Continue processing other posts
+    if (markdownFiles.length === 0) {
+      console.warn('No markdown files found in posts directory');
+      return [];
     }
-  }
-  
-  // Sort by date descending (newest first)
-  return posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-}
 
-/**
- * Retrieves blog post summaries (without full content) for listing pages.
- * 
- * @param includeUnpublished - Whether to include unpublished posts (default: false)
- * @returns {Promise<BlogPostSummary[]>} Array of blog post summaries
- * 
- * @example
- * ```typescript
- * const summaries = await getPostSummaries();
- * summaries.forEach(summary => console.log(summary.title));
- * ```
- */
-export async function getPostSummaries(includeUnpublished: boolean = false): Promise<BlogPostSummary[]> {
-  const filenames = getPostFiles();
-  const summaries: BlogPostSummary[] = [];
-  
-  for (const filename of filenames) {
-    try {
-      const fullPath = path.join(POSTS_DIRECTORY, filename);
-      const fileContent = fs.readFileSync(fullPath, 'utf8');
-      const frontmatter = parseFrontmatter(fileContent);
-      
-      const published = frontmatter.published !== false;
-      if (!includeUnpublished && !published) {
+    const posts: BlogPostSummary[] = [];
+
+    for (const fileName of markdownFiles) {
+      try {
+        const slug = fileName.replace(/\.(md|mdx)$/, '');
+        const filePath = path.join(POSTS_DIRECTORY, fileName);
+        const fileContent = fs.readFileSync(filePath, 'utf8');
+
+        const { data: metadata, content } = parseFrontmatter(fileContent);
+
+        const validatedMetadata = validatePostMetadata(metadata, slug, content);
+
+        posts.push(validatedMetadata);
+      } catch (error) {
+        // Log error in development, but don't expose in production
+        if (process.env.NODE_ENV === 'development') {
+          console.error(`Error processing post ${fileName}:`, error);
+        }
+        // Continue processing other posts instead of failing completely
         continue;
       }
-      
-      // Calculate reading time from content
-      const wordCount = fileContent.trim().split(/\s+/).length;
-      const readingTime = Math.ceil(wordCount / 200);
-      
-      const slug = filename.replace(/\.md$/, '');
-      
-      summaries.push({
-        slug,
-        title: frontmatter.title,
-        description: frontmatter.description,
-        date: frontmatter.date,
-        tags: frontmatter.tags || [],
-        author: frontmatter.author || 'Anonymous',
-        ...(frontmatter.image && { image: frontmatter.image }),
-        published,
-        readingTime,
-        wordCount
-      });
-    } catch (error) {
-      console.error(`Error processing post summary ${filename}:`, error);
-      // Continue processing other posts
     }
+
+    // Sort posts by date (newest first)
+    posts.sort(
+      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+    );
+
+    return posts;
+  } catch (error) {
+    throw new Error(
+      `Failed to retrieve posts: ${error instanceof Error ? error.message : 'Unknown error'}`
+    );
   }
-  
-  // Sort by date descending (newest first)
-  return summaries.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
 /**
- * Retrieves posts filtered by tag.
- * 
- * @param tag - The tag to filter by
- * @param includeUnpublished - Whether to include unpublished posts (default: false)
- * @returns {Promise<BlogPostSummary[]>} Array of filtered blog post summaries
- * 
- * @example
- * ```typescript
- * const reactPosts = await getPostsByTag('react');
- * console.log(`Found ${reactPosts.length} React posts`);
- * ```
+ * Retrieves a single post by slug
+ * @param slug - Post identifier
+ * @returns Promise resolving to BlogPost or null if not found
+ * @throws Error if post processing fails
  */
-export async function getPostsByTag(tag: string, includeUnpublished: boolean = false): Promise<BlogPostSummary[]> {
-  const allSummaries = await getPostSummaries(includeUnpublished);
-  return allSummaries.filter(post => 
-    post.tags.some(postTag => postTag.toLowerCase() === tag.toLowerCase())
-  );
-}
+export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
+  try {
+    // Validate slug input
+    if (!slug || typeof slug !== 'string') {
+      throw new Error('Invalid slug provided');
+    }
 
-/**
- * Retrieves all unique tags from all posts.
- * 
- * @param includeUnpublished - Whether to include tags from unpublished posts (default: false)
- * @returns {Promise<string[]>} Array of unique tags
- * 
- * @example
- * ```typescript
- * const tags = await getAllTags();
- * console.log('Available tags:', tags);
- * ```
- */
-export async function getAllTags(includeUnpublished: boolean = false): Promise<string[]> {
-  const summaries = await getPostSummaries(includeUnpublished);
-  const tagSet = new Set<string>();
-  
-  summaries.forEach(post => {
-    post.tags.forEach(tag => tagSet.add(tag));
-  });
-  
-  return Array.from(tagSet).sort();
-}
+    // Sanitize slug to prevent directory traversal
+    const sanitizedSlug = slug.replace(/[^a-zA-Z0-9-_]/g, '');
+    if (sanitizedSlug !== slug) {
+      console.warn(`Slug was sanitized from '${slug}' to '${sanitizedSlug}'`);
+    }
 
-/**
- * Searches posts by title, description, or content.
- * 
- * @param query - The search query
- * @param includeUnpublished - Whether to include unpublished posts (default: false)
- * @returns {Promise<BlogPostSummary[]>} Array of matching blog post summaries
- * 
- * @example
- * ```typescript
- * const results = await searchPosts('react hooks');
- * console.log(`Found ${results.length} matching posts`);
- * ```
- */
-export async function searchPosts(query: string, includeUnpublished: boolean = false): Promise<BlogPostSummary[]> {
-  const summaries = await getPostSummaries(includeUnpublished);
-  const searchTerm = query.toLowerCase();
-  
-  return summaries.filter(post => 
-    post.title.toLowerCase().includes(searchTerm) ||
-    post.description.toLowerCase().includes(searchTerm) ||
-    post.tags.some(tag => tag.toLowerCase().includes(searchTerm))
-  );
-}
+    // Check if posts directory exists
+    if (!fs.existsSync(POSTS_DIRECTORY)) {
+      return null;
+    }
 
-/**
- * Gets the next and previous posts for navigation.
- * 
- * @param currentSlug - The current post slug
- * @param includeUnpublished - Whether to include unpublished posts (default: false)
- * @returns {Promise<{prev: BlogPostSummary | null, next: BlogPostSummary | null}>} Navigation posts
- * 
- * @example
- * ```typescript
- * const { prev, next } = await getAdjacentPosts('my-current-post');
- * if (prev) console.log('Previous:', prev.title);
- * if (next) console.log('Next:', next.title);
- * ```
- */
-export async function getAdjacentPosts(currentSlug: string, includeUnpublished: boolean = false): Promise<{
-  prev: BlogPostSummary | null;
-  next: BlogPostSummary | null;
-}> {
-  const summaries = await getPostSummaries(includeUnpublished);
-  const currentIndex = summaries.findIndex(post => post.slug === currentSlug);
-  
-  if (currentIndex === -1) {
-    return { prev: null, next: null };
+    // Try both .md and .mdx extensions
+    const possibleFiles = [`${sanitizedSlug}.md`, `${sanitizedSlug}.mdx`];
+    let filePath: string | null = null;
+
+    for (const fileName of possibleFiles) {
+      const testPath = path.join(POSTS_DIRECTORY, fileName);
+      if (fs.existsSync(testPath)) {
+        filePath = testPath;
+        break;
+      }
+    }
+
+    if (!filePath) {
+      return null;
+    }
+
+    // Read and process the file
+    const fileContent = fs.readFileSync(filePath, 'utf8');
+    const { data: metadata, content } = parseFrontmatter(fileContent);
+
+    // Validate metadata and get summary
+    const validatedSummary = validatePostMetadata(
+      metadata,
+      sanitizedSlug,
+      content
+    );
+
+    // Convert markdown to HTML
+    const htmlContent = await markdownToHtml(content);
+
+    const blogPost: BlogPost = {
+      title: validatedSummary.title,
+      description: validatedSummary.description,
+      date: validatedSummary.date,
+      tags: validatedSummary.tags,
+      author: validatedSummary.author,
+      published: validatedSummary.published,
+      content: htmlContent,
+    };
+
+    // Only add image if it exists
+    if (validatedSummary.image) {
+      blogPost.image = validatedSummary.image;
+    }
+
+    return blogPost;
+  } catch (error) {
+    throw new Error(
+      `Failed to retrieve post '${slug}': ${error instanceof Error ? error.message : 'Unknown error'}`
+    );
   }
-  
-  return {
-    prev: currentIndex > 0 ? summaries[currentIndex - 1] || null : null,
-    next: currentIndex < summaries.length - 1 ? summaries[currentIndex + 1] || null : null
-  };
+}
+
+/**
+ * Retrieves posts filtered by tag
+ * @param tag - Tag to filter by
+ * @returns Promise resolving to array of BlogPostSummary
+ */
+export async function getPostsByTag(tag: string): Promise<BlogPostSummary[]> {
+  try {
+    if (!tag || typeof tag !== 'string') {
+      return [];
+    }
+
+    const allPosts = await getAllPosts();
+    return allPosts.filter(post =>
+      post.tags.some(postTag => postTag.toLowerCase() === tag.toLowerCase())
+    );
+  } catch (error) {
+    throw new Error(
+      `Failed to retrieve posts by tag '${tag}': ${error instanceof Error ? error.message : 'Unknown error'}`
+    );
+  }
+}
+
+/**
+ * Retrieves all unique tags from all posts
+ * @returns Promise resolving to array of unique tags
+ */
+export async function getAllTags(): Promise<string[]> {
+  try {
+    const allPosts = await getAllPosts();
+    const tagSet = new Set<string>();
+
+    allPosts.forEach(post => {
+      post.tags.forEach(tag => tagSet.add(tag));
+    });
+
+    return Array.from(tagSet).sort();
+  } catch (error) {
+    throw new Error(
+      `Failed to retrieve tags: ${error instanceof Error ? error.message : 'Unknown error'}`
+    );
+  }
 }
