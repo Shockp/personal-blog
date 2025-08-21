@@ -4,9 +4,9 @@
 
 A minimal viable personal blog prototype focused on content publishing and reading experience. This core version establishes the foundation for a technology blog with essential features for content creation, display, and navigation.
 
-- **Primary Purpose**: Create a functional blog prototype with content management and responsive design for iterative development.
+* **Primary Purpose**: Create a functional blog prototype with content management and responsive design for iterative development.
 
-- **Target Outcome**: Establish core blog functionality that can be extended with advanced features in future iterations.
+* **Target Outcome**: Establish core blog functionality that can be extended with advanced features in future iterations.
 
 ## 2. Core Features
 
@@ -54,15 +54,15 @@ graph TD
 
 ### 4.1 Design Style
 
-- **Primary Colors**: Professional blue (#2563eb) and dark gray (#1f2937)
+* **Primary Colors**: Professional blue (#2563eb) and dark gray (#1f2937)
 
-- **Secondary Colors**: Light gray (#f8fafc) for backgrounds, subtle accent colors
+* **Secondary Colors**: Light gray (#f8fafc) for backgrounds, subtle accent colors
 
-- **Typography**: Inter font for headings, system fonts for body text, 16px base size
+* **Typography**: Inter font for headings, system fonts for body text, 16px base size
 
-- **Layout Style**: Clean, minimal design with card-based post previews
+* **Layout Style**: Clean, minimal design with card-based post previews
 
-- **Button Style**: Rounded corners with hover effects for navigation elements
+* **Button Style**: Rounded corners with hover effects for navigation elements
 
 ### 4.2 Page Design Overview
 
@@ -82,38 +82,39 @@ Mobile-first responsive design optimized for all device sizes. Navigation collap
 
 ### 5.1 Blog Post Structure
 
-- Markdown files with YAML frontmatter for metadata
+* Markdown files with YAML frontmatter for metadata
 
-- Support for code syntax highlighting
+* Support for code syntax highlighting
 
-- Image embedding with proper optimization
+* Image embedding with proper optimization
 
-- Publication date and category classification
+* Publication date and category classification
 
 ### 5.2 Content Organization
 
-- Posts organized chronologically with newest first
+* Posts organized chronologically with newest first
 
-- Simple category system for content classification
+* Simple category system for content classification
 
-- Clean URL structure with post slugs
+* Clean URL structure with post slugs
 
 ## 6. Technical Constraints
 
 ### 6.1 Performance Goals
 
-- Fast loading times with static site generation
+* Fast loading times with static site generation
 
-- Optimized images and assets
+* Optimized images and assets
 
-- Minimal JavaScript for core functionality
+* Minimal JavaScript for core functionality
 
 ### 6.2 SEO Requirements
 
-- Proper meta tags for all pages
+* Proper meta tags for all pages
 
-- Structured data for blog posts
+* Structured data for blog posts
 
-- Clean, semantic HTML structure
+* Clean, semantic HTML structure
 
-- Optimized page titles and descriptions
+* Optimized page titles and descriptions
+
