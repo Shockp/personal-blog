@@ -96,11 +96,11 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                  href='https://github.com'
-                  className='text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 focus:outline-none'
-                  aria-label='Follow on GitHub (opens in new tab)'
-                  target='_blank'
-                  rel='noopener noreferrer'
+                href='https://github.com'
+                className='text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 focus:outline-none'
+                aria-label='Follow on GitHub (opens in new tab)'
+                target='_blank'
+                rel='noopener noreferrer'
               >
                 <svg
                   className='h-6 w-6'
@@ -116,11 +116,11 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                  href='https://linkedin.com'
-                  className='text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 focus:outline-none'
-                  aria-label='Connect on LinkedIn (opens in new tab)'
-                  target='_blank'
-                  rel='noopener noreferrer'
+                href='https://linkedin.com'
+                className='text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 focus:outline-none'
+                aria-label='Connect on LinkedIn (opens in new tab)'
+                target='_blank'
+                rel='noopener noreferrer'
               >
                 <svg
                   className='h-6 w-6'
