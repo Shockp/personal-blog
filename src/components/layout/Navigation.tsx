@@ -72,7 +72,7 @@ export default function Navigation() {
             <ThemeToggle />
             <button
               onClick={toggleMenu}
-              className='inline-flex items-center justify-center p-2 rounded-md text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500 transition-colors duration-200'
+              className='inline-flex items-center justify-center p-2 rounded-md text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none transition-colors duration-200 cursor-pointer'
               aria-expanded={isMenuOpen}
               aria-label='Toggle mobile menu'
             >

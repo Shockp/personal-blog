@@ -38,7 +38,7 @@ export default function Header() {
 
   const getLinkClasses = (href: string) => {
     const baseClasses =
-      'px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900';
+      'px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 focus:outline-none';
     const activeClasses =
       'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20';
     const inactiveClasses =
@@ -49,7 +49,7 @@ export default function Header() {
 
   const getMobileLinkClasses = (href: string) => {
     const baseClasses =
-      'block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900';
+      'block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 focus:outline-none';
     const activeClasses =
       'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20';
     const inactiveClasses =
@@ -73,7 +73,7 @@ export default function Header() {
           <div className='flex-shrink-0'>
             <Link
               href='/'
-              className='text-2xl font-bold text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 rounded-md'
+              className='text-2xl font-bold text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 focus:outline-none'
               aria-label='Go to homepage - Personal Blog'
             >
               Personal Blog
@@ -119,7 +119,7 @@ export default function Header() {
             <ThemeToggle />
             <button
               onClick={toggleMenu}
-              className='inline-flex items-center justify-center p-2 rounded-md text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500 transition-colors duration-200'
+              className='inline-flex items-center justify-center p-2 rounded-md text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none transition-colors duration-200 cursor-pointer'
               aria-expanded={isMenuOpen}
               aria-label={isMenuOpen ? 'Close mobile menu' : 'Open mobile menu'}
               aria-controls='mobile-menu'

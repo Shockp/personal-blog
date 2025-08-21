@@ -158,8 +158,7 @@ export default function PostCard({
                     font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 
                     dark:text-blue-300 hover:bg-blue-200 dark:hover:bg-blue-900/50 
                     transition-colors duration-200 focus:outline-none 
-                    focus:ring-2 focus:ring-blue-500 focus:ring-offset-1
-                    dark:focus:ring-offset-gray-800
+                    cursor-pointer
                   '
                   role='listitem'
                   aria-label={`Filter posts by ${tag} tag`}

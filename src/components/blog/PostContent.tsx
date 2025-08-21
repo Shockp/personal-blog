@@ -452,7 +452,7 @@ export default function PostContent({
                 <div className='flex items-center gap-3'>
                   <button
                     onClick={shareOnTwitter}
-                    className='flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors'
+                    className='flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors cursor-pointer'
                     aria-label='Share on Twitter'
                   >
                     <Twitter className='w-4 h-4' />
@@ -460,7 +460,7 @@ export default function PostContent({
                   </button>
                   <button
                     onClick={shareOnLinkedIn}
-                    className='flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors'
+                    className='flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors cursor-pointer'
                     aria-label='Share on LinkedIn'
                   >
                     <Linkedin className='w-4 h-4' />
@@ -468,7 +468,7 @@ export default function PostContent({
                   </button>
                   <button
                     onClick={shareOnFacebook}
-                    className='flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors'
+                    className='flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors cursor-pointer'
                     aria-label='Share on Facebook'
                   >
                     <Facebook className='w-4 h-4' />
@@ -476,7 +476,7 @@ export default function PostContent({
                   </button>
                   <button
                     onClick={copyToClipboard}
-                    className='flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors'
+                    className='flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors cursor-pointer'
                     aria-label='Copy link'
                   >
                     {copySuccess === 'copied' ? (

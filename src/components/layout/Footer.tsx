@@ -36,7 +36,7 @@ export default function Footer() {
                 <li>
                   <Link
                     href='/'
-                    className='text-base text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 rounded-md'
+                    className='text-base text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 focus:outline-none'
                     aria-label='Go to home page'
                   >
                     Home
@@ -45,7 +45,7 @@ export default function Footer() {
                 <li>
                   <Link
                     href='/blog'
-                    className='text-base text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 rounded-md'
+                    className='text-base text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 focus:outline-none'
                     aria-label='Go to blog posts'
                   >
                     Posts
@@ -54,7 +54,7 @@ export default function Footer() {
                 <li>
                   <Link
                     href='/about'
-                    className='text-base text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 rounded-md'
+                    className='text-base text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 focus:outline-none'
                     aria-label='Go to about page'
                   >
                     About
@@ -63,7 +63,7 @@ export default function Footer() {
                 <li>
                   <Link
                     href='/contact'
-                    className='text-base text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 rounded-md'
+                    className='text-base text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 focus:outline-none'
                     aria-label='Go to contact page'
                   >
                     Contact
@@ -81,7 +81,7 @@ export default function Footer() {
             <div className='mt-4 flex space-x-6'>
               <a
                 href='https://twitter.com'
-                className='text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 rounded-md p-1'
+                className='text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 focus:outline-none'
                 aria-label='Follow on Twitter (opens in new tab)'
                 target='_blank'
                 rel='noopener noreferrer'
@@ -96,11 +96,11 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href='https://github.com'
-                className='text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 rounded-md p-1'
-                aria-label='View GitHub profile (opens in new tab)'
-                target='_blank'
-                rel='noopener noreferrer'
+                  href='https://github.com'
+                  className='text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 focus:outline-none'
+                  aria-label='Follow on GitHub (opens in new tab)'
+                  target='_blank'
+                  rel='noopener noreferrer'
               >
                 <svg
                   className='h-6 w-6'
@@ -116,11 +116,11 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href='https://linkedin.com'
-                className='text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 rounded-md p-1'
-                aria-label='Connect on LinkedIn (opens in new tab)'
-                target='_blank'
-                rel='noopener noreferrer'
+                  href='https://linkedin.com'
+                  className='text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 focus:outline-none'
+                  aria-label='Connect on LinkedIn (opens in new tab)'
+                  target='_blank'
+                  rel='noopener noreferrer'
               >
                 <svg
                   className='h-6 w-6'

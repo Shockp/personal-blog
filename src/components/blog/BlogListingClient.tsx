@@ -50,7 +50,7 @@ const TagFilter = ({
   <div className='flex flex-wrap gap-2'>
     <button
       onClick={() => onTagSelect('')}
-      className={`px-3 py-1 rounded-full text-sm font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
+      className={`px-3 py-1 rounded-full text-sm font-medium transition-colors duration-200 focus:outline-none cursor-pointer ${
         selectedTag === ''
           ? 'bg-blue-600 text-white'
           : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
@@ -62,7 +62,7 @@ const TagFilter = ({
       <button
         key={tag}
         onClick={() => onTagSelect(tag)}
-        className={`px-3 py-1 rounded-full text-sm font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
+        className={`px-3 py-1 rounded-full text-sm font-medium transition-colors duration-200 focus:outline-none cursor-pointer ${
           selectedTag === tag
             ? 'bg-blue-600 text-white'
             : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
@@ -121,16 +121,18 @@ const SortDropdown = ({
     <div className='relative'>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className='flex items-center space-x-2 px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2'
+        className='flex items-center justify-between px-4 py-2 w-44 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200 focus:outline-none cursor-pointer'
         aria-expanded={isOpen}
         aria-haspopup='listbox'
       >
-        {sortOrder === 'asc' ? (
-          <SortAsc className='w-4 h-4' />
-        ) : (
-          <SortDesc className='w-4 h-4' />
-        )}
-        <span className='text-sm font-medium'>{currentOption?.label}</span>
+        <div className='flex items-center space-x-2'>
+          {sortOrder === 'asc' ? (
+            <SortDesc className='w-4 h-4' />
+          ) : (
+            <SortAsc className='w-4 h-4' />
+          )}
+          <span className='text-sm font-medium'>{currentOption?.label}</span>
+        </div>
         <ChevronDown
           className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`}
         />
@@ -145,7 +147,7 @@ const SortDropdown = ({
                     onSortChange(option.sortBy, option.sortOrder);
                     setIsOpen(false);
                   }}
-                  className={`w-full text-left px-4 py-2 text-sm hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200 first:rounded-t-lg last:rounded-b-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
+                  className={`w-full text-left px-4 py-2 text-sm hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200 first:rounded-t-lg last:rounded-b-lg focus:outline-none cursor-pointer ${
                     currentOption?.value === option.value
                       ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400'
                       : 'text-gray-700 dark:text-gray-300'
@@ -198,7 +200,7 @@ const Pagination = ({
       <button
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className='px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2'
+        className='px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200 focus:outline-none cursor-pointer'
         aria-label='Previous page'
       >
         Previous
@@ -207,7 +209,7 @@ const Pagination = ({
         <button
           key={page}
           onClick={() => onPageChange(page)}
-          className={`px-3 py-2 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
+          className={`px-3 py-2 rounded-lg transition-colors duration-200 focus:outline-none cursor-pointer ${
             page === currentPage
               ? 'bg-blue-600 text-white'
               : 'border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700'
@@ -221,7 +223,7 @@ const Pagination = ({
       <button
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className='px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2'
+        className='px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200 focus:outline-none cursor-pointer'
         aria-label='Next page'
       >
         Next
@@ -320,7 +322,7 @@ export default function BlogListingClient({
             placeholder='Search posts...'
             value={searchQuery}
             onChange={e => setSearchQuery(e.target.value)}
-            className='w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent'
+            className='w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:border-blue-500'
             aria-label='Search blog posts'
           />
         </div>
@@ -349,7 +351,7 @@ export default function BlogListingClient({
             <div className='flex border border-gray-300 dark:border-gray-600 rounded-lg overflow-hidden'>
               <button
                 onClick={() => setViewMode('grid')}
-                className={`p-2 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
+                className={`p-2 transition-colors duration-200 focus:outline-none cursor-pointer ${
                   viewMode === 'grid'
                     ? 'bg-blue-600 text-white'
                     : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700'
@@ -360,7 +362,7 @@ export default function BlogListingClient({
               </button>
               <button
                 onClick={() => setViewMode('list')}
-                className={`p-2 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
+                className={`p-2 transition-colors duration-200 focus:outline-none cursor-pointer ${
                   viewMode === 'list'
                     ? 'bg-blue-600 text-white'
                     : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700'
