@@ -48,4 +48,4 @@ Happy coding! 🚀
 
 ---
 
-*This is the beginning of what I hope will be a valuable resource for developers at all levels. Stay tuned for regular updates and don't forget to subscribe to never miss a post!*
+_This is the beginning of what I hope will be a valuable resource for developers at all levels. Stay tuned for regular updates and don't forget to subscribe to never miss a post!_

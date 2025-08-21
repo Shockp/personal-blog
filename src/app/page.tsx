@@ -223,47 +223,7 @@ export default async function Home() {
           </div>
         </section>
 
-        {/* Call-to-Action Section */}
-        <section
-          className='py-16 sm:py-24 bg-gray-50 dark:bg-gray-900'
-          aria-labelledby='cta-heading'
-        >
-          <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-            <div className='bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 sm:p-12 text-center'>
-              <h2
-                id='cta-heading'
-                className='text-3xl sm:text-4xl font-bold text-white mb-4'
-              >
-                Let&apos;s Connect!
-              </h2>
-              <p className='text-xl text-blue-100 mb-8 max-w-2xl mx-auto'>
-                Have a question, want to collaborate, or just say hello?
-                I&apos;d love to hear from you.
-              </p>
-              <div
-                className='flex flex-col sm:flex-row gap-4 justify-center items-center'
-                role='group'
-                aria-label='Contact and subscription options'
-              >
-                <Link
-                  href='/about'
-                  className='inline-flex items-center px-6 py-3 bg-white text-blue-600 hover:bg-gray-100 font-medium rounded-lg transition-colors duration-200'
-                  aria-label='Get in touch with me'
-                >
-                  <Zap className='w-5 h-5 mr-2' />
-                  Get In Touch
-                </Link>
-                <Link
-                  href='/blog'
-                  className='inline-flex items-center px-6 py-3 border-2 border-white text-white hover:bg-white hover:text-blue-600 font-medium rounded-lg transition-colors duration-200'
-                  aria-label='Subscribe to my blog'
-                >
-                  Subscribe to Blog
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
+
       </main>
     </>
   );

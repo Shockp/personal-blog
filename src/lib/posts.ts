@@ -2,7 +2,11 @@ import fs from 'fs';
 import path from 'path';
 import { PostMetadata, BlogPost, BlogPostSummary } from '@/types/blog';
 import { parseFrontmatter, markdownToHtml } from './markdown';
-import { validateBlogPost, formatValidationErrors, ValidationOptions } from './validation';
+import {
+  validateBlogPost,
+  formatValidationErrors,
+  ValidationOptions,
+} from './validation';
 
 // Posts directory path
 const POSTS_DIRECTORY = path.join(process.cwd(), 'content', 'posts');
@@ -35,15 +39,18 @@ function validatePostMetadata(
 ): BlogPostSummary {
   // Run comprehensive validation
   const validationResult = validateBlogPost(metadata, content, slug, options);
-  
+
   // If validation fails, throw detailed error
   if (!validationResult.isValid) {
     const errorMessage = formatValidationErrors(validationResult);
     throw new Error(`Validation failed for post '${slug}':\n${errorMessage}`);
   }
-  
+
   // Log warnings in development
-  if (validationResult.warnings.length > 0 && process.env.NODE_ENV === 'development') {
+  if (
+    validationResult.warnings.length > 0 &&
+    process.env.NODE_ENV === 'development'
+  ) {
     // Validation warnings are available but not logged to console
   }
 
@@ -105,12 +112,17 @@ export async function getAllPosts(): Promise<BlogPostSummary[]> {
 
         const { data: metadata, content } = parseFrontmatter(fileContent);
 
-        const validatedMetadata = validatePostMetadata(metadata, slug, content, {
-          validateContentLength: true,
-          minContentLength: 50, // More lenient for blog posts
-          validateTagCount: true,
-          maxTags: 10,
-        });
+        const validatedMetadata = validatePostMetadata(
+          metadata,
+          slug,
+          content,
+          {
+            validateContentLength: true,
+            minContentLength: 50, // More lenient for blog posts
+            validateTagCount: true,
+            maxTags: 10,
+          }
+        );
 
         posts.push(validatedMetadata);
       } catch {

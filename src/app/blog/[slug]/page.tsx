@@ -29,7 +29,7 @@ interface PostPageData {
  */
 export async function generateStaticParams() {
   const posts = await getAllPosts();
-  return posts.map((post) => ({
+  return posts.map(post => ({
     slug: post.slug,
   }));
 }
@@ -37,9 +37,11 @@ export async function generateStaticParams() {
 /**
  * Generate metadata for SEO optimization
  */
-export async function generateMetadata({ params }: PostPageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PostPageProps): Promise<Metadata> {
   const { slug } = params;
-  
+
   try {
     const post = await getPostBySlug(slug);
 
@@ -297,8 +299,6 @@ export default async function PostPage({ params }: PostPageProps) {
               </div>
             )}
           </header>
-
-
 
           {/* Post Content */}
           <div className='mb-12'>

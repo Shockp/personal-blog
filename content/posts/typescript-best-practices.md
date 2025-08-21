@@ -131,7 +131,7 @@ function updateEntity<T extends Identifiable>(
   id: string,
   updates: Partial<T>
 ): T[] {
-  return entities.map(entity => 
+  return entities.map(entity =>
     entity.id === id ? { ...entity, ...updates } : entity
   );
 }
@@ -142,7 +142,7 @@ function updateEntity<T extends Identifiable>(
 ### Use Result Types for Better Error Handling
 
 ```typescript
-type Result<T, E = Error> = 
+type Result<T, E = Error> =
   | { success: true; data: T }
   | { success: false; error: E };
 
@@ -182,12 +182,12 @@ import { validateEmail } from './utils';
 ```typescript
 // Good - creates readonly tuple type
 const colors = ['red', 'green', 'blue'] as const;
-type Color = typeof colors[number]; // 'red' | 'green' | 'blue'
+type Color = (typeof colors)[number]; // 'red' | 'green' | 'blue'
 
 // Good - creates readonly object type
 const config = {
   apiUrl: 'https://api.example.com',
-  timeout: 5000
+  timeout: 5000,
 } as const;
 ```
 
@@ -240,7 +240,7 @@ export class UserService {
 const mockUser: User = {
   id: '1',
   name: 'John Doe',
-  email: 'john@example.com'
+  email: 'john@example.com',
 };
 
 // Use factory functions for test data
@@ -249,7 +249,7 @@ function createMockUser(overrides: Partial<User> = {}): User {
     id: '1',
     name: 'John Doe',
     email: 'john@example.com',
-    ...overrides
+    ...overrides,
   };
 }
 ```
@@ -274,4 +274,4 @@ Remember, TypeScript is a tool to help you write better JavaScript. Embrace its 
 
 ---
 
-*Want to learn more about TypeScript? Check out my other posts on advanced TypeScript patterns and React with TypeScript best practices.*
+_Want to learn more about TypeScript? Check out my other posts on advanced TypeScript patterns and React with TypeScript best practices._

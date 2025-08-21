@@ -60,7 +60,10 @@ export function isValidISODate(dateString: string): boolean {
 
   // Validate that it's a real date
   const date = new Date(dateString);
-  return !isNaN(date.getTime()) && date.toISOString().startsWith(dateString.split('T')[0]);
+  return (
+    !isNaN(date.getTime()) &&
+    date.toISOString().startsWith(dateString.split('T')[0])
+  );
 }
 
 /**
@@ -87,7 +90,7 @@ export function validateFrontmatter(
 
   // Validate required fields
   const requiredFields = ['title', 'description', 'date'];
-  
+
   for (const field of requiredFields) {
     if (!frontmatter[field]) {
       errors.push({
@@ -196,7 +199,9 @@ export function validateFrontmatter(
       }
 
       // Check for duplicate tags
-      const uniqueTags = new Set(frontmatter.tags.map((tag: string) => tag.toLowerCase()));
+      const uniqueTags = new Set(
+        frontmatter.tags.map((tag: string) => tag.toLowerCase())
+      );
       if (uniqueTags.size !== frontmatter.tags.length) {
         warnings.push({
           field: 'tags',
@@ -222,7 +227,10 @@ export function validateFrontmatter(
   }
 
   // Validate published field
-  if (frontmatter.published !== undefined && typeof frontmatter.published !== 'boolean') {
+  if (
+    frontmatter.published !== undefined &&
+    typeof frontmatter.published !== 'boolean'
+  ) {
     errors.push({
       field: 'published',
       message: `Published field must be a boolean in post '${slug}'`,
