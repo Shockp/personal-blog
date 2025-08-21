@@ -2,7 +2,7 @@
 
 import { Moon, Sun } from 'lucide-react';
 import { useTheme } from '@/contexts/ThemeContext';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 /**
  * Simple theme toggle component
@@ -11,10 +11,21 @@ import { useEffect, useState } from 'react';
 export default function ThemeToggle() {
   const { theme, toggleTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  const handleClick = () => {
+    toggleTheme();
+    // Remove focus after click with a smooth transition
+    if (buttonRef.current) {
+      setTimeout(() => {
+        buttonRef.current?.blur();
+      }, 500);
+    }
+  };
 
   // Prevent hydration mismatch by not rendering until mounted
   if (!mounted) {
@@ -23,8 +34,9 @@ export default function ThemeToggle() {
 
   return (
     <button
-      onClick={toggleTheme}
-      className='p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:text-blue-400 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors duration-200'
+      ref={buttonRef}
+      onClick={handleClick}
+      className='p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:text-blue-400 dark:hover:bg-gray-800 focus:outline-none transition-all duration-500 cursor-pointer'
       aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
       title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
     >
