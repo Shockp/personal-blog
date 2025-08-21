@@ -3,8 +3,6 @@
  * @interface PostMetadata
  */
 export interface PostMetadata {
-  /** Unique identifier for the post */
-  slug: string;
   /** Post title */
   title: string;
   /** Post description/excerpt */
@@ -13,10 +11,12 @@ export interface PostMetadata {
   date: string;
   /** Array of tags */
   tags: string[];
+  /** Author name */
+  author?: string;
   /** Featured image URL (optional) */
   image?: string;
-  /** Reading time in minutes */
-  readingTime: number;
+  /** Whether the post is published (default: true) */
+  published?: boolean;
 }
 
 /**

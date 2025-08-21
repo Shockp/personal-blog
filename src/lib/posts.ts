@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { processMarkdown, extractFrontmatter } from './markdown';
+import { markdownToHtml, parseFrontmatter } from './markdown';
 
 /**
  * Interface for a blog post with metadata
@@ -89,23 +89,28 @@ export async function getPostByFilename(filename: string): Promise<BlogPost> {
   
   try {
     const fileContent = fs.readFileSync(fullPath, 'utf8');
-    const processed = await processMarkdown(fileContent);
+    const frontmatter = parseFrontmatter(fileContent);
+    const htmlContent = await markdownToHtml(fileContent.split('---').slice(2).join('---').trim());
+    
+    // Calculate reading time and word count
+    const wordCount = fileContent.trim().split(/\s+/).length;
+    const readingTime = Math.ceil(wordCount / 200);
     
     // Generate slug from filename (remove .md extension)
     const slug = filename.replace(/\.md$/, '');
     
     return {
       slug,
-      title: processed.frontmatter.title,
-      description: processed.frontmatter.description,
-      date: processed.frontmatter.date,
-      tags: processed.frontmatter.tags || [],
-      author: processed.frontmatter.author || 'Anonymous',
-      ...(processed.frontmatter.image && { image: processed.frontmatter.image }),
-      published: processed.frontmatter.published !== false,
-      content: processed.content,
-      readingTime: processed.readingTime,
-      wordCount: processed.wordCount,
+      title: frontmatter.title,
+      description: frontmatter.description,
+      date: frontmatter.date,
+      tags: frontmatter.tags || [],
+      author: frontmatter.author || 'Anonymous',
+      ...(frontmatter.image && { image: frontmatter.image }),
+      published: frontmatter.published !== false,
+      content: htmlContent,
+      readingTime,
+      wordCount,
     };
   } catch (error) {
     throw new Error(`Error processing post ${filename}: ${error instanceof Error ? error.message : 'Unknown error'}`);
@@ -182,7 +187,7 @@ export async function getPostSummaries(includeUnpublished: boolean = false): Pro
     try {
       const fullPath = path.join(POSTS_DIRECTORY, filename);
       const fileContent = fs.readFileSync(fullPath, 'utf8');
-      const frontmatter = extractFrontmatter(fileContent);
+      const frontmatter = parseFrontmatter(fileContent);
       
       const published = frontmatter.published !== false;
       if (!includeUnpublished && !published) {
@@ -190,7 +195,6 @@ export async function getPostSummaries(includeUnpublished: boolean = false): Pro
       }
       
       // Calculate reading time from content
-      await processMarkdown(fileContent);
       const wordCount = fileContent.trim().split(/\s+/).length;
       const readingTime = Math.ceil(wordCount / 200);
       

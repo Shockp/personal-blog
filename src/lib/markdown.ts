@@ -1,227 +1,227 @@
 import { remark } from 'remark';
 import remarkHtml from 'remark-html';
-import remarkGfm from 'remark-gfm';
-import { rehype } from 'rehype';
-import rehypeHighlight from 'rehype-highlight';
-import rehypeSlug from 'rehype-slug';
-import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import matter from 'gray-matter';
-import { getReadingTime } from './utils';
+import DOMPurify from 'dompurify';
+import { JSDOM } from 'jsdom';
+import { PostMetadata } from '@/types/blog';
+
+// Create a JSDOM window for server-side DOMPurify
+const window = new JSDOM('').window;
+const purify = DOMPurify(window as any);
 
 /**
- * Interface for markdown frontmatter data
+ * Configuration options for markdown processing
  */
-export interface MarkdownFrontmatter {
-  title: string;
-  description: string;
-  date: string;
-  tags?: string[];
-  author?: string;
-  image?: string;
-  published?: boolean;
-  [key: string]: any;
+export interface MarkdownOptions {
+  /** Whether to sanitize HTML output (default: true) */
+  sanitize?: boolean;
+  /** Custom DOMPurify configuration */
+  purifyConfig?: any;
 }
 
 /**
- * Interface for processed markdown content
+ * Converts markdown content to sanitized HTML.
+ * 
+ * This function processes markdown content and converts it to HTML with security
+ * measures to prevent XSS attacks through HTML sanitization using DOMPurify.
+ * 
+ * @param markdown - Raw markdown content to convert
+ * @param options - Configuration options for processing
+ * @returns {Promise<string>} Sanitized HTML content
+ * 
+ * @throws {Error} When markdown processing fails
+ * 
+ * @example
+ * ```typescript
+ * const html = await markdownToHtml('# Hello World\n\nThis is **bold** text.');
+ * console.log(html); // '<h1>Hello World</h1>\n<p>This is <strong>bold</strong> text.</p>'
+ * ```
+ * 
+ * @example
+ * ```typescript
+ * // With custom options
+ * const html = await markdownToHtml(markdown, {
+ *   sanitize: false, // Disable sanitization (not recommended)
+ *   purifyConfig: { ALLOWED_TAGS: ['p', 'strong', 'em'] }
+ * });
+ * ```
  */
-export interface ProcessedMarkdown {
-  content: string;
-  frontmatter: MarkdownFrontmatter;
-  readingTime: number;
-  wordCount: number;
+export async function markdownToHtml(
+  markdown: string,
+  options: MarkdownOptions = {}
+): Promise<string> {
+  try {
+    const { sanitize = true, purifyConfig = {} } = options;
+    
+    // Validate input
+    if (typeof markdown !== 'string') {
+      throw new Error('Markdown content must be a string');
+    }
+    
+    if (markdown.trim().length === 0) {
+      return '';
+    }
+    
+    // Process markdown to HTML
+    const processedContent = await remark()
+      .use(remarkHtml, { sanitize: false }) // We'll sanitize manually with DOMPurify
+      .process(markdown);
+    
+    let htmlContent = processedContent.toString();
+    
+    // Sanitize HTML to prevent XSS attacks
+    if (sanitize) {
+      const defaultConfig = {
+        ALLOWED_TAGS: [
+          'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
+          'p', 'br', 'strong', 'em', 'u', 's',
+          'ul', 'ol', 'li',
+          'blockquote', 'pre', 'code',
+          'a', 'img',
+          'table', 'thead', 'tbody', 'tr', 'th', 'td'
+        ],
+        ALLOWED_ATTR: [
+          'href', 'title', 'alt', 'src',
+          'class', 'id'
+        ],
+        ALLOWED_URI_REGEXP: /^(?:(?:(?:f|ht)tps?|mailto|tel|callto|cid|xmpp|xxx):|[^a-z]|[a-z+.\-]+(?:[^a-z+.\-:]|$))/i
+      };
+      
+      const config = { ...defaultConfig, ...purifyConfig };
+      htmlContent = purify.sanitize(htmlContent, config) as unknown as string;
+    }
+    
+    return htmlContent;
+    
+  } catch (error) {
+    throw new Error(`Failed to process markdown: ${error instanceof Error ? error.message : 'Unknown error'}`);
+  }
 }
 
 /**
- * Processes raw markdown content and extracts frontmatter.
+ * Parses and validates frontmatter from markdown content.
  * 
- * This function parses markdown content with YAML frontmatter,
- * processes the markdown to HTML, and calculates reading statistics.
+ * This function extracts YAML frontmatter from markdown content and validates
+ * it against the PostMetadata interface. It ensures required fields are present
+ * and performs type validation for better data integrity.
  * 
- * @param markdownContent - Raw markdown content with frontmatter
- * @returns {Promise<ProcessedMarkdown>} Processed markdown data
+ * @param markdownContent - Raw markdown content with YAML frontmatter
+ * @returns {PostMetadata} Parsed and validated frontmatter data
+ * 
+ * @throws {Error} When frontmatter is invalid or missing required fields
  * 
  * @example
  * ```typescript
  * const markdown = `---
- * title: "My Post"
+ * title: "My Blog Post"
+ * description: "A great post about coding"
  * date: "2024-01-15"
+ * tags: ["javascript", "react"]
  * ---
- * # Hello World
- * This is my post content.`;
+ * # Content here`;
  * 
- * const processed = await processMarkdown(markdown);
- * console.log(processed.frontmatter.title); // "My Post"
+ * const metadata = parseFrontmatter(markdown);
+ * console.log(metadata.title); // "My Blog Post"
  * ```
- */
-export async function processMarkdown(markdownContent: string): Promise<ProcessedMarkdown> {
-  // Parse frontmatter and content
-  const { data: frontmatter, content: rawContent } = matter(markdownContent);
-  
-  // Validate required frontmatter fields
-  if (!frontmatter.title || !frontmatter.description || !frontmatter.date) {
-    throw new Error('Missing required frontmatter fields: title, description, or date');
-  }
-  
-  // Process markdown to HTML
-  const processedContent = await remark()
-    .use(remarkGfm) // GitHub Flavored Markdown support
-    .use(remarkHtml, { sanitize: false }) // Convert to HTML
-    .process(rawContent);
-  
-  // Further process HTML for syntax highlighting and enhancements
-  const finalContent = await rehype()
-    .data('settings', { fragment: true })
-    .use(rehypeHighlight) // Syntax highlighting
-    .use(rehypeSlug) // Add IDs to headings
-    .use(rehypeAutolinkHeadings, {
-      behavior: 'wrap',
-      properties: {
-        className: ['heading-link'],
-        ariaLabel: 'Link to this heading'
-      }
-    })
-    .process(processedContent.toString());
-  
-  // Calculate reading statistics
-  const wordCount = rawContent.trim().split(/\s+/).length;
-  const readingTime = getReadingTime(rawContent);
-  
-  return {
-    content: finalContent.toString(),
-    frontmatter: frontmatter as MarkdownFrontmatter,
-    readingTime,
-    wordCount
-  };
-}
-
-/**
- * Extracts and validates frontmatter from markdown content.
- * 
- * @param markdownContent - Raw markdown content with frontmatter
- * @returns {MarkdownFrontmatter} Extracted frontmatter data
  * 
  * @example
  * ```typescript
- * const frontmatter = extractFrontmatter(markdownContent);
- * console.log(frontmatter.title);
- * ```
- */
-export function extractFrontmatter(markdownContent: string): MarkdownFrontmatter {
-  const { data } = matter(markdownContent);
-  
-  // Validate required fields
-  if (!data.title || !data.description || !data.date) {
-    throw new Error('Missing required frontmatter fields: title, description, or date');
-  }
-  
-  return data as MarkdownFrontmatter;
-}
-
-/**
- * Extracts plain text content from markdown (removes formatting).
- * 
- * @param markdownContent - Raw markdown content
- * @returns {string} Plain text content
- * 
- * @example
- * ```typescript
- * const plainText = extractPlainText('# Hello\n\nThis is **bold** text.');
- * console.log(plainText); // "Hello This is bold text."
- * ```
- */
-export function extractPlainText(markdownContent: string): string {
-  // Remove frontmatter
-  const { content } = matter(markdownContent);
-  
-  // Remove markdown formatting
-  return content
-    .replace(/#{1,6}\s+/g, '') // Remove headers
-    .replace(/\*\*(.*?)\*\*/g, '$1') // Remove bold
-    .replace(/\*(.*?)\*/g, '$1') // Remove italic
-    .replace(/`(.*?)`/g, '$1') // Remove inline code
-    .replace(/```[\s\S]*?```/g, '') // Remove code blocks
-    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1') // Remove links, keep text
-    .replace(/!\[([^\]]*)\]\([^)]+\)/g, '$1') // Remove images, keep alt text
-    .replace(/\n+/g, ' ') // Replace newlines with spaces
-    .replace(/\s+/g, ' ') // Normalize whitespace
-    .trim();
-}
-
-/**
- * Generates a table of contents from markdown content.
- * 
- * @param markdownContent - Raw markdown content
- * @returns {Array<{level: number, text: string, slug: string}>} Table of contents entries
- * 
- * @example
- * ```typescript
- * const toc = generateTableOfContents(markdownContent);
- * toc.forEach(entry => {
- *   console.log(`${'  '.repeat(entry.level - 1)}${entry.text}`);
- * });
- * ```
- */
-export function generateTableOfContents(markdownContent: string): Array<{
-  level: number;
-  text: string;
-  slug: string;
-}> {
-  const { content } = matter(markdownContent);
-  const headingRegex = /^(#{1,6})\s+(.+)$/gm;
-  const toc: Array<{ level: number; text: string; slug: string }> = [];
-  
-  let match;
-  while ((match = headingRegex.exec(content)) !== null) {
-    if (!match[1] || !match[2]) continue;
-    const level = match[1].length;
-    const text = match[2].trim();
-    const slug = text
-      .toLowerCase()
-      .replace(/[^\w\s-]/g, '')
-      .replace(/[\s_-]+/g, '-')
-      .replace(/^-+|-+$/g, '');
-    
-    toc.push({ level, text, slug });
-  }
-  
-  return toc;
-}
-
-/**
- * Validates markdown frontmatter against required schema.
- * 
- * @param frontmatter - Frontmatter object to validate
- * @returns {boolean} True if valid, throws error if invalid
- * 
- * @example
- * ```typescript
+ * // Error handling
  * try {
- *   validateFrontmatter(frontmatter);
- *   console.log('Frontmatter is valid');
+ *   const metadata = parseFrontmatter(invalidMarkdown);
  * } catch (error) {
  *   console.error('Invalid frontmatter:', error.message);
  * }
  * ```
  */
-export function validateFrontmatter(frontmatter: any): boolean {
-  const requiredFields = ['title', 'description', 'date'];
-  const missingFields = requiredFields.filter(field => !frontmatter[field]);
-  
-  if (missingFields.length > 0) {
-    throw new Error(`Missing required frontmatter fields: ${missingFields.join(', ')}`);
+export function parseFrontmatter(markdownContent: string): PostMetadata {
+  try {
+    // Validate input
+    if (typeof markdownContent !== 'string') {
+      throw new Error('Markdown content must be a string');
+    }
+    
+    if (markdownContent.trim().length === 0) {
+      throw new Error('Markdown content cannot be empty');
+    }
+    
+    // Parse frontmatter using gray-matter
+    const { data, content } = matter(markdownContent);
+    
+    // Validate required fields
+    const requiredFields = ['title', 'description', 'date'];
+    const missingFields = requiredFields.filter(field => !data[field]);
+    
+    if (missingFields.length > 0) {
+      throw new Error(`Missing required frontmatter fields: ${missingFields.join(', ')}`);
+    }
+    
+    // Validate field types
+    if (typeof data.title !== 'string' || data.title.trim().length === 0) {
+      throw new Error('Title must be a non-empty string');
+    }
+    
+    if (typeof data.description !== 'string' || data.description.trim().length === 0) {
+      throw new Error('Description must be a non-empty string');
+    }
+    
+    if (typeof data.date !== 'string' || data.date.trim().length === 0) {
+      throw new Error('Date must be a non-empty string');
+    }
+    
+    // Validate date format (basic ISO date check)
+    const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+    if (!dateRegex.test(data.date)) {
+      throw new Error('Date must be in YYYY-MM-DD format');
+    }
+    
+    // Validate optional fields
+    if (data.tags && !Array.isArray(data.tags)) {
+      throw new Error('Tags must be an array');
+    }
+    
+    if (data.author && typeof data.author !== 'string') {
+      throw new Error('Author must be a string');
+    }
+    
+    if (data.image && typeof data.image !== 'string') {
+      throw new Error('Image must be a string');
+    }
+    
+    if (data.published !== undefined && typeof data.published !== 'boolean') {
+      throw new Error('Published must be a boolean');
+    }
+    
+    // Ensure tags are strings if provided
+    if (data.tags) {
+      const invalidTags = data.tags.filter((tag: any) => typeof tag !== 'string');
+      if (invalidTags.length > 0) {
+        throw new Error('All tags must be strings');
+      }
+    }
+    
+    // Validate content exists
+    if (!content || content.trim().length === 0) {
+      throw new Error('Markdown content body cannot be empty');
+    }
+    
+    // Return validated metadata
+    const metadata: PostMetadata = {
+      title: data.title.trim(),
+      description: data.description.trim(),
+      date: data.date,
+      tags: data.tags || [],
+      author: data.author?.trim(),
+      image: data.image?.trim(),
+      published: data.published ?? true
+    };
+    
+    return metadata;
+    
+  } catch (error) {
+    if (error instanceof Error) {
+      throw new Error(`Failed to parse frontmatter: ${error.message}`);
+    }
+    throw new Error('Failed to parse frontmatter: Unknown error');
   }
-  
-  // Validate date format
-  const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
-  if (!dateRegex.test(frontmatter.date)) {
-    throw new Error('Date must be in YYYY-MM-DD format');
-  }
-  
-  // Validate published field if present
-  if (frontmatter.published !== undefined && typeof frontmatter.published !== 'boolean') {
-    throw new Error('Published field must be a boolean');
-  }
-  
-  return true;
 }
