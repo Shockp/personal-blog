@@ -163,8 +163,8 @@ export default async function Home() {
                   href='/blog'
                   className='w-full sm:w-auto group inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all duration-500 shadow-lg hover:shadow-xl min-h-[44px] text-base sm:text-lg'
                 >
-                  <BookOpen className='mr-2 h-5 w-5 group-hover:text-[var(--hero-gradient-from)] transition-colors duration-500' />
-                  <span className='group-hover:text-[var(--hero-gradient-from)] transition-colors duration-500'>Read My Blog</span>
+                  <BookOpen className='mr-2 h-5 w-5 group-hover:!text-slate-900 dark:group-hover:text-[var(--hero-gradient-from)] transition-colors duration-500' />
+                  <span className='group-hover:!text-slate-900 dark:group-hover:text-[var(--hero-gradient-from)] transition-colors duration-500'>Read My Blog</span>
                 </Link>
                 <Link
                   href='/about'
@@ -235,8 +235,8 @@ export default async function Home() {
                 className='w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-all duration-500 group min-h-[44px] text-base sm:text-lg'
                 prefetch={false}
               >
-                <span className='group-hover:text-[var(--hero-gradient-from)] transition-colors duration-500'>View All Posts</span>
-                <ArrowRight className='ml-2 h-4 w-4 group-hover:text-[var(--hero-gradient-from)] transition-colors duration-500' />
+                <span className='group-hover:!text-slate-900 dark:group-hover:text-[var(--hero-gradient-from)] transition-colors duration-500'>View All Posts</span>
+                <ArrowRight className='ml-2 h-4 w-4 group-hover:!text-slate-900 dark:group-hover:text-[var(--hero-gradient-from)] transition-colors duration-500' />
               </Link>
             </div>
           </div>
