@@ -9,19 +9,19 @@ import { ArrowLeft, FileX } from 'lucide-react';
  */
 export default function NotFound() {
   return (
-    <div className='min-h-screen bg-white dark:bg-gray-900 flex items-center justify-center px-4'>
+    <div className='min-h-screen bg-background flex items-center justify-center px-4'>
       <div className='max-w-md w-full text-center'>
         {/* Error Icon */}
         <div className='mb-8'>
-          <FileX className='w-24 h-24 mx-auto text-gray-400 dark:text-gray-600' />
+          <FileX className='w-24 h-24 mx-auto text-muted-foreground' />
         </div>
 
         {/* Error Message */}
-        <h1 className='text-4xl font-bold text-gray-900 dark:text-white mb-4'>
+        <h1 className='text-4xl font-bold text-foreground mb-4'>
           Post Not Found
         </h1>
 
-        <p className='text-lg text-gray-600 dark:text-gray-400 mb-8'>
+        <p className='text-lg text-muted-foreground mb-8'>
           Sorry, the blog post you&apos;re looking for doesn&apos;t exist or has
           been moved.
         </p>
@@ -36,11 +36,11 @@ export default function NotFound() {
             Back to Blog
           </Link>
 
-          <div className='text-sm text-gray-500 dark:text-gray-400'>
+          <div className='text-sm text-muted-foreground'>
             or{' '}
             <Link
               href='/'
-              className='text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline cursor-pointer'
+              className='text-primary hover:text-primary/80 underline cursor-pointer'
             >
               go to homepage
             </Link>
@@ -48,11 +48,11 @@ export default function NotFound() {
         </div>
 
         {/* Additional Help */}
-        <div className='mt-12 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg'>
-          <h3 className='text-sm font-medium text-gray-900 dark:text-white mb-2'>
+        <div className='mt-12 p-4 bg-muted/50 rounded-lg'>
+          <h3 className='text-sm font-medium text-foreground mb-2'>
             What you can do:
           </h3>
-          <ul className='text-sm text-gray-600 dark:text-gray-400 space-y-1'>
+          <ul className='text-sm text-muted-foreground space-y-1'>
             <li>• Check the URL for typos</li>
             <li>• Browse our latest blog posts</li>
             <li>• Use the search feature to find content</li>

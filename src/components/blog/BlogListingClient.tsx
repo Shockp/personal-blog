@@ -21,7 +21,7 @@ const EmptyState = ({
   selectedTag: string;
 }) => (
   <div className='text-center py-16'>
-    <div className='mx-auto w-24 h-24 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center mb-6'>
+    <div className='mx-auto w-24 h-24 bg-muted rounded-full flex items-center justify-center mb-6'>
       <Search className='w-12 h-12 text-gray-400' />
     </div>
     <h3
@@ -126,7 +126,7 @@ const SortDropdown = ({
     <div className='relative'>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className='flex items-center justify-between px-4 py-2 w-44 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200 focus:outline-none cursor-pointer'
+        className='flex items-center justify-between px-4 py-2 w-44 bg-card border border-border rounded-lg hover:bg-muted transition-colors duration-200 focus:outline-none cursor-pointer'
         aria-expanded={isOpen}
         aria-haspopup='listbox'
       >
@@ -143,7 +143,7 @@ const SortDropdown = ({
         />
       </button>
       {isOpen && (
-        <div className='absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg shadow-lg z-10'>
+        <div className='absolute right-0 mt-2 w-48 bg-card border border-border rounded-lg shadow-lg z-10'>
           <ul role='listbox' className='py-1'>
             {sortOptions.map(option => (
               <li key={option.value}>
@@ -152,7 +152,7 @@ const SortDropdown = ({
                     onSortChange(option.sortBy, option.sortOrder);
                     setIsOpen(false);
                   }}
-                  className={`w-full text-left px-4 py-2 text-sm hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200 first:rounded-t-lg last:rounded-b-lg focus:outline-none cursor-pointer ${
+                  className={`w-full text-left px-4 py-2 text-sm hover:bg-muted transition-colors duration-200 first:rounded-t-lg last:rounded-b-lg focus:outline-none cursor-pointer ${
                     currentOption?.value === option.value
                       ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400'
                       : ''
@@ -210,7 +210,7 @@ const Pagination = ({
       <button
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className='px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200 focus:outline-none cursor-pointer'
+        className='px-3 py-2 rounded-lg border border-border disabled:opacity-50 disabled:cursor-not-allowed hover:bg-muted/80 transition-colors duration-200 focus:outline-none cursor-pointer'
         aria-label='Previous page'
       >
         Previous
@@ -222,7 +222,7 @@ const Pagination = ({
           className={`px-3 py-2 rounded-lg transition-colors duration-200 focus:outline-none cursor-pointer ${
             page === currentPage
               ? 'bg-blue-600 text-white'
-              : 'border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700'
+              : 'border border-border hover:bg-muted/80'
           }`}
           aria-label={`Page ${page}`}
           aria-current={page === currentPage ? 'page' : undefined}
@@ -233,7 +233,7 @@ const Pagination = ({
       <button
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className='px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200 focus:outline-none cursor-pointer'
+        className='px-3 py-2 rounded-lg border border-border disabled:opacity-50 disabled:cursor-not-allowed hover:bg-muted/80 transition-colors duration-200 focus:outline-none cursor-pointer'
         aria-label='Next page'
       >
         Next
@@ -326,13 +326,13 @@ export default function BlogListingClient({
       <div className='mb-8 space-y-6'>
         {/* Search Bar */}
         <div className='relative max-w-md mx-auto'>
-          <Search className='absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5' />
+          <Search className='absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5' />
           <input
             type='text'
             placeholder='Search posts...'
             value={searchQuery}
             onChange={e => setSearchQuery(e.target.value)}
-            className='w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:border-blue-500 text-sm sm:text-base min-h-[44px]'
+            className='w-full pl-10 pr-4 py-3 border border-border rounded-lg bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:border-blue-500 text-sm sm:text-base min-h-[44px]'
             aria-label='Search blog posts'
           />
         </div>
@@ -361,7 +361,7 @@ export default function BlogListingClient({
               sortOrder={sortOrder}
               onSortChange={handleSortChange}
             />
-            <div className='flex border border-gray-300 dark:border-gray-600 rounded-lg overflow-hidden'>
+            <div className='flex border border-border rounded-lg overflow-hidden'>
               <button
                 onClick={() => setViewMode('grid')}
                 className={`p-2 transition-colors duration-200 focus:outline-none cursor-pointer ${

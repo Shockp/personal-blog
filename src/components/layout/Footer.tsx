@@ -11,10 +11,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer
-      className='bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700'
-      role='contentinfo'
-    >
+    <footer className='bg-background border-t border-border' role='contentinfo'>
       <div className='max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8'>
         <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
           {/* About Section */}

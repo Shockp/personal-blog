@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 
 :root {
-  /* Light theme colors - Pure white and very light */
+  /* Light theme colors - Modern whites and grays */
   --background: #ffffff;
   --foreground: #000000;
   --muted: #fafafa;

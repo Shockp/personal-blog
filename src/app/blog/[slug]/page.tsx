@@ -148,7 +148,7 @@ export default function PostPage({ params }: PostPageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <div className='min-h-screen bg-white dark:bg-gray-900'>
+      <div className='min-h-screen bg-background'>
         <div className='max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8'>
           {/* Back to Blog Link */}
           <div className='mb-6 sm:mb-8'>
@@ -241,12 +241,12 @@ export default function PostPage({ params }: PostPageProps) {
 
           {/* Post Navigation */}
           {(previousPost || nextPost) && (
-            <nav className='border-t border-gray-200 dark:border-gray-700 pt-6 sm:pt-8 mb-8 sm:mb-10 lg:mb-12'>
+            <nav className='border-t border-border pt-6 sm:pt-8 mb-8 sm:mb-10 lg:mb-12'>
               <div className='grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6'>
                 {previousPost && (
                   <Link
                     href={`/blog/${previousPost.slug}`}
-                    className='group p-3 sm:p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-gray-300 dark:hover:border-gray-600 transition-colors cursor-pointer min-h-[80px] flex flex-col justify-center'
+                    className='group p-3 sm:p-4 border border-border rounded-lg hover:border-border/80 transition-colors cursor-pointer min-h-[80px] flex flex-col justify-center'
                   >
                     <div
                       className='flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm mb-1.5 sm:mb-2'
@@ -267,7 +267,7 @@ export default function PostPage({ params }: PostPageProps) {
                 {nextPost && (
                   <Link
                     href={`/blog/${nextPost.slug}`}
-                    className='group p-3 sm:p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-gray-300 dark:hover:border-gray-600 transition-colors cursor-pointer md:text-right min-h-[80px] flex flex-col justify-center'
+                    className='group p-3 sm:p-4 border border-border rounded-lg hover:border-border/80 transition-colors cursor-pointer md:text-right min-h-[80px] flex flex-col justify-center'
                   >
                     <div
                       className='flex items-center justify-start md:justify-end gap-1.5 sm:gap-2 text-xs sm:text-sm mb-1.5 sm:mb-2'
@@ -302,7 +302,7 @@ export default function PostPage({ params }: PostPageProps) {
                   <Link
                     key={relatedPost.slug}
                     href={`/blog/${relatedPost.slug}`}
-                    className='group p-3 sm:p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-gray-300 dark:hover:border-gray-600 transition-colors cursor-pointer min-h-[120px] flex flex-col'
+                    className='group p-3 sm:p-4 border border-border rounded-lg hover:border-border/80 transition-colors cursor-pointer min-h-[120px] flex flex-col'
                   >
                     <h3
                       className='text-sm sm:text-base font-semibold transition-colors mb-2 leading-tight flex-shrink-0'

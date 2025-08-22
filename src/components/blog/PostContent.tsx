@@ -162,8 +162,12 @@ export default function PostContent({
       return (
         <h1
           id={id}
+<<<<<<< HEAD
           className='text-4xl font-bold mb-6'
           style={{ color: 'var(--text-primary)' }}
+=======
+          className='text-4xl font-bold mb-6 text-foreground'
+>>>>>>> e94413f1 (refactor(theme): migrate color scheme to use CSS variables for consistent theming)
           {...props}
         >
           {children}
@@ -182,8 +186,12 @@ export default function PostContent({
       return (
         <h2
           id={id}
+<<<<<<< HEAD
           className='text-3xl font-semibold mb-4 mt-8'
           style={{ color: 'var(--text-primary)' }}
+=======
+          className='text-3xl font-semibold mb-4 mt-8 text-foreground'
+>>>>>>> e94413f1 (refactor(theme): migrate color scheme to use CSS variables for consistent theming)
           {...props}
         >
           {children}
@@ -202,8 +210,12 @@ export default function PostContent({
       return (
         <h3
           id={id}
+<<<<<<< HEAD
           className='text-2xl font-semibold mb-3 mt-6'
           style={{ color: 'var(--text-primary)' }}
+=======
+          className='text-2xl font-semibold mb-3 mt-6 text-foreground'
+>>>>>>> e94413f1 (refactor(theme): migrate color scheme to use CSS variables for consistent theming)
           {...props}
         >
           {children}
@@ -222,8 +234,12 @@ export default function PostContent({
       return (
         <h4
           id={id}
+<<<<<<< HEAD
           className='text-xl font-semibold mb-2 mt-5'
           style={{ color: 'var(--text-primary)' }}
+=======
+          className='text-xl font-semibold mb-2 mt-5 text-foreground'
+>>>>>>> e94413f1 (refactor(theme): migrate color scheme to use CSS variables for consistent theming)
           {...props}
         >
           {children}
@@ -242,8 +258,12 @@ export default function PostContent({
       return (
         <h5
           id={id}
+<<<<<<< HEAD
           className='text-lg font-semibold mb-2 mt-4'
           style={{ color: 'var(--text-primary)' }}
+=======
+          className='text-lg font-semibold mb-2 mt-4 text-foreground'
+>>>>>>> e94413f1 (refactor(theme): migrate color scheme to use CSS variables for consistent theming)
           {...props}
         >
           {children}
@@ -262,8 +282,12 @@ export default function PostContent({
       return (
         <h6
           id={id}
+<<<<<<< HEAD
           className='text-base font-semibold mb-2 mt-3'
           style={{ color: 'var(--text-primary)' }}
+=======
+          className='text-base font-semibold mb-2 mt-3 text-foreground'
+>>>>>>> e94413f1 (refactor(theme): migrate color scheme to use CSS variables for consistent theming)
           {...props}
         >
           {children}
@@ -276,11 +300,15 @@ export default function PostContent({
     }: React.HTMLAttributes<HTMLParagraphElement> & {
       children?: React.ReactNode;
     }) => (
+<<<<<<< HEAD
       <p
         className='mb-4 leading-relaxed'
         style={{ color: 'var(--text-secondary)' }}
         {...props}
       >
+=======
+      <p className='mb-4 text-muted-foreground leading-relaxed' {...props}>
+>>>>>>> e94413f1 (refactor(theme): migrate color scheme to use CSS variables for consistent theming)
         {children}
       </p>
     ),
@@ -295,6 +323,7 @@ export default function PostContent({
       return (
         <a
           href={href}
+<<<<<<< HEAD
           className='underline transition-colors'
           style={{ color: 'var(--text-accent)' }}
           onMouseEnter={e =>
@@ -303,6 +332,9 @@ export default function PostContent({
           onMouseLeave={e =>
             (e.currentTarget.style.color = 'var(--text-accent)')
           }
+=======
+          className='text-blue-600 hover:text-blue-800 underline transition-colors'
+>>>>>>> e94413f1 (refactor(theme): migrate color scheme to use CSS variables for consistent theming)
           {...(isExternal && {
             target: '_blank',
             rel: 'noopener noreferrer',
@@ -319,11 +351,15 @@ export default function PostContent({
     }: React.HTMLAttributes<HTMLUListElement> & {
       children?: React.ReactNode;
     }) => (
+<<<<<<< HEAD
       <ul
         className='mb-4 ml-6 list-disc'
         style={{ color: 'var(--text-secondary)' }}
         {...props}
       >
+=======
+      <ul className='mb-4 ml-6 list-disc text-muted-foreground' {...props}>
+>>>>>>> e94413f1 (refactor(theme): migrate color scheme to use CSS variables for consistent theming)
         {children}
       </ul>
     ),
@@ -333,11 +369,15 @@ export default function PostContent({
     }: React.HTMLAttributes<HTMLOListElement> & {
       children?: React.ReactNode;
     }) => (
+<<<<<<< HEAD
       <ol
         className='mb-4 ml-6 list-decimal'
         style={{ color: 'var(--text-secondary)' }}
         {...props}
       >
+=======
+      <ol className='mb-4 ml-6 list-decimal text-muted-foreground' {...props}>
+>>>>>>> e94413f1 (refactor(theme): migrate color scheme to use CSS variables for consistent theming)
         {children}
       </ol>
     ),
@@ -358,8 +398,12 @@ export default function PostContent({
       children?: React.ReactNode;
     }) => (
       <blockquote
+<<<<<<< HEAD
         className='border-l-4 border-gray-300 dark:border-gray-600 pl-4 my-4 italic'
         style={{ color: 'var(--text-muted)' }}
+=======
+        className='border-l-4 border-border pl-4 my-4 italic text-muted-foreground'
+>>>>>>> e94413f1 (refactor(theme): migrate color scheme to use CSS variables for consistent theming)
         {...props}
       >
         {children}
@@ -376,8 +420,12 @@ export default function PostContent({
       if (inline) {
         return (
           <code
+<<<<<<< HEAD
             className='bg-gray-100 dark:bg-gray-800 px-1 py-0.5 rounded text-sm font-mono'
             style={{ color: 'var(--text-primary)' }}
+=======
+            className='bg-muted px-1 py-0.5 rounded text-sm font-mono text-foreground'
+>>>>>>> e94413f1 (refactor(theme): migrate color scheme to use CSS variables for consistent theming)
             {...props}
           >
             {children}
@@ -397,7 +445,7 @@ export default function PostContent({
       children?: React.ReactNode;
     }) => (
       <pre
-        className='bg-gray-50 dark:bg-gray-900 p-4 rounded-lg overflow-x-auto mb-4 border border-gray-200 dark:border-gray-700'
+        className='bg-muted/50 p-4 rounded-lg overflow-x-auto mb-4 border border-border'
         {...props}
       >
         {children}
@@ -412,10 +460,14 @@ export default function PostContent({
         {showToc && tocItems.length > 0 && (
           <aside className='lg:w-64 lg:flex-shrink-0'>
             <div className='sticky top-8'>
+<<<<<<< HEAD
               <h3
                 className='text-lg font-semibold mb-4'
                 style={{ color: 'var(--text-primary)' }}
               >
+=======
+              <h3 className='text-lg font-semibold mb-4 text-foreground'>
+>>>>>>> e94413f1 (refactor(theme): migrate color scheme to use CSS variables for consistent theming)
                 Table of Contents
               </h3>
               <nav className='space-y-1' aria-label='Table of contents'>
@@ -423,6 +475,7 @@ export default function PostContent({
                   <a
                     key={item.id}
                     href={`#${item.id}`}
+<<<<<<< HEAD
                     className='block py-1 text-sm transition-colors font-medium'
                     style={{
                       color:
@@ -441,6 +494,14 @@ export default function PostContent({
                           ? 'var(--text-accent)'
                           : 'var(--text-secondary)')
                     }
+=======
+                    className={`block py-1 text-sm transition-colors hover:text-blue-600 ${
+                      activeHeading === item.id
+                        ? 'text-blue-600 font-medium'
+                        : 'text-muted-foreground'
+                    }`}
+                    style={{ paddingLeft: `${(item.level - 1) * 12}px` }}
+>>>>>>> e94413f1 (refactor(theme): migrate color scheme to use CSS variables for consistent theming)
                     onClick={e => {
                       e.preventDefault();
                       const element = document.getElementById(item.id);
@@ -474,18 +535,18 @@ export default function PostContent({
 
           {/* Social Sharing */}
           {showSocialShare && (
-            <div className='mt-8 pt-8 border-t border-gray-200 dark:border-gray-700'>
+            <div className='mt-8 pt-8 border-t border-border'>
               <div className='flex items-center justify-between flex-wrap gap-4'>
                 <div className='flex items-center gap-2'>
-                  <Share className='w-5 h-5 text-gray-600 dark:text-gray-400' />
-                  <span className='text-sm font-medium text-gray-700 dark:text-gray-300'>
+                  <Share className='w-5 h-5 text-muted-foreground' />
+                  <span className='text-sm font-medium text-muted-foreground'>
                     Share this article
                   </span>
                 </div>
                 <div className='flex items-center gap-3'>
                   <button
                     onClick={shareOnX}
-                    className='flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors cursor-pointer'
+                    className='flex items-center gap-2 px-3 py-2 text-sm font-medium text-muted-foreground hover:text-blue-600 transition-colors cursor-pointer'
                     aria-label='Share on X'
                   >
                     <svg
@@ -500,7 +561,7 @@ export default function PostContent({
                   </button>
                   <button
                     onClick={shareOnLinkedIn}
-                    className='flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors cursor-pointer'
+                    className='flex items-center gap-2 px-3 py-2 text-sm font-medium text-muted-foreground hover:text-blue-600 transition-colors cursor-pointer'
                     aria-label='Share on LinkedIn'
                   >
                     <Linkedin className='w-4 h-4' />
@@ -508,7 +569,7 @@ export default function PostContent({
                   </button>
                   <button
                     onClick={shareOnFacebook}
-                    className='flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors cursor-pointer'
+                    className='flex items-center gap-2 px-3 py-2 text-sm font-medium text-muted-foreground hover:text-blue-600 transition-colors cursor-pointer'
                     aria-label='Share on Facebook'
                   >
                     <Facebook className='w-4 h-4' />
@@ -516,7 +577,7 @@ export default function PostContent({
                   </button>
                   <button
                     onClick={copyToClipboard}
-                    className='flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors cursor-pointer'
+                    className='flex items-center gap-2 px-3 py-2 text-sm font-medium text-muted-foreground hover:text-blue-600 transition-colors cursor-pointer'
                     aria-label='Copy link'
                   >
                     {copySuccess === 'copied' ? (

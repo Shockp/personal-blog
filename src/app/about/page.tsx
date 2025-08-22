@@ -145,7 +145,7 @@ export default function AboutPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
 
-      <div className='min-h-screen bg-white dark:bg-gray-900'>
+      <div className='min-h-screen bg-background'>
         {/* Hero Section - Personal Introduction */}
         <section
           className='relative py-12 sm:py-20 lg:py-32'
@@ -157,13 +157,13 @@ export default function AboutPage() {
             <div className='grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center'>
               {/* Text Content */}
               <div className='text-center lg:text-left'>
-                <h1 className='text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6'>
+                <h1 className='text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4 sm:mb-6'>
                   Hi, I&apos;m{' '}
                   <span className='bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent'>
                     Adrian
                   </span>
                 </h1>
-                <p className='text-lg sm:text-xl text-gray-600 dark:text-gray-300 mb-6 sm:mb-8 leading-relaxed px-2 sm:px-0'>
+                <p className='text-lg sm:text-xl text-muted-foreground mb-6 sm:mb-8 leading-relaxed px-2 sm:px-0'>
                   A passionate web developer with over 5 years of experience
                   creating modern, user-friendly applications. I specialize in
                   React, TypeScript, and building scalable web solutions that
@@ -180,7 +180,7 @@ export default function AboutPage() {
                   </Link>
                   <a
                     href='#contact'
-                    className='inline-flex items-center px-6 py-3 border-2 border-gray-300 dark:border-gray-600 hover:border-blue-600 dark:hover:border-blue-400 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium rounded-lg transition-colors duration-200'
+                    className='inline-flex items-center px-6 py-3 border-2 border-border hover:border-primary text-foreground hover:text-primary font-medium rounded-lg transition-colors duration-200'
                   >
                     <Mail className='w-5 h-5 mr-2' />
                     Get In Touch
@@ -194,7 +194,7 @@ export default function AboutPage() {
                   <div className='w-80 h-80 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center shadow-2xl'>
                     <Users className='w-32 h-32 text-white' />
                   </div>
-                  <div className='absolute -bottom-4 -right-4 bg-white dark:bg-gray-800 rounded-full p-4 shadow-lg'>
+                  <div className='absolute -bottom-4 -right-4 bg-background border border-border rounded-full p-4 shadow-lg'>
                     <Code className='w-8 h-8 text-blue-600' />
                   </div>
                 </div>
@@ -204,7 +204,7 @@ export default function AboutPage() {
         </section>
 
         {/* Skills & Expertise Section */}
-        <section className='py-12 sm:py-16 lg:py-20 bg-gray-50 dark:bg-gray-800'>
+        <section className='py-12 sm:py-16 lg:py-20 bg-muted/30'>
           <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
             <div className='text-center mb-10 sm:mb-12 lg:mb-16'>
               <h2
@@ -228,7 +228,7 @@ export default function AboutPage() {
                 return (
                   <div
                     key={index}
-                    className='bg-white dark:bg-gray-900 rounded-lg p-4 sm:p-6 shadow-md hover:shadow-lg transition-shadow duration-200'
+                    className='bg-card rounded-lg p-4 sm:p-6 shadow-md hover:shadow-lg transition-shadow duration-200'
                   >
                     <div className='flex items-center mb-3 sm:mb-4'>
                       <div
@@ -244,7 +244,7 @@ export default function AboutPage() {
                           {skill.name}
                         </h3>
                         <div className='mt-2'>
-                          <div className='bg-gray-200 dark:bg-gray-700 rounded-full h-2'>
+                          <div className='bg-muted rounded-full h-2'>
                             <div
                               className={`h-2 rounded-full ${skill.color} transition-all duration-1000 ease-out`}
                               style={{ width: `${skill.level}%` }}
@@ -267,7 +267,7 @@ export default function AboutPage() {
         </section>
 
         {/* Professional Background Section */}
-        <section className='py-20 bg-white dark:bg-gray-900'>
+        <section className='py-20 bg-background'>
           <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
             <div className='text-center mb-16'>
               <h2
@@ -287,7 +287,7 @@ export default function AboutPage() {
 
             <div className='relative'>
               {/* Timeline line */}
-              <div className='absolute left-4 md:left-1/2 transform md:-translate-x-px top-0 bottom-0 w-0.5 bg-gray-300 dark:bg-gray-600'></div>
+              <div className='absolute left-4 md:left-1/2 transform md:-translate-x-px top-0 bottom-0 w-0.5 bg-border'></div>
 
               {experiences.map((experience, index) => (
                 <div
@@ -295,13 +295,13 @@ export default function AboutPage() {
                   className={`relative flex items-center mb-12 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
                 >
                   {/* Timeline dot */}
-                  <div className='absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-blue-600 rounded-full border-4 border-white dark:border-gray-900 z-10'></div>
+                  <div className='absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-blue-600 rounded-full border-4 border-background z-10'></div>
 
                   {/* Content */}
                   <div
                     className={`ml-12 md:ml-0 md:w-1/2 ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'}`}
                   >
-                    <div className='bg-gray-50 dark:bg-gray-800 rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-200'>
+                    <div className='bg-card rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-200'>
                       <div className='flex items-center mb-3'>
                         <Calendar className='w-5 h-5 text-blue-600 mr-2' />
                         <span
@@ -366,10 +366,10 @@ export default function AboutPage() {
         >
           <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
             <div className='text-center mb-10 sm:mb-12 lg:mb-16'>
-              <h2 className='text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4'>
+              <h2 className='text-2xl sm:text-3xl font-bold text-foreground mb-3 sm:mb-4'>
                 Let&apos;s Connect
               </h2>
-              <p className='text-base sm:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto px-2 sm:px-0'>
+              <p className='text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto px-2 sm:px-0'>
                 I&apos;m always interested in new opportunities and
                 collaborations. Feel free to reach out!
               </p>
@@ -377,7 +377,7 @@ export default function AboutPage() {
 
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6'>
               {/* Email */}
-              <div className='bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-200 text-center'>
+              <div className='bg-card rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-200 text-center'>
                 <div className='bg-blue-100 dark:bg-blue-900/20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4'>
                   <Mail className='w-8 h-8 text-blue-600' />
                 </div>
@@ -406,7 +406,7 @@ export default function AboutPage() {
               </div>
 
               {/* Location */}
-              <div className='bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-200 text-center'>
+              <div className='bg-card rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-200 text-center'>
                 <div className='bg-green-100 dark:bg-green-900/20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4'>
                   <MapPin className='w-8 h-8 text-green-600' />
                 </div>
@@ -428,7 +428,7 @@ export default function AboutPage() {
               </div>
 
               {/* Social */}
-              <div className='bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-200 text-center md:col-span-2 lg:col-span-1'>
+              <div className='bg-card rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-200 text-center md:col-span-2 lg:col-span-1'>
                 <div className='bg-purple-100 dark:bg-purple-900/20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4'>
                   <Globe className='w-8 h-8 text-purple-600' />
                 </div>

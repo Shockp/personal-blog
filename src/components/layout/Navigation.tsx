@@ -22,7 +22,7 @@ export default function Navigation() {
 
   return (
     <nav
-      className='bg-white dark:bg-gray-900 shadow-sm border-b border-gray-200 dark:border-gray-700'
+      className='bg-background shadow-sm border-b border-border'
       role='navigation'
       aria-label='Main navigation'
     >
@@ -124,7 +124,7 @@ export default function Navigation() {
       {/* Mobile Navigation Menu */}
       {isMenuOpen && (
         <div className='md:hidden' role='menu'>
-          <div className='px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700'>
+          <div className='px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-background border-t border-border'>
             <Link
               href='/'
               className='block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200'
