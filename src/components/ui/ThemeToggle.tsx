@@ -36,15 +36,26 @@ export default function ThemeToggle() {
     <button
       ref={buttonRef}
       onClick={handleClick}
-      className='p-2 rounded-md text-muted-foreground hover:text-blue-600 hover:bg-muted focus:outline-none transition-all duration-500 cursor-pointer'
+      className='group relative p-3 rounded-full border-2 border-transparent bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-300 cursor-pointer shadow-lg hover:shadow-xl transform hover:scale-105 active:scale-95'
+      style={{
+        background: theme === 'light' 
+          ? 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)' 
+          : 'linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)',
+        color: '#ffffff'
+      }}
       aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
-      title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+      title={`Currently ${theme} mode - Click to switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
     >
-      {theme === 'light' ? (
-        <Sun className='h-5 w-5' aria-hidden='true' />
-      ) : (
-        <Moon className='h-5 w-5' aria-hidden='true' />
-      )}
+      <div className='relative flex items-center justify-center'>
+        {theme === 'light' ? (
+          <Sun className='h-5 w-5 animate-pulse' aria-hidden='true' />
+        ) : (
+          <Moon className='h-5 w-5 animate-pulse' aria-hidden='true' />
+        )}
+        <span className='absolute -bottom-6 left-1/2 transform -translate-x-1/2 text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap' style={{ color: 'var(--text-secondary)' }}>
+          {theme === 'light' ? 'Dark' : 'Light'}
+        </span>
+      </div>
     </button>
   );
 }

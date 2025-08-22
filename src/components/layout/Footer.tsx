@@ -205,7 +205,7 @@ export default function Footer() {
             className='text-base text-center'
             style={{ color: 'var(--text-secondary)' }}
           >
-            &copy; {currentYear} Adrian. All rights reserved.
+            &copy; {currentYear} Adrián Feito Blázquez. All rights reserved.
           </p>
         </div>
       </div>
