@@ -36,7 +36,7 @@ export default function ThemeToggle() {
     <button
       ref={buttonRef}
       onClick={handleClick}
-      className='group relative p-3 rounded-full border-2 border-transparent bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-300 cursor-pointer shadow-lg hover:shadow-xl transform hover:scale-105 active:scale-95'
+      className='group relative p-3 rounded-full border-2 border-transparent bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 focus:outline-none transition-all duration-300 cursor-pointer shadow-lg hover:shadow-xl transform hover:scale-105 active:scale-95'
       style={{
         background: theme === 'light' 
           ? 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)' 

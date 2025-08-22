@@ -150,7 +150,7 @@ export default function AboutPage() {
         <section
           className='relative py-12 sm:py-20 lg:py-32'
           style={{
-            background: `linear-gradient(to bottom right, var(--about-gradient-from), var(--about-gradient-via), var(--about-gradient-to))`,
+            background: `linear-gradient(to bottom right, var(--hero-gradient-from), var(--hero-gradient-to))`,
           }}
         >
           <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
@@ -180,9 +180,9 @@ export default function AboutPage() {
                   </Link>
                   <a
                     href='#contact'
-                    className='inline-flex items-center px-6 py-3 border-2 border-border hover:border-primary text-foreground hover:text-primary font-medium rounded-lg transition-colors duration-200'
+                    className='inline-flex items-center px-6 py-3 border-2 border-border hover:border-primary text-foreground hover:text-primary font-medium rounded-lg transition-colors duration-200 group'
                   >
-                    <Mail className='w-5 h-5 mr-2' />
+                    <Mail className='w-5 h-5 mr-2 text-muted-foreground group-hover:text-primary transition-colors duration-200' />
                     Get In Touch
                   </a>
                 </div>
@@ -361,7 +361,7 @@ export default function AboutPage() {
           id='contact'
           className='py-12 sm:py-16 lg:py-20'
           style={{
-            background: `linear-gradient(to bottom right, var(--about-gradient-from), var(--about-gradient-via), var(--about-gradient-to))`,
+            background: `linear-gradient(to bottom right, var(--hero-gradient-from), var(--hero-gradient-to))`,
           }}
         >
           <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>

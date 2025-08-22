@@ -172,16 +172,9 @@ export default async function Home() {
                 </Link>
                 <Link
                   href='/about'
-                  className='w-full sm:w-auto group inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 border-2 font-semibold rounded-lg transition-all duration-200 hover:shadow-lg min-h-[44px] text-base sm:text-lg'
-                  style={{
-                    borderColor: 'var(--border)',
-                    color: 'var(--foreground)',
-                  }}
+                  className='w-full sm:w-auto group inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 border-2 border-border hover:border-primary text-foreground hover:text-primary font-semibold rounded-lg transition-all duration-200 hover:shadow-lg min-h-[44px] text-base sm:text-lg'
                 >
-                  <Users
-                    className='mr-2 h-5 w-5'
-                    style={{ color: 'var(--muted-foreground)' }}
-                  />
+                  <Users className='mr-2 h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors duration-200' />
                   <span className='transition-colors duration-200'>
                     About Me
                   </span>
