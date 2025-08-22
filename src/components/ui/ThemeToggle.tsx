@@ -52,9 +52,6 @@ export default function ThemeToggle() {
         ) : (
           <Moon className='h-5 w-5 animate-pulse' aria-hidden='true' />
         )}
-        <span className='absolute -bottom-6 left-1/2 transform -translate-x-1/2 text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap' style={{ color: 'var(--text-secondary)' }}>
-          {theme === 'light' ? 'Dark' : 'Light'}
-        </span>
       </div>
     </button>
   );
