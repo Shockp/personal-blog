@@ -140,7 +140,7 @@ export default function PostCard({
           {/* Title */}
           <h2
             id={`post-title-${slug}`}
-            className='text-lg sm:text-xl font-bold mb-3 transition-colors duration-200 line-clamp-2 leading-tight'
+            className='text-lg sm:text-xl font-bold mb-3 transition-colors duration-500 line-clamp-2 leading-tight'
             style={{ color: 'var(--card-text)' }}
             onMouseEnter={e => {
               e.currentTarget.style.color = 'var(--primary)';
@@ -167,7 +167,7 @@ export default function PostCard({
                 <button
                   key={tag}
                   onClick={e => handleTagClick(tag, e)}
-                  className='inline-flex items-center px-2 sm:px-2.5 py-1 sm:py-0.5 rounded-full text-xs font-medium transition-colors duration-200 focus:outline-none cursor-pointer min-h-[24px]'
+                  className='inline-flex items-center px-2 sm:px-2.5 py-1 sm:py-0.5 rounded-full text-xs font-medium transition-colors duration-500 focus:outline-none cursor-pointer min-h-[24px]'
                   style={{
                     backgroundColor: 'var(--tag-bg)',
                     color: 'var(--tag-text)',
@@ -205,7 +205,7 @@ export default function PostCard({
         <div
           className='
           absolute bottom-4 right-6 opacity-0 group-hover:opacity-100 
-          transition-opacity duration-200
+          transition-opacity duration-500
         '
         >
           <span
@@ -214,7 +214,7 @@ export default function PostCard({
           >
             Read more
             <svg
-              className='w-4 h-4 transition-transform group-hover:translate-x-1'
+              className='w-4 h-4 transition-transform duration-500'
               fill='none'
               stroke='currentColor'
               viewBox='0 0 24 24'

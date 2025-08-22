@@ -172,17 +172,17 @@ export default function AboutPage() {
                 <div className='flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-5 justify-center lg:justify-start'>
                   <Link
                     href='/blog'
-                    className='inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-200 group'
+                    className='inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-500 group'
                   >
-                    <Code className='w-5 h-5 mr-2 group-hover:text-[var(--hero-gradient-from)] transition-colors duration-200' />
-                    <span className='group-hover:text-[var(--hero-gradient-from)] transition-colors duration-200'>View My Work</span>
-                    <ExternalLink className='w-4 h-4 ml-2 group-hover:translate-x-1 group-hover:text-[var(--hero-gradient-from)] transition-all duration-200' />
+                    <Code className='w-5 h-5 mr-2 group-hover:text-[var(--hero-gradient-from)] transition-colors duration-500' />
+                    <span className='group-hover:text-[var(--hero-gradient-from)] transition-colors duration-500'>View My Work</span>
+                    <ExternalLink className='w-4 h-4 ml-2 group-hover:text-[var(--hero-gradient-from)] transition-colors duration-500' />
                   </Link>
                   <a
                     href='#contact'
-                    className='inline-flex items-center px-6 py-3 border-2 border-border hover:border-primary text-foreground hover:text-primary font-medium rounded-lg transition-colors duration-200 group'
+                    className='inline-flex items-center px-6 py-3 border-2 border-border hover:border-primary text-foreground hover:text-primary font-medium rounded-lg transition-colors duration-500 group'
                   >
-                    <Mail className='w-5 h-5 mr-2 text-muted-foreground group-hover:text-primary transition-colors duration-200' />
+                    <Mail className='w-5 h-5 mr-2 text-muted-foreground group-hover:text-primary transition-colors duration-500' />
                     Get In Touch
                   </a>
                 </div>
@@ -228,7 +228,7 @@ export default function AboutPage() {
                 return (
                   <div
                     key={index}
-                    className='bg-card rounded-lg p-4 sm:p-6 shadow-md hover:shadow-lg transition-shadow duration-200'
+                    className='bg-card rounded-lg p-4 sm:p-6 shadow-md hover:shadow-lg transition-shadow duration-500'
                   >
                     <div className='flex items-center mb-3 sm:mb-4'>
                       <div
@@ -301,7 +301,7 @@ export default function AboutPage() {
                   <div
                     className={`ml-12 md:ml-0 md:w-1/2 ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'}`}
                   >
-                    <div className='bg-card rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-200'>
+                    <div className='bg-card rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-500'>
                       <div className='flex items-center mb-3'>
                         <Calendar className='w-5 h-5 text-blue-600 mr-2' />
                         <span
@@ -377,7 +377,7 @@ export default function AboutPage() {
 
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6'>
               {/* Email */}
-              <div className='bg-card rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-200 text-center'>
+              <div className='bg-card rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-500 text-center'>
                 <div className='bg-blue-100 dark:bg-blue-900/20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4'>
                   <Mail className='w-8 h-8 text-blue-600' />
                 </div>
@@ -392,7 +392,7 @@ export default function AboutPage() {
                 </p>
                 <a
                   href='mailto:adrian@example.com'
-                  className='font-medium transition-colors duration-200'
+                  className='font-medium transition-colors duration-500'
                   style={{ color: 'var(--text-accent)' }}
                   onMouseEnter={e =>
                     (e.currentTarget.style.color = 'var(--text-primary)')
@@ -406,7 +406,7 @@ export default function AboutPage() {
               </div>
 
               {/* Location */}
-              <div className='bg-card rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-200 text-center'>
+              <div className='bg-card rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-500 text-center'>
                 <div className='bg-green-100 dark:bg-green-900/20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4'>
                   <MapPin className='w-8 h-8 text-green-600' />
                 </div>
@@ -428,7 +428,7 @@ export default function AboutPage() {
               </div>
 
               {/* Social */}
-              <div className='bg-card rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-200 text-center md:col-span-2 lg:col-span-1'>
+              <div className='bg-card rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-500 text-center md:col-span-2 lg:col-span-1'>
                 <div className='bg-purple-100 dark:bg-purple-900/20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4'>
                   <Globe className='w-8 h-8 text-purple-600' />
                 </div>
@@ -444,7 +444,7 @@ export default function AboutPage() {
                 <div className='flex justify-center space-x-4'>
                   <a
                     href='https://github.com/adrian'
-                    className='transition-colors duration-200'
+                    className='transition-colors duration-500'
                     style={{ color: 'var(--text-secondary)' }}
                     onMouseEnter={e =>
                       (e.currentTarget.style.color = 'var(--text-primary)')
@@ -458,7 +458,7 @@ export default function AboutPage() {
                   </a>
                   <a
                     href='https://linkedin.com/in/adrian'
-                    className='transition-colors duration-200'
+                    className='transition-colors duration-500'
                     style={{ color: 'var(--text-secondary)' }}
                     onMouseEnter={e =>
                       (e.currentTarget.style.color = 'var(--text-primary)')
@@ -472,7 +472,7 @@ export default function AboutPage() {
                   </a>
                   <a
                     href='https://x.com/adrian'
-                    className='transition-colors duration-200'
+                    className='transition-colors duration-500'
                     style={{ color: 'var(--text-secondary)' }}
                     onMouseEnter={e =>
                       (e.currentTarget.style.color = 'var(--text-primary)')
@@ -492,11 +492,11 @@ export default function AboutPage() {
             <div className='text-center mt-12'>
               <Link
                 href='/blog'
-                className='inline-flex items-center px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-200 group'
+                className='inline-flex items-center px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-500 group'
               >
-                <Code className='w-5 h-5 mr-2 group-hover:text-[var(--hero-gradient-from)] transition-colors duration-200' />
-                <span className='group-hover:text-[var(--hero-gradient-from)] transition-colors duration-200'>Check Out My Blog</span>
-                <ExternalLink className='w-4 h-4 ml-2 group-hover:translate-x-1 group-hover:text-[var(--hero-gradient-from)] transition-all duration-200' />
+                <Code className='w-5 h-5 mr-2 group-hover:text-[var(--hero-gradient-from)] transition-colors duration-500' />
+                <span className='group-hover:text-[var(--hero-gradient-from)] transition-colors duration-500'>Check Out My Blog</span>
+                <ExternalLink className='w-4 h-4 ml-2 group-hover:text-[var(--hero-gradient-from)] transition-colors duration-500' />
               </Link>
             </div>
           </div>
