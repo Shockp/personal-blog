@@ -217,8 +217,17 @@ export default function PostPage({ params }: PostPageProps) {
                     <Link
                       key={tag}
                       href={`/blog?tag=${encodeURIComponent(tag)}`}
-                      className='px-2 sm:px-3 py-1 text-xs font-medium bg-gray-100 dark:bg-gray-800 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors cursor-pointer min-h-[24px] flex items-center'
-                      style={{ color: 'var(--text-secondary)' }}
+                      className='px-2 sm:px-3 py-1 text-xs font-medium rounded-full transition-colors cursor-pointer min-h-[24px] flex items-center'
+                      style={{
+                        backgroundColor: 'var(--tag-bg)',
+                        color: 'var(--tag-text)',
+                      }}
+                      onMouseEnter={e => {
+                        e.currentTarget.style.backgroundColor = 'var(--tag-hover-bg)';
+                      }}
+                      onMouseLeave={e => {
+                        e.currentTarget.style.backgroundColor = 'var(--tag-bg)';
+                      }}
                     >
                       {tag}
                     </Link>
