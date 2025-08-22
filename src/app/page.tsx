@@ -161,14 +161,14 @@ export default async function Home() {
               <div className='flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4 sm:px-0'>
                 <Link
                   href='/blog'
-                  className='w-full sm:w-auto inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 font-semibold rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl min-h-[44px] text-base sm:text-lg'
+                  className='w-full sm:w-auto group inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 font-semibold rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl min-h-[44px] text-base sm:text-lg'
                   style={{
                     backgroundColor: 'var(--primary)',
                     color: 'var(--primary-foreground)',
                   }}
                 >
-                  <BookOpen className='mr-2 h-5 w-5' />
-                  Read My Blog
+                  <BookOpen className='mr-2 h-5 w-5 group-hover:text-[var(--hero-gradient-from)] transition-colors duration-200' />
+                  <span className='group-hover:text-[var(--hero-gradient-from)] transition-colors duration-200'>Read My Blog</span>
                 </Link>
                 <Link
                   href='/about'
@@ -243,8 +243,8 @@ export default async function Home() {
                 }}
                 prefetch={false}
               >
-                View All Posts
-                <ArrowRight className='ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-200' />
+                <span className='group-hover:text-[var(--muted)] transition-colors duration-200'>View All Posts</span>
+                <ArrowRight className='ml-2 h-4 w-4 group-hover:translate-x-1 group-hover:text-[var(--muted)] transition-all duration-200' />
               </Link>
             </div>
           </div>

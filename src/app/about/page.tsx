@@ -174,9 +174,9 @@ export default function AboutPage() {
                     href='/blog'
                     className='inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-200 group'
                   >
-                    <Code className='w-5 h-5 mr-2' />
-                    View My Work
-                    <ExternalLink className='w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-200' />
+                    <Code className='w-5 h-5 mr-2 group-hover:text-[var(--hero-gradient-from)] transition-colors duration-200' />
+                    <span className='group-hover:text-[var(--hero-gradient-from)] transition-colors duration-200'>View My Work</span>
+                    <ExternalLink className='w-4 h-4 ml-2 group-hover:translate-x-1 group-hover:text-[var(--hero-gradient-from)] transition-all duration-200' />
                   </Link>
                   <a
                     href='#contact'
@@ -494,9 +494,9 @@ export default function AboutPage() {
                 href='/blog'
                 className='inline-flex items-center px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-200 group'
               >
-                <Code className='w-5 h-5 mr-2' />
-                Check Out My Blog
-                <ExternalLink className='w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-200' />
+                <Code className='w-5 h-5 mr-2 group-hover:text-[var(--hero-gradient-from)] transition-colors duration-200' />
+                <span className='group-hover:text-[var(--hero-gradient-from)] transition-colors duration-200'>Check Out My Blog</span>
+                <ExternalLink className='w-4 h-4 ml-2 group-hover:translate-x-1 group-hover:text-[var(--hero-gradient-from)] transition-all duration-200' />
               </Link>
             </div>
           </div>
