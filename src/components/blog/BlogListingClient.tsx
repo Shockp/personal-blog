@@ -53,12 +53,15 @@ const TagFilter = ({
   <div className='flex flex-wrap gap-2'>
     <button
       onClick={() => onTagSelect('')}
-      className={`px-3 py-1 rounded-full text-sm font-medium transition-colors duration-200 focus:outline-none cursor-pointer ${
+      className={`px-3 py-1 rounded-full text-sm font-medium transition-colors duration-200 focus:outline-none cursor-pointer border ${
         selectedTag === ''
-          ? 'bg-blue-600 text-white'
-          : 'bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700'
+          ? 'bg-blue-600 text-white border-blue-600'
+          : 'text-muted-foreground hover:opacity-80'
       }`}
-      style={selectedTag === '' ? {} : { color: 'var(--text-secondary)' }}
+      style={{
+        backgroundColor: selectedTag === '' ? undefined : 'var(--card-background)',
+        borderColor: selectedTag === '' ? undefined : 'var(--card-border)',
+      }}
     >
       All Posts
     </button>
@@ -66,12 +69,15 @@ const TagFilter = ({
       <button
         key={tag}
         onClick={() => onTagSelect(tag)}
-        className={`px-3 py-1 rounded-full text-sm font-medium transition-colors duration-200 focus:outline-none cursor-pointer ${
+        className={`px-3 py-1 rounded-full text-sm font-medium transition-colors duration-200 focus:outline-none cursor-pointer border ${
           selectedTag === tag
-            ? 'bg-blue-600 text-white'
-            : 'bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700'
+            ? 'bg-blue-600 text-white border-blue-600'
+            : 'text-muted-foreground hover:opacity-80'
         }`}
-        style={selectedTag === tag ? {} : { color: 'var(--text-secondary)' }}
+        style={{
+          backgroundColor: selectedTag === tag ? undefined : 'var(--card-background)',
+          borderColor: selectedTag === tag ? undefined : 'var(--card-border)',
+        }}
       >
         {tag}
       </button>
@@ -155,13 +161,8 @@ const SortDropdown = ({
                   className={`w-full text-left px-4 py-2 text-sm hover:bg-muted transition-colors duration-200 first:rounded-t-lg last:rounded-b-lg focus:outline-none cursor-pointer ${
                     currentOption?.value === option.value
                       ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400'
-                      : ''
+                      : 'text-muted-foreground'
                   }`}
-                  style={
-                    currentOption?.value === option.value
-                      ? {}
-                      : { color: 'var(--text-secondary)' }
-                  }
                   role='option'
                   aria-selected={currentOption?.value === option.value}
                 >
@@ -342,8 +343,7 @@ export default function BlogListingClient({
           {/* Tag Filter */}
           <div className='flex-1'>
             <h3
-              className='text-sm font-medium mb-2'
-              style={{ color: 'var(--text-secondary)' }}
+              className='text-sm font-medium mb-2 text-muted-foreground'
             >
               Filter by Tag:
             </h3>
@@ -361,17 +361,18 @@ export default function BlogListingClient({
               sortOrder={sortOrder}
               onSortChange={handleSortChange}
             />
-            <div className='flex border border-border rounded-lg overflow-hidden'>
+            <div className='flex rounded-lg overflow-hidden' style={{ borderColor: 'var(--card-border)' }}>
               <button
                 onClick={() => setViewMode('grid')}
-                className={`p-2 transition-colors duration-200 focus:outline-none cursor-pointer ${
+                className={`p-2 transition-colors duration-200 focus:outline-none cursor-pointer border-r ${
                   viewMode === 'grid'
                     ? 'bg-blue-600 text-white'
-                    : 'bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700'
+                    : 'text-muted-foreground hover:opacity-80'
                 }`}
-                style={
-                  viewMode === 'grid' ? {} : { color: 'var(--text-secondary)' }
-                }
+                style={{
+                  backgroundColor: viewMode === 'grid' ? undefined : 'var(--card-background)',
+                  borderRightColor: 'var(--card-border)',
+                }}
                 aria-label='Grid view'
               >
                 <Grid className='w-4 h-4' />
@@ -381,11 +382,11 @@ export default function BlogListingClient({
                 className={`p-2 transition-colors duration-200 focus:outline-none cursor-pointer ${
                   viewMode === 'list'
                     ? 'bg-blue-600 text-white'
-                    : 'bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700'
+                    : 'text-muted-foreground hover:opacity-80'
                 }`}
-                style={
-                  viewMode === 'list' ? {} : { color: 'var(--text-secondary)' }
-                }
+                style={{
+                  backgroundColor: viewMode === 'list' ? undefined : 'var(--card-background)',
+                }}
                 aria-label='List view'
               >
                 <List className='w-4 h-4' />
@@ -397,7 +398,7 @@ export default function BlogListingClient({
 
       {/* Results Count */}
       <div className='mb-6'>
-        <p className='text-sm' style={{ color: 'var(--text-secondary)' }}>
+        <p className='text-sm text-muted-foreground'>
           {filteredAndSortedPosts.length === 0
             ? 'No posts found'
             : `Showing ${paginatedPosts.length} of ${filteredAndSortedPosts.length} post${filteredAndSortedPosts.length === 1 ? '' : 's'}`}
