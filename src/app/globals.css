@@ -80,33 +80,33 @@
 }
 
 .dark {
-  /* Dark theme colors - Very dark and elegant */
-  --background: #000000;
-  --foreground: #ffffff;
-  --muted: #0a0a0a;
-  --muted-foreground: #a1a1aa;
-  --border: #1a1a1a;
-  --input: #1a1a1a;
+  /* Dark theme colors - Darker blue-gray elegant theme */
+  --background: #020617;
+  --foreground: #f1f5f9;
+  --muted: #0f172a;
+  --muted-foreground: #94a3b8;
+  --border: #1e293b;
+  --input: #0f172a;
   --primary: #3b82f6;
   --primary-foreground: #ffffff;
-  --secondary: #1a1a1a;
-  --secondary-foreground: #ffffff;
-  --accent: #1a1a1a;
-  --accent-foreground: #ffffff;
+  --secondary: #1e293b;
+  --secondary-foreground: #f1f5f9;
+  --accent: #0f172a;
+  --accent-foreground: #f1f5f9;
   --destructive: #ef4444;
   --destructive-foreground: #ffffff;
   --ring: #3b82f6;
 
   /* Dark theme specific variables */
-  --card-background: #0a0a0a;
-  --card-border: #1a1a1a;
-  --hover-background: #0a0a0a;
-  --active-background: #1a1a1a;
-  --hero-gradient-from: #000000;
-  --hero-gradient-to: #0f0f23;
-  --about-gradient-from: #111111;
-  --about-gradient-via: #1a1a1a;
-  --about-gradient-to: #0f0f23;
+  --card-background: #0f172a;
+  --card-border: #1e293b;
+  --hover-background: #1e293b;
+  --active-background: #334155;
+  --hero-gradient-from: #020617;
+  --hero-gradient-to: #0f172a;
+  --about-gradient-from: #0f172a;
+  --about-gradient-via: #1e293b;
+  --about-gradient-to: #020617;
 
   /* Card specific variables */
   --card-text: #ffffff;
@@ -117,22 +117,22 @@
   --tag-bg: #1e3a8a;
   --tag-text: #93c5fd;
   --tag-hover-bg: #1d4ed8;
-  --tag-secondary-bg: #1a1a1a;
-  --tag-secondary-text: #a1a1aa;
+  --tag-secondary-bg: #1e293b;
+  --tag-secondary-text: #94a3b8;
 
   /* Navigation specific variables */
-  --nav-background: #000000;
-  --nav-border: #1a1a1a;
-  --nav-text: #ffffff;
+  --nav-background: #020617;
+  --nav-border: #1e293b;
+  --nav-text: #f1f5f9;
   --nav-text-hover: #60a5fa;
   --nav-active-bg: #1d4ed8;
   --nav-active-text: #ffffff;
-  --nav-hover-bg: #0a0a0a;
+  --nav-hover-bg: #0f172a;
 
   /* Text color variables */
-  --text-primary: #f9fafb;
-  --text-secondary: #d1d5db;
-  --text-muted: #9ca3af;
+  --text-primary: #f1f5f9;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
   --text-accent: #60a5fa;
   --text-accent-hover: #93c5fd;
   --text-success: #10b981;
