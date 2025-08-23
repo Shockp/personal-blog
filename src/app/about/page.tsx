@@ -175,7 +175,9 @@ export default function AboutPage() {
                     className='inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-500 group'
                   >
                     <Code className='w-5 h-5 mr-2 group-hover:!text-slate-900 dark:group-hover:text-[var(--hero-gradient-from)] transition-colors duration-500' />
-                    <span className='group-hover:!text-slate-900 dark:group-hover:text-[var(--hero-gradient-from)] transition-colors duration-500'>View My Work</span>
+                    <span className='group-hover:!text-slate-900 dark:group-hover:text-[var(--hero-gradient-from)] transition-colors duration-500'>
+                      View My Work
+                    </span>
                     <ExternalLink className='w-4 h-4 ml-2 group-hover:!text-slate-900 dark:group-hover:text-[var(--hero-gradient-from)] transition-colors duration-500' />
                   </Link>
                   <a
@@ -495,7 +497,9 @@ export default function AboutPage() {
                 className='inline-flex items-center px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-500 group'
               >
                 <Code className='w-5 h-5 mr-2 group-hover:!text-slate-900 dark:group-hover:text-[var(--hero-gradient-from)] transition-colors duration-500' />
-                <span className='group-hover:!text-slate-900 dark:group-hover:text-[var(--hero-gradient-from)] transition-colors duration-500'>Check Out My Blog</span>
+                <span className='group-hover:!text-slate-900 dark:group-hover:text-[var(--hero-gradient-from)] transition-colors duration-500'>
+                  Check Out My Blog
+                </span>
                 <ExternalLink className='w-4 h-4 ml-2 group-hover:!text-slate-900 dark:group-hover:text-[var(--hero-gradient-from)] transition-colors duration-500' />
               </Link>
             </div>

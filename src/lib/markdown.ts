@@ -7,7 +7,7 @@ import { PostMetadata } from '@/types/blog';
 
 // Create a JSDOM window for server-side DOMPurify
 const window = new JSDOM('').window;
-const purify = DOMPurify(window as any);
+const purify = DOMPurify(window as unknown as Window & typeof globalThis);
 
 /**
  * Configuration options for markdown processing
@@ -108,8 +108,8 @@ export async function markdownToHtml(
       const config = { ...defaultConfig, ...purifyConfig };
       htmlContent = purify.sanitize(
         htmlContent,
-        config as any
-      ) as unknown as string;
+        config as Parameters<typeof purify.sanitize>[1]
+      ) as string;
     }
 
     return htmlContent;

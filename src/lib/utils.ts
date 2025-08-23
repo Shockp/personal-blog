@@ -113,25 +113,227 @@ export function truncateText(
 
 /**
  * Debounces a function call, delaying execution until after a specified wait time.
+ * Enhanced version with immediate execution option and cancellation.
  *
  * @param func - The function to debounce
  * @param wait - The delay in milliseconds
- * @returns {Function} The debounced function
+ * @param immediate - Whether to execute immediately on first call
+ * @returns {Function & { cancel: () => void }} The debounced function with cancel method
  *
  * @example
  * ```typescript
  * const debouncedSearch = debounce((query: string) => {
  *   // Perform search
  * }, 300);
+ *
+ * // Cancel pending execution
+ * debouncedSearch.cancel();
  * ```
  */
 export function debounce<T extends (...args: unknown[]) => unknown>(
   func: T,
-  wait: number
-): (...args: Parameters<T>) => void {
-  let timeout: NodeJS.Timeout;
-  return (...args: Parameters<T>) => {
-    clearTimeout(timeout);
-    timeout = setTimeout(() => func(...args), wait);
+  wait: number,
+  immediate = false
+): ((...args: Parameters<T>) => void) & { cancel: () => void } {
+  let timeout: NodeJS.Timeout | null = null;
+  let lastCallTime = 0;
+
+  const debounced = (...args: Parameters<T>) => {
+    const now = Date.now();
+    const callNow = immediate && !timeout;
+
+    if (timeout) {
+      clearTimeout(timeout);
+    }
+
+    if (callNow) {
+      lastCallTime = now;
+      func(...args);
+    } else {
+      timeout = setTimeout(() => {
+        timeout = null;
+        if (!immediate || now - lastCallTime >= wait) {
+          lastCallTime = now;
+          func(...args);
+        }
+      }, wait);
+    }
   };
+
+  debounced.cancel = () => {
+    if (timeout) {
+      clearTimeout(timeout);
+      timeout = null;
+    }
+  };
+
+  return debounced;
+}
+
+/**
+ * Throttles a function call, ensuring it's called at most once per specified interval.
+ *
+ * @param func - The function to throttle
+ * @param limit - The time limit in milliseconds
+ * @returns {Function} The throttled function
+ *
+ * @example
+ * ```typescript
+ * const throttledScroll = throttle(() => {
+ *   // Handle scroll
+ * }, 100);
+ * ```
+ */
+export function throttle<T extends (...args: unknown[]) => unknown>(
+  func: T,
+  limit: number
+): (...args: Parameters<T>) => void {
+  let inThrottle: boolean;
+  return (...args: Parameters<T>) => {
+    if (!inThrottle) {
+      func(...args);
+      inThrottle = true;
+      setTimeout(() => (inThrottle = false), limit);
+    }
+  };
+}
+
+/**
+ * Creates a memoized version of a function that caches results.
+ *
+ * @param func - The function to memoize
+ * @param getKey - Optional function to generate cache key
+ * @returns {Function} The memoized function
+ *
+ * @example
+ * ```typescript
+ * const memoizedExpensive = memoize((n: number) => {
+ *   // Expensive calculation
+ *   return n * n;
+ * });
+ * ```
+ */
+export function memoize<T extends (...args: unknown[]) => unknown>(
+  func: T,
+  getKey?: (...args: Parameters<T>) => string
+): T & { cache: Map<string, ReturnType<T>>; clear: () => void } {
+  const cache = new Map<string, ReturnType<T>>();
+
+  const memoized = ((...args: Parameters<T>) => {
+    const key = getKey ? getKey(...args) : JSON.stringify(args);
+
+    if (cache.has(key)) {
+      return cache.get(key)!;
+    }
+
+    const result = func(...args) as ReturnType<T>;
+    cache.set(key, result);
+    return result;
+  }) as T & { cache: Map<string, ReturnType<T>>; clear: () => void };
+
+  memoized.cache = cache;
+  memoized.clear = () => cache.clear();
+
+  return memoized;
+}
+
+/**
+ * Safely parses JSON with error handling.
+ *
+ * @param json - The JSON string to parse
+ * @param fallback - Fallback value if parsing fails
+ * @returns {T} The parsed object or fallback value
+ *
+ * @example
+ * ```typescript
+ * const data = safeJsonParse('{"key": "value"}', {});
+ * const invalid = safeJsonParse('invalid json', null);
+ * ```
+ */
+export function safeJsonParse<T = unknown>(json: string, fallback: T): T {
+  try {
+    return JSON.parse(json);
+  } catch {
+    return fallback;
+  }
+}
+
+/**
+ * Clamps a number between min and max values.
+ *
+ * @param value - The value to clamp
+ * @param min - Minimum value
+ * @param max - Maximum value
+ * @returns {number} The clamped value
+ *
+ * @example
+ * ```typescript
+ * clamp(15, 0, 10) // Returns: 10
+ * clamp(-5, 0, 10) // Returns: 0
+ * clamp(5, 0, 10)  // Returns: 5
+ * ```
+ */
+export function clamp(value: number, min: number, max: number): number {
+  return Math.min(Math.max(value, min), max);
+}
+
+/**
+ * Generates a random string of specified length.
+ *
+ * @param length - Length of the random string
+ * @param charset - Character set to use (default: alphanumeric)
+ * @returns {string} The random string
+ *
+ * @example
+ * ```typescript
+ * randomString(8) // Returns: 'aB3xY9mZ'
+ * randomString(4, '0123456789') // Returns: '7392'
+ * ```
+ */
+export function randomString(
+  length: number,
+  charset = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+): string {
+  let result = '';
+  for (let i = 0; i < length; i++) {
+    result += charset.charAt(Math.floor(Math.random() * charset.length));
+  }
+  return result;
+}
+
+/**
+ * Checks if a value is empty (null, undefined, empty string, empty array, empty object).
+ *
+ * @param value - The value to check
+ * @returns {boolean} True if the value is empty
+ *
+ * @example
+ * ```typescript
+ * isEmpty('') // Returns: true
+ * isEmpty([]) // Returns: true
+ * isEmpty({}) // Returns: true
+ * isEmpty('hello') // Returns: false
+ * ```
+ */
+export function isEmpty(value: unknown): boolean {
+  if (value == null) return true;
+  if (typeof value === 'string') return value.trim().length === 0;
+  if (Array.isArray(value)) return value.length === 0;
+  if (typeof value === 'object') return Object.keys(value).length === 0;
+  return false;
+}
+
+/**
+ * Creates a promise that resolves after a specified delay.
+ *
+ * @param ms - Delay in milliseconds
+ * @returns {Promise<void>} Promise that resolves after delay
+ *
+ * @example
+ * ```typescript
+ * await sleep(1000); // Wait 1 second
+ * ```
+ */
+export function sleep(ms: number): Promise<void> {
+  return new Promise(resolve => setTimeout(resolve, ms));
 }

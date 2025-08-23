@@ -38,10 +38,11 @@ export default function ThemeToggle() {
       onClick={handleClick}
       className='group relative p-3 rounded-full border-2 border-transparent bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 focus:outline-none transition-all duration-300 cursor-pointer shadow-lg hover:shadow-xl transform hover:scale-105 active:scale-95'
       style={{
-        background: theme === 'light' 
-          ? 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)' 
-          : 'linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)',
-        color: '#ffffff'
+        background:
+          theme === 'light'
+            ? 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)'
+            : 'linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)',
+        color: '#ffffff',
       }}
       aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
       title={`Currently ${theme} mode - Click to switch to ${theme === 'light' ? 'dark' : 'light'} mode`}

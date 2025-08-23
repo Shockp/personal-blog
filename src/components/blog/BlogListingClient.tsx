@@ -1,46 +1,29 @@
 'use client';
 
-import React, { useState, useMemo, useEffect } from 'react';
-import {
-  Search,
-  ChevronDown,
-  SortAsc,
-  SortDesc,
-  Grid,
-  List,
-} from 'lucide-react';
+import { Grid, List } from 'lucide-react';
 import PostCard from './PostCard';
 import type { BlogPostSummary } from '@/types/blog';
+import { useBlogFilters } from '@/hooks';
+import {
+  SearchInput,
+  Button,
+  Dropdown,
+  Pagination,
+  EmptyState,
+} from '@/components/ui/common';
+import type { DropdownOption } from '@/components/ui/common';
+import {
+  SORT_DROPDOWN_OPTIONS,
+  FILTER_LABELS,
+  BLOG_SEARCH,
+  EMPTY_STATE_MESSAGES,
+  VIEW_MODE_CONFIG,
+  RESULTS_LABELS,
+  createSortValue,
+  parseSortValue,
+} from '@/constants';
 
-// Empty state component
-const EmptyState = ({
-  searchQuery,
-  selectedTag,
-}: {
-  searchQuery: string;
-  selectedTag: string;
-}) => (
-  <div className='text-center py-16'>
-    <div className='mx-auto w-24 h-24 bg-muted rounded-full flex items-center justify-center mb-6'>
-      <Search className='w-12 h-12 text-gray-400' />
-    </div>
-    <h3
-      className='text-xl font-semibold mb-2'
-      style={{ color: 'var(--text-primary)' }}
-    >
-      {searchQuery || selectedTag ? 'No posts found' : 'No blog posts yet'}
-    </h3>
-    <p className='max-w-md mx-auto' style={{ color: 'var(--text-secondary)' }}>
-      {searchQuery
-        ? `No posts match your search for "${searchQuery}"`
-        : selectedTag
-          ? `No posts found with the tag "${selectedTag}"`
-          : 'Check back later for new content!'}
-    </p>
-  </div>
-);
-
-// Tag filter component
+// Tag filter component using Dropdown
 const TagFilter = ({
   tags,
   selectedTag,
@@ -49,43 +32,24 @@ const TagFilter = ({
   tags: string[];
   selectedTag: string;
   onTagSelect: (tag: string) => void;
-}) => (
-  <div className='flex flex-wrap gap-2'>
-    <button
-      onClick={() => onTagSelect('')}
-      className={`px-3 py-1 rounded-full text-sm font-medium transition-colors duration-200 focus:outline-none cursor-pointer border ${
-        selectedTag === ''
-          ? 'bg-blue-600 text-white border-blue-600'
-          : 'text-muted-foreground hover:opacity-80'
-      }`}
-      style={{
-        backgroundColor: selectedTag === '' ? undefined : 'var(--card-background)',
-        borderColor: selectedTag === '' ? undefined : 'var(--card-border)',
-      }}
-    >
-      All Posts
-    </button>
-    {tags.map(tag => (
-      <button
-        key={tag}
-        onClick={() => onTagSelect(tag)}
-        className={`px-3 py-1 rounded-full text-sm font-medium transition-colors duration-200 focus:outline-none cursor-pointer border ${
-          selectedTag === tag
-            ? 'bg-blue-600 text-white border-blue-600'
-            : 'text-muted-foreground hover:opacity-80'
-        }`}
-        style={{
-          backgroundColor: selectedTag === tag ? undefined : 'var(--card-background)',
-          borderColor: selectedTag === tag ? undefined : 'var(--card-border)',
-        }}
-      >
-        {tag}
-      </button>
-    ))}
-  </div>
-);
+}) => {
+  const tagOptions: DropdownOption[] = [
+    { value: '', label: FILTER_LABELS.ALL_TAGS },
+    ...tags.map(tag => ({ value: tag, label: tag })),
+  ];
 
-// Sort dropdown component
+  return (
+    <Dropdown
+      options={tagOptions}
+      value={selectedTag}
+      onSelect={onTagSelect}
+      placeholder={FILTER_LABELS.SELECT_TAG}
+      className='w-full sm:w-48'
+    />
+  );
+};
+
+// Sort dropdown component using Dropdown
 const SortDropdown = ({
   sortBy,
   sortOrder,
@@ -95,151 +59,24 @@ const SortDropdown = ({
   sortOrder: 'asc' | 'desc';
   onSortChange: (sortBy: 'date' | 'title', sortOrder: 'asc' | 'desc') => void;
 }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const sortOptions = SORT_DROPDOWN_OPTIONS;
 
-  const sortOptions = [
-    {
-      value: 'date-desc',
-      label: 'Newest First',
-      sortBy: 'date' as const,
-      sortOrder: 'desc' as const,
-    },
-    {
-      value: 'date-asc',
-      label: 'Oldest First',
-      sortBy: 'date' as const,
-      sortOrder: 'asc' as const,
-    },
-    {
-      value: 'title-asc',
-      label: 'Title A-Z',
-      sortBy: 'title' as const,
-      sortOrder: 'asc' as const,
-    },
-    {
-      value: 'title-desc',
-      label: 'Title Z-A',
-      sortBy: 'title' as const,
-      sortOrder: 'desc' as const,
-    },
-  ];
+  const currentValue = createSortValue(sortBy, sortOrder);
 
-  const currentOption = sortOptions.find(
-    option => option.sortBy === sortBy && option.sortOrder === sortOrder
-  );
-
-  return (
-    <div className='relative'>
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className='flex items-center justify-between px-4 py-2 w-44 bg-card border border-border rounded-lg hover:bg-muted transition-colors duration-200 focus:outline-none cursor-pointer'
-        aria-expanded={isOpen}
-        aria-haspopup='listbox'
-      >
-        <div className='flex items-center space-x-2'>
-          {sortOrder === 'asc' ? (
-            <SortDesc className='w-4 h-4' />
-          ) : (
-            <SortAsc className='w-4 h-4' />
-          )}
-          <span className='text-sm font-medium'>{currentOption?.label}</span>
-        </div>
-        <ChevronDown
-          className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`}
-        />
-      </button>
-      {isOpen && (
-        <div className='absolute right-0 mt-2 w-48 bg-card border border-border rounded-lg shadow-lg z-10'>
-          <ul role='listbox' className='py-1'>
-            {sortOptions.map(option => (
-              <li key={option.value}>
-                <button
-                  onClick={() => {
-                    onSortChange(option.sortBy, option.sortOrder);
-                    setIsOpen(false);
-                  }}
-                  className={`w-full text-left px-4 py-2 text-sm hover:bg-muted transition-colors duration-200 first:rounded-t-lg last:rounded-b-lg focus:outline-none cursor-pointer ${
-                    currentOption?.value === option.value
-                      ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400'
-                      : 'text-muted-foreground'
-                  }`}
-                  role='option'
-                  aria-selected={currentOption?.value === option.value}
-                >
-                  {option.label}
-                </button>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-    </div>
-  );
-};
-
-// Pagination component
-const Pagination = ({
-  currentPage,
-  totalPages,
-  onPageChange,
-}: {
-  currentPage: number;
-  totalPages: number;
-  onPageChange: (page: number) => void;
-}) => {
-  if (totalPages <= 1) return null;
-
-  const getPageNumbers = () => {
-    const pages = [];
-    const showPages = 5;
-    let start = Math.max(1, currentPage - Math.floor(showPages / 2));
-    const end = Math.min(totalPages, start + showPages - 1);
-
-    if (end - start + 1 < showPages) {
-      start = Math.max(1, end - showPages + 1);
-    }
-
-    for (let i = start; i <= end; i++) {
-      pages.push(i);
-    }
-
-    return pages;
+  const handleSortChange = (value: string) => {
+    const { sortBy: newSortBy, sortOrder: newSortOrder } =
+      parseSortValue(value);
+    onSortChange(newSortBy as 'date' | 'title', newSortOrder as 'asc' | 'desc');
   };
 
   return (
-    <div className='flex justify-center items-center space-x-2 mt-12'>
-      <button
-        onClick={() => onPageChange(currentPage - 1)}
-        disabled={currentPage === 1}
-        className='px-3 py-2 rounded-lg border border-border disabled:opacity-50 disabled:cursor-not-allowed hover:bg-muted/80 transition-colors duration-200 focus:outline-none cursor-pointer'
-        aria-label='Previous page'
-      >
-        Previous
-      </button>
-      {getPageNumbers().map(page => (
-        <button
-          key={page}
-          onClick={() => onPageChange(page)}
-          className={`px-3 py-2 rounded-lg transition-colors duration-200 focus:outline-none cursor-pointer ${
-            page === currentPage
-              ? 'bg-blue-600 text-white'
-              : 'border border-border hover:bg-muted/80'
-          }`}
-          aria-label={`Page ${page}`}
-          aria-current={page === currentPage ? 'page' : undefined}
-        >
-          {page}
-        </button>
-      ))}
-      <button
-        onClick={() => onPageChange(currentPage + 1)}
-        disabled={currentPage === totalPages}
-        className='px-3 py-2 rounded-lg border border-border disabled:opacity-50 disabled:cursor-not-allowed hover:bg-muted/80 transition-colors duration-200 focus:outline-none cursor-pointer'
-        aria-label='Next page'
-      >
-        Next
-      </button>
-    </div>
+    <Dropdown
+      options={sortOptions}
+      value={currentValue}
+      onSelect={handleSortChange}
+      placeholder='Sort by'
+      className='w-40'
+    />
   );
 };
 
@@ -249,69 +86,24 @@ export default function BlogListingClient({
 }: {
   posts: BlogPostSummary[];
 }) {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [selectedTag, setSelectedTag] = useState('');
-  const [sortBy, setSortBy] = useState<'date' | 'title'>('date');
-  const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
-  const [currentPage, setCurrentPage] = useState(1);
-  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
-  const postsPerPage = 9;
-
-  // Get unique tags from all posts
-  const allTags = useMemo(() => {
-    const tagSet = new Set<string>();
-    posts.forEach(post => {
-      post.tags?.forEach(tag => tagSet.add(tag));
-    });
-    return Array.from(tagSet).sort();
-  }, [posts]);
-
-  // Filter and sort posts
-  const filteredAndSortedPosts = useMemo(() => {
-    let filtered = posts.filter(post => post.published !== false);
-
-    // Apply search filter
-    if (searchQuery) {
-      const query = searchQuery.toLowerCase();
-      filtered = filtered.filter(
-        post =>
-          post.title.toLowerCase().includes(query) ||
-          post.description.toLowerCase().includes(query) ||
-          post.tags?.some(tag => tag.toLowerCase().includes(query))
-      );
-    }
-
-    // Apply tag filter
-    if (selectedTag) {
-      filtered = filtered.filter(post => post.tags?.includes(selectedTag));
-    }
-
-    // Apply sorting
-    filtered.sort((a, b) => {
-      let comparison = 0;
-      if (sortBy === 'date') {
-        comparison = new Date(a.date).getTime() - new Date(b.date).getTime();
-      } else if (sortBy === 'title') {
-        comparison = a.title.localeCompare(b.title);
-      }
-      return sortOrder === 'asc' ? comparison : -comparison;
-    });
-
-    return filtered;
-  }, [posts, searchQuery, selectedTag, sortBy, sortOrder]);
-
-  // Paginate posts
-  const paginatedPosts = useMemo(() => {
-    const startIndex = (currentPage - 1) * postsPerPage;
-    return filteredAndSortedPosts.slice(startIndex, startIndex + postsPerPage);
-  }, [filteredAndSortedPosts, currentPage, postsPerPage]);
-
-  const totalPages = Math.ceil(filteredAndSortedPosts.length / postsPerPage);
-
-  // Reset to first page when filters change
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [searchQuery, selectedTag, sortBy, sortOrder]);
+  const {
+    searchQuery,
+    setSearchQuery,
+    selectedTag,
+    setSelectedTag,
+    sortBy,
+    sortOrder,
+    setSortBy,
+    setSortOrder,
+    currentPage,
+    setCurrentPage,
+    viewMode,
+    setViewMode,
+    allTags,
+    filteredAndSortedPosts,
+    paginatedPosts,
+    totalPages,
+  } = useBlogFilters({ posts });
 
   const handleSortChange = (
     newSortBy: 'date' | 'title',
@@ -326,15 +118,14 @@ export default function BlogListingClient({
       {/* Search and Filters */}
       <div className='mb-8 space-y-6'>
         {/* Search Bar */}
-        <div className='relative max-w-md mx-auto'>
-          <Search className='absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5' />
-          <input
-            type='text'
-            placeholder='Search posts...'
+        <div className='max-w-md mx-auto'>
+          <SearchInput
             value={searchQuery}
             onChange={e => setSearchQuery(e.target.value)}
-            className='w-full pl-10 pr-4 py-3 border border-border rounded-lg bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:border-blue-500 text-sm sm:text-base min-h-[44px]'
-            aria-label='Search blog posts'
+            placeholder={BLOG_SEARCH.PLACEHOLDER_TEXT}
+            showClearButton
+            onClear={() => setSearchQuery('')}
+            className='flex-1'
           />
         </div>
 
@@ -342,10 +133,8 @@ export default function BlogListingClient({
         <div className='flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3 sm:gap-4'>
           {/* Tag Filter */}
           <div className='flex-1'>
-            <h3
-              className='text-sm font-medium mb-2 text-muted-foreground'
-            >
-              Filter by Tag:
+            <h3 className='text-sm font-medium mb-2 text-muted-foreground'>
+              {FILTER_LABELS.FILTER_BY_TAG}
             </h3>
             <TagFilter
               tags={allTags}
@@ -361,36 +150,25 @@ export default function BlogListingClient({
               sortOrder={sortOrder}
               onSortChange={handleSortChange}
             />
-            <div className='flex rounded-lg overflow-hidden' style={{ borderColor: 'var(--card-border)' }}>
-              <button
+            <div className='flex rounded-lg border border-border overflow-hidden'>
+              <Button
+                variant={viewMode === 'grid' ? 'default' : 'ghost'}
+                size='icon'
                 onClick={() => setViewMode('grid')}
-                className={`p-2 transition-colors duration-200 focus:outline-none cursor-pointer border-r ${
-                  viewMode === 'grid'
-                    ? 'bg-blue-600 text-white'
-                    : 'text-muted-foreground hover:opacity-80'
-                }`}
-                style={{
-                  backgroundColor: viewMode === 'grid' ? undefined : 'var(--card-background)',
-                  borderRightColor: 'var(--card-border)',
-                }}
-                aria-label='Grid view'
+                className='rounded-none border-r border-border'
+                aria-label={VIEW_MODE_CONFIG.GRID.label}
               >
                 <Grid className='w-4 h-4' />
-              </button>
-              <button
+              </Button>
+              <Button
+                variant={viewMode === 'list' ? 'default' : 'ghost'}
+                size='icon'
                 onClick={() => setViewMode('list')}
-                className={`p-2 transition-colors duration-200 focus:outline-none cursor-pointer ${
-                  viewMode === 'list'
-                    ? 'bg-blue-600 text-white'
-                    : 'text-muted-foreground hover:opacity-80'
-                }`}
-                style={{
-                  backgroundColor: viewMode === 'list' ? undefined : 'var(--card-background)',
-                }}
-                aria-label='List view'
+                className='rounded-none'
+                aria-label={VIEW_MODE_CONFIG.LIST.label}
               >
                 <List className='w-4 h-4' />
-              </button>
+              </Button>
             </div>
           </div>
         </div>
@@ -400,14 +178,30 @@ export default function BlogListingClient({
       <div className='mb-6'>
         <p className='text-sm text-muted-foreground'>
           {filteredAndSortedPosts.length === 0
-            ? 'No posts found'
-            : `Showing ${paginatedPosts.length} of ${filteredAndSortedPosts.length} post${filteredAndSortedPosts.length === 1 ? '' : 's'}`}
+            ? RESULTS_LABELS.NO_POSTS_FOUND
+            : `${RESULTS_LABELS.SHOWING} ${paginatedPosts.length} ${RESULTS_LABELS.OF} ${filteredAndSortedPosts.length} ${filteredAndSortedPosts.length === 1 ? RESULTS_LABELS.POST : RESULTS_LABELS.POSTS}`}
         </p>
       </div>
 
       {/* Posts Grid/List */}
       {filteredAndSortedPosts.length === 0 ? (
-        <EmptyState searchQuery={searchQuery} selectedTag={selectedTag} />
+        <EmptyState
+          variant={searchQuery ? 'search' : selectedTag ? 'filter' : 'default'}
+          title={
+            searchQuery
+              ? EMPTY_STATE_MESSAGES.NO_RESULTS_FOUND
+              : selectedTag
+                ? EMPTY_STATE_MESSAGES.NO_POSTS_WITH_TAG
+                : EMPTY_STATE_MESSAGES.NO_BLOG_POSTS_FOUND
+          }
+          description={
+            searchQuery
+              ? EMPTY_STATE_MESSAGES.NO_SEARCH_RESULTS(searchQuery)
+              : selectedTag
+                ? EMPTY_STATE_MESSAGES.NO_TAG_RESULTS(selectedTag)
+                : EMPTY_STATE_MESSAGES.NO_POSTS_AVAILABLE
+          }
+        />
       ) : (
         <div
           className={`grid ${
@@ -432,6 +226,8 @@ export default function BlogListingClient({
         currentPage={currentPage}
         totalPages={totalPages}
         onPageChange={setCurrentPage}
+        showFirstLast
+        showPrevNext
       />
     </>
   );

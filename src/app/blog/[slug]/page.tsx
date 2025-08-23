@@ -98,7 +98,10 @@ export default function PostPage({ params }: PostPageProps) {
     return (
       <div className='min-h-screen bg-background flex items-center justify-center'>
         <div className='text-center'>
-          <div className='animate-spin rounded-full h-12 w-12 border-b-2 mx-auto mb-4' style={{ borderColor: 'var(--primary)' }}></div>
+          <div
+            className='animate-spin rounded-full h-12 w-12 border-b-2 mx-auto mb-4'
+            style={{ borderColor: 'var(--primary)' }}
+          ></div>
           <p style={{ color: 'var(--text-secondary)' }}>Loading post...</p>
         </div>
       </div>
@@ -223,7 +226,8 @@ export default function PostPage({ params }: PostPageProps) {
                         color: 'var(--tag-text)',
                       }}
                       onMouseEnter={e => {
-                        e.currentTarget.style.backgroundColor = 'var(--tag-hover-bg)';
+                        e.currentTarget.style.backgroundColor =
+                          'var(--tag-hover-bg)';
                       }}
                       onMouseLeave={e => {
                         e.currentTarget.style.backgroundColor = 'var(--tag-bg)';
