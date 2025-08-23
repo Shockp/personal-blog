@@ -16,6 +16,10 @@ import { ThemeProvider } from '@/contexts/ThemeContext';
 import WebSiteStructuredData from '@/components/seo/WebSiteStructuredData';
 import AuthorStructuredData from '@/components/seo/AuthorStructuredData';
 
+// CSP nonce utility
+import { getNonce } from '@/lib/nonce';
+import ThemeScript from '@/components/ThemeScript';
+
 const inter = Inter({
   variable: '--font-inter',
   subsets: ['latin'],
@@ -76,16 +80,22 @@ export const metadata: Metadata = {
  * Provides global structure with navigation, main content area, and footer
  * Includes font configuration, metadata, and accessibility features
  */
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const nonce = await getNonce();
+  
   return (
     <html lang='en' suppressHydrationWarning>
       <head>
-        {/* Theme initialization script */}
+        {/* CSP Nonce meta tag for client components */}
+        <meta name="csp-nonce" content={nonce} />
+        
+        {/* Theme initialization script with CSP nonce */}
         <script
+          nonce={nonce}
           dangerouslySetInnerHTML={{
             __html: `
               (function() {

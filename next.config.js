@@ -25,6 +25,8 @@ const nextConfig = {
     // Temporarily ignore ESLint warnings during bundle analysis
     ignoreDuringBuilds: process.env.ANALYZE === 'true',
   },
+  // Security headers are now handled by middleware.ts for dynamic nonce support
+  // This allows for proper CSP nonce injection per request
   // Webpack optimizations for code splitting
   webpack: (config, { dev, isServer }) => {
     // Optimize chunk splitting for better caching
