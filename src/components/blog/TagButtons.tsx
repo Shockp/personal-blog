@@ -58,7 +58,11 @@ export default function TagButtons({
         className="transition-all duration-200 hover:scale-105 rounded-full px-4"
       >
         {FILTER_LABELS.ALL_TAGS}
-        <span className="ml-2 px-2 py-0.5 text-xs rounded-full bg-primary/10 text-primary border border-primary/20">
+        <span className={`ml-2 px-2 py-0.5 text-xs rounded-full border ${
+          selectedTag === ''
+            ? 'bg-primary-foreground/20 text-primary-foreground border-primary-foreground/30'
+            : 'bg-primary/10 text-primary border-primary/20'
+        }`}>
           {totalPostsCount}
         </span>
       </Button>
@@ -77,7 +81,11 @@ export default function TagButtons({
             className="transition-all duration-200 hover:scale-105 rounded-full px-4"
           >
             {tag}
-            <span className="ml-2 px-2 py-0.5 text-xs rounded-full bg-primary/10 text-primary border border-primary/20">
+            <span className={`ml-2 px-2 py-0.5 text-xs rounded-full border ${
+              isSelected
+                ? 'bg-primary-foreground/20 text-primary-foreground border-primary-foreground/30'
+                : 'bg-primary/10 text-primary border-primary/20'
+            }`}>
               {count}
             </span>
           </Button>
