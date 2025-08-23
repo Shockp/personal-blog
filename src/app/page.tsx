@@ -3,6 +3,18 @@ import Link from 'next/link';
 import { ArrowRight, BookOpen, Users } from 'lucide-react';
 import { getAllPosts } from '@/lib/posts';
 import PostCard from '@/components/blog/PostCard';
+import { generateMetadata as generateSEOMetadata } from '@/components/seo/SEO';
+import WebSiteStructuredData from '@/components/seo/WebSiteStructuredData';
+import AuthorStructuredData from '@/components/seo/AuthorStructuredData';
+
+// SEO metadata for the home page
+export const metadata = generateSEOMetadata({
+  title: 'Home',
+  description: 'Adrián Feito Blázquez - A passionate developer crafting digital experiences with modern technologies. Discover insights about web development, React, TypeScript, and building amazing user experiences.',
+  keywords: ['adrián feito blázquez', 'web development', 'react', 'typescript', 'nextjs', 'javascript', 'frontend', 'developer', 'blog'],
+  type: 'website',
+  url: '/',
+});
 
 // Optimized skeleton component for better performance
 const PostCardSkeleton = () => (
@@ -53,59 +65,6 @@ export default async function Home() {
   const allPosts = await getAllPosts();
   const recentPosts = allPosts.slice(0, 3);
 
-  // Structured data for SEO
-  const structuredData = {
-    '@context': 'https://schema.org',
-    '@graph': [
-      {
-        '@type': 'WebSite',
-        '@id': '#website',
-        url: process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000',
-        name: "Adrian's Personal Blog",
-        description:
-          'A modern personal blog featuring insights about web development, React, TypeScript, and building amazing user experiences.',
-        publisher: {
-          '@id': '#person',
-        },
-        inLanguage: 'en-US',
-      },
-      {
-        '@type': 'Person',
-        '@id': '#person',
-        name: 'Adrian',
-        description:
-          'A passionate developer sharing insights about modern web development, React, TypeScript, and building amazing user experiences.',
-        url: process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000',
-        sameAs: [
-          // Add social media URLs here when available
-        ],
-        jobTitle: 'Web Developer',
-        knowsAbout: [
-          'Web Development',
-          'React',
-          'TypeScript',
-          'Next.js',
-          'JavaScript',
-        ],
-      },
-      {
-        '@type': 'Blog',
-        '@id': '#blog',
-        url: `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/blog`,
-        name: "Adrian's Blog",
-        description:
-          'Latest thoughts on web development, best practices, and emerging technologies.',
-        author: {
-          '@id': '#person',
-        },
-        publisher: {
-          '@id': '#person',
-        },
-        inLanguage: 'en-US',
-      },
-    ],
-  };
-
   return (
     <>
       {/* Preload critical resources */}
@@ -124,10 +83,8 @@ export default async function Home() {
       />
 
       {/* Structured Data */}
-      <script
-        type='application/ld+json'
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
+      <WebSiteStructuredData />
+      <AuthorStructuredData />
 
       <main className='min-h-screen'>
         {/* Hero Section */}
@@ -147,7 +104,7 @@ export default async function Home() {
                 >
                   Hi, I&apos;m{' '}
                   <span className='bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent'>
-                    Adrian
+                    Adrián Feito Blázquez
                   </span>
                 </h1>
                 <p

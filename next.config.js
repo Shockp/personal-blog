@@ -15,9 +15,9 @@ const nextConfig = {
   },
   experimental: {
     optimizeCss: true,
-    // Enable modern bundling optimizations
-    serverComponentsExternalPackages: ['highlight.js', 'rehype-highlight'],
   },
+  // External packages for server components (moved from experimental)
+  serverExternalPackages: ['highlight.js', 'rehype-highlight'],
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },

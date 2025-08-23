@@ -1,40 +1,34 @@
 import React from 'react';
-import type { Metadata } from 'next/dist/lib/metadata/types/metadata-interface';
 import { getAllPosts } from '@/lib/posts';
 import BlogListingClient from '@/components/blog/BlogListingClient';
+import { generateMetadata as generateSEOMetadata } from '@/components/seo/SEO';
+import BreadcrumbStructuredData from '@/components/seo/BreadcrumbStructuredData';
 
 // SEO metadata for the blog listing page
-export const metadata: Metadata = {
-  title: 'Blog Posts | Personal Blog',
-  description:
-    'Discover insights, tutorials, and thoughts on web development, technology, and more.',
-  keywords: [
-    'blog',
-    'web development',
-    'technology',
-    'programming',
-    'tutorials',
-  ],
-  openGraph: {
-    title: 'Blog Posts | Personal Blog',
-    description:
-      'Discover insights, tutorials, and thoughts on web development, technology, and more.',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Blog Posts | Personal Blog',
-    description:
-      'Discover insights, tutorials, and thoughts on web development, technology, and more.',
-  },
-};
+export const metadata = generateSEOMetadata({
+  title: 'Blog Posts',
+  description: 'Discover insights, tutorials, and thoughts on web development, React, TypeScript, and modern technologies by Adrián Feito Blázquez. Stay updated with the latest trends and best practices.',
+  keywords: ['adrián feito blázquez', 'blog', 'web development', 'react', 'typescript', 'javascript', 'tutorials', 'programming', 'technology', 'nextjs'],
+  type: 'website',
+  url: '/blog',
+});
 
 // Server component that fetches data and renders client component
 export default async function BlogPage() {
   const posts = await getAllPosts();
 
+  // Generate breadcrumbs for the blog page
+  const breadcrumbs = [
+    { name: 'Home', url: '/' },
+    { name: 'Blog', url: '/blog' }
+  ];
+
   return (
-    <div className='min-h-screen bg-background'>
+    <>
+      {/* Structured Data */}
+      <BreadcrumbStructuredData breadcrumbs={breadcrumbs} />
+      
+      <div className='min-h-screen bg-background'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8'>
         {/* Header */}
         <div className='text-center mb-12'>
@@ -51,5 +45,6 @@ export default async function BlogPage() {
         <BlogListingClient posts={posts} />
       </div>
     </div>
+    </>
   );
 }

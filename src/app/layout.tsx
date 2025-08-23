@@ -12,6 +12,10 @@ import Footer from '@/components/layout/Footer';
 // Theme provider
 import { ThemeProvider } from '@/contexts/ThemeContext';
 
+// Structured data components
+import WebSiteStructuredData from '@/components/seo/WebSiteStructuredData';
+import AuthorStructuredData from '@/components/seo/AuthorStructuredData';
+
 const inter = Inter({
   variable: '--font-inter',
   subsets: ['latin'],
@@ -26,12 +30,12 @@ const merriweather = Merriweather({
 });
 
 export const metadata: Metadata = {
-  title: 'Personal Blog',
-  description: 'A modern personal blog built with Next.js',
-  keywords: ['blog', 'personal', 'nextjs', 'typescript', 'tailwind'],
-  authors: [{ name: 'Blog Author' }],
-  creator: 'Blog Author',
-  publisher: 'Blog Author',
+  title: 'Adrián Feito Blázquez - Personal Blog',
+  description: 'Personal blog by Adrián Feito Blázquez covering software development, technology, and programming insights.',
+  keywords: ['blog', 'personal', 'nextjs', 'typescript', 'tailwind', 'software development', 'programming', 'technology'],
+  authors: [{ name: 'Adrián Feito Blázquez' }],
+  creator: 'Adrián Feito Blázquez',
+  publisher: 'Adrián Feito Blázquez',
   formatDetection: {
     email: false,
     address: false,
@@ -44,15 +48,15 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000',
-    title: 'Personal Blog',
-    description: 'A modern personal blog built with Next.js',
-    siteName: 'Personal Blog',
+    title: 'Adrián Feito Blázquez - Personal Blog',
+    description: 'Personal blog by Adrián Feito Blázquez covering software development, technology, and programming insights.',
+    siteName: 'Adrián Feito Blázquez - Personal Blog',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Personal Blog',
-    description: 'A modern personal blog built with Next.js',
-    creator: '@yourusername',
+    title: 'Adrián Feito Blázquez - Personal Blog',
+    description: 'Personal blog by Adrián Feito Blázquez covering software development, technology, and programming insights.',
+    creator: '@adrianfeito',
   },
   robots: {
     index: true,
@@ -80,6 +84,7 @@ export default function RootLayout({
   return (
     <html lang='en' suppressHydrationWarning>
       <head>
+        {/* Theme initialization script */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -96,6 +101,10 @@ export default function RootLayout({
             `,
           }}
         />
+        
+        {/* Global Structured Data */}
+        <WebSiteStructuredData />
+        <AuthorStructuredData />
       </head>
       <body
         className={`${inter.variable} ${merriweather.variable} font-sans antialiased min-h-screen flex flex-col`}

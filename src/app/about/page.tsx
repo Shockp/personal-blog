@@ -1,5 +1,3 @@
-'use client';
-
 import {
   Mail,
   MapPin,
@@ -13,7 +11,20 @@ import {
   ExternalLink,
 } from 'lucide-react';
 import Link from 'next/link';
-import { useEffect } from 'react';
+import { generateMetadata as generateSEOMetadata } from '@/components/seo/SEO';
+import ContactCard from '@/components/about/ContactCard';
+import SocialLinks from '@/components/about/SocialLinks';
+import AuthorStructuredData from '@/components/seo/AuthorStructuredData';
+import BreadcrumbStructuredData from '@/components/seo/BreadcrumbStructuredData';
+
+// SEO metadata for the about page
+export const metadata = generateSEOMetadata({
+  title: 'About',
+  description: 'Learn more about Adrián Feito Blázquez, a passionate web developer with over 5 years of experience specializing in React, TypeScript, and modern web technologies.',
+  keywords: ['adrián feito blázquez', 'web developer', 'react developer', 'typescript', 'frontend developer', 'full stack developer', 'about'],
+  type: 'website',
+  url: '/about',
+});
 
 /**
  * About Page Component
@@ -28,46 +39,11 @@ import { useEffect } from 'react';
  * - Accessibility features and semantic HTML
  */
 export default function AboutPage() {
-  // Handle metadata for client component
-  useEffect(() => {
-    document.title = 'About | Personal Blog';
-
-    // Update meta description
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute(
-        'content',
-        'Learn more about Adrian, a passionate web developer specializing in React, TypeScript, and modern web technologies.'
-      );
-    }
-  }, []);
-
-  // Structured data for SEO
-  const structuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'Person',
-    name: 'Adrian',
-    jobTitle: 'Web Developer',
-    description:
-      'A passionate web developer specializing in React, TypeScript, and modern web technologies.',
-    url: process.env.NEXT_PUBLIC_APP_URL
-      ? `${process.env.NEXT_PUBLIC_APP_URL}/about`
-      : 'http://localhost:3000/about',
-    knowsAbout: [
-      'Web Development',
-      'React',
-      'TypeScript',
-      'Next.js',
-      'JavaScript',
-      'Node.js',
-      'Database Design',
-      'UI/UX Design',
-    ],
-    alumniOf: {
-      '@type': 'EducationalOrganization',
-      name: 'University of Technology',
-    },
-  };
+  // Generate breadcrumbs for the about page
+  const breadcrumbs = [
+    { name: 'Home', url: '/' },
+    { name: 'About', url: '/about' }
+  ];
 
   const skills = [
     { name: 'React & Next.js', level: 95, icon: Code, color: 'bg-blue-500' },
@@ -140,10 +116,8 @@ export default function AboutPage() {
   return (
     <>
       {/* Structured Data */}
-      <script
-        type='application/ld+json'
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
+      <AuthorStructuredData />
+      <BreadcrumbStructuredData breadcrumbs={breadcrumbs} />
 
       <div className='min-h-screen bg-background'>
         {/* Hero Section - Personal Introduction */}
@@ -160,7 +134,7 @@ export default function AboutPage() {
                 <h1 className='text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4 sm:mb-6'>
                   Hi, I&apos;m{' '}
                   <span className='bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent'>
-                    Adrian
+                    Adrián Feito Blázquez
                   </span>
                 </h1>
                 <p className='text-lg sm:text-xl text-muted-foreground mb-6 sm:mb-8 leading-relaxed px-2 sm:px-0'>
@@ -379,115 +353,58 @@ export default function AboutPage() {
 
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6'>
               {/* Email */}
-              <div className='bg-card rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-500 text-center'>
-                <div className='bg-blue-100 dark:bg-blue-900/20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4'>
-                  <Mail className='w-8 h-8 text-blue-600' />
-                </div>
-                <h3
-                  className='text-lg font-semibold mb-2'
-                  style={{ color: 'var(--text-primary)' }}
-                >
-                  Email
-                </h3>
-                <p className='mb-4' style={{ color: 'var(--text-secondary)' }}>
-                  Let&apos;s discuss your project
-                </p>
-                <a
-                  href='mailto:adrian@example.com'
-                  className='font-medium transition-colors duration-500'
-                  style={{ color: 'var(--text-accent)' }}
-                  onMouseEnter={e =>
-                    (e.currentTarget.style.color = 'var(--text-primary)')
-                  }
-                  onMouseLeave={e =>
-                    (e.currentTarget.style.color = 'var(--text-accent)')
-                  }
-                >
-                  adrian@example.com
-                </a>
-              </div>
+              <ContactCard
+                iconName="mail"
+                title="Email"
+                description="Let's discuss your project"
+                content="adrian@example.com"
+                href="mailto:adrian@example.com"
+                iconBgColor="bg-blue-100 dark:bg-blue-900/20"
+                iconColor="text-blue-600"
+                isLink={true}
+              />
 
               {/* Location */}
-              <div className='bg-card rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-500 text-center'>
-                <div className='bg-green-100 dark:bg-green-900/20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4'>
-                  <MapPin className='w-8 h-8 text-green-600' />
-                </div>
-                <h3
-                  className='text-lg font-semibold mb-2'
-                  style={{ color: 'var(--text-primary)' }}
-                >
-                  Location
-                </h3>
-                <p className='mb-4' style={{ color: 'var(--text-secondary)' }}>
-                  Available for remote work
-                </p>
-                <p
-                  className='font-medium'
-                  style={{ color: 'var(--text-primary)' }}
-                >
-                  San Francisco, CA
-                </p>
-              </div>
+              <ContactCard
+                iconName="mapPin"
+                title="Location"
+                description="Available for remote work"
+                content="San Francisco, CA"
+                iconBgColor="bg-green-100 dark:bg-green-900/20"
+                iconColor="text-green-600"
+                isLink={false}
+              />
 
               {/* Social */}
-              <div className='bg-card rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-500 text-center md:col-span-2 lg:col-span-1'>
-                <div className='bg-purple-100 dark:bg-purple-900/20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4'>
-                  <Globe className='w-8 h-8 text-purple-600' />
-                </div>
-                <h3
-                  className='text-lg font-semibold mb-2'
-                  style={{ color: 'var(--text-primary)' }}
-                >
-                  Social Media
-                </h3>
-                <p className='mb-4' style={{ color: 'var(--text-secondary)' }}>
-                  Follow my journey
-                </p>
-                <div className='flex justify-center space-x-4'>
-                  <a
-                    href='https://github.com/adrian'
-                    className='transition-colors duration-500'
-                    style={{ color: 'var(--text-secondary)' }}
-                    onMouseEnter={e =>
-                      (e.currentTarget.style.color = 'var(--text-primary)')
+              <ContactCard
+                iconName="globe"
+                title="Social Media"
+                description="Follow my journey"
+                content=""
+                iconBgColor="bg-purple-100 dark:bg-purple-900/20"
+                iconColor="text-purple-600"
+                isLink={false}
+              >
+                <SocialLinks
+                  links={[
+                    {
+                      href: 'https://github.com/adrian',
+                      label: 'GitHub',
+                      ariaLabel: 'GitHub Profile'
+                    },
+                    {
+                      href: 'https://linkedin.com/in/adrian',
+                      label: 'LinkedIn',
+                      ariaLabel: 'LinkedIn Profile'
+                    },
+                    {
+                      href: 'https://x.com/adrian',
+                      label: 'X',
+                      ariaLabel: 'X Profile'
                     }
-                    onMouseLeave={e =>
-                      (e.currentTarget.style.color = 'var(--text-secondary)')
-                    }
-                    aria-label='GitHub Profile'
-                  >
-                    GitHub
-                  </a>
-                  <a
-                    href='https://linkedin.com/in/adrian'
-                    className='transition-colors duration-500'
-                    style={{ color: 'var(--text-secondary)' }}
-                    onMouseEnter={e =>
-                      (e.currentTarget.style.color = 'var(--text-primary)')
-                    }
-                    onMouseLeave={e =>
-                      (e.currentTarget.style.color = 'var(--text-secondary)')
-                    }
-                    aria-label='LinkedIn Profile'
-                  >
-                    LinkedIn
-                  </a>
-                  <a
-                    href='https://x.com/adrian'
-                    className='transition-colors duration-500'
-                    style={{ color: 'var(--text-secondary)' }}
-                    onMouseEnter={e =>
-                      (e.currentTarget.style.color = 'var(--text-primary)')
-                    }
-                    onMouseLeave={e =>
-                      (e.currentTarget.style.color = 'var(--text-secondary)')
-                    }
-                    aria-label='X Profile'
-                  >
-                    X
-                  </a>
-                </div>
-              </div>
+                  ]}
+                />
+              </ContactCard>
             </div>
 
             {/* Call to Action */}
