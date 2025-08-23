@@ -2,6 +2,7 @@
 
 import { Grid, List } from 'lucide-react';
 import PostCard from './PostCard';
+import TagButtons from './TagButtons';
 import type { BlogPostSummary } from '@/types/blog';
 import { useBlogFilters } from '@/hooks';
 import {
@@ -23,31 +24,7 @@ import {
   parseSortValue,
 } from '@/constants';
 
-// Tag filter component using Dropdown
-const TagFilter = ({
-  tags,
-  selectedTag,
-  onTagSelect,
-}: {
-  tags: string[];
-  selectedTag: string;
-  onTagSelect: (tag: string) => void;
-}) => {
-  const tagOptions: DropdownOption[] = [
-    { value: '', label: FILTER_LABELS.ALL_TAGS },
-    ...tags.map(tag => ({ value: tag, label: tag })),
-  ];
 
-  return (
-    <Dropdown
-      options={tagOptions}
-      value={selectedTag}
-      onSelect={onTagSelect}
-      placeholder={FILTER_LABELS.SELECT_TAG}
-      className='w-full sm:w-48'
-    />
-  );
-};
 
 // Sort dropdown component using Dropdown
 const SortDropdown = ({
@@ -136,10 +113,11 @@ export default function BlogListingClient({
             <h3 className='text-sm font-medium mb-2 text-muted-foreground'>
               {FILTER_LABELS.FILTER_BY_TAG}
             </h3>
-            <TagFilter
+            <TagButtons
               tags={allTags}
               selectedTag={selectedTag}
               onTagSelect={setSelectedTag}
+              posts={posts}
             />
           </div>
 
