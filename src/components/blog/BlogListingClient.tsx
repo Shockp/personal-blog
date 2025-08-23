@@ -12,7 +12,7 @@ import {
   Pagination,
   EmptyState,
 } from '@/components/ui/common';
-import type { DropdownOption } from '@/components/ui/common';
+
 import {
   SORT_DROPDOWN_OPTIONS,
   FILTER_LABELS,
@@ -23,6 +23,7 @@ import {
   createSortValue,
   parseSortValue,
 } from '@/constants';
+import { RESULTS_LABELS as BLOG_RESULTS_LABELS } from '@/constants/blog';
 
 
 
@@ -156,8 +157,8 @@ export default function BlogListingClient({
       <div className='mb-6'>
         <p className='text-sm text-muted-foreground'>
           {filteredAndSortedPosts.length === 0
-            ? RESULTS_LABELS.NO_POSTS_FOUND
-            : `${RESULTS_LABELS.SHOWING} ${paginatedPosts.length} ${RESULTS_LABELS.OF} ${filteredAndSortedPosts.length} ${filteredAndSortedPosts.length === 1 ? RESULTS_LABELS.POST : RESULTS_LABELS.POSTS}`}
+            ? BLOG_RESULTS_LABELS.NO_RESULTS
+            : BLOG_RESULTS_LABELS.TOTAL_POSTS(filteredAndSortedPosts.length)}
         </p>
       </div>
 

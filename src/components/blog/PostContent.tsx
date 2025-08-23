@@ -7,6 +7,7 @@ import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
 import DOMPurify from 'dompurify';
 import { Share, Linkedin, Facebook, Copy, Check } from 'lucide-react';
+import Image from 'next/image';
 import 'highlight.js/styles/github.css';
 import 'highlight.js/styles/github-dark.css';
 
@@ -376,6 +377,37 @@ export default function PostContent({
         {children}
       </pre>
     ),
+    img: ({
+      src,
+      alt,
+      title,
+      ...props
+    }: React.ImgHTMLAttributes<HTMLImageElement>) => {
+      if (!src) return null;
+      
+      // Ensure src is a string for Next.js Image component
+      const imageSrc = typeof src === 'string' ? src : '';
+      
+      return (
+        <div className='relative my-6 overflow-hidden rounded-lg border border-border'>
+          <Image
+            src={imageSrc}
+            alt={alt || 'Blog post image'}
+            width={800 as number}
+            height={400 as number}
+            className='object-cover transition-transform duration-300 hover:scale-105'
+            sizes='(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 800px'
+            placeholder='blur'
+            blurDataURL='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k='
+          />
+          {title && (
+            <div className='absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4'>
+              <p className='text-white text-sm font-medium'>{title}</p>
+            </div>
+          )}
+        </div>
+      );
+    },
   };
 
   return (
