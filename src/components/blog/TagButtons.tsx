@@ -55,10 +55,10 @@ export default function TagButtons({
         variant={selectedTag === '' ? 'default' : 'outline'}
         size="sm"
         onClick={() => onTagSelect('')}
-        className="transition-all duration-200 hover:scale-105"
+        className="transition-all duration-200 hover:scale-105 rounded-full px-4"
       >
         {FILTER_LABELS.ALL_TAGS}
-        <span className="ml-2 px-1.5 py-0.5 text-xs rounded-full bg-background/50 text-muted-foreground">
+        <span className="ml-2 px-2 py-0.5 text-xs rounded-full bg-primary/10 text-primary border border-primary/20">
           {totalPostsCount}
         </span>
       </Button>
@@ -74,10 +74,10 @@ export default function TagButtons({
             variant={isSelected ? 'default' : 'outline'}
             size="sm"
             onClick={() => onTagSelect(tag)}
-            className="transition-all duration-200 hover:scale-105"
+            className="transition-all duration-200 hover:scale-105 rounded-full px-4"
           >
             {tag}
-            <span className="ml-2 px-1.5 py-0.5 text-xs rounded-full bg-background/50 text-muted-foreground">
+            <span className="ml-2 px-2 py-0.5 text-xs rounded-full bg-primary/10 text-primary border border-primary/20">
               {count}
             </span>
           </Button>
