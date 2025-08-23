@@ -163,7 +163,7 @@ export function Dropdown({
           style={{
             backgroundColor: 'var(--background)',
             color: 'var(--foreground)',
-            borderColor: 'var(--border)'
+            borderColor: 'var(--border)',
           }}
           role='listbox'
         >
@@ -180,12 +180,15 @@ export function Dropdown({
               )}
               style={{
                 color: 'var(--foreground)',
-                backgroundColor: (focusedIndex === index || value === option.value) ? 'var(--muted)' : 'transparent'
+                backgroundColor:
+                  focusedIndex === index || value === option.value
+                    ? 'var(--muted)'
+                    : 'transparent',
               }}
-              onMouseEnter={(e) => {
+              onMouseEnter={e => {
                 e.currentTarget.style.backgroundColor = 'var(--muted)';
               }}
-              onMouseLeave={(e) => {
+              onMouseLeave={e => {
                 if (focusedIndex !== index && value !== option.value) {
                   e.currentTarget.style.backgroundColor = 'transparent';
                 }

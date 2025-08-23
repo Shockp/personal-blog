@@ -53,13 +53,12 @@ export const FILTER_LABELS = {
 
 // Results display labels
 export const RESULTS_LABELS = {
-  SHOWING_RESULTS: (start: number, end: number, total: number) => 
+  SHOWING_RESULTS: (start: number, end: number, total: number) =>
     `Showing ${start}-${end} of ${total} posts`,
-  TOTAL_POSTS: (count: number) => 
-    `${count} ${count === 1 ? 'post' : 'posts'}`,
-  SEARCH_RESULTS: (count: number, query: string) => 
+  TOTAL_POSTS: (count: number) => `${count} ${count === 1 ? 'post' : 'posts'}`,
+  SEARCH_RESULTS: (count: number, query: string) =>
     `${count} ${count === 1 ? 'result' : 'results'} for "${query}"`,
-  TAG_RESULTS: (count: number, tag: string) => 
+  TAG_RESULTS: (count: number, tag: string) =>
     `${count} ${count === 1 ? 'post' : 'posts'} tagged with "${tag}"`,
   NO_RESULTS: 'No results found',
 } as const;

@@ -19,13 +19,10 @@ import {
   BLOG_SEARCH,
   EMPTY_STATE_MESSAGES,
   VIEW_MODE_CONFIG,
-  RESULTS_LABELS,
   createSortValue,
   parseSortValue,
 } from '@/constants';
 import { RESULTS_LABELS as BLOG_RESULTS_LABELS } from '@/constants/blog';
-
-
 
 // Sort dropdown component using Dropdown
 const SortDropdown = ({

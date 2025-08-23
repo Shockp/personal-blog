@@ -10,7 +10,13 @@
     "lint:check": "eslint . --ext .ts,.tsx,.js,.jsx",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "check": "npm run lint:check && npm run format:check && npm run build"
+    "check": "npm run lint:check && npm run format:check && npm run build",
+    "analyze": "cross-env ANALYZE=true npm run build",
+    "analyze:server": "cross-env ANALYZE=true BUNDLE_ANALYZE=server npm run build",
+    "analyze:browser": "cross-env ANALYZE=true BUNDLE_ANALYZE=browser npm run build",
+    "analyze:both": "cross-env ANALYZE=true BUNDLE_ANALYZE=both npm run build",
+    "bundle:size": "npm run build && npx next-bundle-analyzer",
+    "perf:lighthouse": "npm run build && npm run start & sleep 5 && npx lighthouse http://localhost:3000 --output=html --output-path=./lighthouse-report.html --chrome-flags=\"--headless\" && pkill -f \"next start\""
   },
   "dependencies": {
     "@types/dompurify": "^3.0.5",
@@ -40,6 +46,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@next/bundle-analyzer": "^15.5.0",
     "@tailwindcss/postcss": "^4",
     "@tailwindcss/typography": "^0.5.16",
     "@types/node": "^20",
@@ -47,6 +54,7 @@
     "@types/react-dom": "^19",
     "@typescript-eslint/eslint-plugin": "^8.40.0",
     "@typescript-eslint/parser": "^8.40.0",
+    "cross-env": "^10.0.0",
     "eslint": "^9",
     "eslint-config-next": "15.5.0",
     "eslint-config-prettier": "^10.1.8",

@@ -34,7 +34,7 @@ export const PAGINATION_LABELS = {
 } as const;
 
 // Results display
-export const RESULTS_LABELS = {
+export const PAGINATION_RESULTS_LABELS = {
   NO_POSTS_FOUND: 'No posts found',
   SHOWING: 'Showing',
   OF: 'of',

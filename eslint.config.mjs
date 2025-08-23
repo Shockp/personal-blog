@@ -23,8 +23,11 @@ const eslintConfig = [
   {
     rules: {
       // TypeScript specific rules (using built-in Next.js TypeScript config)
-      '@typescript-eslint/no-unused-vars': 'error',
-      '@typescript-eslint/no-explicit-any': 'warn',
+      '@typescript-eslint/no-unused-vars':
+        process.env.ANALYZE === 'true' ? 'off' : 'error',
+      // Disable no-explicit-any during bundle analysis
+      '@typescript-eslint/no-explicit-any':
+        process.env.ANALYZE === 'true' ? 'off' : 'warn',
 
       // React specific rules
       'react/jsx-uses-react': 'off',
