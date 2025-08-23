@@ -155,11 +155,16 @@ export function Dropdown({
       {isOpen && (
         <div
           className={cn(
-            'absolute z-[100] mt-1 w-full min-w-[8rem] overflow-hidden rounded-md border bg-white dark:bg-gray-800 p-1 text-gray-900 dark:text-gray-100 shadow-lg border-gray-200 dark:border-gray-700',
+            'absolute z-[100] mt-1 w-full min-w-[8rem] overflow-hidden rounded-md border p-1 shadow-lg',
             'data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2',
             align === 'right' && 'right-0',
             menuClassName
           )}
+          style={{
+            backgroundColor: 'var(--background)',
+            color: 'var(--foreground)',
+            borderColor: 'var(--border)'
+          }}
           role='listbox'
         >
           {options.map((option, index) => (
@@ -169,13 +174,22 @@ export function Dropdown({
               disabled={option.disabled}
               className={cn(
                 'relative flex w-full cursor-pointer select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors',
-                'hover:bg-gray-100 dark:hover:bg-gray-700',
-                'focus:bg-gray-100 dark:focus:bg-gray-700',
                 'disabled:pointer-events-none disabled:opacity-50',
-                focusedIndex === index && 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100',
-                value === option.value &&
-                  'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 font-medium'
+                focusedIndex === index && 'font-medium',
+                value === option.value && 'font-medium'
               )}
+              style={{
+                color: 'var(--foreground)',
+                backgroundColor: (focusedIndex === index || value === option.value) ? 'var(--muted)' : 'transparent'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = 'var(--muted)';
+              }}
+              onMouseLeave={(e) => {
+                if (focusedIndex !== index && value !== option.value) {
+                  e.currentTarget.style.backgroundColor = 'transparent';
+                }
+              }}
               role='option'
               aria-selected={value === option.value}
             >
