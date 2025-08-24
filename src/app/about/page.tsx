@@ -8,7 +8,7 @@ import {
   Users,
   Award,
   ExternalLink,
-} from 'lucide-react';
+} from '@/components/ui/icons';
 import Link from 'next/link';
 import { generateMetadata as generateSEOMetadata } from '@/components/seo/SEO';
 import ContactCard from '@/components/about/ContactCard';

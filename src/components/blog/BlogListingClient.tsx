@@ -1,6 +1,6 @@
 'use client';
 
-import { Grid, List } from 'lucide-react';
+import { Grid, List } from '@/components/ui/icons';
 import PostCard from './PostCard';
 import TagButtons from './TagButtons';
 import type { BlogPostSummary } from '@/types/blog';

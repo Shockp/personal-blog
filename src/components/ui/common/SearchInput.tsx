@@ -1,6 +1,6 @@
 'use client';
 
-import { Search, X } from 'lucide-react';
+import { Search, X } from '@/components/ui/icons';
 import { forwardRef, InputHTMLAttributes } from 'react';
 import { cn } from '@/lib/utils';
 

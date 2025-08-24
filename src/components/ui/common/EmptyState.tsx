@@ -1,7 +1,7 @@
 'use client';
 
 import { ReactNode } from 'react';
-import { FileText, Search, Tag, Calendar } from 'lucide-react';
+import { FileText, Search, Tag, Calendar } from '@/components/ui/icons';
 import { cn } from '@/lib/utils';
 import { Button } from './Button';
 

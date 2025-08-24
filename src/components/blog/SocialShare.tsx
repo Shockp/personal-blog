@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Share, Linkedin, Facebook, Copy, Check } from 'lucide-react';
+import { Share, Linkedin, Facebook, Copy, Check } from '@/components/ui/icons';
 
 /**
  * Props for the social sharing component

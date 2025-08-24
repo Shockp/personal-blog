@@ -1,6 +1,6 @@
 'use client';
 
-import { Mail, MapPin, Globe } from 'lucide-react';
+import { Mail, MapPin, Globe } from '@/components/ui/icons';
 import { useState } from 'react';
 
 type IconName = 'mail' | 'mapPin' | 'globe';

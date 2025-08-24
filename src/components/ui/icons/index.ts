@@ -1,0 +1,39 @@
+// Optimized icon exports for better tree-shaking
+// Each icon is imported individually to reduce bundle size
+
+export { ArrowLeft } from 'lucide-react';
+export { ArrowRight } from 'lucide-react';
+export { BookOpen } from 'lucide-react';
+export { Calendar } from 'lucide-react';
+export { Check } from 'lucide-react';
+export { ChevronDown } from 'lucide-react';
+export { ChevronLeft } from 'lucide-react';
+export { ChevronRight } from 'lucide-react';
+export { Clock } from 'lucide-react';
+export { Code } from 'lucide-react';
+export { Copy } from 'lucide-react';
+export { Database } from 'lucide-react';
+export { ExternalLink } from 'lucide-react';
+export { Facebook } from 'lucide-react';
+export { FileText } from 'lucide-react';
+export { FileX } from 'lucide-react';
+export { Globe } from 'lucide-react';
+export { Grid } from 'lucide-react';
+export { List } from 'lucide-react';
+export { Linkedin } from 'lucide-react';
+export { Mail } from 'lucide-react';
+export { MapPin } from 'lucide-react';
+export { Menu } from 'lucide-react';
+export { Moon } from 'lucide-react';
+export { MoreHorizontal } from 'lucide-react';
+export { RefreshCw } from 'lucide-react';
+export { Search } from 'lucide-react';
+export { Share } from 'lucide-react';
+export { Smartphone } from 'lucide-react';
+export { Sun } from 'lucide-react';
+export { Tag } from 'lucide-react';
+export { User } from 'lucide-react';
+export { Users } from 'lucide-react';
+export { X } from 'lucide-react';
+export { AlertTriangle } from 'lucide-react';
+export { Award } from 'lucide-react';

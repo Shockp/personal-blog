@@ -8,7 +8,7 @@ import {
   Clock,
   User,
   Tag,
-} from 'lucide-react';
+} from '@/components/ui/icons';
 import { BlogPost, BlogPostSummary } from '@/types/blog';
 import { formatDate } from '@/lib/utils';
 import PostContent from '@/components/blog/PostContent';

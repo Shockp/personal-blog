@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import Link from 'next/link';
-import { ArrowRight, BookOpen, Users } from 'lucide-react';
+import { ArrowRight, BookOpen, Users } from '@/components/ui/icons';
 import { getAllPosts } from '@/lib/posts';
 import PostCard from '@/components/blog/PostCard';
 import { generateMetadata as generateSEOMetadata } from '@/components/seo/SEO';

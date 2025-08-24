@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowLeft, FileX } from 'lucide-react';
+import { ArrowLeft, FileX } from '@/components/ui/icons';
 
 /**
  * Not Found Page for Blog Posts

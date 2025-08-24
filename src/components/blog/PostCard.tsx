@@ -4,7 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { BlogPostSummary } from '@/types/blog';
-import { Clock, Calendar, User } from 'lucide-react';
+import { Clock, Calendar, User } from '@/components/ui/icons';
 
 /**
  * Props interface for the PostCard component

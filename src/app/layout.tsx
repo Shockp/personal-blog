@@ -105,6 +105,12 @@ export default async function RootLayout({
         {/* CSP Nonce meta tag for client components */}
         <meta name='csp-nonce' content={nonce} />
 
+        {/* Resource preloading hints for critical resources */}
+        <link rel='preconnect' href='https://fonts.googleapis.com' />
+        <link rel='preconnect' href='https://fonts.gstatic.com' crossOrigin='anonymous' />
+        <link rel='dns-prefetch' href='https://fonts.googleapis.com' />
+        <link rel='dns-prefetch' href='https://fonts.gstatic.com' />
+
         {/* Theme initialization will be handled by ThemeScript component */}
 
         {/* Global Structured Data */}
