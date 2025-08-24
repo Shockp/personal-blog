@@ -1,6 +1,6 @@
 /**
  * Author Structured Data Component
- * Renders JSON-LD structured data for the author (Adrián Feito Blázquez)
+ * Renders JSON-LD structured data for the author
  */
 
 import { generateAuthorStructuredData } from '@/lib/structured-data';

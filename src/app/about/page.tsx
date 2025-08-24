@@ -13,7 +13,6 @@ import Link from 'next/link';
 import { generateMetadata as generateSEOMetadata } from '@/components/seo/SEO';
 import ContactCard from '@/components/about/ContactCard';
 import SocialLinks from '@/components/about/SocialLinks';
-import AuthorStructuredData from '@/components/seo/AuthorStructuredData';
 import BreadcrumbStructuredData from '@/components/seo/BreadcrumbStructuredData';
 
 // SEO metadata for the about page
@@ -124,7 +123,6 @@ export default function AboutPage() {
   return (
     <>
       {/* Structured Data */}
-      <AuthorStructuredData />
       <BreadcrumbStructuredData breadcrumbs={breadcrumbs} />
 
       <div className='min-h-screen bg-background'>

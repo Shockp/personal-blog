@@ -4,8 +4,6 @@ import { ArrowRight, BookOpen, Users } from 'lucide-react';
 import { getAllPosts } from '@/lib/posts';
 import PostCard from '@/components/blog/PostCard';
 import { generateMetadata as generateSEOMetadata } from '@/components/seo/SEO';
-import WebSiteStructuredData from '@/components/seo/WebSiteStructuredData';
-import AuthorStructuredData from '@/components/seo/AuthorStructuredData';
 
 // SEO metadata for the home page
 export const metadata = generateSEOMetadata({
@@ -86,9 +84,7 @@ export default async function Home() {
         crossOrigin='anonymous'
       />
 
-      {/* Structured Data */}
-      <WebSiteStructuredData />
-      <AuthorStructuredData />
+      {/* Structured Data is handled in layout.tsx to prevent duplication */}
 
       <main className='min-h-screen'>
         {/* Hero Section */}
