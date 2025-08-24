@@ -93,24 +93,7 @@ export default async function RootLayout({
         {/* CSP Nonce meta tag for client components */}
         <meta name="csp-nonce" content={nonce} />
         
-        {/* Theme initialization script with CSP nonce */}
-        <script
-          nonce={nonce}
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  var savedTheme = localStorage.getItem('theme');
-                  var systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-                  var theme = savedTheme || systemTheme;
-                  if (theme === 'dark') {
-                    document.documentElement.classList.add('dark');
-                  }
-                } catch (e) {}
-              })();
-            `,
-          }}
-        />
+        {/* Theme initialization will be handled by ThemeScript component */}
         
         {/* Global Structured Data */}
         <WebSiteStructuredData />
@@ -120,6 +103,7 @@ export default async function RootLayout({
         className={`${inter.variable} ${merriweather.variable} font-sans antialiased min-h-screen flex flex-col`}
         suppressHydrationWarning
       >
+        <ThemeScript />
         <ThemeProvider>
           {/* Skip to main content link for accessibility */}
           <a

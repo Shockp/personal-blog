@@ -31,10 +31,17 @@ export function middleware(request: NextRequest) {
   // Generate a unique nonce for this request
   const nonce = generateNonce();
   
-  // Create response
-  const response = NextResponse.next();
+  // Create response and set nonce in request headers for SSR access
+  const requestHeaders = new Headers(request.headers);
+  requestHeaders.set('x-nonce', nonce);
   
-  // Set nonce in response headers for use in components
+  const response = NextResponse.next({
+    request: {
+      headers: requestHeaders,
+    },
+  });
+  
+  // Also set nonce in response headers for client access
   response.headers.set('x-nonce', nonce);
   
   // Update CSP header with actual nonce

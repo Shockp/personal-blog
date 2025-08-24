@@ -32,20 +32,23 @@ export async function getNonce(): Promise<string> {
     }
     return generateNonce();
   }
-  
-  // Server-side: try to get from headers
+
+  // Server-side: get nonce from request headers (set by middleware)
   try {
     const { headers } = await import('next/headers');
     const headersList = await headers();
-    const nonce = headersList.get('x-nonce');
-    if (nonce) {
-      return nonce;
+    
+    // Get nonce from request headers (set by middleware)
+    const requestNonce = headersList.get('x-nonce');
+    if (requestNonce) {
+      return requestNonce;
     }
   } catch (error) {
     // Fallback if headers are not available
+    console.warn('Could not access headers for nonce, generating fallback nonce');
   }
-  
-  // Generate new nonce if not found
+
+  // Generate new nonce as fallback
   return generateNonce();
 }
 

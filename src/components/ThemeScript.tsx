@@ -1,42 +1,25 @@
 'use client';
 
 import { useEffect } from 'react';
-import { useNonce } from '@/hooks/useNonce';
 
 export default function ThemeScript() {
-  const nonce = useNonce();
-
   useEffect(() => {
-    // Theme initialization logic
+    // Theme initialization logic - runs after hydration
     try {
       const savedTheme = localStorage.getItem('theme');
       const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
       const theme = savedTheme || systemTheme;
       if (theme === 'dark') {
         document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
       }
     } catch (e) {
       // Ignore errors
     }
   }, []);
 
-  return (
-    <script
-      nonce={nonce}
-      dangerouslySetInnerHTML={{
-        __html: `
-          (function() {
-            try {
-              var savedTheme = localStorage.getItem('theme');
-              var systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-              var theme = savedTheme || systemTheme;
-              if (theme === 'dark') {
-                document.documentElement.classList.add('dark');
-              }
-            } catch (e) {}
-          })();
-        `,
-      }}
-    />
-  );
+  // This component doesn't render anything visible
+  // The theme logic runs in useEffect after hydration
+  return null;
 }

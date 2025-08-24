@@ -68,13 +68,6 @@ export default async function Home() {
   return (
     <>
       {/* Preload critical resources */}
-      <link
-        rel='preload'
-        href='/fonts/inter-var.woff2'
-        as='font'
-        type='font/woff2'
-        crossOrigin='anonymous'
-      />
       <link rel='dns-prefetch' href='//fonts.googleapis.com' />
       <link
         rel='preconnect'
