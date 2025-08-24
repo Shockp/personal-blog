@@ -3,7 +3,14 @@
 import { useState, useEffect } from 'react';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { ArrowLeft, ArrowRight, Calendar, Clock, User, Tag } from 'lucide-react';
+import {
+  ArrowLeft,
+  ArrowRight,
+  Calendar,
+  Clock,
+  User,
+  Tag,
+} from 'lucide-react';
 import PostContent from '@/components/blog/PostContent';
 import PostCard from '@/components/blog/PostCard';
 import { BlogPost, BlogPostSummary } from '@/types/blog';
@@ -145,7 +152,7 @@ export function PostPageClient({ post, slug }: PostPageClientProps) {
               <div className='flex items-center gap-2 mb-8'>
                 <Tag className='w-4 h-4 text-muted-foreground' />
                 <div className='flex flex-wrap gap-2'>
-                  {currentPost.tags.map((tag) => (
+                  {currentPost.tags.map(tag => (
                     <Link
                       key={tag}
                       href={`/blog?tag=${encodeURIComponent(tag)}`}
@@ -207,7 +214,7 @@ export function PostPageClient({ post, slug }: PostPageClientProps) {
                 Related Posts
               </h2>
               <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
-                {relatedPosts.slice(0, 3).map((relatedPost) => (
+                {relatedPosts.slice(0, 3).map(relatedPost => (
                   <PostCard key={relatedPost.slug} post={relatedPost} />
                 ))}
               </div>

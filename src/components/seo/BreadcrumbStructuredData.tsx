@@ -15,9 +15,9 @@ interface BreadcrumbStructuredDataProps {
   className?: string;
 }
 
-export default function BreadcrumbStructuredData({ 
+export default function BreadcrumbStructuredData({
   breadcrumbs,
-  className 
+  className,
 }: BreadcrumbStructuredDataProps) {
   // Don't render if no breadcrumbs or only one item (home)
   if (!breadcrumbs || breadcrumbs.length <= 1) {
@@ -28,10 +28,10 @@ export default function BreadcrumbStructuredData({
 
   return (
     <script
-      type="application/ld+json"
+      type='application/ld+json'
       className={className}
       dangerouslySetInnerHTML={{
-        __html: JSON.stringify(structuredData, null, 2)
+        __html: JSON.stringify(structuredData, null, 2),
       }}
     />
   );
@@ -50,18 +50,21 @@ export function useBreadcrumbStructuredData(breadcrumbs: BreadcrumbItem[]) {
 /**
  * Utility function to generate common breadcrumb paths
  */
-export function generateBlogBreadcrumbs(slug?: string, title?: string): BreadcrumbItem[] {
+export function generateBlogBreadcrumbs(
+  slug?: string,
+  title?: string
+): BreadcrumbItem[] {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://localhost:3000';
-  
+
   const breadcrumbs: BreadcrumbItem[] = [
     { name: 'Home', url: baseUrl },
-    { name: 'Blog', url: `${baseUrl}/blog` }
+    { name: 'Blog', url: `${baseUrl}/blog` },
   ];
 
   if (slug && title) {
     breadcrumbs.push({
       name: title,
-      url: `${baseUrl}/blog/${slug}`
+      url: `${baseUrl}/blog/${slug}`,
     });
   }
 
@@ -70,9 +73,9 @@ export function generateBlogBreadcrumbs(slug?: string, title?: string): Breadcru
 
 export function generateAboutBreadcrumbs(): BreadcrumbItem[] {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://localhost:3000';
-  
+
   return [
     { name: 'Home', url: baseUrl },
-    { name: 'About', url: `${baseUrl}/about` }
+    { name: 'About', url: `${baseUrl}/about` },
   ];
 }

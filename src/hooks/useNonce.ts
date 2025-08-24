@@ -13,9 +13,10 @@ function generateClientNonce(): string {
     crypto.getRandomValues(array);
     return btoa(String.fromCharCode(...array));
   }
-  
+
   // Fallback for environments without crypto
-  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
+  const chars =
+    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
   let result = '';
   for (let i = 0; i < 22; i++) {
     result += chars.charAt(Math.floor(Math.random() * chars.length));
@@ -29,11 +30,13 @@ function generateClientNonce(): string {
  */
 export function useNonce(): string {
   const [nonce, setNonce] = useState<string>('');
-  
+
   useEffect(() => {
     // Try to get nonce from meta tag (if set by server)
-    const metaNonce = document.querySelector('meta[name="csp-nonce"]')?.getAttribute('content');
-    
+    const metaNonce = document
+      .querySelector('meta[name="csp-nonce"]')
+      ?.getAttribute('content');
+
     if (metaNonce) {
       setNonce(metaNonce);
     } else {
@@ -42,7 +45,7 @@ export function useNonce(): string {
       setNonce(generateClientNonce());
     }
   }, []);
-  
+
   return nonce;
 }
 
@@ -51,23 +54,25 @@ export function useNonce(): string {
  */
 export function useNonceScript(content: string): HTMLScriptElement | null {
   const nonce = useNonce();
-  const [scriptElement, setScriptElement] = useState<HTMLScriptElement | null>(null);
-  
+  const [scriptElement, setScriptElement] = useState<HTMLScriptElement | null>(
+    null
+  );
+
   useEffect(() => {
     if (!nonce || !content) return;
-    
+
     const script = document.createElement('script');
     script.nonce = nonce;
     script.textContent = content;
     setScriptElement(script);
-    
+
     return () => {
       if (script.parentNode) {
         script.parentNode.removeChild(script);
       }
     };
   }, [nonce, content]);
-  
+
   return scriptElement;
 }
 
@@ -76,22 +81,24 @@ export function useNonceScript(content: string): HTMLScriptElement | null {
  */
 export function useNonceStyle(content: string): HTMLStyleElement | null {
   const nonce = useNonce();
-  const [styleElement, setStyleElement] = useState<HTMLStyleElement | null>(null);
-  
+  const [styleElement, setStyleElement] = useState<HTMLStyleElement | null>(
+    null
+  );
+
   useEffect(() => {
     if (!nonce || !content) return;
-    
+
     const style = document.createElement('style');
     style.nonce = nonce;
     style.textContent = content;
     setStyleElement(style);
-    
+
     return () => {
       if (style.parentNode) {
         style.parentNode.removeChild(style);
       }
     };
   }, [nonce, content]);
-  
+
   return styleElement;
 }

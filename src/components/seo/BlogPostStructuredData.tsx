@@ -11,17 +11,17 @@ interface BlogPostStructuredDataProps {
   url: string;
 }
 
-export default function BlogPostStructuredData({ 
-  post, 
-  url 
+export default function BlogPostStructuredData({
+  post,
+  url,
 }: BlogPostStructuredDataProps) {
   const structuredData = generateBlogPostStructuredData(post, url);
 
   return (
     <script
-      type="application/ld+json"
+      type='application/ld+json'
       dangerouslySetInnerHTML={{
-        __html: JSON.stringify(structuredData, null, 2)
+        __html: JSON.stringify(structuredData, null, 2),
       }}
     />
   );

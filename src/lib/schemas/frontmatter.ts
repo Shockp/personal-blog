@@ -14,7 +14,7 @@ export const frontmatterSchema = z.object({
     .min(1, 'Title cannot be empty')
     .max(200, 'Title must be 200 characters or less')
     .refine(
-      (title) => title.trim().length >= 10,
+      title => title.trim().length >= 10,
       'Title should be at least 10 characters for better SEO'
     ),
 
@@ -26,7 +26,7 @@ export const frontmatterSchema = z.object({
     .min(1, 'Description cannot be empty')
     .max(300, 'Description must be 300 characters or less')
     .refine(
-      (desc) => desc.trim().length >= 50,
+      desc => desc.trim().length >= 50,
       'Description should be at least 50 characters for better SEO'
     ),
 
@@ -39,13 +39,10 @@ export const frontmatterSchema = z.object({
       /^\d{4}-\d{2}-\d{2}(T\d{2}:\d{2}:\d{2}(\.\d{3})?Z?)?$/,
       'Date must be in ISO format (YYYY-MM-DD or full ISO string)'
     )
-    .refine(
-      (dateStr) => {
-        const date = new Date(dateStr);
-        return !isNaN(date.getTime());
-      },
-      'Date must be a valid date'
-    ),
+    .refine(dateStr => {
+      const date = new Date(dateStr);
+      return !isNaN(date.getTime());
+    }, 'Date must be a valid date'),
 
   /** Tags array - optional, array of non-empty strings */
   tags: z
@@ -57,18 +54,15 @@ export const frontmatterSchema = z.object({
         .min(1, 'Tags cannot be empty')
         .max(50, 'Each tag must be 50 characters or less')
         .refine(
-          (tag) => tag.trim().length > 0,
+          tag => tag.trim().length > 0,
           'Tags cannot contain only whitespace'
         )
     )
     .max(10, 'Maximum 10 tags allowed')
-    .refine(
-      (tags) => {
-        const uniqueTags = new Set(tags.map(tag => tag.toLowerCase()));
-        return uniqueTags.size === tags.length;
-      },
-      'Tags must be unique (case-insensitive)'
-    )
+    .refine(tags => {
+      const uniqueTags = new Set(tags.map(tag => tag.toLowerCase()));
+      return uniqueTags.size === tags.length;
+    }, 'Tags must be unique (case-insensitive)')
     .optional()
     .default([]),
 
@@ -183,17 +177,14 @@ export const contentSchema = z
   .min(100, 'Content must be at least 100 characters')
   .max(50000, 'Content must be 50,000 characters or less')
   .refine(
-    (content) => content.trim().length > 0,
+    content => content.trim().length > 0,
     'Content cannot be empty or only whitespace'
   )
-  .refine(
-    (content) => {
-      // Check for unclosed code blocks
-      const codeBlockMatches = content.match(/```/g) || [];
-      return codeBlockMatches.length % 2 === 0;
-    },
-    'Content has unclosed code blocks (unmatched ```)'
-  );
+  .refine(content => {
+    // Check for unclosed code blocks
+    const codeBlockMatches = content.match(/```/g) || [];
+    return codeBlockMatches.length % 2 === 0;
+  }, 'Content has unclosed code blocks (unmatched ```)');
 
 /**
  * Complete blog post validation schema
@@ -217,6 +208,6 @@ export function validateBlogPostWithZod(
     frontmatter: strict ? strictFrontmatterSchema : frontmatterSchema,
     content: contentSchema,
   });
-  
+
   return schema.safeParse(data);
 }

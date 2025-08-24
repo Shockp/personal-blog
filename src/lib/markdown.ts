@@ -4,7 +4,10 @@ import matter from 'gray-matter';
 import DOMPurify from 'dompurify';
 import { JSDOM } from 'jsdom';
 import { PostMetadata } from '@/types/blog';
-import { validateFrontmatterWithZod, transformToPostMetadata } from './schemas/frontmatter';
+import {
+  validateFrontmatterWithZod,
+  transformToPostMetadata,
+} from './schemas/frontmatter';
 
 // Create a JSDOM window for server-side DOMPurify
 const window = new JSDOM('').window;
@@ -188,11 +191,11 @@ export function parseFrontmatter(markdownContent: string): FrontmatterResult {
 
     // Validate frontmatter using Zod schema
     const validationResult = validateFrontmatterWithZod(data);
-    
+
     if (!validationResult.success) {
-      const errorMessages = validationResult.error.issues.map(
-        (err) => `${err.path.join('.')}: ${err.message}`
-      ).join('; ');
+      const errorMessages = validationResult.error.issues
+        .map(err => `${err.path.join('.')}: ${err.message}`)
+        .join('; ');
       throw new Error(`Invalid frontmatter: ${errorMessages}`);
     }
 

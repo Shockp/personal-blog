@@ -16,7 +16,13 @@ export interface SEOProps {
 
 const DEFAULT_TITLE = 'Personal Blog';
 const DEFAULT_DESCRIPTION = 'A modern personal blog built with Next.js';
-const DEFAULT_KEYWORDS = ['blog', 'personal', 'nextjs', 'typescript', 'tailwind'];
+const DEFAULT_KEYWORDS = [
+  'blog',
+  'personal',
+  'nextjs',
+  'typescript',
+  'tailwind',
+];
 const SITE_NAME = 'Personal Blog';
 const TWITTER_HANDLE = '@yourusername';
 const AUTHOR_NAME = 'Blog Author';
@@ -43,17 +49,17 @@ export function generateMetadata(props: SEOProps = {}): Metadata {
 
   // Construct full title
   const fullTitle = title ? `${title} | ${DEFAULT_TITLE}` : DEFAULT_TITLE;
-  
+
   // Base URL for the site
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
-  
+
   // Construct full URL
   const fullUrl = url ? `${baseUrl}${url}` : baseUrl;
-  
+
   // Default image for social sharing
   const defaultImage = `${baseUrl}/images/og-default.jpg`;
   const fullImage = image ? `${baseUrl}${image}` : defaultImage;
-  
+
   // Combine keywords with tags
   const allKeywords = [...keywords, ...tags].filter(Boolean);
 
@@ -64,28 +70,30 @@ export function generateMetadata(props: SEOProps = {}): Metadata {
     authors: [{ name: author }],
     creator: author,
     publisher: AUTHOR_NAME,
-    
+
     // Canonical URL
     alternates: {
       canonical: fullUrl,
     },
-    
+
     // Robots configuration
-    robots: noIndex ? {
-      index: false,
-      follow: false,
-    } : {
-      index: true,
-      follow: true,
-      googleBot: {
-        index: true,
-        follow: true,
-        'max-video-preview': -1,
-        'max-image-preview': 'large',
-        'max-snippet': -1,
-      },
-    },
-    
+    robots: noIndex
+      ? {
+          index: false,
+          follow: false,
+        }
+      : {
+          index: true,
+          follow: true,
+          googleBot: {
+            index: true,
+            follow: true,
+            'max-video-preview': -1,
+            'max-image-preview': 'large',
+            'max-snippet': -1,
+          },
+        },
+
     // Open Graph tags
     openGraph: {
       type,
@@ -109,7 +117,7 @@ export function generateMetadata(props: SEOProps = {}): Metadata {
         tags: allKeywords,
       }),
     },
-    
+
     // Twitter Card tags
     twitter: {
       card: 'summary_large_image',
@@ -119,32 +127,35 @@ export function generateMetadata(props: SEOProps = {}): Metadata {
       description,
       images: [fullImage],
     },
-    
+
     // Additional meta tags
     other: {
       // Prevent format detection
       'format-detection': 'telephone=no, date=no, email=no, address=no',
-      
+
       // Theme color for mobile browsers
       'theme-color': '#ffffff',
-      
+
       // Apple touch icon
       'apple-mobile-web-app-capable': 'yes',
       'apple-mobile-web-app-status-bar-style': 'default',
-      
+
       // Microsoft tiles
       'msapplication-TileColor': '#ffffff',
-      
+
       // Article specific meta tags
-      ...(type === 'article' && publishedTime && {
-        'article:published_time': publishedTime,
-      }),
-      ...(type === 'article' && modifiedTime && {
-        'article:modified_time': modifiedTime,
-      }),
-      ...(type === 'article' && author && {
-        'article:author': author,
-      }),
+      ...(type === 'article' &&
+        publishedTime && {
+          'article:published_time': publishedTime,
+        }),
+      ...(type === 'article' &&
+        modifiedTime && {
+          'article:modified_time': modifiedTime,
+        }),
+      ...(type === 'article' &&
+        author && {
+          'article:author': author,
+        }),
     },
   };
 
@@ -156,10 +167,12 @@ export function generateMetadata(props: SEOProps = {}): Metadata {
  * @param props SEO configuration options
  * @returns JSON-LD structured data object
  */
-export function generateStructuredData(props: SEOProps & {
-  content?: string;
-  readingTime?: number;
-}) {
+export function generateStructuredData(
+  props: SEOProps & {
+    content?: string;
+    readingTime?: number;
+  }
+) {
   const {
     title,
     description = DEFAULT_DESCRIPTION,
@@ -175,7 +188,9 @@ export function generateStructuredData(props: SEOProps & {
 
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
   const fullUrl = url ? `${baseUrl}${url}` : baseUrl;
-  const fullImage = image ? `${baseUrl}${image}` : `${baseUrl}/images/og-default.jpg`;
+  const fullImage = image
+    ? `${baseUrl}${image}`
+    : `${baseUrl}/images/og-default.jpg`;
 
   if (props.type === 'article' && title) {
     return {
@@ -233,14 +248,14 @@ export const seoUtils = {
       .replace(/[#*`]/g, '') // Remove markdown
       .replace(/\s+/g, ' ') // Normalize whitespace
       .trim();
-    
+
     if (cleanContent.length <= maxLength) {
       return cleanContent;
     }
-    
+
     return cleanContent.substring(0, maxLength - 3).trim() + '...';
   },
-  
+
   /**
    * Generate keywords from content and tags
    */
@@ -251,10 +266,10 @@ export const seoUtils = {
       .split(/\s+/)
       .filter(word => word.length > 3)
       .slice(0, 10);
-    
+
     return [...new Set([...DEFAULT_KEYWORDS, ...tags, ...contentWords])];
   },
-  
+
   /**
    * Generate slug from title
    */

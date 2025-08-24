@@ -5,7 +5,7 @@
 /**
  * Creates a debounced function that delays invoking func until after wait milliseconds
  */
-export function debounce<T extends (...args: any[]) => any>(
+export function debounce<T extends (...args: unknown[]) => unknown>(
   func: T,
   wait: number,
   immediate = false
@@ -30,7 +30,7 @@ export function debounce<T extends (...args: any[]) => any>(
 /**
  * Creates a throttled function that only invokes func at most once per every wait milliseconds
  */
-export function throttle<T extends (...args: any[]) => any>(
+export function throttle<T extends (...args: unknown[]) => unknown>(
   func: T,
   wait: number
 ): (...args: Parameters<T>) => void {
@@ -315,7 +315,7 @@ export function createDeferred<T>(): {
   reject: (reason?: unknown) => void;
 } {
   let resolve!: (value: T) => void;
-  let reject!: (reason?: any) => void;
+  let reject!: (reason?: unknown) => void;
 
   const promise = new Promise<T>((res, rej) => {
     resolve = res;

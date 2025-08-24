@@ -47,6 +47,14 @@ const eslintConfig = [
       'no-new-func': 'error',
     },
   },
+  // Special configuration for CommonJS files (build scripts)
+  {
+    files: ['**/*.cjs'],
+    rules: {
+      '@typescript-eslint/no-require-imports': 'off',
+      'no-console': 'off', // Allow console in build scripts
+    },
+  },
 ];
 
 export default eslintConfig;

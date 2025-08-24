@@ -10,8 +10,19 @@ import AuthorStructuredData from '@/components/seo/AuthorStructuredData';
 // SEO metadata for the home page
 export const metadata = generateSEOMetadata({
   title: 'Home',
-  description: 'Adrián Feito Blázquez - A passionate developer crafting digital experiences with modern technologies. Discover insights about web development, React, TypeScript, and building amazing user experiences.',
-  keywords: ['adrián feito blázquez', 'web development', 'react', 'typescript', 'nextjs', 'javascript', 'frontend', 'developer', 'blog'],
+  description:
+    'Adrián Feito Blázquez - A passionate developer crafting digital experiences with modern technologies. Discover insights about web development, React, TypeScript, and building amazing user experiences.',
+  keywords: [
+    'adrián feito blázquez',
+    'web development',
+    'react',
+    'typescript',
+    'nextjs',
+    'javascript',
+    'frontend',
+    'developer',
+    'blog',
+  ],
   type: 'website',
   url: '/',
 });

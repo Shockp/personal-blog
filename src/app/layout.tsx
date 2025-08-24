@@ -35,8 +35,18 @@ const merriweather = Merriweather({
 
 export const metadata: Metadata = {
   title: 'Adrián Feito Blázquez - Personal Blog',
-  description: 'Personal blog by Adrián Feito Blázquez covering software development, technology, and programming insights.',
-  keywords: ['blog', 'personal', 'nextjs', 'typescript', 'tailwind', 'software development', 'programming', 'technology'],
+  description:
+    'Personal blog by Adrián Feito Blázquez covering software development, technology, and programming insights.',
+  keywords: [
+    'blog',
+    'personal',
+    'nextjs',
+    'typescript',
+    'tailwind',
+    'software development',
+    'programming',
+    'technology',
+  ],
   authors: [{ name: 'Adrián Feito Blázquez' }],
   creator: 'Adrián Feito Blázquez',
   publisher: 'Adrián Feito Blázquez',
@@ -53,13 +63,15 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000',
     title: 'Adrián Feito Blázquez - Personal Blog',
-    description: 'Personal blog by Adrián Feito Blázquez covering software development, technology, and programming insights.',
+    description:
+      'Personal blog by Adrián Feito Blázquez covering software development, technology, and programming insights.',
     siteName: 'Adrián Feito Blázquez - Personal Blog',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Adrián Feito Blázquez - Personal Blog',
-    description: 'Personal blog by Adrián Feito Blázquez covering software development, technology, and programming insights.',
+    description:
+      'Personal blog by Adrián Feito Blázquez covering software development, technology, and programming insights.',
     creator: '@adrianfeito',
   },
   robots: {
@@ -86,15 +98,15 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const nonce = await getNonce();
-  
+
   return (
     <html lang='en' suppressHydrationWarning>
       <head>
         {/* CSP Nonce meta tag for client components */}
-        <meta name="csp-nonce" content={nonce} />
-        
+        <meta name='csp-nonce' content={nonce} />
+
         {/* Theme initialization will be handled by ThemeScript component */}
-        
+
         {/* Global Structured Data */}
         <WebSiteStructuredData />
         <AuthorStructuredData />

@@ -25,7 +25,7 @@ const iconMap = {
 
 /**
  * Interactive Contact Card Component
- * 
+ *
  * A client component that handles hover interactions for contact information cards.
  * Supports both link and non-link variants with smooth color transitions.
  */
@@ -38,14 +38,16 @@ export default function ContactCard({
   iconBgColor,
   iconColor,
   isLink = false,
-  children
+  children,
 }: ContactCardProps) {
   const [isHovered, setIsHovered] = useState(false);
   const Icon = iconMap[iconName];
 
   const cardContent = (
     <div className='bg-card rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-500 text-center'>
-      <div className={`${iconBgColor} rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4`}>
+      <div
+        className={`${iconBgColor} rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4`}
+      >
         <Icon className={`w-8 h-8 ${iconColor}`} />
       </div>
       <h3
@@ -62,7 +64,7 @@ export default function ContactCard({
           href={href}
           className='font-medium transition-colors duration-500'
           style={{
-            color: isHovered ? 'var(--text-primary)' : 'var(--text-accent)'
+            color: isHovered ? 'var(--text-primary)' : 'var(--text-accent)',
           }}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
@@ -70,10 +72,7 @@ export default function ContactCard({
           {content}
         </a>
       ) : (
-        <p
-          className='font-medium'
-          style={{ color: 'var(--text-primary)' }}
-        >
+        <p className='font-medium' style={{ color: 'var(--text-primary)' }}>
           {content}
         </p>
       )}

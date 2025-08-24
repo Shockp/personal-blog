@@ -9,9 +9,10 @@ export function generateNonce(): string {
     crypto.getRandomValues(array);
     return btoa(String.fromCharCode(...array));
   }
-  
+
   // Fallback for environments without crypto
-  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
+  const chars =
+    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
   let result = '';
   for (let i = 0; i < 22; i++) {
     result += chars.charAt(Math.floor(Math.random() * chars.length));
@@ -37,15 +38,17 @@ export async function getNonce(): Promise<string> {
   try {
     const { headers } = await import('next/headers');
     const headersList = await headers();
-    
+
     // Get nonce from request headers (set by middleware)
     const requestNonce = headersList.get('x-nonce');
     if (requestNonce) {
       return requestNonce;
     }
-  } catch (error) {
+  } catch {
     // Fallback if headers are not available
-    console.warn('Could not access headers for nonce, generating fallback nonce');
+    console.warn(
+      'Could not access headers for nonce, generating fallback nonce'
+    );
   }
 
   // Generate new nonce as fallback

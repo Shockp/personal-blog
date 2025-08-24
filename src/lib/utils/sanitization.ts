@@ -66,7 +66,7 @@ export function escapeHtml(text: string): string {
     '=': '&#x3D;',
   };
 
-  return text.replace(/[&<>"'`=/]/g, (match) => htmlEscapeMap[match] || match);
+  return text.replace(/[&<>"'`=/]/g, match => htmlEscapeMap[match] || match);
 }
 
 /**
@@ -90,8 +90,9 @@ export function unescapeHtml(text: string): string {
     '&#x3D;': '=',
   };
 
-  return text.replace(/&(?:amp|lt|gt|quot|#x27|#x2F|#x60|#x3D);/g, (match) => 
-    htmlUnescapeMap[match] || match
+  return text.replace(
+    /&(?:amp|lt|gt|quot|#x27|#x2F|#x60|#x3D);/g,
+    match => htmlUnescapeMap[match] || match
   );
 }
 
@@ -129,7 +130,10 @@ export function sanitizeUserContent(
   if (allowHtml) {
     config = {
       ...DEFAULT_SANITIZATION_CONFIG,
-      ALLOWED_TAGS: allowedTags.length > 0 ? allowedTags : DEFAULT_SANITIZATION_CONFIG.ALLOWED_TAGS,
+      ALLOWED_TAGS:
+        allowedTags.length > 0
+          ? allowedTags
+          : DEFAULT_SANITIZATION_CONFIG.ALLOWED_TAGS,
       ALLOWED_ATTR: allowedAttributes,
     };
   } else {
@@ -154,7 +158,10 @@ export function sanitizeUserContent(
  * @param maxLength - Maximum allowed length (default: 100)
  * @returns Sanitized search query
  */
-export function sanitizeSearchQuery(query: string, maxLength: number = 100): string {
+export function sanitizeSearchQuery(
+  query: string,
+  maxLength: number = 100
+): string {
   if (typeof query !== 'string') {
     return '';
   }
@@ -164,7 +171,10 @@ export function sanitizeSearchQuery(query: string, maxLength: number = 100): str
     .replace(/[<>"'&\x00-\x1F\x7F]/g, '') // Remove HTML and control characters
     .replace(/javascript:/gi, '') // Remove javascript: protocol
     .replace(/data:/gi, '') // Remove data: protocol
-    .replace(/drop|delete|union|select|insert|update|create|alter|exec|execute/gi, '') // Remove SQL keywords
+    .replace(
+      /drop|delete|union|select|insert|update|create|alter|exec|execute/gi,
+      ''
+    ) // Remove SQL keywords
     .replace(/alert|eval|prompt|confirm/gi, '') // Remove dangerous JavaScript functions
     .replace(/[\r\n\t]/g, ' ') // Replace line breaks and tabs with spaces
     .replace(/\s+/g, ' ') // Normalize whitespace
@@ -184,7 +194,10 @@ export function sanitizeSearchQuery(query: string, maxLength: number = 100): str
  * @param maxLength - Maximum allowed length (default: 200)
  * @returns Sanitized parameter
  */
-export function sanitizeUrlParameter(param: string, maxLength: number = 200): string {
+export function sanitizeUrlParameter(
+  param: string,
+  maxLength: number = 200
+): string {
   if (typeof param !== 'string') {
     return '';
   }
@@ -324,20 +337,23 @@ export function sanitizeJsonInput(
  * @param maxLength - Maximum filename length (default: 255)
  * @returns Sanitized filename
  */
-export function sanitizeFilename(filename: string, maxLength: number = 255): string {
+export function sanitizeFilename(
+  filename: string,
+  maxLength: number = 255
+): string {
   if (typeof filename !== 'string') {
     return 'untitled';
   }
 
   // Remove path traversal attempts
   let sanitized = filename.replace(/\.\./g, '');
-  
+
   // Remove dangerous characters including spaces and special chars
   sanitized = sanitized.replace(/[<>:"/\\|?*\x00-\x1F\x7F\s@#%&+={}\[\]]/g, '');
-  
+
   // Remove leading/trailing dots
   sanitized = sanitized.replace(/^[\.]+|[\.]+$/g, '');
-  
+
   // Limit length
   if (sanitized.length > maxLength) {
     const ext = sanitized.lastIndexOf('.');
@@ -350,7 +366,7 @@ export function sanitizeFilename(filename: string, maxLength: number = 255): str
       sanitized = sanitized.substring(0, maxLength);
     }
   }
-  
+
   // Ensure we have a valid filename
   return sanitized || 'untitled';
 }

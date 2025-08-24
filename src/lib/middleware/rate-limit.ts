@@ -38,9 +38,12 @@ class MemoryRateLimitStore {
 
   constructor() {
     // Clean up expired entries every 5 minutes
-    this.cleanupInterval = setInterval(() => {
-      this.cleanup();
-    }, 5 * 60 * 1000);
+    this.cleanupInterval = setInterval(
+      () => {
+        this.cleanup();
+      },
+      5 * 60 * 1000
+    );
   }
 
   /**
@@ -64,7 +67,10 @@ class MemoryRateLimitStore {
   /**
    * Increment count for a key
    */
-  increment(key: string, windowMs: number): { count: number; resetTime: number } {
+  increment(
+    key: string,
+    windowMs: number
+  ): { count: number; resetTime: number } {
     const now = Date.now();
     const existing = this.get(key);
 
@@ -122,14 +128,14 @@ function defaultKeyGenerator(request: NextRequest): string {
   const forwarded = request.headers.get('x-forwarded-for');
   const realIp = request.headers.get('x-real-ip');
   const cfConnectingIp = request.headers.get('cf-connecting-ip');
-  
+
   let ip = forwarded?.split(',')[0] || realIp || cfConnectingIp;
-  
+
   // Fallback to a default if no IP is found
   if (!ip) {
     ip = 'unknown';
   }
-  
+
   return ip.trim();
 }
 
@@ -141,8 +147,6 @@ export function createRateLimit(config: RateLimitConfig) {
     maxRequests,
     windowMs,
     message = 'Too many requests, please try again later.',
-    skipSuccessfulRequests = false,
-    skipFailedRequests = false,
     keyGenerator = defaultKeyGenerator,
   } = config;
 
@@ -157,8 +161,14 @@ export function createRateLimit(config: RateLimitConfig) {
       // Add rate limit headers
       const headers = new Headers();
       headers.set('X-RateLimit-Limit', maxRequests.toString());
-      headers.set('X-RateLimit-Remaining', Math.max(0, maxRequests - current.count).toString());
-      headers.set('X-RateLimit-Reset', Math.ceil(current.resetTime / 1000).toString());
+      headers.set(
+        'X-RateLimit-Remaining',
+        Math.max(0, maxRequests - current.count).toString()
+      );
+      headers.set(
+        'X-RateLimit-Reset',
+        Math.ceil(current.resetTime / 1000).toString()
+      );
 
       // Check if rate limit exceeded
       if (current.count > maxRequests) {
@@ -172,7 +182,9 @@ export function createRateLimit(config: RateLimitConfig) {
             status: 429,
             headers: {
               'Content-Type': 'application/json',
-              'Retry-After': Math.ceil((current.resetTime - Date.now()) / 1000).toString(),
+              'Retry-After': Math.ceil(
+                (current.resetTime - Date.now()) / 1000
+              ).toString(),
               ...Object.fromEntries(headers.entries()),
             },
           }
@@ -203,7 +215,8 @@ export const rateLimitConfigs = {
   auth: {
     maxRequests: 5,
     windowMs: 15 * 60 * 1000, // 15 minutes
-    message: 'Too many authentication attempts, please try again in 15 minutes.',
+    message:
+      'Too many authentication attempts, please try again in 15 minutes.',
   },
 
   /** Moderate rate limiting for API endpoints */
@@ -224,7 +237,8 @@ export const rateLimitConfigs = {
   sensitive: {
     maxRequests: 3,
     windowMs: 60 * 60 * 1000, // 1 hour
-    message: 'Too many attempts for sensitive operation, please try again in 1 hour.',
+    message:
+      'Too many attempts for sensitive operation, please try again in 1 hour.',
   },
 
   /** Rate limiting for search endpoints */
@@ -248,7 +262,8 @@ export const rateLimitConfigs = {
 export const authRateLimit = () => createRateLimit(rateLimitConfigs.auth);
 export const apiRateLimit = () => createRateLimit(rateLimitConfigs.api);
 export const generalRateLimit = () => createRateLimit(rateLimitConfigs.general);
-export const sensitiveRateLimit = () => createRateLimit(rateLimitConfigs.sensitive);
+export const sensitiveRateLimit = () =>
+  createRateLimit(rateLimitConfigs.sensitive);
 export const searchRateLimit = () => createRateLimit(rateLimitConfigs.search);
 export const contactRateLimit = () => createRateLimit(rateLimitConfigs.contact);
 
@@ -261,7 +276,9 @@ export function withRateLimit(
 ) {
   const rateLimit = createRateLimit(config);
 
-  return async function rateLimitedHandler(req: NextRequest): Promise<NextResponse> {
+  return async function rateLimitedHandler(
+    req: NextRequest
+  ): Promise<NextResponse> {
     // Apply rate limiting
     const rateLimitResponse = await rateLimit(req);
     if (rateLimitResponse) {
@@ -276,7 +293,10 @@ export function withRateLimit(
 /**
  * Rate limit check function (doesn't increment counter)
  */
-export function checkRateLimit(request: NextRequest, config: RateLimitConfig): {
+export function checkRateLimit(
+  request: NextRequest,
+  config: RateLimitConfig
+): {
   allowed: boolean;
   remaining: number;
   resetTime: number;
@@ -302,7 +322,10 @@ export function checkRateLimit(request: NextRequest, config: RateLimitConfig): {
 /**
  * Reset rate limit for a specific key
  */
-export function resetRateLimit(request: NextRequest, keyGenerator?: (req: NextRequest) => string): void {
+export function resetRateLimit(
+  request: NextRequest,
+  keyGenerator?: (req: NextRequest) => string
+): void {
   const key = (keyGenerator || defaultKeyGenerator)(request);
   globalStore.reset(key);
 }
@@ -310,7 +333,10 @@ export function resetRateLimit(request: NextRequest, keyGenerator?: (req: NextRe
 /**
  * Get current rate limit status for a key
  */
-export function getRateLimitStatus(request: NextRequest, keyGenerator?: (req: NextRequest) => string): {
+export function getRateLimitStatus(
+  request: NextRequest,
+  keyGenerator?: (req: NextRequest) => string
+): {
   count: number;
   resetTime: number;
 } | null {

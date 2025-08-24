@@ -9,17 +9,17 @@ interface WebSiteStructuredDataProps {
   className?: string;
 }
 
-export default function WebSiteStructuredData({ 
-  className 
+export default function WebSiteStructuredData({
+  className,
 }: WebSiteStructuredDataProps = {}) {
   const structuredData = generateWebSiteStructuredData();
 
   return (
     <script
-      type="application/ld+json"
+      type='application/ld+json'
       className={className}
       dangerouslySetInnerHTML={{
-        __html: JSON.stringify(structuredData, null, 2)
+        __html: JSON.stringify(structuredData, null, 2),
       }}
     />
   );

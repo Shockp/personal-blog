@@ -11,17 +11,17 @@ class SimpleBuildMonitor {
   measureBuildTime() {
     console.log('🚀 Starting build performance monitoring...');
     const startTime = Date.now();
-    
+
     try {
       // Run build with minimal output
-      execSync('npm run build', { 
+      execSync('npm run build', {
         stdio: 'pipe',
-        env: { ...process.env, BUILD_MONITOR: 'true' }
+        env: { ...process.env, BUILD_MONITOR: 'true' },
       });
       const buildTime = Date.now() - startTime;
       console.log(`✅ Build completed in ${buildTime}ms`);
       return buildTime;
-    } catch (error) {
+    } catch {
       console.log('❌ Build failed, but continuing with analysis...');
       return Date.now() - startTime;
     }
@@ -30,7 +30,7 @@ class SimpleBuildMonitor {
   analyzeBundleSize() {
     console.log('📊 Analyzing bundle sizes...');
     const buildDir = path.join(process.cwd(), '.next');
-    
+
     if (!fs.existsSync(buildDir)) {
       console.log('⚠️  Build directory not found, skipping bundle analysis');
       return { totalSize: 0, chunks: [], css: [] };
@@ -93,14 +93,14 @@ class SimpleBuildMonitor {
       bundleSize: bundleAnalysis.totalSize,
       chunks: bundleAnalysis.chunks.length,
       cssFiles: bundleAnalysis.css.length,
-      formattedSize: this.formatSize(bundleAnalysis.totalSize)
+      formattedSize: this.formatSize(bundleAnalysis.totalSize),
     };
 
     let history = [];
     if (fs.existsSync(this.metricsFile)) {
       try {
         history = JSON.parse(fs.readFileSync(this.metricsFile, 'utf8'));
-      } catch (error) {
+      } catch {
         console.log('⚠️  Could not read existing metrics, starting fresh');
       }
     }
@@ -153,17 +153,23 @@ class SimpleBuildMonitor {
     <h3>JavaScript Chunks (${bundleAnalysis.chunks.length})</h3>
     <table>
         <tr><th>File</th><th>Size</th></tr>
-        ${bundleAnalysis.chunks.map(chunk => 
-          `<tr><td>${chunk.name}</td><td>${this.formatSize(chunk.size)}</td></tr>`
-        ).join('')}
+        ${bundleAnalysis.chunks
+          .map(
+            chunk =>
+              `<tr><td>${chunk.name}</td><td>${this.formatSize(chunk.size)}</td></tr>`
+          )
+          .join('')}
     </table>
     
     <h3>CSS Files (${bundleAnalysis.css.length})</h3>
     <table>
         <tr><th>File</th><th>Size</th></tr>
-        ${bundleAnalysis.css.map(css => 
-          `<tr><td>${css.name}</td><td>${this.formatSize(css.size)}</td></tr>`
-        ).join('')}
+        ${bundleAnalysis.css
+          .map(
+            css =>
+              `<tr><td>${css.name}</td><td>${this.formatSize(css.size)}</td></tr>`
+          )
+          .join('')}
     </table>
     
     <h2>Performance Tips</h2>
@@ -187,13 +193,17 @@ class SimpleBuildMonitor {
       const bundleAnalysis = this.analyzeBundleSize();
       const metrics = this.saveMetrics(buildTime, bundleAnalysis);
       this.generateReport(metrics, bundleAnalysis);
-      
+
       console.log('\n📈 Build Performance Summary:');
       console.log(`⏱️  Build Time: ${(buildTime / 1000).toFixed(2)}s`);
-      console.log(`📦 Bundle Size: ${this.formatSize(bundleAnalysis.totalSize)}`);
+      console.log(
+        `📦 Bundle Size: ${this.formatSize(bundleAnalysis.totalSize)}`
+      );
       console.log(`🧩 JS Chunks: ${bundleAnalysis.chunks.length}`);
       console.log(`🎨 CSS Files: ${bundleAnalysis.css.length}`);
-      console.log(`\n✅ Monitoring complete! Check ${this.reportFile} for detailed report.`);
+      console.log(
+        `\n✅ Monitoring complete! Check ${this.reportFile} for detailed report.`
+      );
     } catch (error) {
       console.error('❌ Build monitoring failed:', error.message);
       process.exit(1);

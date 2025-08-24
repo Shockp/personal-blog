@@ -19,7 +19,7 @@ const nextConfig = {
   compress: true, // Enable gzip compression
   poweredByHeader: false, // Remove X-Powered-By header for security
   generateEtags: true, // Generate ETags for better caching
-  
+
   experimental: {
     optimizeCss: true,
     optimizePackageImports: ['lucide-react', 'date-fns'], // Optimize specific package imports
@@ -31,7 +31,8 @@ const nextConfig = {
   },
   eslint: {
     // Temporarily ignore ESLint warnings during bundle analysis and monitoring
-    ignoreDuringBuilds: process.env.ANALYZE === 'true' || process.env.BUILD_MONITOR === 'true',
+    ignoreDuringBuilds:
+      process.env.ANALYZE === 'true' || process.env.BUILD_MONITOR === 'true',
   },
   // Security headers are now handled by middleware.ts for dynamic nonce support
   // This allows for proper CSP nonce injection per request
@@ -74,12 +75,12 @@ const nextConfig = {
           },
         },
       };
-      
+
       // Optimize asset modules for better caching
       config.optimization.moduleIds = 'deterministic';
       config.optimization.chunkIds = 'deterministic';
     }
-    
+
     // Asset optimization rules
     config.module.rules.push({
       test: /\.(png|jpe?g|gif|svg|webp|avif)$/i,
@@ -90,7 +91,7 @@ const nextConfig = {
         },
       },
     });
-    
+
     return config;
   },
 };

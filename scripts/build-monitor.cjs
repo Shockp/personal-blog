@@ -40,11 +40,11 @@ class BuildMonitor {
   measureBuildTime() {
     console.log('📊 Measuring build performance...');
     const startTime = Date.now();
-    
+
     try {
-      execSync('npx next build', { 
+      execSync('npx next build', {
         stdio: 'inherit',
-        env: { ...process.env, BUILD_MONITOR: 'true' }
+        env: { ...process.env, BUILD_MONITOR: 'true' },
       });
       const buildTime = Date.now() - startTime;
       console.log(`✅ Build completed in ${buildTime}ms`);
@@ -59,27 +59,27 @@ class BuildMonitor {
   analyzeBundleSizes() {
     console.log('📦 Analyzing bundle sizes...');
     const nextDir = path.join(process.cwd(), '.next');
-    
+
     if (!fs.existsSync(nextDir)) {
       console.warn('⚠️  .next directory not found');
       return {};
     }
 
     const sizes = {};
-    
+
     try {
       // Get static chunk sizes
       const staticDir = path.join(nextDir, 'static', 'chunks');
       if (fs.existsSync(staticDir)) {
         const chunks = fs.readdirSync(staticDir);
         let totalChunkSize = 0;
-        
+
         chunks.forEach(chunk => {
           const chunkPath = path.join(staticDir, chunk);
           const stats = fs.statSync(chunkPath);
           totalChunkSize += stats.size;
         });
-        
+
         sizes.totalChunks = totalChunkSize;
         sizes.chunkCount = chunks.length;
       }
@@ -89,13 +89,13 @@ class BuildMonitor {
       if (fs.existsSync(cssDir)) {
         const cssFiles = fs.readdirSync(cssDir);
         let totalCssSize = 0;
-        
+
         cssFiles.forEach(file => {
           const filePath = path.join(cssDir, file);
           const stats = fs.statSync(filePath);
           totalCssSize += stats.size;
         });
-        
+
         sizes.totalCss = totalCssSize;
         sizes.cssFileCount = cssFiles.length;
       }
@@ -120,7 +120,7 @@ class BuildMonitor {
   // Generate HTML report
   generateReport(metrics) {
     const builds = metrics.builds.slice(-10); // Last 10 builds
-    
+
     const html = `
 <!DOCTYPE html>
 <html lang="en">
@@ -149,7 +149,9 @@ class BuildMonitor {
         <p>Generated on ${new Date().toLocaleString()}</p>
     </div>
     
-    ${builds.length > 0 ? `
+    ${
+      builds.length > 0
+        ? `
     <div class="metric">
         <h3>📊 Latest Build Metrics</h3>
         <p><strong>Build Time:</strong> ${builds[builds.length - 1].buildTime}ms</p>
@@ -171,7 +173,9 @@ class BuildMonitor {
                 </tr>
             </thead>
             <tbody>
-                ${builds.map(build => `
+                ${builds
+                  .map(
+                    build => `
                 <tr>
                     <td>${new Date(build.timestamp).toLocaleString()}</td>
                     <td>${build.buildTime}ms</td>
@@ -179,11 +183,15 @@ class BuildMonitor {
                     <td>${this.formatBytes(build.bundleSizes.totalCss || 0)}</td>
                     <td>${build.bundleSizes.chunkCount || 0}</td>
                 </tr>
-                `).join('')}
+                `
+                  )
+                  .join('')}
             </tbody>
         </table>
     </div>
-    ` : '<p>No build data available yet. Run a build to see metrics.</p>'}
+    `
+        : '<p>No build data available yet. Run a build to see metrics.</p>'
+    }
     
     <div class="metric">
         <h3>💡 Performance Tips</h3>
@@ -210,32 +218,34 @@ class BuildMonitor {
   // Run full monitoring
   async run() {
     console.log('🚀 Starting build performance monitoring...');
-    
+
     const metrics = this.loadMetrics();
     const buildTime = this.measureBuildTime();
     const bundleSizes = this.analyzeBundleSizes();
-    
+
     const buildMetric = {
       timestamp: Date.now(),
       buildTime,
       bundleSizes,
       nodeVersion: process.version,
-      platform: process.platform
+      platform: process.platform,
     };
-    
+
     metrics.builds.push(buildMetric);
-    
+
     // Keep only last 50 builds
     if (metrics.builds.length > 50) {
       metrics.builds = metrics.builds.slice(-50);
     }
-    
+
     this.saveMetrics(metrics);
     this.generateReport(metrics);
-    
+
     console.log('✅ Build monitoring complete!');
     console.log(`📊 Build time: ${buildTime}ms`);
-    console.log(`📦 Total chunks: ${this.formatBytes(bundleSizes.totalChunks || 0)}`);
+    console.log(
+      `📦 Total chunks: ${this.formatBytes(bundleSizes.totalChunks || 0)}`
+    );
     console.log(`🎨 Total CSS: ${this.formatBytes(bundleSizes.totalCss || 0)}`);
   }
 }

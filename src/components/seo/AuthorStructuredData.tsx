@@ -9,17 +9,17 @@ interface AuthorStructuredDataProps {
   className?: string;
 }
 
-export default function AuthorStructuredData({ 
-  className 
+export default function AuthorStructuredData({
+  className,
 }: AuthorStructuredDataProps = {}) {
   const structuredData = generateAuthorStructuredData();
 
   return (
     <script
-      type="application/ld+json"
+      type='application/ld+json'
       className={className}
       dangerouslySetInnerHTML={{
-        __html: JSON.stringify(structuredData, null, 2)
+        __html: JSON.stringify(structuredData, null, 2),
       }}
     />
   );

@@ -3,7 +3,9 @@ import { notFound } from 'next/navigation';
 import { getPostBySlug, getAllPosts } from '@/lib/posts';
 import { generateMetadata as generateSEOMetadata } from '@/components/seo/SEO';
 import BlogPostStructuredData from '@/components/seo/BlogPostStructuredData';
-import BreadcrumbStructuredData, { generateBlogBreadcrumbs } from '@/components/seo/BreadcrumbStructuredData';
+import BreadcrumbStructuredData, {
+  generateBlogBreadcrumbs,
+} from '@/components/seo/BreadcrumbStructuredData';
 import { PostPageClient } from './PostPageClient';
 
 interface PostPageProps {
@@ -15,12 +17,14 @@ interface PostPageProps {
 /**
  * Generate metadata for the blog post page
  */
-export async function generateMetadata({ params }: PostPageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PostPageProps): Promise<Metadata> {
   const { slug } = await params;
-  
+
   try {
     const post = await getPostBySlug(slug);
-    
+
     if (!post) {
       return {
         title: 'Post Not Found | Personal Blog',
@@ -63,7 +67,7 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
 export async function generateStaticParams() {
   try {
     const posts = await getAllPosts();
-    return posts.map((post) => ({
+    return posts.map(post => ({
       slug: post.slug,
     }));
   } catch (error) {
@@ -78,10 +82,10 @@ export async function generateStaticParams() {
  */
 export default async function PostPage({ params }: PostPageProps) {
   const { slug } = await params;
-  
+
   try {
     const post = await getPostBySlug(slug);
-    
+
     if (!post) {
       notFound();
     }
@@ -95,7 +99,7 @@ export default async function PostPage({ params }: PostPageProps) {
         {/* JSON-LD Structured Data */}
         <BlogPostStructuredData post={post} url={postUrl} />
         <BreadcrumbStructuredData breadcrumbs={breadcrumbs} />
-        
+
         {/* Client Component for Interactive Features */}
         <PostPageClient post={post} slug={slug} />
       </>

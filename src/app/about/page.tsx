@@ -1,6 +1,5 @@
 import {
   Mail,
-  MapPin,
   Calendar,
   Code,
   Database,
@@ -20,8 +19,17 @@ import BreadcrumbStructuredData from '@/components/seo/BreadcrumbStructuredData'
 // SEO metadata for the about page
 export const metadata = generateSEOMetadata({
   title: 'About',
-  description: 'Learn more about Adrián Feito Blázquez, a passionate web developer with over 5 years of experience specializing in React, TypeScript, and modern web technologies.',
-  keywords: ['adrián feito blázquez', 'web developer', 'react developer', 'typescript', 'frontend developer', 'full stack developer', 'about'],
+  description:
+    'Learn more about Adrián Feito Blázquez, a passionate web developer with over 5 years of experience specializing in React, TypeScript, and modern web technologies.',
+  keywords: [
+    'adrián feito blázquez',
+    'web developer',
+    'react developer',
+    'typescript',
+    'frontend developer',
+    'full stack developer',
+    'about',
+  ],
   type: 'website',
   url: '/about',
 });
@@ -42,7 +50,7 @@ export default function AboutPage() {
   // Generate breadcrumbs for the about page
   const breadcrumbs = [
     { name: 'Home', url: '/' },
-    { name: 'About', url: '/about' }
+    { name: 'About', url: '/about' },
   ];
 
   const skills = [
@@ -354,35 +362,35 @@ export default function AboutPage() {
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6'>
               {/* Email */}
               <ContactCard
-                iconName="mail"
-                title="Email"
+                iconName='mail'
+                title='Email'
                 description="Let's discuss your project"
-                content="adrian@example.com"
-                href="mailto:adrian@example.com"
-                iconBgColor="bg-blue-100 dark:bg-blue-900/20"
-                iconColor="text-blue-600"
+                content='adrian@example.com'
+                href='mailto:adrian@example.com'
+                iconBgColor='bg-blue-100 dark:bg-blue-900/20'
+                iconColor='text-blue-600'
                 isLink={true}
               />
 
               {/* Location */}
               <ContactCard
-                iconName="mapPin"
-                title="Location"
-                description="Available for remote work"
-                content="San Francisco, CA"
-                iconBgColor="bg-green-100 dark:bg-green-900/20"
-                iconColor="text-green-600"
+                iconName='mapPin'
+                title='Location'
+                description='Available for remote work'
+                content='San Francisco, CA'
+                iconBgColor='bg-green-100 dark:bg-green-900/20'
+                iconColor='text-green-600'
                 isLink={false}
               />
 
               {/* Social */}
               <ContactCard
-                iconName="globe"
-                title="Social Media"
-                description="Follow my journey"
-                content=""
-                iconBgColor="bg-purple-100 dark:bg-purple-900/20"
-                iconColor="text-purple-600"
+                iconName='globe'
+                title='Social Media'
+                description='Follow my journey'
+                content=''
+                iconBgColor='bg-purple-100 dark:bg-purple-900/20'
+                iconColor='text-purple-600'
                 isLink={false}
               >
                 <SocialLinks
@@ -390,18 +398,18 @@ export default function AboutPage() {
                     {
                       href: 'https://github.com/adrian',
                       label: 'GitHub',
-                      ariaLabel: 'GitHub Profile'
+                      ariaLabel: 'GitHub Profile',
                     },
                     {
                       href: 'https://linkedin.com/in/adrian',
                       label: 'LinkedIn',
-                      ariaLabel: 'LinkedIn Profile'
+                      ariaLabel: 'LinkedIn Profile',
                     },
                     {
                       href: 'https://x.com/adrian',
                       label: 'X',
-                      ariaLabel: 'X Profile'
-                    }
+                      ariaLabel: 'X Profile',
+                    },
                   ]}
                 />
               </ContactCard>

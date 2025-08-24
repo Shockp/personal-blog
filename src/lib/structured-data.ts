@@ -2,15 +2,12 @@
  * Utility functions for generating JSON-LD structured data
  */
 
-import { 
-  Article, 
-  BlogPosting, 
-  Person, 
-  Organization, 
-  BreadcrumbList, 
-  ListItem, 
-  WebSite,
-  StructuredData 
+import {
+  Person,
+  Organization,
+  BreadcrumbList,
+  ListItem,
+  StructuredData,
 } from '@/types/structured-data';
 import { BlogPost, BlogPostSummary } from '@/types/blog';
 
@@ -23,7 +20,7 @@ export const AUTHOR_INFO: Person = {
   sameAs: [
     // Add social media URLs here if available
   ],
-  jobTitle: 'Software Developer'
+  jobTitle: 'Software Developer',
 };
 
 // Organization information (None as specified)
@@ -36,13 +33,15 @@ export function generateBlogPostStructuredData(
   post: BlogPost | BlogPostSummary,
   url: string
 ): StructuredData {
-  const blogPosting: any = {
+  const blogPosting: StructuredData = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
     headline: post.title,
     description: post.description,
     ...(post.image && {
-      image: [`${process.env.NEXT_PUBLIC_SITE_URL || 'https://localhost:3000'}${post.image}`]
+      image: [
+        `${process.env.NEXT_PUBLIC_SITE_URL || 'https://localhost:3000'}${post.image}`,
+      ],
     }),
     datePublished: post.date,
     dateModified: post.date, // Use date as modified date since updatedAt doesn't exist
@@ -50,14 +49,15 @@ export function generateBlogPostStructuredData(
     ...(ORGANIZATION_INFO && { publisher: ORGANIZATION_INFO }),
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': url
+      '@id': url,
     },
     url,
     ...('wordCount' in post && post.wordCount && { wordCount: post.wordCount }),
-    ...(post.tags && post.tags.length > 0 && {
-      keywords: post.tags,
-      articleSection: post.tags[0]
-    })
+    ...(post.tags &&
+      post.tags.length > 0 && {
+        keywords: post.tags,
+        articleSection: post.tags[0],
+      }),
   };
 
   return blogPosting;
@@ -69,7 +69,7 @@ export function generateBlogPostStructuredData(
 export function generateAuthorStructuredData(): StructuredData {
   return {
     '@context': 'https://schema.org',
-    ...AUTHOR_INFO
+    ...AUTHOR_INFO,
   };
 }
 
@@ -78,10 +78,10 @@ export function generateAuthorStructuredData(): StructuredData {
  */
 export function generateOrganizationStructuredData(): StructuredData | null {
   if (!ORGANIZATION_INFO) return null;
-  
+
   return {
     '@context': 'https://schema.org',
-    ...ORGANIZATION_INFO
+    ...ORGANIZATION_INFO,
   };
 }
 
@@ -95,17 +95,17 @@ export function generateBreadcrumbStructuredData(
     '@type': 'ListItem',
     position: index + 1,
     name: crumb.name,
-    item: crumb.url
+    item: crumb.url,
   }));
 
   const breadcrumbList: BreadcrumbList = {
     '@type': 'BreadcrumbList',
-    itemListElement
+    itemListElement,
   };
 
   return {
     '@context': 'https://schema.org',
-    ...breadcrumbList
+    ...breadcrumbList,
   };
 }
 
@@ -117,7 +117,8 @@ export function generateWebSiteStructuredData(): StructuredData {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'Personal Blog',
-    description: 'A personal blog about web development, technology, and programming insights.',
+    description:
+      'A personal blog about web development, technology, and programming insights.',
     url: process.env.NEXT_PUBLIC_SITE_URL || 'https://localhost:3000',
     author: AUTHOR_INFO,
     publisher: ORGANIZATION_INFO || undefined,
@@ -125,10 +126,10 @@ export function generateWebSiteStructuredData(): StructuredData {
       '@type': 'SearchAction',
       target: {
         '@type': 'EntryPoint',
-        urlTemplate: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://localhost:3000'}/search?q={search_term_string}`
+        urlTemplate: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://localhost:3000'}/search?q={search_term_string}`,
       },
-      'query-input': 'required name=search_term_string'
-    }
+      'query-input': 'required name=search_term_string',
+    },
   };
 }
 
@@ -138,5 +139,7 @@ export function generateWebSiteStructuredData(): StructuredData {
 export function generateMultipleStructuredData(
   ...structuredDataObjects: (StructuredData | null)[]
 ): StructuredData[] {
-  return structuredDataObjects.filter((data): data is StructuredData => data !== null);
+  return structuredDataObjects.filter(
+    (data): data is StructuredData => data !== null
+  );
 }

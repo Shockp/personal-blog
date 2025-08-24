@@ -7,14 +7,17 @@ export default function ThemeScript() {
     // Theme initialization logic - runs after hydration
     try {
       const savedTheme = localStorage.getItem('theme');
-      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)')
+        .matches
+        ? 'dark'
+        : 'light';
       const theme = savedTheme || systemTheme;
       if (theme === 'dark') {
         document.documentElement.classList.add('dark');
       } else {
         document.documentElement.classList.remove('dark');
       }
-    } catch (e) {
+    } catch {
       // Ignore errors
     }
   }, []);

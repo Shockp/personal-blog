@@ -52,10 +52,10 @@ export function addEventListener<K extends keyof HTMLElementEventMap>(
 ): () => void {
   if (!isBrowser()) return () => {};
 
-  element.addEventListener(type, listener as any, options);
+  element.addEventListener(type, listener as EventListener, options);
 
   return () => {
-    element.removeEventListener(type, listener as any, options);
+    element.removeEventListener(type, listener as EventListener, options);
   };
 }
 
@@ -254,7 +254,7 @@ export function createElement<K extends keyof HTMLElementTagNameMap>(
     } else if (key === 'innerHTML') {
       element.innerHTML = value as string;
     } else {
-      (element as any)[key] = value;
+      (element as Record<string, unknown>)[key] = value;
     }
   });
 
@@ -380,7 +380,8 @@ export function isTouchDevice(): boolean {
   return (
     'ontouchstart' in window ||
     navigator.maxTouchPoints > 0 ||
-    (navigator as any).msMaxTouchPoints > 0
+    ((navigator as unknown as Record<string, unknown>)
+      .msMaxTouchPoints as number) > 0
   );
 }
 

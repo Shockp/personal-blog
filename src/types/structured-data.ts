@@ -76,13 +76,13 @@ export interface SearchAction {
 export interface StructuredData {
   '@context': 'https://schema.org';
   '@type': string;
-  [key: string]: any;
+  [key: string]: string | number | boolean | object | string[] | undefined;
 }
 
-export type StructuredDataType = 
-  | Article 
-  | BlogPosting 
-  | Person 
-  | Organization 
-  | BreadcrumbList 
+export type StructuredDataType =
+  | Article
+  | BlogPosting
+  | Person
+  | Organization
+  | BreadcrumbList
   | WebSite;
