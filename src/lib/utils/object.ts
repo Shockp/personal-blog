@@ -103,7 +103,7 @@ export function set<T extends object>(
     if (!(key in current) || typeof current[key] !== 'object') {
       current[key] = {};
     }
-    current = current[key];
+    current = current[key] as Record<string, unknown>;
   }
 
   current[keys[keys.length - 1]!] = value;
@@ -201,7 +201,7 @@ export function unflatten(
       if (!(k in current)) {
         current[k] = {};
       }
-      current = current[k];
+      current = current[k] as Record<string, unknown>;
     }
 
     current[keys[keys.length - 1]!] = value;

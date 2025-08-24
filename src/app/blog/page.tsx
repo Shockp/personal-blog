@@ -25,9 +25,15 @@ export const metadata = generateSEOMetadata({
   url: '/blog',
 });
 
+interface BlogPageProps {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
 // Server component that fetches data and renders client component
-export default async function BlogPage() {
+export default async function BlogPage({ searchParams }: BlogPageProps) {
   const posts = await getAllPosts();
+  const params = await searchParams;
+  const initialTag = typeof params.tag === 'string' ? params.tag : '';
 
   // Generate breadcrumbs for the blog page
   const breadcrumbs = [
@@ -54,7 +60,7 @@ export default async function BlogPage() {
           </div>
 
           {/* Client component for interactive features */}
-          <BlogListingClient posts={posts} />
+          <BlogListingClient posts={posts} initialTag={initialTag} />
         </div>
       </div>
     </>

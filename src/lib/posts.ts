@@ -209,6 +209,8 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
       author: validatedSummary.author,
       published: validatedSummary.published,
       content: htmlContent,
+      readingTime: validatedSummary.readingTime,
+      wordCount: validatedSummary.wordCount,
     };
 
     // Only add image if it exists

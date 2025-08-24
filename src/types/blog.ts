@@ -26,6 +26,10 @@ export interface PostMetadata {
 export interface BlogPost extends PostMetadata {
   /** Markdown content */
   content: string;
+  /** Estimated reading time in minutes */
+  readingTime: number;
+  /** Total word count */
+  wordCount: number;
 }
 
 /**

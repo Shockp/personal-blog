@@ -1,7 +1,10 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { generateWebSiteStructuredData, generateAuthorStructuredData } from '@/lib/structured-data';
+import {
+  generateWebSiteStructuredData,
+  generateAuthorStructuredData,
+} from '@/lib/structured-data';
 
 interface ClientStructuredDataProps {
   type: 'website' | 'author';
@@ -27,9 +30,10 @@ export default function ClientStructuredData({
     }
   }, [clientNonce]);
 
-  const structuredData = type === 'website' 
-    ? generateWebSiteStructuredData()
-    : generateAuthorStructuredData();
+  const structuredData =
+    type === 'website'
+      ? generateWebSiteStructuredData()
+      : generateAuthorStructuredData();
 
   return (
     <script

@@ -7,6 +7,7 @@ import BreadcrumbStructuredData, {
   generateBlogBreadcrumbs,
 } from '@/components/seo/BreadcrumbStructuredData';
 import { PostPageClient } from './PostPageClient';
+import { BlogPostSummary } from '@/types/blog';
 
 interface PostPageProps {
   params: Promise<{
@@ -90,6 +91,23 @@ export default async function PostPage({ params }: PostPageProps) {
       notFound();
     }
 
+    // Get all posts for related posts and navigation
+    const allPosts = await getAllPosts();
+    const currentIndex = allPosts.findIndex(p => p.slug === slug);
+
+    // Get related posts (posts with similar tags, excluding current post)
+    const relatedPosts = allPosts
+      .filter(
+        p => p.slug !== slug && p.tags.some(tag => post.tags.includes(tag))
+      )
+      .slice(0, 4);
+
+    // Get previous and next posts
+    const previousPost: BlogPostSummary | null =
+      currentIndex > 0 ? allPosts[currentIndex - 1]! : null;
+    const nextPost: BlogPostSummary | null =
+      currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1]! : null;
+
     // Generate breadcrumbs for the post
     const breadcrumbs = generateBlogBreadcrumbs(slug, post.title);
     const postUrl = `${process.env.NEXT_PUBLIC_SITE_URL || 'https://localhost:3000'}/blog/${slug}`;
@@ -101,7 +119,12 @@ export default async function PostPage({ params }: PostPageProps) {
         <BreadcrumbStructuredData breadcrumbs={breadcrumbs} />
 
         {/* Client Component for Interactive Features */}
-        <PostPageClient post={post} slug={slug} />
+        <PostPageClient
+          post={post}
+          relatedPosts={relatedPosts}
+          previousPost={previousPost}
+          nextPost={nextPost}
+        />
       </>
     );
   } catch (error) {

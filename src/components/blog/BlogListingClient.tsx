@@ -58,8 +58,10 @@ const SortDropdown = ({
 // Main blog listing client component
 export default function BlogListingClient({
   posts,
+  initialTag = '',
 }: {
   posts: BlogPostSummary[];
+  initialTag?: string;
 }) {
   const {
     searchQuery,
@@ -78,7 +80,10 @@ export default function BlogListingClient({
     filteredAndSortedPosts,
     paginatedPosts,
     totalPages,
-  } = useBlogFilters({ posts });
+  } = useBlogFilters({
+    posts,
+    initialFilters: { selectedTag: initialTag },
+  });
 
   const handleSortChange = (
     newSortBy: 'date' | 'title',

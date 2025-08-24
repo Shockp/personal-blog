@@ -1,7 +1,5 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import {
   ArrowLeft,
@@ -11,102 +9,23 @@ import {
   User,
   Tag,
 } from 'lucide-react';
-import PostContent from '@/components/blog/PostContent';
-import PostCard from '@/components/blog/PostCard';
 import { BlogPost, BlogPostSummary } from '@/types/blog';
+import { formatDate } from '@/lib/utils';
+import PostContent from '@/components/blog/PostContent';
 
-interface PostData {
+interface PostPageClientProps {
   post: BlogPost;
   relatedPosts: BlogPostSummary[];
   previousPost: BlogPostSummary | null;
   nextPost: BlogPostSummary | null;
 }
 
-interface PostPageClientProps {
-  post: BlogPost;
-  slug: string;
-}
-
-/**
- * Format date for display
- */
-function formatDate(dateString: string): string {
-  const date = new Date(dateString);
-  return date.toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
-}
-
-/**
- * Calculate reading time based on content
- */
-function calculateReadingTime(content: string): number {
-  const wordsPerMinute = 200;
-  const words = content.trim().split(/\s+/).length;
-  return Math.ceil(words / wordsPerMinute);
-}
-
-/**
- * Client Component for Blog Post Page
- * Handles interactive features and UI rendering
- */
-export function PostPageClient({ post, slug }: PostPageClientProps) {
-  const [postData, setPostData] = useState<PostData | null>(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    async function fetchPostData() {
-      try {
-        const response = await fetch(`/api/posts/${slug}`);
-        if (response.ok) {
-          const data = await response.json();
-          setPostData(data);
-        } else {
-          setPostData({
-            post,
-            relatedPosts: [],
-            previousPost: null,
-            nextPost: null,
-          });
-        }
-      } catch {
-        setPostData({
-          post,
-          relatedPosts: [],
-          previousPost: null,
-          nextPost: null,
-        });
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchPostData();
-  }, [slug, post]);
-
-  if (loading) {
-    return (
-      <div className='min-h-screen bg-background flex items-center justify-center'>
-        <div className='text-center'>
-          <div
-            className='animate-spin rounded-full h-12 w-12 border-b-2 mx-auto mb-4'
-            style={{ borderColor: 'var(--primary)' }}
-          ></div>
-          <p style={{ color: 'var(--text-secondary)' }}>Loading post...</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (!postData) {
-    notFound();
-  }
-
-  const { post: currentPost, relatedPosts, previousPost, nextPost } = postData;
-  const readingTime = calculateReadingTime(currentPost.content);
-
+export function PostPageClient({
+  post,
+  relatedPosts,
+  previousPost,
+  nextPost,
+}: PostPageClientProps) {
   return (
     <div className='min-h-screen bg-background'>
       <main className='container mx-auto px-4 py-8'>
@@ -123,36 +42,34 @@ export function PostPageClient({ post, slug }: PostPageClientProps) {
         <article className='max-w-4xl mx-auto'>
           <header className='mb-8'>
             <h1 className='text-4xl md:text-5xl font-bold text-foreground mb-4'>
-              {currentPost.title}
+              {post.title}
             </h1>
             <p className='text-xl text-muted-foreground mb-6'>
-              {currentPost.description}
+              {post.description}
             </p>
 
             {/* Post Meta */}
             <div className='flex flex-wrap items-center gap-6 text-sm text-muted-foreground mb-6'>
               <div className='flex items-center gap-2'>
                 <User className='w-4 h-4' />
-                <span>{currentPost.author}</span>
+                <span>{post.author}</span>
               </div>
               <div className='flex items-center gap-2'>
                 <Calendar className='w-4 h-4' />
-                <time dateTime={currentPost.date}>
-                  {formatDate(currentPost.date)}
-                </time>
+                <time dateTime={post.date}>{formatDate(post.date)}</time>
               </div>
               <div className='flex items-center gap-2'>
                 <Clock className='w-4 h-4' />
-                <span>{readingTime} min read</span>
+                <span>{post.readingTime} min read</span>
               </div>
             </div>
 
             {/* Tags */}
-            {currentPost.tags && currentPost.tags.length > 0 && (
+            {post.tags && post.tags.length > 0 && (
               <div className='flex items-center gap-2 mb-8'>
                 <Tag className='w-4 h-4 text-muted-foreground' />
                 <div className='flex flex-wrap gap-2'>
-                  {currentPost.tags.map(tag => (
+                  {post.tags.map(tag => (
                     <Link
                       key={tag}
                       href={`/blog?tag=${encodeURIComponent(tag)}`}
@@ -167,58 +84,101 @@ export function PostPageClient({ post, slug }: PostPageClientProps) {
           </header>
 
           {/* Post Content */}
-          <div className='prose prose-lg max-w-none dark:prose-invert mb-12'>
-            <PostContent content={currentPost.content} />
+          <div className='mb-12'>
+            <PostContent content={post.content} title={post.title} />
           </div>
 
-          {/* Post Navigation */}
+          {/* Navigation */}
           {(previousPost || nextPost) && (
-            <nav className='border-t border-border pt-8 mb-12'>
-              <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
-                {previousPost && (
-                  <Link
-                    href={`/blog/${previousPost.slug}`}
-                    className='group p-6 border border-border rounded-lg hover:border-primary/50 transition-colors'
-                  >
-                    <div className='flex items-center gap-2 text-sm text-muted-foreground mb-2'>
-                      <ArrowLeft className='w-4 h-4' />
-                      Previous Post
-                    </div>
-                    <h3 className='font-semibold text-foreground group-hover:text-primary transition-colors'>
-                      {previousPost.title}
-                    </h3>
-                  </Link>
-                )}
-                {nextPost && (
-                  <Link
-                    href={`/blog/${nextPost.slug}`}
-                    className='group p-6 border border-border rounded-lg hover:border-primary/50 transition-colors md:text-right'
-                  >
-                    <div className='flex items-center justify-end gap-2 text-sm text-muted-foreground mb-2'>
-                      Next Post
-                      <ArrowRight className='w-4 h-4' />
-                    </div>
-                    <h3 className='font-semibold text-foreground group-hover:text-primary transition-colors'>
-                      {nextPost.title}
-                    </h3>
-                  </Link>
-                )}
-              </div>
-            </nav>
+            <>
+              <hr className='my-12 border-border' />
+              <nav
+                className='flex justify-between items-center'
+                aria-label='Post navigation'
+              >
+                <div className='flex-1'>
+                  {previousPost && (
+                    <Link
+                      href={`/blog/${previousPost.slug}`}
+                      className='group flex items-center space-x-2 text-muted-foreground hover:text-foreground transition-colors'
+                    >
+                      <ArrowLeft className='h-4 w-4' />
+                      <div className='text-left'>
+                        <div className='text-sm'>Previous</div>
+                        <div className='font-medium group-hover:underline'>
+                          {previousPost.title}
+                        </div>
+                      </div>
+                    </Link>
+                  )}
+                </div>
+                <div className='flex-1 text-right'>
+                  {nextPost && (
+                    <Link
+                      href={`/blog/${nextPost.slug}`}
+                      className='group flex items-center justify-end space-x-2 text-muted-foreground hover:text-foreground transition-colors'
+                    >
+                      <div className='text-right'>
+                        <div className='text-sm'>Next</div>
+                        <div className='font-medium group-hover:underline'>
+                          {nextPost.title}
+                        </div>
+                      </div>
+                      <ArrowRight className='h-4 w-4' />
+                    </Link>
+                  )}
+                </div>
+              </nav>
+            </>
           )}
 
           {/* Related Posts */}
-          {relatedPosts && relatedPosts.length > 0 && (
-            <section className='border-t border-border pt-12'>
-              <h2 className='text-2xl font-bold text-foreground mb-8'>
-                Related Posts
-              </h2>
-              <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
-                {relatedPosts.slice(0, 3).map(relatedPost => (
-                  <PostCard key={relatedPost.slug} post={relatedPost} />
-                ))}
-              </div>
-            </section>
+          {relatedPosts.length > 0 && (
+            <>
+              <hr className='my-12 border-border' />
+              <section aria-labelledby='related-posts-heading'>
+                <h2
+                  id='related-posts-heading'
+                  className='text-2xl font-bold mb-6'
+                >
+                  Related Posts
+                </h2>
+                <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
+                  {relatedPosts.map(relatedPost => (
+                    <div
+                      key={relatedPost.slug}
+                      className='border border-border rounded-lg p-6 hover:shadow-md transition-shadow bg-card'
+                    >
+                      <div className='pb-3'>
+                        <h3 className='text-lg leading-tight font-semibold'>
+                          <Link
+                            href={`/blog/${relatedPost.slug}`}
+                            className='hover:text-primary transition-colors'
+                          >
+                            {relatedPost.title}
+                          </Link>
+                        </h3>
+                      </div>
+                      <div className='pt-0'>
+                        <p className='text-muted-foreground text-sm mb-3 line-clamp-2'>
+                          {relatedPost.description}
+                        </p>
+                        <div className='flex items-center text-xs text-muted-foreground space-x-4'>
+                          <div className='flex items-center space-x-1'>
+                            <Calendar className='h-3 w-3' />
+                            <span>{formatDate(relatedPost.date)}</span>
+                          </div>
+                          <div className='flex items-center space-x-1'>
+                            <Clock className='h-3 w-3' />
+                            <span>{relatedPost.readingTime} min read</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            </>
           )}
         </article>
       </main>
