@@ -2,6 +2,7 @@
   "name": "personal-blog",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
@@ -23,6 +24,7 @@
     "@types/jsdom": "^21.1.7",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "critters": "^0.0.23",
     "dompurify": "^3.2.6",
     "gray-matter": "^4.0.3",
     "highlight.js": "^11.11.1",
@@ -41,6 +43,7 @@
     "remark": "^15.0.1",
     "remark-gfm": "^4.0.1",
     "remark-html": "^16.0.1",
+    "schema-dts": "^1.1.5",
     "tailwind-merge": "^3.3.1",
     "zod": "^4.0.17"
   },
