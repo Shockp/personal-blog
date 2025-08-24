@@ -4,6 +4,7 @@ import matter from 'gray-matter';
 import DOMPurify from 'dompurify';
 import { JSDOM } from 'jsdom';
 import { PostMetadata } from '@/types/blog';
+import { validateFrontmatterWithZod, transformToPostMetadata } from './schemas/frontmatter';
 
 // Create a JSDOM window for server-side DOMPurify
 const window = new JSDOM('').window;
@@ -180,80 +181,23 @@ export function parseFrontmatter(markdownContent: string): FrontmatterResult {
     // Parse frontmatter using gray-matter
     const { data, content } = matter(markdownContent);
 
-    // Validate required fields
-    const requiredFields = ['title', 'description', 'date'];
-    const missingFields = requiredFields.filter(field => !data[field]);
-
-    if (missingFields.length > 0) {
-      throw new Error(
-        `Missing required frontmatter fields: ${missingFields.join(', ')}`
-      );
-    }
-
-    // Validate field types
-    if (typeof data.title !== 'string' || data.title.trim().length === 0) {
-      throw new Error('Title must be a non-empty string');
-    }
-
-    if (
-      typeof data.description !== 'string' ||
-      data.description.trim().length === 0
-    ) {
-      throw new Error('Description must be a non-empty string');
-    }
-
-    if (typeof data.date !== 'string' || data.date.trim().length === 0) {
-      throw new Error('Date must be a non-empty string');
-    }
-
-    // Validate date format (basic ISO date check)
-    const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
-    if (!dateRegex.test(data.date)) {
-      throw new Error('Date must be in YYYY-MM-DD format');
-    }
-
-    // Validate optional fields
-    if (data.tags && !Array.isArray(data.tags)) {
-      throw new Error('Tags must be an array');
-    }
-
-    if (data.author && typeof data.author !== 'string') {
-      throw new Error('Author must be a string');
-    }
-
-    if (data.image && typeof data.image !== 'string') {
-      throw new Error('Image must be a string');
-    }
-
-    if (data.published !== undefined && typeof data.published !== 'boolean') {
-      throw new Error('Published must be a boolean');
-    }
-
-    // Ensure tags are strings if provided
-    if (data.tags) {
-      const invalidTags = data.tags.filter(
-        (tag: unknown) => typeof tag !== 'string'
-      );
-      if (invalidTags.length > 0) {
-        throw new Error('All tags must be strings');
-      }
-    }
-
     // Validate content exists
     if (!content || content.trim().length === 0) {
       throw new Error('Markdown content body cannot be empty');
     }
 
-    // Return validated metadata with content
-    const metadata: PostMetadata = {
-      title: data.title.trim(),
-      description: data.description.trim(),
-      date: data.date,
-      tags: data.tags || [],
-      author: data.author?.trim(),
-      image: data.image?.trim(),
-      published: data.published ?? true,
-    };
+    // Validate frontmatter using Zod schema
+    const validationResult = validateFrontmatterWithZod(data);
+    
+    if (!validationResult.success) {
+      const errorMessages = validationResult.error.errors.map(
+        (err) => `${err.path.join('.')}: ${err.message}`
+      ).join('; ');
+      throw new Error(`Invalid frontmatter: ${errorMessages}`);
+    }
+
+    // Transform validated data to PostMetadata
+    const metadata = transformToPostMetadata(validationResult.data);
 
     return {
       data: metadata,

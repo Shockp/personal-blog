@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { generateNonce } from './lib/nonce';
 
-export function middleware(request: NextRequest) {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export function middleware(_request: NextRequest) {
   // Generate a unique nonce for this request
   const nonce = generateNonce();
   
