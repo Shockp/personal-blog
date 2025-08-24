@@ -1,0 +1,18 @@
+[
+  {
+    "timestamp": "2025-08-24T19:49:07.731Z",
+    "buildTime": 25424,
+    "bundleSize": 1494338,
+    "chunks": 26,
+    "cssFiles": 2,
+    "formattedSize": "1.43 MB"
+  },
+  {
+    "timestamp": "2025-08-24T19:51:53.288Z",
+    "buildTime": 61935,
+    "bundleSize": 1494338,
+    "chunks": 26,
+    "cssFiles": 2,
+    "formattedSize": "1.43 MB"
+  }
+]

@@ -95,7 +95,8 @@ class MemoryRateLimitStore {
   private cleanup(): void {
     const now = Date.now();
     Object.keys(this.store).forEach(key => {
-      if (this.store[key].resetTime <= now) {
+      const entry = this.store[key];
+      if (entry && entry.resetTime <= now) {
         delete this.store[key];
       }
     });

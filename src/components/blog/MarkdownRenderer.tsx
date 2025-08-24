@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import ReactMarkdown from 'react-markdown';
+import ReactMarkdown, { Components } from 'react-markdown';
 import rehypeHighlight from 'rehype-highlight';
 import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
@@ -15,7 +15,7 @@ interface MarkdownRendererProps {
   /** The markdown content to render */
   content: string;
   /** Custom components for markdown rendering */
-  components: Record<string, React.ComponentType<any> | React.ReactElement>;
+  components: Components;
   /** The sanitized content */
   sanitizedContent: string;
 }

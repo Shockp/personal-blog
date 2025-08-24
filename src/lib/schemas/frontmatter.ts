@@ -9,8 +9,7 @@ export const frontmatterSchema = z.object({
   /** Post title - required, non-empty string with length constraints */
   title: z
     .string({
-      required_error: 'Title is required',
-      invalid_type_error: 'Title must be a string',
+      message: 'Title must be a string',
     })
     .min(1, 'Title cannot be empty')
     .max(200, 'Title must be 200 characters or less')
@@ -22,8 +21,7 @@ export const frontmatterSchema = z.object({
   /** Post description - required, non-empty string with length constraints */
   description: z
     .string({
-      required_error: 'Description is required',
-      invalid_type_error: 'Description must be a string',
+      message: 'Description must be a string',
     })
     .min(1, 'Description cannot be empty')
     .max(300, 'Description must be 300 characters or less')
@@ -35,8 +33,7 @@ export const frontmatterSchema = z.object({
   /** Publication date - required, valid ISO date string */
   date: z
     .string({
-      required_error: 'Date is required',
-      invalid_type_error: 'Date must be a string',
+      message: 'Date must be a string',
     })
     .regex(
       /^\d{4}-\d{2}-\d{2}(T\d{2}:\d{2}:\d{2}(\.\d{3})?Z?)?$/,
@@ -55,7 +52,7 @@ export const frontmatterSchema = z.object({
     .array(
       z
         .string({
-          invalid_type_error: 'Each tag must be a string',
+          message: 'Each tag must be a string',
         })
         .min(1, 'Tags cannot be empty')
         .max(50, 'Each tag must be 50 characters or less')
@@ -78,7 +75,7 @@ export const frontmatterSchema = z.object({
   /** Author name - optional, non-empty string */
   author: z
     .string({
-      invalid_type_error: 'Author must be a string',
+      message: 'Author must be a string',
     })
     .min(1, 'Author cannot be empty')
     .max(100, 'Author name must be 100 characters or less')
@@ -87,7 +84,7 @@ export const frontmatterSchema = z.object({
   /** Featured image URL - optional, non-empty string */
   image: z
     .string({
-      invalid_type_error: 'Image must be a string',
+      message: 'Image must be a string',
     })
     .min(1, 'Image URL cannot be empty')
     .optional(),
@@ -95,7 +92,7 @@ export const frontmatterSchema = z.object({
   /** Publication status - optional, boolean */
   published: z
     .boolean({
-      invalid_type_error: 'Published must be a boolean',
+      message: 'Published must be a boolean',
     })
     .optional()
     .default(true),
@@ -103,7 +100,7 @@ export const frontmatterSchema = z.object({
   /** Reading time in minutes - optional, positive number */
   readingTime: z
     .number({
-      invalid_type_error: 'Reading time must be a number',
+      message: 'Reading time must be a number',
     })
     .positive('Reading time must be positive')
     .optional(),
@@ -111,7 +108,7 @@ export const frontmatterSchema = z.object({
   /** Word count - optional, positive integer */
   wordCount: z
     .number({
-      invalid_type_error: 'Word count must be a number',
+      message: 'Word count must be a number',
     })
     .int('Word count must be an integer')
     .positive('Word count must be positive')
@@ -155,15 +152,25 @@ export function validateFrontmatterWithZod(
 export function transformToPostMetadata(
   validatedData: FrontmatterOutput
 ): PostMetadata {
-  return {
+  const result: PostMetadata = {
     title: validatedData.title.trim(),
     description: validatedData.description.trim(),
     date: validatedData.date,
     tags: validatedData.tags || [],
-    author: validatedData.author?.trim(),
-    image: validatedData.image?.trim(),
-    published: validatedData.published ?? true,
   };
+
+  // Only add optional properties if they have values
+  if (validatedData.author) {
+    result.author = validatedData.author.trim();
+  }
+  if (validatedData.image) {
+    result.image = validatedData.image.trim();
+  }
+  if (validatedData.published !== undefined) {
+    result.published = validatedData.published;
+  }
+
+  return result;
 }
 
 /**
@@ -171,8 +178,7 @@ export function transformToPostMetadata(
  */
 export const contentSchema = z
   .string({
-    required_error: 'Content is required',
-    invalid_type_error: 'Content must be a string',
+    message: 'Content must be a string',
   })
   .min(100, 'Content must be at least 100 characters')
   .max(50000, 'Content must be 50,000 characters or less')

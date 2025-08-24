@@ -33,7 +33,7 @@ export async function POST(request: NextRequest) {
       scriptSample: violation['script-sample'],
       timestamp: new Date().toISOString(),
       userAgent: request.headers.get('user-agent'),
-      ip: request.ip || request.headers.get('x-forwarded-for') || 'unknown'
+      ip: request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || 'unknown'
     });
     
     // In production, you might want to:

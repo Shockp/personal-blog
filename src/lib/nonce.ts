@@ -28,9 +28,9 @@ export async function getNonce(): Promise<string> {
     // Client-side: try to get from meta tag
     const metaTag = document.querySelector('meta[name="csp-nonce"]');
     if (metaTag) {
-      return metaTag.getAttribute('content') || generateClientNonce();
+      return metaTag.getAttribute('content') || generateNonce();
     }
-    return generateClientNonce();
+    return generateNonce();
   }
   
   // Server-side: try to get from headers

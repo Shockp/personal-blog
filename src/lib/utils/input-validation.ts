@@ -251,7 +251,7 @@ export function validateInput<T>(
     if (error instanceof z.ZodError) {
       return {
         success: false,
-        errors: error.errors?.map(err => err.message) || ['Validation failed'],
+        errors: error.issues?.map(err => err.message) || ['Validation failed'],
       };
     }
     return {
@@ -333,7 +333,7 @@ export function sanitizeAndValidate<T>(
     if (error instanceof z.ZodError) {
       return {
         success: false,
-        errors: error.errors.map(err => err.message),
+        errors: error.issues.map(err => err.message),
       };
     }
     return {

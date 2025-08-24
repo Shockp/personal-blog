@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Main Bundle",
+    "path": ".next/static/chunks/main-*.js",
+    "limit": "200 KB"
+  },
+  {
+    "name": "Framework Bundle",
+    "path": ".next/static/chunks/framework-*.js",
+    "limit": "150 KB"
+  },
+  {
+    "name": "Commons Bundle",
+    "path": ".next/static/chunks/commons-*.js",
+    "limit": "100 KB"
+  },
+  {
+    "name": "CSS Files",
+    "path": ".next/static/css/*.css",
+    "limit": "50 KB"
+  },
+  {
+    "name": "All Static Assets",
+    "path": ".next/static/**/*.{js,css}",
+    "limit": "500 KB"
+  }
+]

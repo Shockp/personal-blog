@@ -6,17 +6,17 @@ import Link from 'next/link';
 import { ArrowLeft, ArrowRight, Calendar, Clock, User, Tag } from 'lucide-react';
 import PostContent from '@/components/blog/PostContent';
 import PostCard from '@/components/blog/PostCard';
-import { Post } from '@/types/blog';
+import { BlogPost, BlogPostSummary } from '@/types/blog';
 
 interface PostData {
-  post: Post;
-  relatedPosts: Post[];
-  previousPost: Post | null;
-  nextPost: Post | null;
+  post: BlogPost;
+  relatedPosts: BlogPostSummary[];
+  previousPost: BlogPostSummary | null;
+  nextPost: BlogPostSummary | null;
 }
 
 interface PostPageClientProps {
-  post: Post;
+  post: BlogPost;
   slug: string;
 }
 

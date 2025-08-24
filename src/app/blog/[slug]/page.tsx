@@ -7,16 +7,16 @@ import BreadcrumbStructuredData, { generateBlogBreadcrumbs } from '@/components/
 import { PostPageClient } from './PostPageClient';
 
 interface PostPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 /**
  * Generate metadata for the blog post page
  */
 export async function generateMetadata({ params }: PostPageProps): Promise<Metadata> {
-  const { slug } = params;
+  const { slug } = await params;
   
   try {
     const post = await getPostBySlug(slug);
@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
       };
     }
 
-    return generateSEOMetadata({
+    const seoProps: Parameters<typeof generateSEOMetadata>[0] = {
       title: post.title,
       description: post.description,
       keywords: post.tags,
@@ -36,10 +36,18 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
       type: 'article',
       publishedTime: post.date,
       modifiedTime: post.date,
-      author: post.author,
       tags: post.tags,
-      image: post.image,
-    });
+    };
+
+    if (post.author) {
+      seoProps.author = post.author;
+    }
+
+    if (post.image) {
+      seoProps.image = post.image;
+    }
+
+    return generateSEOMetadata(seoProps);
   } catch (error) {
     console.error('Error generating metadata for post:', slug, error);
     return {
@@ -69,7 +77,7 @@ export async function generateStaticParams() {
  * Handles SEO metadata generation and data fetching
  */
 export default async function PostPage({ params }: PostPageProps) {
-  const { slug } = params;
+  const { slug } = await params;
   
   try {
     const post = await getPostBySlug(slug);

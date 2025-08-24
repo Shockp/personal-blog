@@ -190,7 +190,7 @@ export function parseFrontmatter(markdownContent: string): FrontmatterResult {
     const validationResult = validateFrontmatterWithZod(data);
     
     if (!validationResult.success) {
-      const errorMessages = validationResult.error.errors.map(
+      const errorMessages = validationResult.error.issues.map(
         (err) => `${err.path.join('.')}: ${err.message}`
       ).join('; ');
       throw new Error(`Invalid frontmatter: ${errorMessages}`);

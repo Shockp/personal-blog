@@ -137,14 +137,15 @@ export function sanitizeUserContent(
   }
 
   // Sanitize with DOMPurify
-  const sanitizedContent = purify.sanitize(sanitizedContent, config) as string;
+  const purifiedContent = purify.sanitize(sanitizedContent, config) as string;
 
   // Preserve line breaks if requested and no HTML is allowed
+  let finalContent = purifiedContent;
   if (preserveLineBreaks && !allowHtml) {
-    sanitizedContent = sanitizedContent.replace(/\n/g, '<br>');
+    finalContent = finalContent.replace(/\n/g, '<br>');
   }
 
-  return sanitizedContent;
+  return finalContent;
 }
 
 /**
