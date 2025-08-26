@@ -1,3 +1,5 @@
+'use client';
+
 import {
   Mail,
   Calendar,
@@ -22,23 +24,7 @@ import ContactCard from '@/components/about/ContactCard';
 import SocialLinks from '@/components/about/SocialLinks';
 import BreadcrumbStructuredData from '@/components/seo/BreadcrumbStructuredData';
 
-// SEO metadata for the about page
-export const metadata = generateSEOMetadata({
-  title: 'About',
-  description:
-    'Learn more about Adrián Feito Blázquez, a passionate web developer with over 5 years of experience specializing in React, TypeScript, and modern web technologies.',
-  keywords: [
-    'adrián feito blázquez',
-    'web developer',
-    'react developer',
-    'typescript',
-    'frontend developer',
-    'full stack developer',
-    'about',
-  ],
-  type: 'website',
-  url: '/about',
-});
+// Note: SEO metadata moved to layout.tsx since this is now a client component
 
 /**
  * About Page Component
@@ -406,7 +392,21 @@ export default function AboutPage() {
                 return (
                   <div
                     key={index}
-                    className='bg-card rounded-lg p-4 sm:p-6 shadow-md hover:shadow-lg transition-shadow duration-500'
+                    className='group relative rounded-xl transition-all duration-300 overflow-hidden hover:-translate-y-1 focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2 h-full flex flex-col p-4 sm:p-6'
+                    style={{
+                      backgroundColor: 'var(--card-background)',
+                      borderColor: 'var(--card-border)',
+                      borderWidth: '1px',
+                      borderStyle: 'solid',
+                      boxShadow: 'var(--card-shadow)',
+                    }}
+                    onMouseEnter={e => {
+                      e.currentTarget.style.boxShadow =
+                        'var(--card-hover-shadow)';
+                    }}
+                    onMouseLeave={e => {
+                      e.currentTarget.style.boxShadow = 'var(--card-shadow)';
+                    }}
                   >
                     <div className='flex items-center mb-3 sm:mb-4'>
                       <div
@@ -508,7 +508,23 @@ export default function AboutPage() {
                   <div
                     className={`ml-12 md:ml-0 md:w-1/2 ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'}`}
                   >
-                    <div className='bg-card rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-500'>
+                    <div
+                      className='group relative rounded-xl transition-all duration-300 overflow-hidden hover:-translate-y-1 focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2 h-full flex flex-col p-6'
+                      style={{
+                        backgroundColor: 'var(--card-background)',
+                        borderColor: 'var(--card-border)',
+                        borderWidth: '1px',
+                        borderStyle: 'solid',
+                        boxShadow: 'var(--card-shadow)',
+                      }}
+                      onMouseEnter={e => {
+                        e.currentTarget.style.boxShadow =
+                          'var(--card-hover-shadow)';
+                      }}
+                      onMouseLeave={e => {
+                        e.currentTarget.style.boxShadow = 'var(--card-shadow)';
+                      }}
+                    >
                       <div className='flex items-center mb-3'>
                         <Calendar className='w-5 h-5 text-blue-600 mr-2' />
                         <span
