@@ -360,11 +360,11 @@ export default function AboutPage() {
               <div className='absolute left-4 md:left-1/2 transform md:-translate-x-px top-0 bottom-0 w-0.5 bg-border'></div>
 
               {/* Career Growth - Tree at Top */}
-              <div className='relative flex justify-center mb-8'>
-                <div className='ml-12 md:ml-0 text-center mb-4'>
+              <div className='relative flex flex-col items-center mb-8'>
+                <div className='text-center mb-4'>
                   <p className='text-sm font-medium text-green-600'>Current Growth</p>
                 </div>
-                <div className='absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-12 h-12 bg-green-600 rounded-full border-4 border-background z-10 flex items-center justify-center'>
+                <div className='w-12 h-12 bg-green-600 rounded-full border-4 border-background z-10 flex items-center justify-center'>
                   <TreePine className='w-6 h-6 text-white' />
                 </div>
               </div>
@@ -434,11 +434,11 @@ export default function AboutPage() {
               ))}
 
               {/* Career Growth - Seed at Bottom */}
-              <div className='relative flex justify-center mt-8'>
-                <div className='absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-12 h-12 bg-blue-600 rounded-full border-4 border-background z-10 flex items-center justify-center'>
+              <div className='relative flex flex-col items-center mt-8'>
+                <div className='w-12 h-12 bg-blue-600 rounded-full border-4 border-background z-10 flex items-center justify-center'>
                   <Sprout className='w-6 h-6 text-white' />
                 </div>
-                <div className='ml-12 md:ml-0 text-center mt-4'>
+                <div className='text-center mt-4'>
                   <p className='text-sm font-medium text-blue-600'>The Beginning</p>
                 </div>
               </div>
