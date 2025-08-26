@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 interface SocialLink {
   href: string;
@@ -39,14 +39,25 @@ const LinkedInIcon = () => (
   </svg>
 );
 
-const XIcon = () => (
+const HackTheBoxIcon = () => (
   <svg
     className='h-6 w-6'
     fill='currentColor'
     viewBox='0 0 24 24'
     aria-hidden='true'
   >
-    <path d='M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z'></path>
+    <path d='M12 0L1.608 6v12L12 24l10.392-6V6L12 0zm-1.073 1.445L12 1.031l1.073.414 9.319 3.597v1.958l-9.319 3.597L12 10.969l-1.073-.372L1.608 6.999V5.042l9.319-3.597zM12 2.832L3.756 6L12 9.168 20.244 6 12 2.832zm-8.392 4.01v8.316L12 18.755l8.392-3.597V6.842L12 10.439 3.608 6.842z' />
+  </svg>
+);
+
+const LeetCodeIcon = () => (
+  <svg
+    className='h-6 w-6'
+    fill='currentColor'
+    viewBox='0 0 24 24'
+    aria-hidden='true'
+  >
+    <path d='M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.518 2.524 8.117.96 2.04-1.226 3.333-3.294 3.333-5.54v-1.775a.983.983 0 0 1 .983-.982h2.35a.94.94 0 0 0 .94-.939c0-.261-.108-.522-.291-.704L14.692.740a1.388 1.388 0 0 0-.982-.438 1.388 1.388 0 0 0-.227-.004zM2.786 16.202l3.665 3.592a1.07 1.07 0 0 0 1.516 0l9.32-9.13a1.07 1.07 0 0 0 0-1.516L13.622 5.55a1.07 1.07 0 0 0-1.516 0l-9.32 9.132a1.07 1.07 0 0 0 0 1.516v.004z' />
   </svg>
 );
 
@@ -57,9 +68,11 @@ const getIconComponent = (label: string) => {
       return GitHubIcon;
     case 'linkedin':
       return LinkedInIcon;
-    case 'x':
-    case 'twitter':
-      return XIcon;
+    case 'hackthebox':
+    case 'htb':
+      return HackTheBoxIcon;
+    case 'leetcode':
+      return LeetCodeIcon;
     default:
       return null;
   }
@@ -77,30 +90,35 @@ interface SocialLinksProps {
  */
 export default function SocialLinks({ links }: SocialLinksProps) {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   return (
     <div className='flex justify-center space-x-4'>
-      {links.map((link, index) => (
-        <a
-          key={index}
-          href={link.href}
-          className='transition-colors duration-500'
-          style={{
-            color:
-              hoveredIndex === index
-                ? 'var(--text-primary)'
-                : 'var(--text-secondary)',
-          }}
-          onMouseEnter={() => setHoveredIndex(index)}
-          onMouseLeave={() => setHoveredIndex(null)}
-          aria-label={link.ariaLabel}
-        >
-          {(() => {
-            const IconComponent = getIconComponent(link.label);
-            return IconComponent ? <IconComponent /> : link.label;
-          })()}
-        </a>
-      ))}
+      {links.map((link, index) => {
+        const IconComponent = getIconComponent(link.label);
+        return (
+          <a
+            key={`${link.label}-${index}`}
+            href={link.href}
+            className='transition-colors duration-500'
+            style={{
+              color:
+                isClient && hoveredIndex === index
+                  ? 'var(--text-primary)'
+                  : 'var(--text-secondary)',
+            }}
+            onMouseEnter={() => isClient && setHoveredIndex(index)}
+            onMouseLeave={() => isClient && setHoveredIndex(null)}
+            aria-label={link.ariaLabel}
+          >
+            {IconComponent ? <IconComponent /> : link.label}
+          </a>
+        );
+      })}
     </div>
   );
 }

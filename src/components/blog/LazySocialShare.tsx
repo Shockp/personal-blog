@@ -14,17 +14,23 @@ interface LazySocialShareProps {
 
 /**
  * Lazy-loaded Social Share Component
- * 
+ *
  * Reduces initial bundle size by loading social sharing functionality on demand.
  * Shows a loading placeholder until the component is ready.
  */
-const LazySocialShare: React.FC<LazySocialShareProps> = ({ url, title, className }) => {
+const LazySocialShare: React.FC<LazySocialShareProps> = ({
+  url,
+  title,
+  className,
+}) => {
   return (
-    <Suspense 
+    <Suspense
       fallback={
         <div className={`flex items-center gap-2 ${className}`}>
-          <Share className="w-5 h-5 text-muted-foreground" />
-          <span className="text-sm text-muted-foreground">Loading share options...</span>
+          <Share className='w-5 h-5 text-muted-foreground' />
+          <span className='text-sm text-muted-foreground'>
+            Loading share options...
+          </span>
         </div>
       }
     >

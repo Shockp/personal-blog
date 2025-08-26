@@ -5,6 +5,7 @@ A modern, high-performance personal blog built with Next.js 15, TypeScript, and 
 ## 🚀 Features
 
 ### Core Features
+
 - **Modern Stack**: Built with Next.js 15, React 19, and TypeScript
 - **Responsive Design**: Mobile-first design with Tailwind CSS
 - **Markdown Support**: Full markdown support with syntax highlighting
@@ -14,6 +15,7 @@ A modern, high-performance personal blog built with Next.js 15, TypeScript, and 
 - **Dark/Light Theme**: Theme switching with system preference detection
 
 ### Content Management
+
 - **Markdown-based**: Write posts in markdown with frontmatter
 - **Tag System**: Organize posts with tags and categories
 - **Author Support**: Multi-author blog support
@@ -21,6 +23,7 @@ A modern, high-performance personal blog built with Next.js 15, TypeScript, and 
 - **Reading Time**: Automatic reading time calculation
 
 ### Developer Experience
+
 - **TypeScript**: Full type safety throughout the application
 - **ESLint & Prettier**: Code quality and formatting
 - **Performance Monitoring**: Build-time performance tracking
@@ -47,12 +50,14 @@ A modern, high-performance personal blog built with Next.js 15, TypeScript, and 
 ### Setup
 
 1. **Clone the repository**
+
    ```bash
    git clone <repository-url>
    cd personal-blog
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    # or
@@ -62,6 +67,7 @@ A modern, high-performance personal blog built with Next.js 15, TypeScript, and 
    ```
 
 3. **Start the development server**
+
    ```bash
    npm run dev
    # or
@@ -79,6 +85,7 @@ A modern, high-performance personal blog built with Next.js 15, TypeScript, and 
 
 1. Create a new `.md` file in `content/posts/`
 2. Add frontmatter with required fields:
+
    ```markdown
    ---
    title: 'Your Post Title'
@@ -87,9 +94,9 @@ A modern, high-performance personal blog built with Next.js 15, TypeScript, and 
    tags: ['tag1', 'tag2']
    author: 'Your Name'
    ---
-   
+
    # Your Post Content
-   
+
    Write your content here using markdown...
    ```
 
@@ -105,6 +112,7 @@ A modern, high-performance personal blog built with Next.js 15, TypeScript, and 
 ## 🚀 Available Scripts
 
 ### Development
+
 - `npm run dev` - Start development server with Turbopack
 - `npm run build` - Build for production
 - `npm run start` - Start production server
@@ -112,11 +120,13 @@ A modern, high-performance personal blog built with Next.js 15, TypeScript, and 
 - `npm run format` - Format code with Prettier
 
 ### Quality Assurance
+
 - `npm run check` - Run all checks (lint, format, build)
 - `npm run lint:check` - Check linting without fixing
 - `npm run format:check` - Check formatting without fixing
 
 ### Performance Analysis
+
 - `npm run analyze` - Analyze bundle size
 - `npm run bundle:size` - Generate bundle size report
 - `npm run perf:build-time` - Monitor build performance

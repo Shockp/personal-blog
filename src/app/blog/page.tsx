@@ -54,8 +54,8 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
               Blog Posts
             </h1>
             <p className='text-xl text-muted-foreground max-w-2xl mx-auto'>
-              Discover insights, tutorials, and thoughts on software engineering,
-              technology, and more.
+              Discover insights, tutorials, and thoughts on software
+              engineering, technology, and more.
             </p>
           </div>
 

@@ -3,9 +3,6 @@ import {
   Calendar,
   Code,
   Database,
-  Globe,
-  Smartphone,
-  Users,
   Award,
   ExternalLink,
   Layers,
@@ -63,61 +60,83 @@ export default function AboutPage() {
   ];
 
   const skills = [
-    { 
-      name: 'Backend', 
-      level: 95, 
-      icon: Database, 
+    {
+      name: 'Backend',
+      level: 95,
+      icon: Database,
       color: '#2563eb', // blue-600
-      techStack: ['Java (17+)', 'Spring Boot', 'Spring WebFlux', 'Spring Security', 'Node.js', 'Express.js']
+      techStack: [
+        'Java (17+)',
+        'Spring Boot',
+        'Spring WebFlux',
+        'Spring Security',
+        'Node.js',
+        'Express.js',
+      ],
     },
-    { 
-      name: 'Architecture & Design Patterns', 
-      level: 90, 
-      icon: Layers, 
+    {
+      name: 'Architecture & Design Patterns',
+      level: 90,
+      icon: Layers,
       color: '#4f46e5', // indigo-600
-      techStack: ['Microservices', 'Clean Architecture', 'SOLID', 'Design Patterns']
+      techStack: [
+        'Microservices',
+        'Clean Architecture',
+        'SOLID',
+        'Design Patterns',
+      ],
     },
     {
       name: 'API & Integration',
       level: 90,
       icon: Network,
       color: '#0d9488', // teal-600
-      techStack: ['RESTful API design', 'External API integration', 'Java HttpClient']
+      techStack: [
+        'RESTful API design',
+        'External API integration',
+        'Java HttpClient',
+      ],
     },
     {
       name: 'Data & Persistence',
       level: 90,
       icon: Server,
       color: '#16a34a', // green-600
-      techStack: ['Redis', 'Gson', 'Jackson', 'Spring Data JPA']
+      techStack: ['Redis', 'Gson', 'Jackson', 'Spring Data JPA'],
     },
     {
       name: 'CLI & utilities',
       level: 85,
       icon: Terminal,
       color: '#9333ea', // purple-600
-      techStack: ['Apache Commons CLI', 'OpenCSV', 'SLF4J', 'Bucket4j']
+      techStack: ['Apache Commons CLI', 'OpenCSV', 'SLF4J', 'Bucket4j'],
     },
     {
       name: 'Frontend & Web',
       level: 80,
       icon: Monitor,
       color: '#ea580c', // orange-600
-      techStack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'HTML5/CSS3']
+      techStack: [
+        'Next.js',
+        'React',
+        'TypeScript',
+        'Tailwind CSS',
+        'HTML5/CSS3',
+      ],
     },
     {
       name: 'DevOps & Deployment',
       level: 80,
       icon: Cloud,
       color: '#dc2626', // red-600
-      techStack: ['Docker', 'Vercel', 'Maven', 'Production deployment']
+      techStack: ['Docker', 'Vercel', 'Maven', 'Production deployment'],
     },
     {
       name: 'Testing & Quality',
       level: 75,
       icon: Shield,
       color: '#ca8a04', // yellow-600
-      techStack: ['JUnit 5', 'Mockito', 'Jest', 'Supertest']
+      techStack: ['JUnit 5', 'Mockito', 'Jest', 'Supertest'],
     },
   ];
 
@@ -220,9 +239,14 @@ export default function AboutPage() {
                     Adrián Feito Blázquez
                   </span>
                 </h1>
-                <p className="text-lg sm:text-xl text-muted-foreground mb-6 sm:mb-8 leading-relaxed px-2 sm:px-0">
-            I started in pentesting, reaching top 100 on some Hack The Box machines worldwide, before transitioning to backend development. Currently, I study Computer Engineering and intern in Software Architecture, focusing on scalable systems and proper design patterns while constantly exploring new technologies and paying close attention to every detail.
-          </p>
+                <p className='text-lg sm:text-xl text-muted-foreground mb-6 sm:mb-8 leading-relaxed px-2 sm:px-0'>
+                  I started in pentesting, reaching top 100 on some Hack The Box
+                  machines worldwide, before transitioning to backend
+                  development. Currently, I study Computer Engineering and
+                  intern in Software Architecture, focusing on scalable systems
+                  and proper design patterns while constantly exploring new
+                  technologies and paying close attention to every detail.
+                </p>
                 <div className='flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-5 justify-center lg:justify-start'>
                   <Link
                     href='/blog'
@@ -269,7 +293,7 @@ export default function AboutPage() {
                 {/* Background decoration */}
                 <div className='absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10 rounded-2xl transform rotate-1'></div>
                 <div className='absolute inset-0 bg-gradient-to-r from-purple-600/10 to-blue-600/10 rounded-2xl transform -rotate-1'></div>
-                
+
                 {/* Main content */}
                 <div className='relative bg-card/80 backdrop-blur-sm border border-border/50 rounded-2xl p-8 sm:p-12 shadow-lg'>
                   <div className='flex items-center justify-center mb-6'>
@@ -277,11 +301,11 @@ export default function AboutPage() {
                       <Code className='w-8 h-8 text-white' />
                     </div>
                   </div>
-                  
+
                   <h2 className='text-2xl sm:text-3xl font-bold mb-6 text-foreground'>
                     My Programming Philosophy
                   </h2>
-                  
+
                   {/* Code block styling */}
                   <div className='bg-slate-100 dark:bg-slate-900 rounded-lg p-6 sm:p-8 mb-6 font-mono text-left max-w-md mx-auto border border-slate-300 dark:border-slate-700'>
                     <div className='relative flex items-center justify-center mb-4'>
@@ -290,23 +314,53 @@ export default function AboutPage() {
                         <div className='w-3 h-3 bg-yellow-500 rounded-full'></div>
                         <div className='w-3 h-3 bg-green-500 rounded-full'></div>
                       </div>
-                      <span className='text-slate-600 dark:text-slate-400 text-sm font-medium'>philosophy.js</span>
+                      <span className='text-slate-600 dark:text-slate-400 text-sm font-medium'>
+                        philosophy.js
+                      </span>
                     </div>
                     <div className='text-slate-700 dark:text-slate-300 text-lg sm:text-xl'>
-                      <span className='text-slate-600 dark:text-slate-400'>while</span> <span className='text-slate-500 dark:text-slate-500'>(</span><span className='text-slate-800 dark:text-slate-200'>age</span><span className='text-slate-600 dark:text-slate-400'>++</span><span className='text-slate-500 dark:text-slate-500'>)</span> <span className='text-slate-500 dark:text-slate-500'>&#123;</span>
+                      <span className='text-slate-600 dark:text-slate-400'>
+                        while
+                      </span>{' '}
+                      <span className='text-slate-500 dark:text-slate-500'>
+                        (
+                      </span>
+                      <span className='text-slate-800 dark:text-slate-200'>
+                        age
+                      </span>
+                      <span className='text-slate-600 dark:text-slate-400'>
+                        ++
+                      </span>
+                      <span className='text-slate-500 dark:text-slate-500'>
+                        )
+                      </span>{' '}
+                      <span className='text-slate-500 dark:text-slate-500'>
+                        &#123;
+                      </span>
                       <br />
-                      <span className='ml-4 text-slate-800 dark:text-slate-200'>knowledge</span><span className='text-slate-600 dark:text-slate-400'>++</span><span className='text-slate-500 dark:text-slate-500'>;</span>
+                      <span className='ml-4 text-slate-800 dark:text-slate-200'>
+                        knowledge
+                      </span>
+                      <span className='text-slate-600 dark:text-slate-400'>
+                        ++
+                      </span>
+                      <span className='text-slate-500 dark:text-slate-500'>
+                        ;
+                      </span>
                       <br />
-                      <span className='text-slate-500 dark:text-slate-500'>&#125;</span>
+                      <span className='text-slate-500 dark:text-slate-500'>
+                        &#125;
+                      </span>
                     </div>
                   </div>
-                  
+
                   <p className='text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed text-muted-foreground'>
-                    Every year brings new challenges, technologies, and opportunities to grow. 
-                    I believe in continuous learning and improvement, where each experience adds to my expertise 
-                    and every project teaches me something valuable.
+                    Every year brings new challenges, technologies, and
+                    opportunities to grow. I believe in continuous learning and
+                    improvement, where each experience adds to my expertise and
+                    every project teaches me something valuable.
                   </p>
-                  
+
                   <div className='mt-8 flex flex-wrap justify-center gap-4 text-sm font-medium'>
                     <span className='inline-flex items-center px-4 py-2 bg-blue-100 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 rounded-full'>
                       <Terminal className='w-4 h-4 mr-2' />
@@ -326,8 +380,6 @@ export default function AboutPage() {
             </div>
           </div>
         </section>
-
-
 
         {/* Skills & Expertise Section */}
         <section className='py-12 sm:py-16 lg:py-20 bg-muted/30'>
@@ -374,7 +426,10 @@ export default function AboutPage() {
                           <div className='bg-muted rounded-full h-2'>
                             <div
                               className='h-2 rounded-full transition-all duration-1000 ease-out'
-                              style={{ width: `${skill.level}%`, backgroundColor: skill.color }}
+                              style={{
+                                width: `${skill.level}%`,
+                                backgroundColor: skill.color,
+                              }}
                             ></div>
                           </div>
                           <span
@@ -386,7 +441,7 @@ export default function AboutPage() {
                         </div>
                       </div>
                     </div>
-                    
+
                     {/* Tech Stack Tags */}
                     <div className='flex flex-wrap gap-1.5 sm:gap-2 mt-3'>
                       {skill.techStack.map((tech, techIndex) => (
@@ -426,7 +481,10 @@ export default function AboutPage() {
 
             <div className='relative'>
               {/* Timeline line - only extends from tree icon to plant icon */}
-              <div className='absolute left-4 md:left-1/2 transform md:-translate-x-px w-0.5 bg-border' style={{top: '60px', bottom: '60px'}}></div>
+              <div
+                className='absolute left-4 md:left-1/2 transform md:-translate-x-px w-0.5 bg-border'
+                style={{ top: '60px', bottom: '60px' }}
+              ></div>
 
               {/* Career Growth - Tree at Top */}
               <div className='relative flex flex-col items-center mb-8'>
@@ -540,8 +598,8 @@ export default function AboutPage() {
                 iconName='mail'
                 title='Email'
                 description="Let's discuss your project"
-                content='adrian@example.com'
-                href='mailto:adrian@example.com'
+                content='shockp.developer@gmail.com'
+                href='mailto:shockp.developer@gmail.com'
                 iconBgColor='bg-blue-100 dark:bg-blue-900/20'
                 iconColor='text-blue-600'
                 isLink={true}
@@ -552,7 +610,7 @@ export default function AboutPage() {
                 iconName='mapPin'
                 title='Location'
                 description='Available for remote work'
-                content='San Francisco, CA'
+                content='Madrid, Spain'
                 iconBgColor='bg-green-100 dark:bg-green-900/20'
                 iconColor='text-green-600'
                 isLink={false}
@@ -571,19 +629,24 @@ export default function AboutPage() {
                 <SocialLinks
                   links={[
                     {
-                      href: 'https://github.com/adrian',
+                      href: 'https://github.com/shockp',
                       label: 'GitHub',
                       ariaLabel: 'GitHub Profile',
                     },
                     {
-                      href: 'https://linkedin.com/in/adrian',
+                      href: 'https://www.linkedin.com/in/adrian-feito-blazquez-404276209/',
                       label: 'LinkedIn',
                       ariaLabel: 'LinkedIn Profile',
                     },
                     {
-                      href: 'https://x.com/adrian',
-                      label: 'X',
-                      ariaLabel: 'X Profile',
+                      href: 'https://app.hackthebox.com/profile/1317035/',
+                      label: 'HackTheBox',
+                      ariaLabel: 'HackTheBox Profile',
+                    },
+                    {
+                      href: 'https://leetcode.com/u/shockp/',
+                      label: 'LeetCode',
+                      ariaLabel: 'LeetCode Profile',
                     },
                   ]}
                 />

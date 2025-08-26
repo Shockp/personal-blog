@@ -1,6 +1,10 @@
 'use client';
 
-import { ChevronLeft, ChevronRight, MoreHorizontal } from '@/components/ui/icons';
+import {
+  ChevronLeft,
+  ChevronRight,
+  MoreHorizontal,
+} from '@/components/ui/icons';
 import { cn } from '@/lib/utils';
 import { Button } from './Button';
 

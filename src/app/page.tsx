@@ -115,7 +115,8 @@ export default async function Home() {
                   className='text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto px-4 sm:px-0'
                   style={{ color: 'var(--muted-foreground)' }}
                 >
-                  Computer Engineer & Software Engineer specializing in scalable architecture, backend development, and design patterns
+                  Computer Engineer & Software Engineer specializing in scalable
+                  architecture, backend development, and design patterns
                 </p>
               </div>
               <div className='flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4 sm:px-0'>
@@ -161,8 +162,8 @@ export default async function Home() {
                 className='text-base sm:text-lg max-w-2xl mx-auto px-4 sm:px-0'
                 style={{ color: 'var(--muted-foreground)' }}
               >
-                Discover my latest thoughts on software engineering, technology, and
-                programming best practices.
+                Discover my latest thoughts on software engineering, technology,
+                and programming best practices.
               </p>
             </div>
 
