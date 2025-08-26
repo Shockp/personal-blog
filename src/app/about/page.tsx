@@ -8,6 +8,13 @@ import {
   Users,
   Award,
   ExternalLink,
+  Layers,
+  Server,
+  Network,
+  Terminal,
+  Monitor,
+  Cloud,
+  Shield,
 } from '@/components/ui/icons';
 import Link from 'next/link';
 import { generateMetadata as generateSEOMetadata } from '@/components/seo/SEO';
@@ -57,56 +64,56 @@ export default function AboutPage() {
       name: 'Backend', 
       level: 95, 
       icon: Database, 
-      color: 'bg-blue-500',
+      color: 'bg-blue-600',
       techStack: ['Java (17+)', 'Spring Boot', 'Spring WebFlux', 'Spring Security', 'Node.js', 'Express.js']
     },
     { 
       name: 'Architecture & Design Patterns', 
       level: 90, 
-      icon: Code, 
-      color: 'bg-blue-600',
+      icon: Layers, 
+      color: 'bg-indigo-600',
       techStack: ['Microservices', 'Clean Architecture', 'SOLID', 'Design Patterns']
     },
     {
       name: 'API & Integration',
       level: 90,
-      icon: Globe,
-      color: 'bg-green-500',
+      icon: Network,
+      color: 'bg-teal-600',
       techStack: ['RESTful API design', 'External API integration', 'Java HttpClient']
     },
     {
       name: 'Data & Persistence',
       level: 90,
-      icon: Database,
+      icon: Server,
       color: 'bg-green-600',
       techStack: ['Redis', 'Gson', 'Jackson', 'Spring Data JPA']
     },
     {
       name: 'CLI & utilities',
       level: 85,
-      icon: Code,
-      color: 'bg-purple-500',
+      icon: Terminal,
+      color: 'bg-purple-600',
       techStack: ['Apache Commons CLI', 'OpenCSV', 'SLF4J', 'Bucket4j']
     },
     {
       name: 'Frontend & Web',
       level: 80,
-      icon: Smartphone,
-      color: 'bg-orange-500',
+      icon: Monitor,
+      color: 'bg-orange-600',
       techStack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'HTML5/CSS3']
     },
     {
       name: 'DevOps & Deployment',
       level: 80,
-      icon: Globe,
-      color: 'bg-red-500',
+      icon: Cloud,
+      color: 'bg-red-600',
       techStack: ['Docker', 'Vercel', 'Maven', 'Production deployment']
     },
     {
       name: 'Testing & Quality',
       level: 75,
-      icon: Award,
-      color: 'bg-yellow-500',
+      icon: Shield,
+      color: 'bg-yellow-600',
       techStack: ['JUnit 5', 'Mockito', 'Jest', 'Supertest']
     },
   ];
