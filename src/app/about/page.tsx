@@ -356,8 +356,8 @@ export default function AboutPage() {
             </div>
 
             <div className='relative'>
-              {/* Timeline line */}
-              <div className='absolute left-4 md:left-1/2 transform md:-translate-x-px top-0 bottom-0 w-0.5 bg-border'></div>
+              {/* Timeline line - only extends from tree icon to plant icon */}
+              <div className='absolute left-4 md:left-1/2 transform md:-translate-x-px w-0.5 bg-border' style={{top: '60px', bottom: '60px'}}></div>
 
               {/* Career Growth - Tree at Top */}
               <div className='relative flex flex-col items-center mb-8'>
