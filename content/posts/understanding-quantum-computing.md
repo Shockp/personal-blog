@@ -1,9 +1,9 @@
 ---
 title: "Understanding Quantum Computing: A New Frontier in Technology"
-date: "2025-01-16"
+date: "2025-08-26"
 author: "AFB"
-description: "Exploring the fascinating world of quantum computing and its potential to revolutionize how we process information."
-tags: ["quantum computing", "physics", "emerging technology"]
+description: "Explore the fascinating world of quantum computing, its principles, applications, and potential to revolutionize technology as we know it."
+tags: ["quantum computing", "technology", "science", "innovation"]
 ---
 
 # Understanding Quantum Computing: A New Frontier in Technology
