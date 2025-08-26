@@ -58,56 +58,56 @@ export default function AboutPage() {
       level: 95, 
       icon: Database, 
       color: 'bg-blue-500',
-      techStack: ['Java & Spring Boot & Spring WebFlux', 'Node.js', 'Maven']
+      techStack: ['Java (17+)', 'Spring Boot', 'Spring WebFlux', 'Spring Security', 'Node.js', 'Express.js']
     },
     { 
       name: 'Architecture & Design Patterns', 
       level: 90, 
       icon: Code, 
       color: 'bg-blue-600',
-      techStack: ['Scalable & Modular', 'Microservices', 'Reactive', 'SOLID principles', 'Common Design Patterns']
+      techStack: ['Microservices', 'Clean Architecture', 'SOLID', 'Design Patterns']
     },
     {
       name: 'API & Integration',
       level: 90,
       icon: Globe,
       color: 'bg-green-500',
-      techStack: ['RESTful API Design', 'Integration with External APIs']
+      techStack: ['RESTful API design', 'External API integration', 'Java HttpClient']
     },
     {
       name: 'Data & Persistence',
       level: 90,
       icon: Database,
       color: 'bg-green-600',
-      techStack: ['Redis', 'Spring Data', 'PostgreSQL', 'JSON-Based with Gson & Jackson']
+      techStack: ['Redis', 'Gson', 'Jackson', 'Spring Data JPA']
     },
     {
       name: 'CLI & utilities',
       level: 85,
       icon: Code,
       color: 'bg-purple-500',
-      techStack: ['Bucket4j', 'SLF4J', 'CSV Parsing', 'rate limiting', 'Apache Commons CLI']
+      techStack: ['Apache Commons CLI', 'OpenCSV', 'SLF4J', 'Bucket4j']
     },
     {
       name: 'Frontend & Web',
       level: 80,
       icon: Smartphone,
       color: 'bg-orange-500',
-      techStack: ['Next.js', 'React', 'TypeScript', 'JavaScript', 'Tailwind', 'Markdown']
+      techStack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'HTML5/CSS3']
     },
     {
       name: 'DevOps & Deployment',
       level: 80,
       icon: Globe,
       color: 'bg-red-500',
-      techStack: ['Docker', 'Vercel', 'PostCSS & Autoprefixer']
+      techStack: ['Docker', 'Vercel', 'Maven', 'Production deployment']
     },
     {
       name: 'Testing & Quality',
       level: 75,
       icon: Award,
       color: 'bg-yellow-500',
-      techStack: ['JUnit 5', 'Mockito', 'Jest', 'Supertest', 'jsdom', 'ESLint & Prettier']
+      techStack: ['JUnit 5', 'Mockito', 'Jest', 'Supertest']
     },
   ];
 
