@@ -276,8 +276,7 @@ export default function AboutPage() {
                       {skill.techStack.map((tech, techIndex) => (
                         <span
                           key={techIndex}
-                          className='inline-block px-2 py-1 text-xs font-medium rounded-md bg-muted/60 hover:bg-muted transition-colors duration-300'
-                          style={{ color: 'var(--text-secondary)' }}
+                          className='inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 cursor-pointer border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 transition-all duration-200 hover:scale-105 rounded-full px-4'
                         >
                           {tech}
                         </span>
