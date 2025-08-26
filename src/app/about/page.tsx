@@ -143,12 +143,9 @@ export default function AboutPage() {
                     Adrián Feito Blázquez
                   </span>
                 </h1>
-                <p className='text-lg sm:text-xl text-muted-foreground mb-6 sm:mb-8 leading-relaxed px-2 sm:px-0'>
-                  A passionate web developer with over 5 years of experience
-                  creating modern, user-friendly applications. I specialize in
-                  React, TypeScript, and building scalable web solutions that
-                  make a difference.
-                </p>
+                <p className="text-lg sm:text-xl text-muted-foreground mb-6 sm:mb-8 leading-relaxed px-2 sm:px-0">
+            I started in pentesting, reaching top 100 on some Hack The Box machines worldwide, before transitioning to backend development. Currently, I study Computer Engineering and intern in Software Architecture, focusing on scalable systems and proper design patterns while constantly exploring new technologies and paying close attention to every detail.
+          </p>
                 <div className='flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-5 justify-center lg:justify-start'>
                   <Link
                     href='/blog'
