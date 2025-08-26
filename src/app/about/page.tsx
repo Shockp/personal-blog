@@ -71,49 +71,49 @@ export default function AboutPage() {
       name: 'Architecture & Design Patterns', 
       level: 90, 
       icon: Layers, 
-      color: 'bg-indigo-600',
+      color: 'bg-blue-600',
       techStack: ['Microservices', 'Clean Architecture', 'SOLID', 'Design Patterns']
     },
     {
       name: 'API & Integration',
       level: 90,
       icon: Network,
-      color: 'bg-teal-600',
+      color: 'bg-blue-600',
       techStack: ['RESTful API design', 'External API integration', 'Java HttpClient']
     },
     {
       name: 'Data & Persistence',
       level: 90,
       icon: Server,
-      color: 'bg-green-600',
+      color: 'bg-blue-600',
       techStack: ['Redis', 'Gson', 'Jackson', 'Spring Data JPA']
     },
     {
       name: 'CLI & utilities',
       level: 85,
       icon: Terminal,
-      color: 'bg-purple-600',
+      color: 'bg-blue-600',
       techStack: ['Apache Commons CLI', 'OpenCSV', 'SLF4J', 'Bucket4j']
     },
     {
       name: 'Frontend & Web',
       level: 80,
       icon: Monitor,
-      color: 'bg-orange-600',
+      color: 'bg-blue-600',
       techStack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'HTML5/CSS3']
     },
     {
       name: 'DevOps & Deployment',
       level: 80,
       icon: Cloud,
-      color: 'bg-red-600',
+      color: 'bg-blue-600',
       techStack: ['Docker', 'Vercel', 'Maven', 'Production deployment']
     },
     {
       name: 'Testing & Quality',
       level: 75,
       icon: Shield,
-      color: 'bg-yellow-600',
+      color: 'bg-blue-600',
       techStack: ['JUnit 5', 'Mockito', 'Jest', 'Supertest']
     },
   ];
