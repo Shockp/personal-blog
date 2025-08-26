@@ -64,56 +64,56 @@ export default function AboutPage() {
       name: 'Backend', 
       level: 95, 
       icon: Database, 
-      color: 'bg-blue-600',
+      color: '#2563eb', // blue-600
       techStack: ['Java (17+)', 'Spring Boot', 'Spring WebFlux', 'Spring Security', 'Node.js', 'Express.js']
     },
     { 
       name: 'Architecture & Design Patterns', 
       level: 90, 
       icon: Layers, 
-      color: 'bg-blue-600',
+      color: '#4f46e5', // indigo-600
       techStack: ['Microservices', 'Clean Architecture', 'SOLID', 'Design Patterns']
     },
     {
       name: 'API & Integration',
       level: 90,
       icon: Network,
-      color: 'bg-blue-600',
+      color: '#0d9488', // teal-600
       techStack: ['RESTful API design', 'External API integration', 'Java HttpClient']
     },
     {
       name: 'Data & Persistence',
       level: 90,
       icon: Server,
-      color: 'bg-blue-600',
+      color: '#16a34a', // green-600
       techStack: ['Redis', 'Gson', 'Jackson', 'Spring Data JPA']
     },
     {
       name: 'CLI & utilities',
       level: 85,
       icon: Terminal,
-      color: 'bg-blue-600',
+      color: '#9333ea', // purple-600
       techStack: ['Apache Commons CLI', 'OpenCSV', 'SLF4J', 'Bucket4j']
     },
     {
       name: 'Frontend & Web',
       level: 80,
       icon: Monitor,
-      color: 'bg-blue-600',
+      color: '#ea580c', // orange-600
       techStack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'HTML5/CSS3']
     },
     {
       name: 'DevOps & Deployment',
       level: 80,
       icon: Cloud,
-      color: 'bg-blue-600',
+      color: '#dc2626', // red-600
       techStack: ['Docker', 'Vercel', 'Maven', 'Production deployment']
     },
     {
       name: 'Testing & Quality',
       level: 75,
       icon: Shield,
-      color: 'bg-blue-600',
+      color: '#ca8a04', // yellow-600
       techStack: ['JUnit 5', 'Mockito', 'Jest', 'Supertest']
     },
   ];
@@ -250,7 +250,8 @@ export default function AboutPage() {
                   >
                     <div className='flex items-center mb-3 sm:mb-4'>
                       <div
-                        className={`p-2 sm:p-3 rounded-lg ${skill.color} mr-3 sm:mr-4`}
+                        className='p-2 sm:p-3 rounded-lg mr-3 sm:mr-4'
+                        style={{ backgroundColor: skill.color }}
                       >
                         <IconComponent className='w-5 h-5 sm:w-6 sm:h-6 text-white' />
                       </div>
@@ -264,8 +265,8 @@ export default function AboutPage() {
                         <div className='mt-2'>
                           <div className='bg-muted rounded-full h-2'>
                             <div
-                              className={`h-2 rounded-full ${skill.color} transition-all duration-1000 ease-out`}
-                              style={{ width: `${skill.level}%` }}
+                              className='h-2 rounded-full transition-all duration-1000 ease-out'
+                              style={{ width: `${skill.level}%`, backgroundColor: skill.color }}
                             ></div>
                           </div>
                           <span
