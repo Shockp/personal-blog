@@ -53,31 +53,43 @@ export default function AboutPage() {
   ];
 
   const skills = [
-    { name: 'React & Next.js', level: 95, icon: Code, color: 'bg-blue-500' },
-    { name: 'TypeScript', level: 90, icon: Code, color: 'bg-blue-600' },
+    { name: 'Backend', level: 95, icon: Database, color: 'bg-blue-500' },
+    { name: 'Architecture & Design Patterns', level: 90, icon: Code, color: 'bg-blue-600' },
     {
-      name: 'Node.js & APIs',
-      level: 85,
-      icon: Database,
+      name: 'API & Integration',
+      level: 90,
+      icon: Globe,
       color: 'bg-green-500',
     },
     {
-      name: 'UI/UX Design',
-      level: 80,
-      icon: Smartphone,
+      name: 'Data & Persistence',
+      level: 90,
+      icon: Database,
+      color: 'bg-green-600',
+    },
+    {
+      name: 'CLI & utilities',
+      level: 85,
+      icon: Code,
       color: 'bg-purple-500',
     },
     {
-      name: 'Database Design',
-      level: 75,
-      icon: Database,
+      name: 'Frontend & Web',
+      level: 80,
+      icon: Smartphone,
       color: 'bg-orange-500',
     },
     {
       name: 'DevOps & Deployment',
-      level: 70,
+      level: 80,
       icon: Globe,
       color: 'bg-red-500',
+    },
+    {
+      name: 'Testing & Quality',
+      level: 75,
+      icon: Award,
+      color: 'bg-yellow-500',
     },
   ];
 
@@ -111,7 +123,7 @@ export default function AboutPage() {
       company: 'StartUp Ventures',
       period: '2019 - 2020',
       description:
-        'Started my professional journey building websites and learning modern web development practices. Gained experience in React, Node.js, and agile development.',
+        'Started my professional journey building websites and learning modern software engineering practices. Gained experience in React, Node.js, and agile development.',
       achievements: [
         'Completed 15+ client projects',
         'Learned React and modern JavaScript',
@@ -199,7 +211,7 @@ export default function AboutPage() {
                 style={{ color: 'var(--text-secondary)' }}
               >
                 I&apos;m passionate about staying current with the latest
-                technologies and best practices in web development.
+                technologies and best practices in software engineering.
               </p>
             </div>
 
@@ -261,7 +273,7 @@ export default function AboutPage() {
                 className='text-lg max-w-2xl mx-auto'
                 style={{ color: 'var(--text-secondary)' }}
               >
-                My journey in web development has been filled with exciting
+                My journey in software engineering has been filled with exciting
                 challenges and continuous learning.
               </p>
             </div>

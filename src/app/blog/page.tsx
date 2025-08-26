@@ -8,11 +8,11 @@ import BreadcrumbStructuredData from '@/components/seo/BreadcrumbStructuredData'
 export const metadata = generateSEOMetadata({
   title: 'Blog Posts',
   description:
-    'Discover insights, tutorials, and thoughts on web development, React, TypeScript, and modern technologies by Adrián Feito Blázquez. Stay updated with the latest trends and best practices.',
+    'Discover insights, tutorials, and thoughts on software engineering, React, TypeScript, and modern technologies by Adrián Feito Blázquez. Stay updated with the latest trends and best practices.',
   keywords: [
     'adrián feito blázquez',
     'blog',
-    'web development',
+    'software engineering',
     'react',
     'typescript',
     'javascript',
@@ -54,7 +54,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
               Blog Posts
             </h1>
             <p className='text-xl text-muted-foreground max-w-2xl mx-auto'>
-              Discover insights, tutorials, and thoughts on web development,
+              Discover insights, tutorials, and thoughts on software engineering,
               technology, and more.
             </p>
           </div>

@@ -9,7 +9,7 @@ import { generateMetadata as generateSEOMetadata } from '@/components/seo/SEO';
 export const metadata = generateSEOMetadata({
   title: 'Home',
   description:
-    'Adrián Feito Blázquez - Computer Engineer & Software Engineer specializing in scalable architecture, backend development, and design patterns. Discover insights about web development, React, TypeScript, and building amazing user experiences.',
+    'Adrián Feito Blázquez - Computer Engineer & Software Engineer specializing in scalable architecture, backend development, and design patterns. Discover insights about software engineering, React, TypeScript, and building amazing user experiences.',
   keywords: [
     'adrián feito blázquez',
     'computer engineer',
@@ -17,7 +17,7 @@ export const metadata = generateSEOMetadata({
     'scalable architecture',
     'backend development',
     'design patterns',
-    'web development',
+    'software engineering',
     'react',
     'typescript',
     'nextjs',
@@ -161,7 +161,7 @@ export default async function Home() {
                 className='text-base sm:text-lg max-w-2xl mx-auto px-4 sm:px-0'
                 style={{ color: 'var(--muted-foreground)' }}
               >
-                Discover my latest thoughts on web development, technology, and
+                Discover my latest thoughts on software engineering, technology, and
                 programming best practices.
               </p>
             </div>

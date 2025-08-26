@@ -118,7 +118,7 @@ export function generateWebSiteStructuredData(): StructuredData {
     '@type': 'WebSite',
     name: 'Personal Blog',
     description:
-      'A personal blog about web development, technology, and programming insights.',
+      'A personal blog about software engineering, technology, and programming insights.',
     url: process.env.NEXT_PUBLIC_SITE_URL || 'https://localhost:3000',
     author: AUTHOR_INFO,
     publisher: ORGANIZATION_INFO || undefined,
