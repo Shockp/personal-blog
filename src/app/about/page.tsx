@@ -132,8 +132,8 @@ export default function AboutPage() {
       ],
     },
     {
-      title: 'Backend Development – Independent Projects',
-      company: '',
+      title: 'Backend Development',
+      company: 'Independent Projects',
       period: '2024 - Present',
       description:
         'Working on self-driven backend development projects, designing and building robust and efficient systems. Exploring best practices in software architecture, APIs, and data management.',
