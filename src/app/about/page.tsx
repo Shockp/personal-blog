@@ -120,39 +120,76 @@ export default function AboutPage() {
 
   const experiences = [
     {
-      title: 'Senior Frontend Developer',
-      company: 'Tech Solutions Inc.',
-      period: '2022 - Present',
+      title: 'Intern – Software Architecture',
+      company: 'Sociedad Estatal Correos y Telégrafos, S.A., S.M.E.',
+      period: '2025 - Present',
       description:
-        'Leading frontend development for enterprise applications using React, TypeScript, and Next.js. Mentoring junior developers and establishing best practices.',
+        'Currently interning in the Software Architecture department, gaining hands-on experience in designing and optimizing enterprise-level software systems. Applying best practices in architecture, development, and project management.',
       achievements: [
-        'Improved application performance by 40%',
-        'Led migration to TypeScript across 5 major projects',
-        'Mentored 3 junior developers',
+        'Contributed to software architecture design and system optimization',
+        'Applied knowledge of backend development and programming best practices',
+        'Gained experience in real-world enterprise software projects',
       ],
     },
     {
-      title: 'Full Stack Developer',
-      company: 'Digital Innovations Ltd.',
+      title: 'Independent Projects – Backend Development',
+      company: '',
+      period: '2024 - Present',
+      description:
+        'Working on self-driven backend development projects, designing and building robust and efficient systems. Exploring best practices in software architecture, APIs, and data management.',
+      achievements: [
+        'Developed scalable backend services and APIs',
+        'Applied modern frameworks and technologies (Java, Spring, Node.js)',
+        'Strengthened skills in system architecture, data handling, and performance optimization',
+      ],
+    },
+    {
+      title: 'Computer Engineering',
+      company: 'Rey Juan Carlos University | Madrid',
+      period: '2023 - Present',
+      description:
+        'Currently pursuing a degree in Computer Engineering, developing a solid foundation in both software and hardware. Learning to optimize systems and understand how software and electronics work together.',
+      achievements: [
+        'Programming: C, Java, Assembly, Bash',
+        'Hardware & Electronics: VHDL, digital logic, embedded systems',
+        'Strengthening understanding of software-hardware integration and system optimization',
+        'Received honor mention in some subjects',
+      ],
+    },
+    {
+      title: 'Pentesting / Ethical Hacking',
+      company: 'Vienna',
+      period: '2022 - 2024',
+      description:
+        'Started my journey in penetration testing, focusing on cybersecurity challenges and hands-on ethical hacking. Achieved recognition in the Hack The Box community and obtained relevant certifications.',
+      achievements: [
+        'Ranked in the top 100 on Hack The Box machines worldwide',
+        'Earned certifications in penetration testing',
+        'Developed practical skills in vulnerability assessment, exploitation, and security analysis',
+      ],
+    },
+    {
+      title: 'Cabin Crew',
+      company: 'Malta Air',
+      period: '2022 - 2023',
+      description:
+        'Started working as cabin crew, providing excellent customer service and ensuring passenger safety. Adapted to a fast-paced, international environment while developing communication and teamwork skills.',
+      achievements: [
+        'Gained experience in high-pressure, customer-focused settings',
+        'Strengthened interpersonal and problem-solving skills',
+        'Managed travel and time efficiently across international routes',
+      ],
+    },
+    {
+      title: 'Double Degree in Financial Economics and Economics',
+      company: 'Rey Juan Carlos University',
       period: '2020 - 2022',
       description:
-        'Developed and maintained full-stack web applications using modern technologies. Collaborated with design and product teams to deliver user-centric solutions.',
+        'Joined the degree to deepen my knowledge in investments, resource management, time optimization, and business. Gained a solid foundation in economic theory, financial markets, and quantitative analysis.',
       achievements: [
-        'Built 10+ responsive web applications',
-        'Implemented automated testing reducing bugs by 60%',
-        'Optimized database queries improving load times by 50%',
-      ],
-    },
-    {
-      title: 'Junior Web Developer',
-      company: 'StartUp Ventures',
-      period: '2019 - 2020',
-      description:
-        'Started my professional journey building websites and learning modern software engineering practices. Gained experience in React, Node.js, and agile development.',
-      achievements: [
-        'Completed 15+ client projects',
-        'Learned React and modern JavaScript',
-        'Contributed to open-source projects',
+        'Explored investments, corporate finance, and resource allocation',
+        'Developed skills in risk assessment and decision-making',
+        'Strengthened understanding of broader economic concepts',
       ],
     },
   ];
