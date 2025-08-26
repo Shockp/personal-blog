@@ -173,9 +173,11 @@ export default function AboutPage() {
               {/* Profile Image Placeholder */}
               <div className='flex justify-center lg:justify-end'>
                 <div className='relative'>
-                  <div className='w-80 h-80 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center shadow-2xl'>
-                    <Users className='w-32 h-32 text-white' />
-                  </div>
+                  <img
+                    src='/images/hero-image.jpg'
+                    alt='Adrián Feito Blázquez - Computer Engineer and Software Developer'
+                    className='w-80 h-80 rounded-full object-cover shadow-2xl'
+                  />
                   <div className='absolute -bottom-4 -right-4 bg-background border border-border rounded-full p-4 shadow-lg'>
                     <Code className='w-8 h-8 text-blue-600' />
                   </div>
