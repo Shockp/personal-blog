@@ -15,7 +15,9 @@ import {
   Monitor,
   Cloud,
   Shield,
-} from '@/components/ui/icons';
+  Sprout,
+  TreePine,
+} from 'lucide-react';
 import Link from 'next/link';
 import { generateMetadata as generateSEOMetadata } from '@/components/seo/SEO';
 import ContactCard from '@/components/about/ContactCard';
@@ -357,6 +359,16 @@ export default function AboutPage() {
               {/* Timeline line */}
               <div className='absolute left-4 md:left-1/2 transform md:-translate-x-px top-0 bottom-0 w-0.5 bg-border'></div>
 
+              {/* Career Growth - Tree at Top */}
+              <div className='relative flex justify-center mb-8'>
+                <div className='ml-12 md:ml-0 text-center mb-4'>
+                  <p className='text-sm font-medium text-green-600'>Current Growth</p>
+                </div>
+                <div className='absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-12 h-12 bg-green-600 rounded-full border-4 border-background z-10 flex items-center justify-center'>
+                  <TreePine className='w-6 h-6 text-white' />
+                </div>
+              </div>
+
               {experiences.map((experience, index) => (
                 <div
                   key={index}
@@ -420,6 +432,16 @@ export default function AboutPage() {
                   </div>
                 </div>
               ))}
+
+              {/* Career Growth - Seed at Bottom */}
+              <div className='relative flex justify-center mt-8'>
+                <div className='absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-12 h-12 bg-blue-600 rounded-full border-4 border-background z-10 flex items-center justify-center'>
+                  <Sprout className='w-6 h-6 text-white' />
+                </div>
+                <div className='ml-12 md:ml-0 text-center mt-4'>
+                  <p className='text-sm font-medium text-blue-600'>The Beginning</p>
+                </div>
+              </div>
             </div>
           </div>
         </section>
