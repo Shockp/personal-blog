@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import HtbIcon from '/htb-icon.svg';
 
 /**
  * Footer component with social media links and copyright information
@@ -171,14 +172,12 @@ export default function Footer() {
                 target='_blank'
                 rel='noopener noreferrer'
               >
-                <svg
+                <img
+                  src={HtbIcon}
+                  alt='HackTheBox'
                   className='h-6 w-6'
-                  fill='currentColor'
-                  viewBox='0 0 24 24'
-                  aria-hidden='true'
-                >
-                  <path d='M11.996 0L1.61 6v12l10.386 6L22.39 18V6L11.996 0zM6.676 10.12l5.32-3.072 5.32 3.072v6.144l-5.32 3.072-5.32-3.072V10.12zm1.771 5.089l3.549 2.05 3.549-2.05v-4.1l-3.549-2.05-3.549 2.05v4.1z' />
-                </svg>
+                  style={{ filter: 'brightness(0) saturate(100%) invert(var(--icon-invert, 0))' }}
+                />
               </a>
               <a
                 href='https://leetcode.com/u/shockp/'
