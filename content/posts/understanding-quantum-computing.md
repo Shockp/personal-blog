@@ -1,8 +1,8 @@
 ---
 title: "Understanding Quantum Computing: A New Frontier in Technology"
-date: "2025-08-26"
-author: "Adrián Feito Blázquez"
-excerpt: "Exploring the fascinating world of quantum computing and its potential to revolutionize how we process information."
+date: "2025-01-16"
+author: "AFB"
+description: "Exploring the fascinating world of quantum computing and its potential to revolutionize how we process information."
 tags: ["quantum computing", "physics", "emerging technology"]
 ---
 

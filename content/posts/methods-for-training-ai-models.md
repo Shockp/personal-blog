@@ -2,7 +2,7 @@
 title: "Methods for Training AI Models: A Comprehensive Overview"
 date: "2025-01-16"
 author: "AFB"
-excerpt: "An in-depth look at the various approaches and techniques used to train artificial intelligence models effectively."
+description: "An in-depth look at the various approaches and techniques used to train artificial intelligence models effectively."
 tags: ["artificial intelligence", "machine learning", "AI training"]
 ---
 
