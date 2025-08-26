@@ -260,6 +260,72 @@ export default function AboutPage() {
           </div>
         </section>
 
+        {/* Programming Philosophy Section */}
+        <section className='py-16 sm:py-20 bg-background relative overflow-hidden'>
+          <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+            <div className='text-center'>
+              <div className='relative inline-block'>
+                {/* Background decoration */}
+                <div className='absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10 rounded-2xl transform rotate-1'></div>
+                <div className='absolute inset-0 bg-gradient-to-r from-purple-600/10 to-blue-600/10 rounded-2xl transform -rotate-1'></div>
+                
+                {/* Main content */}
+                <div className='relative bg-card border border-border rounded-2xl p-8 sm:p-12 shadow-lg'>
+                  <div className='flex items-center justify-center mb-6'>
+                    <div className='bg-gradient-to-r from-blue-600 to-purple-600 rounded-full p-3'>
+                      <Code className='w-8 h-8 text-white' />
+                    </div>
+                  </div>
+                  
+                  <h2 className='text-2xl sm:text-3xl font-bold mb-6' style={{ color: 'var(--text-primary)' }}>
+                    My Programming Philosophy
+                  </h2>
+                  
+                  {/* Code block styling */}
+                  <div className='bg-slate-900 dark:bg-slate-800 rounded-lg p-6 sm:p-8 mb-6 font-mono text-left max-w-md mx-auto border border-slate-700'>
+                    <div className='flex items-center mb-4'>
+                      <div className='flex space-x-2'>
+                        <div className='w-3 h-3 bg-red-500 rounded-full'></div>
+                        <div className='w-3 h-3 bg-yellow-500 rounded-full'></div>
+                        <div className='w-3 h-3 bg-green-500 rounded-full'></div>
+                      </div>
+                      <span className='ml-4 text-slate-400 text-sm'>philosophy.js</span>
+                    </div>
+                    <div className='text-green-400 text-lg sm:text-xl'>
+                      <span className='text-purple-400'>while</span> <span className='text-white'>(</span><span className='text-blue-400'>age</span><span className='text-red-400'>++</span><span className='text-white'>)</span> <span className='text-white'>&#123;</span>
+                      <br />
+                      <span className='ml-4 text-blue-400'>knowledge</span><span className='text-red-400'>++</span><span className='text-white'>;</span>
+                      <br />
+                      <span className='text-white'>&#125;</span>
+                    </div>
+                  </div>
+                  
+                  <p className='text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed' style={{ color: 'var(--text-secondary)' }}>
+                    Every year brings new challenges, technologies, and opportunities to grow. 
+                    I believe in continuous learning and improvement, where each experience adds to my expertise 
+                    and every project teaches me something valuable.
+                  </p>
+                  
+                  <div className='mt-8 flex flex-wrap justify-center gap-4 text-sm font-medium'>
+                    <span className='inline-flex items-center px-4 py-2 bg-blue-100 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 rounded-full'>
+                      <Terminal className='w-4 h-4 mr-2' />
+                      Continuous Learning
+                    </span>
+                    <span className='inline-flex items-center px-4 py-2 bg-purple-100 dark:bg-purple-900/20 text-purple-700 dark:text-purple-300 rounded-full'>
+                      <Code className='w-4 h-4 mr-2' />
+                      Growth Mindset
+                    </span>
+                    <span className='inline-flex items-center px-4 py-2 bg-green-100 dark:bg-green-900/20 text-green-700 dark:text-green-300 rounded-full'>
+                      <Award className='w-4 h-4 mr-2' />
+                      Never Stop Improving
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Skills & Expertise Section */}
         <section className='py-12 sm:py-16 lg:py-20 bg-muted/30'>
           <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
@@ -332,72 +398,6 @@ export default function AboutPage() {
                   </div>
                 );
               })}
-            </div>
-          </div>
-        </section>
-
-        {/* Programming Philosophy Section */}
-        <section className='py-16 sm:py-20 bg-background relative overflow-hidden'>
-          <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-            <div className='text-center'>
-              <div className='relative inline-block'>
-                {/* Background decoration */}
-                <div className='absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10 rounded-2xl transform rotate-1'></div>
-                <div className='absolute inset-0 bg-gradient-to-r from-purple-600/10 to-blue-600/10 rounded-2xl transform -rotate-1'></div>
-                
-                {/* Main content */}
-                <div className='relative bg-card border border-border rounded-2xl p-8 sm:p-12 shadow-lg'>
-                  <div className='flex items-center justify-center mb-6'>
-                    <div className='bg-gradient-to-r from-blue-600 to-purple-600 rounded-full p-3'>
-                      <Code className='w-8 h-8 text-white' />
-                    </div>
-                  </div>
-                  
-                  <h2 className='text-2xl sm:text-3xl font-bold mb-6' style={{ color: 'var(--text-primary)' }}>
-                    My Programming Philosophy
-                  </h2>
-                  
-                  {/* Code block styling */}
-                  <div className='bg-slate-900 dark:bg-slate-800 rounded-lg p-6 sm:p-8 mb-6 font-mono text-left max-w-md mx-auto border border-slate-700'>
-                    <div className='flex items-center mb-4'>
-                      <div className='flex space-x-2'>
-                        <div className='w-3 h-3 bg-red-500 rounded-full'></div>
-                        <div className='w-3 h-3 bg-yellow-500 rounded-full'></div>
-                        <div className='w-3 h-3 bg-green-500 rounded-full'></div>
-                      </div>
-                      <span className='ml-4 text-slate-400 text-sm'>philosophy.js</span>
-                    </div>
-                    <div className='text-green-400 text-lg sm:text-xl'>
-                      <span className='text-purple-400'>while</span> <span className='text-white'>(</span><span className='text-blue-400'>age</span><span className='text-red-400'>++</span><span className='text-white'>)</span> <span className='text-white'>&#123;</span>
-                      <br />
-                      <span className='ml-4 text-blue-400'>knowledge</span><span className='text-red-400'>++</span><span className='text-white'>;</span>
-                      <br />
-                      <span className='text-white'>&#125;</span>
-                    </div>
-                  </div>
-                  
-                  <p className='text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed' style={{ color: 'var(--text-secondary)' }}>
-                    Every year brings new challenges, technologies, and opportunities to grow. 
-                    I believe in continuous learning and improvement, where each experience adds to my expertise 
-                    and every project teaches me something valuable.
-                  </p>
-                  
-                  <div className='mt-8 flex flex-wrap justify-center gap-4 text-sm font-medium'>
-                    <span className='inline-flex items-center px-4 py-2 bg-blue-100 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 rounded-full'>
-                      <Terminal className='w-4 h-4 mr-2' />
-                      Continuous Learning
-                    </span>
-                    <span className='inline-flex items-center px-4 py-2 bg-purple-100 dark:bg-purple-900/20 text-purple-700 dark:text-purple-300 rounded-full'>
-                      <Code className='w-4 h-4 mr-2' />
-                      Growth Mindset
-                    </span>
-                    <span className='inline-flex items-center px-4 py-2 bg-green-100 dark:bg-green-900/20 text-green-700 dark:text-green-300 rounded-full'>
-                      <Award className='w-4 h-4 mr-2' />
-                      Never Stop Improving
-                    </span>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </section>
