@@ -19,7 +19,6 @@ import {
   Lightbulb,
 } from 'lucide-react';
 import Link from 'next/link';
-import { generateMetadata as generateSEOMetadata } from '@/components/seo/SEO';
 import ContactCard from '@/components/about/ContactCard';
 import SocialLinks from '@/components/about/SocialLinks';
 import BreadcrumbStructuredData from '@/components/seo/BreadcrumbStructuredData';

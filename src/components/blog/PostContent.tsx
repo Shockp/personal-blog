@@ -309,23 +309,26 @@ export default function PostContent({
     code: ({
       inline,
       children,
+      className,
       ...props
     }: React.HTMLAttributes<HTMLElement> & {
       inline?: boolean;
       children?: React.ReactNode;
+      className?: string;
     }) => {
       if (inline) {
         return (
           <code
-            className='bg-muted px-1 py-0.5 rounded text-sm font-mono text-foreground'
+            className='bg-muted px-2 py-1 rounded text-sm font-mono text-foreground border border-border/50'
             {...props}
           >
             {children}
           </code>
         );
       }
+      // For code blocks, don't add extra styling - let the pre handle it
       return (
-        <code className='block' {...props}>
+        <code className={className} {...props}>
           {children}
         </code>
       );
@@ -336,12 +339,23 @@ export default function PostContent({
     }: React.HTMLAttributes<HTMLPreElement> & {
       children?: React.ReactNode;
     }) => (
-      <pre
-        className='bg-muted/50 p-4 rounded-lg overflow-x-auto mb-4 border border-border'
-        {...props}
-      >
-        {children}
-      </pre>
+      <div className='relative mb-6 group'>
+        <pre
+          className='bg-gradient-to-br from-muted/80 to-muted/60 p-6 rounded-xl overflow-x-auto border border-border/50 shadow-sm backdrop-blur-sm'
+          {...props}
+        >
+          <code className='text-sm font-mono leading-relaxed text-foreground'>
+            {children}
+          </code>
+        </pre>
+        <div className='absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200'>
+          <div className='flex space-x-1'>
+            <div className='w-3 h-3 rounded-full bg-red-500/60'></div>
+            <div className='w-3 h-3 rounded-full bg-yellow-500/60'></div>
+            <div className='w-3 h-3 rounded-full bg-green-500/60'></div>
+          </div>
+        </div>
+      </div>
     ),
     img: ({ src, alt, title }: React.ImgHTMLAttributes<HTMLImageElement>) => {
       if (!src) return null;

@@ -275,3 +275,209 @@ div {
   transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   transition-duration: 300ms;
 }
+
+/* Enhanced Code Block Styling */
+:root {
+  /* Light theme code colors */
+  --code-bg: #f8fafc;
+  --code-border: #e2e8f0;
+  --code-text: #1e293b;
+  --code-comment: #64748b;
+  --code-keyword: #0f766e;
+  --code-string: #dc2626;
+  --code-number: #7c3aed;
+  --code-function: #2563eb;
+  --code-variable: #059669;
+  --code-operator: #475569;
+  --code-punctuation: #64748b;
+  --code-tag: #dc2626;
+  --code-attribute: #0f766e;
+  --code-value: #7c3aed;
+  --inline-code-bg: #f1f5f9;
+  --inline-code-text: #475569;
+  --inline-code-border: #cbd5e1;
+}
+
+.dark {
+  /* Dark theme code colors */
+  --code-bg: #0f172a;
+  --code-border: #1e293b;
+  --code-text: #e2e8f0;
+  --code-comment: #64748b;
+  --code-keyword: #22d3ee;
+  --code-string: #fbbf24;
+  --code-number: #a78bfa;
+  --code-function: #60a5fa;
+  --code-variable: #34d399;
+  --code-operator: #94a3b8;
+  --code-punctuation: #64748b;
+  --code-tag: #f87171;
+  --code-attribute: #22d3ee;
+  --code-value: #a78bfa;
+  --inline-code-bg: #1e293b;
+  --inline-code-text: #cbd5e1;
+  --inline-code-border: #334155;
+}
+
+/* Inline code styling */
+code:not(pre code) {
+  background-color: var(--inline-code-bg) !important;
+  color: var(--inline-code-text) !important;
+  border: 1px solid var(--inline-code-border) !important;
+  padding: 0.125rem 0.375rem !important;
+  border-radius: 0.25rem !important;
+  font-size: 0.875em !important;
+  font-weight: 500 !important;
+  font-family: var(--font-mono) !important;
+}
+
+/* Code block container styling */
+pre {
+  background-color: var(--code-bg) !important;
+  border: 1px solid var(--code-border) !important;
+  border-radius: 0.75rem !important;
+  padding: 1.5rem !important;
+  margin: 1.5rem 0 !important;
+  overflow-x: auto !important;
+  font-family: var(--font-mono) !important;
+  font-size: 0.875rem !important;
+  line-height: 1.5 !important;
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+  position: relative !important;
+}
+
+.dark pre {
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.3),
+    0 2px 4px -1px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Code within pre blocks */
+pre code {
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  color: var(--code-text) !important;
+  font-size: inherit !important;
+  font-family: inherit !important;
+  border-radius: 0 !important;
+  display: block !important;
+  white-space: pre !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+}
+
+/* Syntax highlighting classes */
+.hljs-comment,
+.hljs-quote {
+  color: var(--code-comment) !important;
+  font-style: italic !important;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-subst {
+  color: var(--code-keyword) !important;
+  font-weight: 600 !important;
+}
+
+.hljs-string,
+.hljs-title,
+.hljs-section,
+.hljs-attribute,
+.hljs-literal,
+.hljs-template-tag,
+.hljs-template-variable,
+.hljs-type,
+.hljs-addition {
+  color: var(--code-string) !important;
+}
+
+.hljs-number,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-meta {
+  color: var(--code-number) !important;
+}
+
+.hljs-function,
+.hljs-title.function_,
+.hljs-params {
+  color: var(--code-function) !important;
+  font-weight: 500 !important;
+}
+
+.hljs-variable,
+.hljs-name,
+.hljs-attr {
+  color: var(--code-variable) !important;
+}
+
+.hljs-operator,
+.hljs-built_in,
+.hljs-class .hljs-title {
+  color: var(--code-operator) !important;
+}
+
+.hljs-punctuation {
+  color: var(--code-punctuation) !important;
+}
+
+.hljs-tag {
+  color: var(--code-tag) !important;
+}
+
+.hljs-deletion {
+  color: var(--destructive) !important;
+}
+
+/* Language label styling */
+pre::before {
+  content: attr(data-language);
+  position: absolute;
+  top: 0.75rem;
+  right: 1rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--code-comment);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.7;
+}
+
+/* Copy button area (if added later) */
+pre:hover::before {
+  opacity: 1;
+}
+
+/* Scrollbar styling for code blocks */
+pre::-webkit-scrollbar {
+  height: 8px;
+}
+
+pre::-webkit-scrollbar-track {
+  background: var(--code-border);
+  border-radius: 4px;
+}
+
+pre::-webkit-scrollbar-thumb {
+  background: var(--code-comment);
+  border-radius: 4px;
+}
+
+pre::-webkit-scrollbar-thumb:hover {
+  background: var(--code-text);
+}
+
+/* Responsive code block styling */
+@media (max-width: 640px) {
+  pre {
+    margin: 1rem -1rem !important;
+    border-radius: 0 !important;
+    border-left: none !important;
+    border-right: none !important;
+  }
+}

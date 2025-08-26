@@ -25,9 +25,9 @@ The Singleton ensures a class has only one instance while providing global acces
 ```java
 public class DatabaseConnection {
     private static volatile DatabaseConnection instance;
-    
+
     private DatabaseConnection() {}
-    
+
     public static DatabaseConnection getInstance() {
         if (instance == null) {
             synchronized (DatabaseConnection.class) {
@@ -77,11 +77,11 @@ public interface Observer {
 
 public class NewsAgency {
     private List<Observer> observers = new ArrayList<>();
-    
+
     public void addObserver(Observer observer) {
         observers.add(observer);
     }
-    
+
     public void notifyObservers(String news) {
         observers.forEach(observer -> observer.update(news));
     }
@@ -101,11 +101,11 @@ public interface SortingStrategy {
 
 public class SortContext {
     private SortingStrategy strategy;
-    
+
     public void setStrategy(SortingStrategy strategy) {
         this.strategy = strategy;
     }
-    
+
     public void executeSort(int[] array) {
         strategy.sort(array);
     }

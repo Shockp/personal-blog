@@ -2,7 +2,14 @@
 title: 'Hexagonal Architecture: Ports and Adapters for Clean Software Design'
 description: 'Discover how Hexagonal Architecture creates maintainable, testable applications by isolating business logic from external concerns through ports and adapters.'
 date: '2025-01-16'
-tags: ['hexagonal-architecture', 'clean-architecture', 'java', 'software-design', 'ports-adapters']
+tags:
+  [
+    'hexagonal-architecture',
+    'clean-architecture',
+    'java',
+    'software-design',
+    'ports-adapters',
+  ]
 author: 'Adrián Feito Blázquez'
 ---
 
@@ -45,7 +52,7 @@ public interface OrderService {
 @RestController
 public class OrderController {
     private final OrderService orderService;
-    
+
     @PostMapping("/orders")
     public ResponseEntity<OrderResponse> createOrder(@RequestBody CreateOrderRequest request) {
         CreateOrderCommand command = mapToCommand(request);
@@ -70,7 +77,7 @@ public interface OrderRepository {
 @Repository
 public class JpaOrderRepository implements OrderRepository {
     private final OrderJpaRepository jpaRepository;
-    
+
     @Override
     public void save(Order order) {
         OrderEntity entity = mapToEntity(order);

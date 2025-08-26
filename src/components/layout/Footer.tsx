@@ -89,7 +89,6 @@ export default function Footer() {
                     About
                   </Link>
                 </li>
-
               </ul>
             </nav>
           </div>

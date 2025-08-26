@@ -42,9 +42,9 @@ export default function NotFound() {
           <Link
             href='/blog'
             className='w-full flex justify-center py-2 px-4 border rounded-md shadow-sm text-sm font-medium bg-secondary hover:bg-hover-background focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 transition-all duration-200'
-            style={{ 
+            style={{
               color: 'var(--text-secondary)',
-              borderColor: 'var(--border)'
+              borderColor: 'var(--border)',
             }}
           >
             Browse blog posts
