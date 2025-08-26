@@ -17,6 +17,7 @@ import {
   Shield,
   Sprout,
   TreePine,
+  Lightbulb,
 } from 'lucide-react';
 import Link from 'next/link';
 import { generateMetadata as generateSEOMetadata } from '@/components/seo/SEO';
@@ -259,7 +260,7 @@ export default function AboutPage() {
             </div>
             
             {/* Programming Philosophy Section - Inside Hero */}
-            <div className='mt-16 sm:mt-20 lg:mt-24'>
+            <div className='mt-40 sm:mt-48 lg:mt-56'>
               <div className='text-center'>
                 <div className='relative inline-block'>
                   {/* Background decoration */}
@@ -313,7 +314,7 @@ export default function AboutPage() {
                         Growth Mindset
                       </span>
                       <span className='inline-flex items-center px-4 py-2 bg-green-100 dark:bg-green-900/20 text-green-700 dark:text-green-300 rounded-full'>
-                        <Award className='w-4 h-4 mr-2' />
+                        <Lightbulb className='w-4 h-4 mr-2' />
                         Never Stop Improving
                       </span>
                     </div>
@@ -428,7 +429,7 @@ export default function AboutPage() {
               {/* Career Growth - Tree at Top */}
               <div className='relative flex flex-col items-center mb-8'>
                 <div className='text-center mb-4'>
-                  <p className='text-sm font-medium text-green-600'>Current Growth</p>
+                  <p className='text-sm font-medium text-green-600'>Wisdom</p>
                 </div>
                 <div className='w-12 h-12 bg-green-600 rounded-full border-4 border-background z-10 flex items-center justify-center'>
                   <TreePine className='w-6 h-6 text-white' />
@@ -505,7 +506,7 @@ export default function AboutPage() {
                   <Sprout className='w-6 h-6 text-white' />
                 </div>
                 <div className='text-center mt-4'>
-                  <p className='text-sm font-medium text-blue-600'>The Beginning</p>
+                  <p className='text-sm font-medium text-blue-600'>Seedling</p>
                 </div>
               </div>
             </div>
