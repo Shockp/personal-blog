@@ -132,7 +132,7 @@ export default function AboutPage() {
       ],
     },
     {
-      title: 'Independent Projects – Backend Development',
+      title: 'Backend Development – Independent Projects',
       company: '',
       period: '2024 - Present',
       description:
@@ -145,7 +145,7 @@ export default function AboutPage() {
     },
     {
       title: 'Computer Engineering',
-      company: 'Rey Juan Carlos University | Madrid',
+      company: 'Rey Juan Carlos University',
       period: '2023 - Present',
       description:
         'Currently pursuing a degree in Computer Engineering, developing a solid foundation in both software and hardware. Learning to optimize systems and understand how software and electronics work together.',
@@ -158,7 +158,7 @@ export default function AboutPage() {
     },
     {
       title: 'Pentesting / Ethical Hacking',
-      company: 'Vienna',
+      company: '',
       period: '2022 - 2024',
       description:
         'Started my journey in penetration testing, focusing on cybersecurity challenges and hands-on ethical hacking. Achieved recognition in the Hack The Box community and obtained relevant certifications.',
