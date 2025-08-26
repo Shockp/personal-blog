@@ -53,43 +53,61 @@ export default function AboutPage() {
   ];
 
   const skills = [
-    { name: 'Backend', level: 95, icon: Database, color: 'bg-blue-500' },
-    { name: 'Architecture & Design Patterns', level: 90, icon: Code, color: 'bg-blue-600' },
+    { 
+      name: 'Backend', 
+      level: 95, 
+      icon: Database, 
+      color: 'bg-blue-500',
+      techStack: ['Java & Spring Boot & Spring WebFlux', 'Node.js', 'Maven']
+    },
+    { 
+      name: 'Architecture & Design Patterns', 
+      level: 90, 
+      icon: Code, 
+      color: 'bg-blue-600',
+      techStack: ['Scalable & Modular', 'Microservices', 'Reactive', 'SOLID principles', 'Common Design Patterns']
+    },
     {
       name: 'API & Integration',
       level: 90,
       icon: Globe,
       color: 'bg-green-500',
+      techStack: ['RESTful API Design', 'Integration with External APIs']
     },
     {
       name: 'Data & Persistence',
       level: 90,
       icon: Database,
       color: 'bg-green-600',
+      techStack: ['Redis', 'Spring Data', 'PostgreSQL', 'JSON-Based with Gson & Jackson']
     },
     {
       name: 'CLI & utilities',
       level: 85,
       icon: Code,
       color: 'bg-purple-500',
+      techStack: ['Bucket4j', 'SLF4J', 'CSV Parsing', 'rate limiting', 'Apache Commons CLI']
     },
     {
       name: 'Frontend & Web',
       level: 80,
       icon: Smartphone,
       color: 'bg-orange-500',
+      techStack: ['Next.js', 'React', 'TypeScript', 'JavaScript', 'Tailwind', 'Markdown']
     },
     {
       name: 'DevOps & Deployment',
       level: 80,
       icon: Globe,
       color: 'bg-red-500',
+      techStack: ['Docker', 'Vercel', 'PostCSS & Autoprefixer']
     },
     {
       name: 'Testing & Quality',
       level: 75,
       icon: Award,
       color: 'bg-yellow-500',
+      techStack: ['JUnit 5', 'Mockito', 'Jest', 'Supertest', 'jsdom', 'ESLint & Prettier']
     },
   ];
 
@@ -251,6 +269,19 @@ export default function AboutPage() {
                           </span>
                         </div>
                       </div>
+                    </div>
+                    
+                    {/* Tech Stack Tags */}
+                    <div className='flex flex-wrap gap-1.5 sm:gap-2 mt-3'>
+                      {skill.techStack.map((tech, techIndex) => (
+                        <span
+                          key={techIndex}
+                          className='inline-block px-2 py-1 text-xs font-medium rounded-md bg-muted/60 hover:bg-muted transition-colors duration-300'
+                          style={{ color: 'var(--text-secondary)' }}
+                        >
+                          {tech}
+                        </span>
+                      ))}
                     </div>
                   </div>
                 );
