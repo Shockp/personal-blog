@@ -314,7 +314,7 @@ export default function PostContent({
     }: React.HTMLAttributes<HTMLElement> & {
       inline?: boolean;
       children?: React.ReactNode;
-      className?: string;
+      className?: string | undefined;
     }) => {
       if (inline) {
         return (
@@ -341,12 +341,10 @@ export default function PostContent({
     }) => (
       <div className='relative mb-6 group'>
         <pre
-          className='bg-gradient-to-br from-muted/80 to-muted/60 p-6 rounded-xl overflow-x-auto border border-border/50 shadow-sm backdrop-blur-sm'
+          className='bg-gradient-to-br from-muted/80 to-muted/60 p-6 rounded-xl overflow-x-auto border border-border/50 shadow-sm backdrop-blur-sm text-sm font-mono leading-relaxed text-foreground'
           {...props}
         >
-          <code className='text-sm font-mono leading-relaxed text-foreground'>
-            {children}
-          </code>
+          {children}
         </pre>
         <div className='absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200'>
           <div className='flex space-x-1'>

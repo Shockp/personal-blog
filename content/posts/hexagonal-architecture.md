@@ -10,7 +10,7 @@ tags:
     'software-design',
     'ports-adapters',
   ]
-author: 'Adrián Feito Blázquez'
+author: 'AFB Tech Blog'
 ---
 
 # Hexagonal Architecture: Ports and Adapters for Clean Software Design

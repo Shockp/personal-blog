@@ -7,23 +7,27 @@ import { generateMetadata as generateSEOMetadata } from '@/components/seo/SEO';
 
 // SEO metadata for the home page
 export const metadata = generateSEOMetadata({
-  title: 'Home',
+  title: 'AFB Tech Blog - Software Engineering Excellence',
   description:
-    'Adrián Feito Blázquez - Computer Engineer & Software Engineer specializing in scalable architecture, backend development, and design patterns. Discover insights about software engineering, React, TypeScript, and building amazing user experiences.',
+    'AFB Tech Blog - Your go-to resource for software engineering excellence, scalable architecture patterns, and cutting-edge development insights. Explore in-depth articles on design patterns, clean architecture, SOLID principles, and modern development practices.',
   keywords: [
-    'adrián feito blázquez',
-    'computer engineer',
-    'software engineer',
-    'scalable architecture',
-    'backend development',
-    'design patterns',
+    'afb tech blog',
     'software engineering',
+    'scalable architecture',
+    'design patterns',
+    'clean architecture',
+    'solid principles',
+    'backend development',
+    'software architecture',
+    'programming best practices',
     'react',
     'typescript',
     'nextjs',
     'javascript',
-    'developer',
-    'blog',
+    'java',
+    'hexagonal architecture',
+    'tech blog',
+    'developer insights',
   ],
   type: 'website',
   url: '/',
@@ -106,17 +110,19 @@ export default async function Home() {
                   className='text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight'
                   style={{ color: 'var(--foreground)' }}
                 >
-                  Hi, I&apos;m{' '}
-                  <span className='bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent'>
-                    Adrián Feito Blázquez
+                  Welcome to{' '}
+                  <span className='bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent'>
+                    AFB Tech Blog
                   </span>
                 </h1>
                 <p
-                  className='text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto px-4 sm:px-0'
+                  className='text-lg sm:text-xl md:text-2xl max-w-4xl mx-auto px-4 sm:px-0'
                   style={{ color: 'var(--muted-foreground)' }}
                 >
-                  Computer Engineer & Software Engineer specializing in scalable
-                  architecture, backend development, and design patterns
+                  Your go-to resource for software engineering excellence,
+                  scalable architecture patterns, and cutting-edge development
+                  insights. Explore in-depth articles on design patterns, clean
+                  architecture, and modern development practices.
                 </p>
               </div>
               <div className='flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4 sm:px-0'>
@@ -126,7 +132,7 @@ export default async function Home() {
                 >
                   <BookOpen className='mr-2 h-5 w-5 group-hover:!text-slate-900 dark:group-hover:text-[var(--hero-gradient-from)] transition-colors duration-500' />
                   <span className='group-hover:!text-slate-900 dark:group-hover:text-[var(--hero-gradient-from)] transition-colors duration-500'>
-                    Read My Blog
+                    Explore Articles
                   </span>
                 </Link>
                 <Link
@@ -162,8 +168,8 @@ export default async function Home() {
                 className='text-base sm:text-lg max-w-2xl mx-auto px-4 sm:px-0'
                 style={{ color: 'var(--muted-foreground)' }}
               >
-                Discover my latest thoughts on software engineering, technology,
-                and programming best practices.
+                Discover the latest insights on software engineering,
+                architecture patterns, and cutting-edge development practices.
               </p>
             </div>
 

@@ -319,7 +319,8 @@ div {
   --inline-code-border: #334155;
 }
 
-/* Inline code styling */
+/* Inline code styling - Override Tailwind Typography */
+.prose code:not(pre code),
 code:not(pre code) {
   background-color: var(--inline-code-bg) !important;
   color: var(--inline-code-text) !important;
@@ -331,7 +332,8 @@ code:not(pre code) {
   font-family: var(--font-mono) !important;
 }
 
-/* Code block container styling */
+/* Code block container styling - Override Tailwind Typography */
+.prose pre,
 pre {
   background-color: var(--code-bg) !important;
   border: 1px solid var(--code-border) !important;
@@ -348,13 +350,15 @@ pre {
   position: relative !important;
 }
 
+.dark .prose pre,
 .dark pre {
   box-shadow:
     0 4px 6px -1px rgba(0, 0, 0, 0.3),
     0 2px 4px -1px rgba(0, 0, 0, 0.2) !important;
 }
 
-/* Code within pre blocks */
+/* Code within pre blocks - Override Tailwind Typography */
+.prose pre code,
 pre code {
   background: none !important;
   border: none !important;
@@ -368,6 +372,7 @@ pre code {
   white-space: pre !important;
   overflow-wrap: normal !important;
   word-break: normal !important;
+  box-shadow: none !important;
 }
 
 /* Syntax highlighting classes */

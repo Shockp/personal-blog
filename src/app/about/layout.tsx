@@ -2,16 +2,16 @@ import { generateMetadata as generateSEOMetadata } from '@/components/seo/SEO';
 
 // SEO metadata for the about page
 export const metadata = generateSEOMetadata({
-  title: 'About',
+  title: 'About AFB',
   description:
-    'Learn more about Adrián Feito Blázquez, a passionate web developer with over 5 years of experience specializing in React, TypeScript, and modern web technologies.',
+    'Learn more about AFB Tech Blog, a platform dedicated to software engineering excellence, scalable architecture, and modern development practices.',
   keywords: [
-    'adrián feito blázquez',
-    'web developer',
-    'react developer',
-    'typescript',
-    'frontend developer',
-    'full stack developer',
+    'afb tech blog',
+    'software engineering',
+    'scalable architecture',
+    'design patterns',
+    'clean code',
+    'development practices',
     'about',
   ],
   type: 'website',

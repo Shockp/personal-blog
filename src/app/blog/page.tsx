@@ -8,14 +8,14 @@ import BreadcrumbStructuredData from '@/components/seo/BreadcrumbStructuredData'
 export const metadata = generateSEOMetadata({
   title: 'Blog Posts',
   description:
-    'Discover insights, tutorials, and thoughts on software engineering, React, TypeScript, and modern technologies by Adrián Feito Blázquez. Stay updated with the latest trends and best practices.',
+    'Discover insights, tutorials, and thoughts on software engineering, scalable architecture, design patterns, and modern development practices from AFB Tech Blog.',
   keywords: [
-    'adrián feito blázquez',
+    'afb tech blog',
     'blog',
     'software engineering',
-    'react',
-    'typescript',
-    'javascript',
+    'scalable architecture',
+    'design patterns',
+    'clean code',
     'tutorials',
     'programming',
     'technology',

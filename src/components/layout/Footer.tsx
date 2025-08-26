@@ -26,8 +26,8 @@ export default function Footer() {
               className='mt-4 text-base'
               style={{ color: 'var(--text-secondary)' }}
             >
-              A personal blog sharing thoughts, experiences, and insights on
-              technology, life, and everything in between.
+              AFB Tech Blog: Sharing insights on software engineering, scalable
+              architecture, and modern development practices.
             </p>
           </div>
 
@@ -212,7 +212,7 @@ export default function Footer() {
             className='text-base text-center'
             style={{ color: 'var(--text-secondary)' }}
           >
-            &copy; {currentYear} Adrián Feito Blázquez. All rights reserved.
+            &copy; {currentYear} AFB Tech Blog. All rights reserved.
           </p>
         </div>
       </div>

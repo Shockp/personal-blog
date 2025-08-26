@@ -3,7 +3,7 @@ title: 'Common Design Patterns: Building Robust Software Architecture'
 description: 'Explore essential design patterns that every developer should know. Learn how Singleton, Factory, Observer, and Strategy patterns solve real-world problems in software development.'
 date: '2025-01-16'
 tags: ['design-patterns', 'java', 'software-architecture', 'best-practices']
-author: 'Adrián Feito Blázquez'
+author: 'AFB Tech Blog'
 ---
 
 # Common Design Patterns: Building Robust Software Architecture

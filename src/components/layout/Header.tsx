@@ -55,20 +55,29 @@ export default function Header() {
           <div className='flex-shrink-0'>
             <Link
               href='/'
-              className='flex items-center space-x-2 min-h-[44px] py-2'
-              aria-label='Go to homepage - Personal Blog'
+              className='flex items-center min-h-[44px] py-2'
+              aria-label='Go to homepage - AFB Tech Blog'
             >
-              <div className='w-8 h-8 sm:w-9 sm:h-9 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center'>
-                <span className='text-white font-bold text-sm sm:text-base'>
-                  A
-                </span>
+              <div className='relative group'>
+                {/* Main logo container */}
+                <div className='relative w-12 h-12 sm:w-14 sm:h-14 transition-all duration-300 transform group-hover:scale-110'>
+                  {/* Background geometric shape */}
+                  <div className='absolute inset-0 bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-600 rounded-2xl rotate-12 group-hover:rotate-6 transition-all duration-300 shadow-lg group-hover:shadow-xl'></div>
+                  
+                  {/* Secondary geometric layer */}
+                  <div className='absolute inset-1 bg-gradient-to-tl from-indigo-500 via-blue-500 to-purple-500 rounded-xl -rotate-6 group-hover:rotate-3 transition-all duration-300 opacity-80'></div>
+                  
+                  {/* Text container */}
+                  <div className='absolute inset-0 flex items-center justify-center'>
+                    <span className='relative text-white font-black text-sm sm:text-base tracking-tight transform group-hover:scale-105 transition-all duration-300 drop-shadow-sm'>
+                      AFB
+                    </span>
+                  </div>
+                  
+                  {/* Hover effect overlay */}
+                  <div className='absolute inset-0 bg-gradient-to-r from-white/10 to-white/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300'></div>
+                </div>
               </div>
-              <span
-                className='font-bold text-lg sm:text-xl'
-                style={{ color: 'var(--foreground)' }}
-              >
-                Adrian
-              </span>
             </Link>
           </div>
 

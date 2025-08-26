@@ -14,13 +14,13 @@ import { BlogPost, BlogPostSummary } from '@/types/blog';
 // Author information
 export const AUTHOR_INFO: Person = {
   '@type': 'Person',
-  name: 'Adrián Feito Blázquez',
+  name: 'AFB Tech Blog',
   url: process.env.NEXT_PUBLIC_SITE_URL || 'https://localhost:3000',
   image: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://localhost:3000'}/images/author.jpg`,
   sameAs: [
     // Add social media URLs here if available
   ],
-  jobTitle: 'Software Developer',
+  jobTitle: 'Tech Blog Author',
 };
 
 // Organization information (None as specified)
@@ -116,9 +116,9 @@ export function generateWebSiteStructuredData(): StructuredData {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'Personal Blog',
+    name: 'AFB Tech Blog',
     description:
-      'A personal blog about software engineering, technology, and programming insights.',
+      'AFB Tech Blog: Insights on software engineering, scalable architecture, design patterns, and modern development practices.',
     url: process.env.NEXT_PUBLIC_SITE_URL || 'https://localhost:3000',
     author: AUTHOR_INFO,
     publisher: ORGANIZATION_INFO || undefined,

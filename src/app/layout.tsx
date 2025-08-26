@@ -34,22 +34,23 @@ const merriweather = Merriweather({
 });
 
 export const metadata: Metadata = {
-  title: 'Adrián Feito Blázquez - Personal Blog',
+  title: 'AFB Tech Blog - Software Engineering Excellence',
   description:
-    'Personal blog by Adrián Feito Blázquez covering software development, technology, and programming insights.',
+    'AFB Tech Blog: Insights on software engineering, scalable architecture, design patterns, and modern development practices.',
   keywords: [
-    'blog',
-    'personal',
+    'afb tech blog',
+    'software engineering',
+    'scalable architecture',
+    'design patterns',
+    'clean code',
     'nextjs',
     'typescript',
-    'tailwind',
-    'software development',
     'programming',
     'technology',
   ],
-  authors: [{ name: 'Adrián Feito Blázquez' }],
-  creator: 'Adrián Feito Blázquez',
-  publisher: 'Adrián Feito Blázquez',
+  authors: [{ name: 'AFB Tech Blog' }],
+  creator: 'AFB Tech Blog',
+  publisher: 'AFB Tech Blog',
   formatDetection: {
     email: false,
     address: false,
@@ -62,17 +63,17 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000',
-    title: 'Adrián Feito Blázquez - Personal Blog',
+    title: 'AFB Tech Blog - Software Engineering Excellence',
     description:
-      'Personal blog by Adrián Feito Blázquez covering software development, technology, and programming insights.',
-    siteName: 'Adrián Feito Blázquez - Personal Blog',
+      'AFB Tech Blog: Insights on software engineering, scalable architecture, design patterns, and modern development practices.',
+    siteName: 'AFB Tech Blog',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Adrián Feito Blázquez - Personal Blog',
+    title: 'AFB Tech Blog - Software Engineering Excellence',
     description:
-      'Personal blog by Adrián Feito Blázquez covering software development, technology, and programming insights.',
-    creator: '@adrianfeito',
+      'AFB Tech Blog: Insights on software engineering, scalable architecture, design patterns, and modern development practices.',
+    creator: '@afbtechblog',
   },
   robots: {
     index: true,
