@@ -293,7 +293,7 @@ export default function AboutPage() {
                   </h2>
 
                   {/* Code block styling */}
-                  <div className='bg-slate-100 dark:bg-slate-900 rounded-lg p-6 sm:p-8 mb-6 font-mono text-left max-w-md mx-auto border border-slate-300 dark:border-slate-700'>
+                  <div className='bg-white dark:bg-slate-900 rounded-lg p-6 sm:p-8 mb-6 font-mono text-left max-w-md mx-auto border border-slate-300 dark:border-slate-700'>
                     <div className='relative flex items-center justify-center mb-4'>
                       <div className='absolute left-0 flex space-x-2'>
                         <div className='w-3 h-3 bg-red-500 rounded-full'></div>
@@ -305,36 +305,36 @@ export default function AboutPage() {
                       </span>
                     </div>
                     <div className='text-slate-700 dark:text-slate-300 text-lg sm:text-xl'>
-                      <span className='text-slate-600 dark:text-slate-400'>
+                      <span className='text-blue-600 dark:text-slate-400'>
                         while
                       </span>{' '}
-                      <span className='text-slate-500 dark:text-slate-500'>
+                      <span className='text-slate-700 dark:text-slate-500'>
                         (
                       </span>
-                      <span className='text-slate-800 dark:text-slate-200'>
+                      <span className='text-slate-900 dark:text-slate-200'>
                         age
                       </span>
-                      <span className='text-slate-600 dark:text-slate-400'>
+                      <span className='text-blue-600 dark:text-slate-400'>
                         ++
                       </span>
-                      <span className='text-slate-500 dark:text-slate-500'>
+                      <span className='text-slate-700 dark:text-slate-500'>
                         )
                       </span>{' '}
-                      <span className='text-slate-500 dark:text-slate-500'>
+                      <span className='text-slate-700 dark:text-slate-500'>
                         &#123;
                       </span>
                       <br />
-                      <span className='ml-4 text-slate-800 dark:text-slate-200'>
+                      <span className='ml-4 text-slate-900 dark:text-slate-200'>
                         knowledge
                       </span>
-                      <span className='text-slate-600 dark:text-slate-400'>
+                      <span className='text-blue-600 dark:text-slate-400'>
                         ++
                       </span>
-                      <span className='text-slate-500 dark:text-slate-500'>
+                      <span className='text-slate-700 dark:text-slate-500'>
                         ;
                       </span>
                       <br />
-                      <span className='text-slate-500 dark:text-slate-500'>
+                      <span className='text-slate-700 dark:text-slate-500'>
                         &#125;
                       </span>
                     </div>
@@ -348,15 +348,15 @@ export default function AboutPage() {
                   </p>
 
                   <div className='mt-8 flex flex-wrap justify-center gap-4 text-sm font-medium'>
-                    <span className='inline-flex items-center px-4 py-2 bg-blue-100 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 rounded-full'>
+                    <span className='inline-flex items-center px-4 py-2 bg-blue-100 dark:bg-blue-900 text-blue-900 dark:text-blue-100 rounded-full border border-blue-300 dark:border-blue-700'>
                       <Terminal className='w-4 h-4 mr-2' />
                       Continuous Learning
                     </span>
-                    <span className='inline-flex items-center px-4 py-2 bg-purple-100 dark:bg-purple-900/20 text-purple-700 dark:text-purple-300 rounded-full'>
+                    <span className='inline-flex items-center px-4 py-2 bg-purple-100 dark:bg-purple-900 text-purple-900 dark:text-purple-100 rounded-full border border-purple-300 dark:border-purple-700'>
                       <Code className='w-4 h-4 mr-2' />
                       Growth Mindset
                     </span>
-                    <span className='inline-flex items-center px-4 py-2 bg-green-100 dark:bg-green-900/20 text-green-700 dark:text-green-300 rounded-full'>
+                    <span className='inline-flex items-center px-4 py-2 bg-green-100 dark:bg-green-900 text-green-900 dark:text-green-100 rounded-full border border-green-300 dark:border-green-700'>
                       <Lightbulb className='w-4 h-4 mr-2' />
                       Never Stop Improving
                     </span>
