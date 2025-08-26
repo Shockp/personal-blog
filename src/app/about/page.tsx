@@ -283,21 +283,21 @@ export default function AboutPage() {
                   </h2>
                   
                   {/* Code block styling */}
-                  <div className='bg-slate-900 dark:bg-slate-800 rounded-lg p-6 sm:p-8 mb-6 font-mono text-left max-w-md mx-auto border border-slate-700'>
-                    <div className='flex items-center mb-4'>
-                      <div className='flex space-x-2'>
+                  <div className='bg-slate-100 dark:bg-slate-900 rounded-lg p-6 sm:p-8 mb-6 font-mono text-left max-w-md mx-auto border border-slate-300 dark:border-slate-700'>
+                    <div className='relative flex items-center justify-center mb-4'>
+                      <div className='absolute left-0 flex space-x-2'>
                         <div className='w-3 h-3 bg-red-500 rounded-full'></div>
                         <div className='w-3 h-3 bg-yellow-500 rounded-full'></div>
                         <div className='w-3 h-3 bg-green-500 rounded-full'></div>
                       </div>
-                      <span className='ml-4 text-slate-400 text-sm'>philosophy.js</span>
+                      <span className='text-slate-600 dark:text-slate-400 text-sm font-medium'>philosophy.js</span>
                     </div>
-                    <div className='text-green-400 text-lg sm:text-xl'>
-                      <span className='text-purple-400'>while</span> <span className='text-white'>(</span><span className='text-blue-400'>age</span><span className='text-red-400'>++</span><span className='text-white'>)</span> <span className='text-white'>&#123;</span>
+                    <div className='text-slate-700 dark:text-slate-300 text-lg sm:text-xl'>
+                      <span className='text-slate-600 dark:text-slate-400'>while</span> <span className='text-slate-500 dark:text-slate-500'>(</span><span className='text-slate-800 dark:text-slate-200'>age</span><span className='text-slate-600 dark:text-slate-400'>++</span><span className='text-slate-500 dark:text-slate-500'>)</span> <span className='text-slate-500 dark:text-slate-500'>&#123;</span>
                       <br />
-                      <span className='ml-4 text-blue-400'>knowledge</span><span className='text-red-400'>++</span><span className='text-white'>;</span>
+                      <span className='ml-4 text-slate-800 dark:text-slate-200'>knowledge</span><span className='text-slate-600 dark:text-slate-400'>++</span><span className='text-slate-500 dark:text-slate-500'>;</span>
                       <br />
-                      <span className='text-white'>&#125;</span>
+                      <span className='text-slate-500 dark:text-slate-500'>&#125;</span>
                     </div>
                   </div>
                   
