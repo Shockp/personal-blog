@@ -34,12 +34,30 @@ interface ThemeProviderProps {
  * Provides theme context to all child components
  */
 export function ThemeProvider({ children }: ThemeProviderProps) {
-  // Read initial theme from pre-applied state (set by inline script)
+  // Read initial theme from localStorage first, then system preference, matching inline script logic
   const getInitialTheme = (): Theme => {
     if (typeof window === 'undefined') return 'light';
-    return document.documentElement.classList.contains('dark')
-      ? 'dark'
-      : 'light';
+    
+    try {
+      // First try to read from localStorage
+      const storedTheme = localStorage.getItem('theme');
+      if (storedTheme === 'dark' || storedTheme === 'light') {
+        return storedTheme;
+      }
+      
+      // Fall back to system preference
+      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        return 'dark';
+      }
+    } catch {
+      // If localStorage fails, check DOM state as fallback
+      return document.documentElement.classList.contains('dark')
+        ? 'dark'
+        : 'light';
+    }
+    
+    // Default to light theme
+    return 'light';
   };
 
   const [theme, setThemeState] = useState<Theme>(getInitialTheme);
