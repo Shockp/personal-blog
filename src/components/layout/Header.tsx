@@ -99,24 +99,24 @@ l-1683 0 -49 -90z'
           {/* Desktop Navigation */}
           <nav className='hidden md:flex items-center space-x-6 lg:space-x-8'>
             <Link
-              href='/'
+              href='/home'
               className='text-sm lg:text-base font-medium transition-all duration-200 px-3 py-2 rounded-md min-h-[44px] flex items-center'
               style={{
                 color:
-                  pathname === '/'
+                  pathname === '/home'
                     ? 'var(--nav-active-text)'
                     : 'var(--nav-text)',
                 backgroundColor:
-                  pathname === '/' ? 'var(--nav-active-bg)' : 'transparent',
+                  pathname === '/home' ? 'var(--nav-active-bg)' : 'transparent',
               }}
               onMouseEnter={e => {
-                if (pathname !== '/') {
+                if (pathname !== '/home') {
                   e.currentTarget.style.backgroundColor = 'var(--nav-hover-bg)';
                   e.currentTarget.style.color = 'var(--nav-text-hover)';
                 }
               }}
               onMouseLeave={e => {
-                if (pathname !== '/') {
+                if (pathname !== '/home') {
                   e.currentTarget.style.backgroundColor = 'transparent';
                   e.currentTarget.style.color = 'var(--nav-text)';
                 }
@@ -231,31 +231,31 @@ l-1683 0 -49 -90z'
             }}
           >
             <Link
-              href='/'
+              href='/home'
               className='block px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 min-h-[44px] flex items-center'
               style={{
-                color: isActiveLink('/')
+                color: isActiveLink('/home')
                   ? 'var(--nav-active-text)'
                   : 'var(--nav-text)',
-                backgroundColor: isActiveLink('/')
+                backgroundColor: isActiveLink('/home')
                   ? 'var(--nav-active-bg)'
                   : 'transparent',
               }}
               onMouseEnter={e => {
-                if (!isActiveLink('/')) {
+                if (!isActiveLink('/home')) {
                   e.currentTarget.style.backgroundColor = 'var(--nav-hover-bg)';
                   e.currentTarget.style.color = 'var(--nav-text-hover)';
                 }
               }}
               onMouseLeave={e => {
-                if (!isActiveLink('/')) {
+                if (!isActiveLink('/home')) {
                   e.currentTarget.style.backgroundColor = 'transparent';
                   e.currentTarget.style.color = 'var(--nav-text)';
                 }
               }}
               onClick={closeMenu}
               role='menuitem'
-              aria-current={isActiveLink('/') ? 'page' : undefined}
+              aria-current={isActiveLink('/home') ? 'page' : undefined}
             >
               Home
             </Link>

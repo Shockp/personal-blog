@@ -31,7 +31,7 @@ export default function Navigation() {
           {/* Logo */}
           <div className='flex-shrink-0'>
             <Link
-              href='/'
+              href='/home'
               className='text-2xl font-bold transition-colors duration-200'
               style={{ color: 'var(--text-primary)' }}
               onMouseEnter={e =>
@@ -50,7 +50,7 @@ export default function Navigation() {
           <div className='hidden md:flex items-center space-x-8'>
             <div className='flex items-baseline space-x-8'>
               <Link
-                href='/'
+                href='/home'
                 className='px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200'
                 style={{ color: 'var(--text-secondary)' }}
                 onMouseEnter={e =>
@@ -126,7 +126,7 @@ export default function Navigation() {
         <div className='md:hidden' role='menu'>
           <div className='px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-background border-t border-border'>
             <Link
-              href='/'
+              href='/home'
               className='block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200'
               style={{ color: 'var(--text-secondary)' }}
               onMouseEnter={e =>
