@@ -59,24 +59,11 @@ export default function Header() {
               aria-label='Go to homepage - AFB Tech Blog'
             >
               <div className='relative group'>
-                {/* Main logo container */}
-                <div className='relative w-12 h-12 sm:w-14 sm:h-14 transition-all duration-300 transform group-hover:scale-110'>
-                  {/* Background geometric shape */}
-                  <div className='absolute inset-0 bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-600 rounded-2xl rotate-12 group-hover:rotate-6 transition-all duration-300 shadow-lg group-hover:shadow-xl'></div>
-                  
-                  {/* Secondary geometric layer */}
-                  <div className='absolute inset-1 bg-gradient-to-tl from-indigo-500 via-blue-500 to-purple-500 rounded-xl -rotate-6 group-hover:rotate-3 transition-all duration-300 opacity-80'></div>
-                  
-                  {/* Text container */}
-                  <div className='absolute inset-0 flex items-center justify-center'>
-                    <span className='relative text-white font-black text-sm sm:text-base tracking-tight transform group-hover:scale-105 transition-all duration-300 drop-shadow-sm'>
-                      AFB
-                    </span>
-                  </div>
-                  
-                  {/* Hover effect overlay */}
-                  <div className='absolute inset-0 bg-gradient-to-r from-white/10 to-white/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300'></div>
-                </div>
+                <img
+                  src='/afb-logo.svg'
+                  alt='AFB Tech Blog Logo'
+                  className='w-12 h-12 sm:w-14 sm:h-14 transition-all duration-300 transform group-hover:scale-110 filter drop-shadow-lg group-hover:drop-shadow-xl'
+                />
               </div>
             </Link>
           </div>
