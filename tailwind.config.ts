@@ -21,6 +21,16 @@ const config: Config = {
     },
     extend: {
       colors: {
+        // CSS Variable-based colors for theme support
+        background: 'var(--background)',
+        foreground: 'var(--foreground)',
+        muted: {
+          DEFAULT: 'var(--muted)',
+          foreground: 'var(--muted-foreground)',
+        },
+        border: 'var(--border)',
+        input: 'var(--input)',
+        ring: 'var(--ring)',
         // Enhanced color palette with semantic naming
         primary: {
           50: '#f0f9ff',
