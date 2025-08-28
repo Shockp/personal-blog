@@ -46,6 +46,7 @@ export async function getNonce(): Promise<string> {
     }
   } catch {
     // Fallback if headers are not available
+    // eslint-disable-next-line no-console
     console.warn(
       'Could not access headers for nonce, generating fallback nonce'
     );

@@ -123,6 +123,7 @@ export default async function CSPTestPage() {
               dangerouslySetInnerHTML={{
                 __html: `
                 // This script should be blocked by CSP (no nonce)
+                // eslint-disable-next-line no-console
                 console.log('This inline script should be blocked!');
                 alert('This should not execute!');
               `,

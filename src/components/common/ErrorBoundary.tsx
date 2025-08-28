@@ -38,6 +38,7 @@ export class ErrorBoundary extends Component<
       // Replace with your error monitoring service
       // e.g., Sentry.captureException(error, { extra: errorInfo });
     } else {
+      // eslint-disable-next-line no-console
       console.error('ErrorBoundary caught an error:', error, errorInfo);
     }
     this.props.onError?.(error, errorInfo);

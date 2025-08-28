@@ -23,6 +23,7 @@ export async function POST(request: NextRequest) {
     const violation = report['csp-report'];
 
     // Log the violation (in production, you might want to send this to a monitoring service)
+    // eslint-disable-next-line no-console
     console.warn('CSP Violation Report:', {
       documentUri: violation['document-uri'],
       violatedDirective: violation['violated-directive'],
@@ -47,6 +48,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ status: 'received' }, { status: 200 });
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.error('Error processing CSP violation report:', error);
     return NextResponse.json(
       { error: 'Invalid report format' },

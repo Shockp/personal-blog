@@ -200,6 +200,7 @@ export function createRateLimit(config: RateLimitConfig) {
 
       return null; // Continue processing
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.error('Rate limiting error:', error);
       // On error, allow the request to continue
       return null;

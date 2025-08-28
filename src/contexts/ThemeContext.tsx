@@ -55,7 +55,8 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
     if (currentTheme !== theme) {
       setThemeState(currentTheme);
     }
-  }, []); // Remove theme dependency to prevent infinite loop
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // Intentionally empty - only run on mount to sync initial state
 
   // Apply theme to document and save to localStorage
   useEffect(() => {

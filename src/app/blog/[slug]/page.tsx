@@ -54,6 +54,7 @@ export async function generateMetadata({
 
     return generateSEOMetadata(seoProps);
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.error('Error generating metadata for post:', slug, error);
     return {
       title: 'Error | Personal Blog',
@@ -72,6 +73,7 @@ export async function generateStaticParams() {
       slug: post.slug,
     }));
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.error('Error generating static params:', error);
     return [];
   }
@@ -128,6 +130,7 @@ export default async function PostPage({ params }: PostPageProps) {
       </>
     );
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.error('Error loading post:', slug, error);
     notFound();
   }

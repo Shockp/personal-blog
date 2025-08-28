@@ -19,6 +19,7 @@ import {
   Lightbulb,
 } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import ContactCard from '@/components/about/ContactCard';
 import SocialLinks from '@/components/about/SocialLinks';
 import BreadcrumbStructuredData from '@/components/seo/BreadcrumbStructuredData';
@@ -256,9 +257,11 @@ export default function AboutPage() {
               {/* Profile Image Placeholder */}
               <div className='flex justify-center lg:justify-end'>
                 <div className='relative'>
-                  <img
+                  <Image
                     src='/images/hero-image.jpg'
                     alt='Adrián Feito Blázquez - Computer Engineer and Software Developer'
+                    width={320}
+                    height={320}
                     className='w-80 h-80 rounded-full object-cover shadow-2xl'
                   />
                   <div className='absolute -bottom-4 -right-4 bg-background border border-border rounded-full p-4 shadow-lg'>
