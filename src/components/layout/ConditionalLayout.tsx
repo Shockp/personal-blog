@@ -12,7 +12,9 @@ interface ConditionalLayoutProps {
  * Conditional layout component that hides Header and Footer on the root URL (/)
  * Shows Header and Footer on all other pages
  */
-export default function ConditionalLayout({ children }: ConditionalLayoutProps) {
+export default function ConditionalLayout({
+  children,
+}: ConditionalLayoutProps) {
   const pathname = usePathname();
   const isRootPage = pathname === '/';
 

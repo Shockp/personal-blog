@@ -5,6 +5,8 @@
  * Tests Content Security Policy implementation by checking headers
  */
 
+/* eslint-disable no-console */
+
 import https from 'https';
 import http from 'http';
 

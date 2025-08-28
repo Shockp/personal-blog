@@ -159,9 +159,7 @@ export default async function RootLayout({
         suppressHydrationWarning
       >
         <ThemeProvider>
-          <ConditionalLayout>
-            {children}
-          </ConditionalLayout>
+          <ConditionalLayout>{children}</ConditionalLayout>
         </ThemeProvider>
       </body>
     </html>
