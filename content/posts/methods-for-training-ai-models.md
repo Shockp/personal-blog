@@ -1,9 +1,15 @@
 ---
-title: "Methods for Training AI Models: A Comprehensive Overview"
-date: "2025-08-26"
-author: "AFB"
-description: "Discover the various techniques and methodologies used to train artificial intelligence models, from supervised learning to advanced neural networks."
-tags: ["artificial intelligence", "machine learning", "neural networks", "data science"]
+title: 'Methods for Training AI Models: A Comprehensive Overview'
+date: '2025-08-26'
+author: 'AFB'
+description: 'Discover the various techniques and methodologies used to train artificial intelligence models, from supervised learning to advanced neural networks.'
+tags:
+  [
+    'artificial intelligence',
+    'machine learning',
+    'neural networks',
+    'data science',
+  ]
 ---
 
 # Methods for Training AI Models: A Comprehensive Overview

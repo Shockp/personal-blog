@@ -34,21 +34,28 @@ interface ThemeProviderProps {
  * Provides theme context to all child components
  */
 export function ThemeProvider({ children }: ThemeProviderProps) {
-  const [theme, setThemeState] = useState<Theme>('light');
-  const [mounted, setMounted] = useState(false);
-
-  // Initialize theme from localStorage or system preference
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('theme') as Theme;
-    const systemTheme = window.matchMedia('(prefers-color-scheme: dark)')
-      .matches
+  // Read initial theme from pre-applied state (set by inline script)
+  const getInitialTheme = (): Theme => {
+    if (typeof window === 'undefined') return 'light';
+    return document.documentElement.classList.contains('dark')
       ? 'dark'
       : 'light';
-    const initialTheme = savedTheme || systemTheme;
+  };
 
-    setThemeState(initialTheme);
+  const [theme, setThemeState] = useState<Theme>(getInitialTheme);
+  const [mounted, setMounted] = useState(false);
+
+  // Set mounted flag and sync with any potential theme changes
+  useEffect(() => {
     setMounted(true);
-  }, []);
+    // Sync with the actual DOM state in case of any discrepancy
+    const currentTheme = document.documentElement.classList.contains('dark')
+      ? 'dark'
+      : 'light';
+    if (currentTheme !== theme) {
+      setThemeState(currentTheme);
+    }
+  }, []); // Remove theme dependency to prevent infinite loop
 
   // Apply theme to document and save to localStorage
   useEffect(() => {

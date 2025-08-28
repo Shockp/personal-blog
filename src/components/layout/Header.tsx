@@ -62,11 +62,16 @@ export default function Header() {
                 <svg
                   className='w-12 h-12 sm:w-14 sm:h-14 transition-all duration-300 transform group-hover:scale-110 filter drop-shadow-lg group-hover:drop-shadow-xl'
                   style={{ color: 'var(--text-secondary)' }}
-                  viewBox="0 0 1024 1024"
-                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox='0 0 1024 1024'
+                  xmlns='http://www.w3.org/2000/svg'
                 >
-                  <g transform="translate(0,1024) scale(0.1,-0.1)" fill="currentColor" stroke="none">
-                    <path d="M3520 7665 c-26 -49 -161 -310 -300 -580 -139 -269 -269 -521 -290
+                  <g
+                    transform='translate(0,1024) scale(0.1,-0.1)'
+                    fill='currentColor'
+                    stroke='none'
+                  >
+                    <path
+                      d='M3520 7665 c-26 -49 -161 -310 -300 -580 -139 -269 -269 -521 -290
 -560 -20 -38 -71 -135 -112 -215 -42 -80 -152 -291 -245 -470 -94 -179 -273
 -523 -398 -765 -126 -242 -297 -572 -382 -734 -84 -162 -153 -296 -153 -298 0
 -2 164 -3 364 -3 l365 0 55 108 c30 59 115 222 188 362 l133 255 823 3 c452 1
@@ -83,7 +88,8 @@ l-678 -5 54 -95 c30 -52 113 -203 184 -335 l130 -240 543 -6 c525 -5 546 -6
 401 138 552 279 353 330 425 890 167 1290 -59 92 -192 228 -267 274 l-57 36
 73 76 c124 128 186 240 234 416 24 89 27 118 27 265 0 137 -4 180 -22 253 -46
 183 -136 341 -277 483 -156 159 -349 255 -600 300 -93 17 -210 18 -1783 19
-l-1683 0 -49 -90z"/>
+l-1683 0 -49 -90z'
+                    />
                   </g>
                 </svg>
               </div>

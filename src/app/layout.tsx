@@ -18,7 +18,6 @@ import AuthorStructuredData from '@/components/seo/AuthorStructuredData';
 
 // CSP nonce utility
 import { getNonce } from '@/lib/nonce';
-import ThemeScript from '@/components/ThemeScript';
 
 const inter = Inter({
   variable: '--font-inter',
@@ -116,7 +115,32 @@ export default async function RootLayout({
         <link rel='dns-prefetch' href='https://fonts.googleapis.com' />
         <link rel='dns-prefetch' href='https://fonts.gstatic.com' />
 
-        {/* Theme initialization will be handled by ThemeScript component */}
+        {/* Inline theme script - runs before first paint to prevent FOUC */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var theme = localStorage.getItem('theme');
+                  if (!theme) {
+                    theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                  }
+                  var de = document.documentElement;
+                  if (theme === 'dark') {
+                    de.classList.add('dark');
+                  } else {
+                    de.classList.remove('dark');
+                  }
+                  de.setAttribute('data-theme', theme);
+                } catch (e) {
+                  // Fallback to light theme on error
+                  document.documentElement.classList.remove('dark');
+                  document.documentElement.setAttribute('data-theme', 'light');
+                }
+              })();
+            `,
+          }}
+        />
 
         {/* Global Structured Data */}
         <WebSiteStructuredData />
@@ -126,7 +150,6 @@ export default async function RootLayout({
         className={`${inter.variable} ${merriweather.variable} font-sans antialiased min-h-screen flex flex-col`}
         suppressHydrationWarning
       >
-        <ThemeScript />
         <ThemeProvider>
           {/* Skip to main content link for accessibility */}
           <a
