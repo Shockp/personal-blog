@@ -1,12 +1,7 @@
-import { generateMetadata as generateSEOMetadata } from '@/components/seo/SEO';
+'use client';
 
-// SEO metadata for the loading page
-export const metadata = generateSEOMetadata({
-  title: 'Loading - AFB Tech Blog',
-  description: 'AFB Tech Blog is loading. Please wait while we prepare your content.',
-  type: 'website',
-  url: '/loading',
-});
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 /**
  * Loading Page Component
@@ -23,6 +18,15 @@ export const metadata = generateSEOMetadata({
  * - AFB Tech Blog branding
  */
 export default function LoadingPage() {
+  const router = useRouter();
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      router.push('/home');
+    }, 200);
+
+    return () => clearTimeout(timer);
+  }, [router]);
 
   return (
     <main 
