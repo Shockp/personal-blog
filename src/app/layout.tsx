@@ -6,8 +6,7 @@ import './globals.css';
 import '@/lib/env';
 
 // Layout components
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
+import ConditionalLayout from '@/components/layout/ConditionalLayout';
 
 // Theme provider
 import { ThemeProvider } from '@/contexts/ThemeContext';
@@ -143,24 +142,9 @@ export default async function RootLayout({
         suppressHydrationWarning
       >
         <ThemeProvider>
-          {/* Skip to main content link for accessibility */}
-          <a
-            href='#main-content'
-            className='sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-600 text-white px-4 py-2 rounded-md z-50 transition-all duration-200'
-          >
-            Skip to main content
-          </a>
-
-          {/* Navigation Header */}
-          <Header />
-
-          {/* Main Content Area */}
-          <main id='main-content' className='flex-1' role='main'>
+          <ConditionalLayout>
             {children}
-          </main>
-
-          {/* Footer */}
-          <Footer />
+          </ConditionalLayout>
         </ThemeProvider>
       </body>
     </html>
