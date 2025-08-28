@@ -26,7 +26,7 @@ export default function LoadingPage() {
 
   return (
     <main 
-      className="min-h-screen flex items-center justify-center"
+      className="fixed inset-0 w-screen h-screen flex items-center justify-center z-50"
       style={{ backgroundColor: 'var(--background)' }}
       role="main"
       aria-label="Loading page"
