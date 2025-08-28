@@ -95,5 +95,8 @@
   "cleanUrls": true,
   "github": {
     "autoAlias": false
+  },
+  "git": {
+    "deploymentEnabled": false
   }
 }
