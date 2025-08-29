@@ -53,14 +53,10 @@ export default function Header() {
         <div className='flex justify-between items-center h-14 sm:h-16 md:h-18'>
           {/* Logo */}
           <div className='flex-shrink-0'>
-            <Link
-              href='/'
-              className='flex items-center min-h-[44px] py-2'
-              aria-label='Go to homepage - AFB Tech Blog'
-            >
-              <div className='relative group'>
+            <div className='flex items-center min-h-[44px] py-2'>
+              <div className='relative'>
                 <svg
-                  className='w-12 h-12 sm:w-14 sm:h-14 transition-all duration-300 transform group-hover:scale-110 filter drop-shadow-lg group-hover:drop-shadow-xl'
+                  className='w-12 h-12 sm:w-14 sm:h-14 transition-all duration-300 filter drop-shadow-lg'
                   style={{ color: 'var(--text-secondary)' }}
                   viewBox='0 0 1024 1024'
                   xmlns='http://www.w3.org/2000/svg'
@@ -93,7 +89,7 @@ l-1683 0 -49 -90z'
                   </g>
                 </svg>
               </div>
-            </Link>
+            </div>
           </div>
 
           {/* Desktop Navigation */}
