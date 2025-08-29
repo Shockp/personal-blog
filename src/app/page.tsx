@@ -38,7 +38,7 @@ export default function LoadingPage() {
       <div className='text-center space-y-8 px-4 sm:px-6 lg:px-8'>
         {/* Simple Loading Spinner */}
         <div
-          className='relative mx-auto w-8 h-8 animate-spin'
+          className='relative mx-auto w-20 h-20 animate-spin'
           role='status'
           aria-label='Loading content'
         >
