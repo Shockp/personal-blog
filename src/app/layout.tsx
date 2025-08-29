@@ -84,6 +84,14 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  icons: {
+    icon: [
+      { url: '/favicon-32.svg', sizes: '32x32', type: 'image/svg+xml' },
+      { url: '/favicon-64.svg', sizes: '64x64', type: 'image/svg+xml' },
+    ],
+    shortcut: '/favicon-32.svg',
+    apple: '/favicon-64.svg',
+  },
 };
 
 /**
