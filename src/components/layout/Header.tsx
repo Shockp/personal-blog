@@ -147,6 +147,34 @@ l-1683 0 -49 -90z'
               Blog
             </Link>
             <Link
+              href='/projects'
+              className='text-sm lg:text-base font-medium transition-all duration-200 px-3 py-2 rounded-md min-h-[44px] flex items-center'
+              style={{
+                color:
+                  pathname === '/projects'
+                    ? 'var(--nav-active-text)'
+                    : 'var(--nav-text)',
+                backgroundColor:
+                  pathname === '/projects'
+                    ? 'var(--nav-active-bg)'
+                    : 'transparent',
+              }}
+              onMouseEnter={e => {
+                if (pathname !== '/projects') {
+                  e.currentTarget.style.backgroundColor = 'var(--nav-hover-bg)';
+                  e.currentTarget.style.color = 'var(--nav-text-hover)';
+                }
+              }}
+              onMouseLeave={e => {
+                if (pathname !== '/projects') {
+                  e.currentTarget.style.backgroundColor = 'transparent';
+                  e.currentTarget.style.color = 'var(--nav-text)';
+                }
+              }}
+            >
+              Projects
+            </Link>
+            <Link
               href='/about'
               className='text-sm lg:text-base font-medium transition-all duration-200 px-3 py-2 rounded-md min-h-[44px] flex items-center'
               style={{
@@ -283,6 +311,35 @@ l-1683 0 -49 -90z'
               aria-current={isActiveLink('/blog') ? 'page' : undefined}
             >
               Blog
+            </Link>
+            <Link
+              href='/projects'
+              className='block px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 min-h-[44px] flex items-center'
+              style={{
+                color: isActiveLink('/projects')
+                  ? 'var(--nav-active-text)'
+                  : 'var(--nav-text)',
+                backgroundColor: isActiveLink('/projects')
+                  ? 'var(--nav-active-bg)'
+                  : 'transparent',
+              }}
+              onMouseEnter={e => {
+                if (!isActiveLink('/projects')) {
+                  e.currentTarget.style.backgroundColor = 'var(--nav-hover-bg)';
+                  e.currentTarget.style.color = 'var(--nav-text-hover)';
+                }
+              }}
+              onMouseLeave={e => {
+                if (!isActiveLink('/projects')) {
+                  e.currentTarget.style.backgroundColor = 'transparent';
+                  e.currentTarget.style.color = 'var(--nav-text)';
+                }
+              }}
+              onClick={closeMenu}
+              role='menuitem'
+              aria-current={isActiveLink('/projects') ? 'page' : undefined}
+            >
+              Projects
             </Link>
             <Link
               href='/about'
