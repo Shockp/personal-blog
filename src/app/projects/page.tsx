@@ -34,21 +34,21 @@ export default function ProjectsPage() {
           <div className="flex flex-wrap gap-1.5">
             <span 
               className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
-              style={{ backgroundColor: '#3b82f6', color: 'white' }}
+              style={{ backgroundColor: 'rgba(59, 130, 246, 0.1)', color: '#3b82f6', border: '1px solid rgba(59, 130, 246, 0.2)' }}
             >
-              #react
+              react
             </span>
             <span 
               className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
-              style={{ backgroundColor: '#8b5cf6', color: 'white' }}
+              style={{ backgroundColor: 'rgba(139, 92, 246, 0.1)', color: '#8b5cf6', border: '1px solid rgba(139, 92, 246, 0.2)' }}
             >
-              #typescript
+              typescript
             </span>
             <span 
               className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
-              style={{ backgroundColor: '#10b981', color: 'white' }}
+              style={{ backgroundColor: 'rgba(16, 185, 129, 0.1)', color: '#10b981', border: '1px solid rgba(16, 185, 129, 0.2)' }}
             >
-              #node.js
+              node.js
             </span>
           </div>
         </article>
@@ -70,21 +70,21 @@ export default function ProjectsPage() {
           <div className="flex flex-wrap gap-1.5">
             <span 
               className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
-              style={{ backgroundColor: '#4ade80', color: 'white' }}
+              style={{ backgroundColor: 'rgba(74, 222, 128, 0.1)', color: '#22c55e', border: '1px solid rgba(74, 222, 128, 0.2)' }}
             >
-              #vue.js
+              vue.js
             </span>
             <span 
               className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
-              style={{ backgroundColor: '#f59e0b', color: 'white' }}
+              style={{ backgroundColor: 'rgba(245, 158, 11, 0.1)', color: '#f59e0b', border: '1px solid rgba(245, 158, 11, 0.2)' }}
             >
-              #firebase
+              firebase
             </span>
             <span 
               className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
-              style={{ backgroundColor: '#06b6d4', color: 'white' }}
+              style={{ backgroundColor: 'rgba(6, 182, 212, 0.1)', color: '#06b6d4', border: '1px solid rgba(6, 182, 212, 0.2)' }}
             >
-              #tailwind
+              tailwind
             </span>
           </div>
         </article>
@@ -106,21 +106,21 @@ export default function ProjectsPage() {
           <div className="flex flex-wrap gap-1.5">
             <span 
               className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
-              style={{ backgroundColor: '#ef4444', color: 'white' }}
+              style={{ backgroundColor: 'rgba(239, 68, 68, 0.1)', color: '#ef4444', border: '1px solid rgba(239, 68, 68, 0.2)' }}
             >
-              #d3.js
+              d3.js
             </span>
             <span 
               className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
-              style={{ backgroundColor: '#eab308', color: 'white' }}
+              style={{ backgroundColor: 'rgba(234, 179, 8, 0.1)', color: '#eab308', border: '1px solid rgba(234, 179, 8, 0.2)' }}
             >
-              #python
+              python
             </span>
             <span 
               className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
-              style={{ backgroundColor: '#ec4899', color: 'white' }}
+              style={{ backgroundColor: 'rgba(236, 72, 153, 0.1)', color: '#ec4899', border: '1px solid rgba(236, 72, 153, 0.2)' }}
             >
-              #flask
+              flask
             </span>
           </div>
         </article>
