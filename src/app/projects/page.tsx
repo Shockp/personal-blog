@@ -34,19 +34,19 @@ export default function ProjectsPage() {
           <div className="flex flex-wrap gap-1.5">
             <span 
               className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
-              style={{ backgroundColor: 'var(--tag-bg)', color: 'var(--tag-text)' }}
+              style={{ backgroundColor: '#3b82f6', color: 'white' }}
             >
               #react
             </span>
             <span 
               className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
-              style={{ backgroundColor: 'var(--tag-bg)', color: 'var(--tag-text)' }}
+              style={{ backgroundColor: '#8b5cf6', color: 'white' }}
             >
               #typescript
             </span>
             <span 
               className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
-              style={{ backgroundColor: 'var(--tag-bg)', color: 'var(--tag-text)' }}
+              style={{ backgroundColor: '#10b981', color: 'white' }}
             >
               #node.js
             </span>
@@ -70,19 +70,19 @@ export default function ProjectsPage() {
           <div className="flex flex-wrap gap-1.5">
             <span 
               className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
-              style={{ backgroundColor: 'var(--tag-bg)', color: 'var(--tag-text)' }}
+              style={{ backgroundColor: '#4ade80', color: 'white' }}
             >
               #vue.js
             </span>
             <span 
               className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
-              style={{ backgroundColor: 'var(--tag-bg)', color: 'var(--tag-text)' }}
+              style={{ backgroundColor: '#f59e0b', color: 'white' }}
             >
               #firebase
             </span>
             <span 
               className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
-              style={{ backgroundColor: 'var(--tag-bg)', color: 'var(--tag-text)' }}
+              style={{ backgroundColor: '#06b6d4', color: 'white' }}
             >
               #tailwind
             </span>
@@ -106,19 +106,19 @@ export default function ProjectsPage() {
           <div className="flex flex-wrap gap-1.5">
             <span 
               className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
-              style={{ backgroundColor: 'var(--tag-bg)', color: 'var(--tag-text)' }}
+              style={{ backgroundColor: '#ef4444', color: 'white' }}
             >
               #d3.js
             </span>
             <span 
               className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
-              style={{ backgroundColor: 'var(--tag-bg)', color: 'var(--tag-text)' }}
+              style={{ backgroundColor: '#eab308', color: 'white' }}
             >
               #python
             </span>
             <span 
               className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
-              style={{ backgroundColor: 'var(--tag-bg)', color: 'var(--tag-text)' }}
+              style={{ backgroundColor: '#ec4899', color: 'white' }}
             >
               #flask
             </span>
