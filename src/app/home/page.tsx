@@ -1,8 +1,10 @@
 import { Suspense } from 'react';
 import Link from 'next/link';
-import { ArrowRight, BookOpen, Users } from '@/components/ui/icons';
+import { ArrowRight, BookOpen, Users, Code } from '@/components/ui/icons';
 import { getAllPosts } from '@/lib/posts';
+import { getRecentProjects } from '@/lib/projects';
 import PostCard from '@/components/blog/PostCard';
+import ProjectCard, { ProjectCardSkeleton } from '@/components/projects/ProjectCard';
 import { generateMetadata as generateSEOMetadata } from '@/components/seo/SEO';
 
 // SEO metadata for the home page
@@ -81,6 +83,9 @@ export default async function Home() {
   // Fetch recent posts (limit to 3 for homepage)
   const allPosts = await getAllPosts();
   const recentPosts = allPosts.slice(0, 3);
+  
+  // Fetch recent projects (limit to 3 for homepage)
+  const recentProjects = getRecentProjects(3);
 
   return (
     <>
@@ -206,6 +211,71 @@ export default async function Home() {
               >
                 <span className='group-hover:!text-slate-900 dark:group-hover:text-[var(--hero-gradient-from)] transition-colors duration-500'>
                   View All Posts
+                </span>
+                <ArrowRight className='ml-2 h-4 w-4 group-hover:!text-slate-900 dark:group-hover:text-[var(--hero-gradient-from)] transition-colors duration-500' />
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Recent Projects Section */}
+        <section
+          className='py-12 sm:py-16 lg:py-20'
+          style={{ backgroundColor: 'var(--background)' }}
+          aria-labelledby='recent-projects-heading'
+        >
+          <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+            <div className='text-center mb-8 sm:mb-10 lg:mb-12'>
+              <h2
+                id='recent-projects-heading'
+                className='text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4'
+                style={{ color: 'var(--foreground)' }}
+              >
+                Recent Projects
+              </h2>
+              <p
+                className='text-base sm:text-lg max-w-2xl mx-auto px-4 sm:px-0'
+                style={{ color: 'var(--muted-foreground)' }}
+              >
+                Explore my latest projects showcasing modern development practices,
+                innovative solutions, and technical expertise across various domains.
+              </p>
+            </div>
+
+            <Suspense
+              fallback={
+                <div
+                  className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'
+                  aria-label='Loading recent projects'
+                >
+                  {[...Array(3)].map((_, i) => (
+                    <ProjectCardSkeleton key={i} />
+                  ))}
+                </div>
+              }
+            >
+              <div
+                className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'
+                role='list'
+                aria-label='Recent projects'
+              >
+                {recentProjects.map(project => (
+                  <div key={project.id} role='listitem'>
+                    <ProjectCard project={project} />
+                  </div>
+                ))}
+              </div>
+            </Suspense>
+
+            <div className='flex justify-center mt-8 sm:mt-10 lg:mt-12 px-4 sm:px-0'>
+              <Link
+                href='/projects'
+                className='w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition-all duration-500 group min-h-[44px] text-base sm:text-lg'
+                prefetch={false}
+              >
+                <Code className='mr-2 h-4 w-4 group-hover:!text-slate-900 dark:group-hover:text-[var(--hero-gradient-from)] transition-colors duration-500' />
+                <span className='group-hover:!text-slate-900 dark:group-hover:text-[var(--hero-gradient-from)] transition-colors duration-500'>
+                  View All Projects
                 </span>
                 <ArrowRight className='ml-2 h-4 w-4 group-hover:!text-slate-900 dark:group-hover:text-[var(--hero-gradient-from)] transition-colors duration-500' />
               </Link>
