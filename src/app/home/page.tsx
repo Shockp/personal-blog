@@ -270,7 +270,7 @@ export default async function Home() {
             <div className='flex justify-center mt-8 sm:mt-10 lg:mt-12 px-4 sm:px-0'>
               <Link
                 href='/projects'
-                className='w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition-all duration-500 group min-h-[44px] text-base sm:text-lg'
+                className='w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-all duration-500 group min-h-[44px] text-base sm:text-lg'
                 prefetch={false}
               >
                 <Code className='mr-2 h-4 w-4 group-hover:!text-slate-900 dark:group-hover:text-[var(--hero-gradient-from)] transition-colors duration-500' />

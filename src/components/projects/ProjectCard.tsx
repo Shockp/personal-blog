@@ -286,21 +286,7 @@ export default function ProjectCard({
           )}
         </div>
 
-        {/* View project indicator */}
-        <div
-          className='
-          absolute bottom-4 right-6 opacity-0 group-hover:opacity-100 
-          transition-opacity duration-500
-        '
-        >
-          <span
-            className='text-sm font-medium flex items-center gap-1'
-            style={{ color: 'var(--primary)' }}
-          >
-            View project
-            <ExternalLink className='w-4 h-4' aria-hidden='true' />
-          </span>
-        </div>
+
       </Link>
     </article>
   );
