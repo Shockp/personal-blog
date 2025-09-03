@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Project } from '@/types/project';
-import { ExternalLink, Calendar } from '@/components/ui/icons';
+import { Calendar } from '@/components/ui/icons';
 
 /**
  * Technology color mapping to match the projects page styling
@@ -199,21 +199,19 @@ export default function ProjectCard({
             {/* Category */}
             {category && (
               <div className='flex items-center gap-1'>
-                <span className='font-medium text-xs px-2 py-1 rounded-full'
+                <span className='font-semibold text-sm px-3 py-1.5 rounded-full border-2 transition-all duration-300'
                   style={{
                     backgroundColor: 'var(--tag-secondary-bg)',
                     color: 'var(--tag-secondary-text)',
+                    borderColor: 'var(--tag-secondary-text)',
                   }}
                 >
-                  {category}
+                  📂 {category.toUpperCase()}
                 </span>
               </div>
             )}
 
-            {/* GitHub indicator */}
-              <div className='flex items-center gap-1 ml-auto'>
-                <ExternalLink className='w-4 h-4' aria-hidden='true' />
-              </div>
+
           </div>
 
           {/* Title */}

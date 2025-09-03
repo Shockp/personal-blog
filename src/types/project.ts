@@ -55,4 +55,5 @@ export type ProjectSortOrder = 'asc' | 'desc';
 
 export interface ProjectSortOptions {
   sortBy: ProjectSortBy;
-  order
+  order: ProjectSortOrder;
+}
