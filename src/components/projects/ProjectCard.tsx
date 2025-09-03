@@ -199,14 +199,14 @@ export default function ProjectCard({
             {/* Category */}
             {category && (
               <div className='flex items-center gap-1'>
-                <span className='font-semibold text-sm px-3 py-1.5 rounded-full border-2 transition-all duration-300'
+                <span className='inline-flex items-center px-2.5 py-1 text-xs font-medium rounded-md transition-all duration-200 hover:scale-105'
                   style={{
-                    backgroundColor: 'var(--tag-secondary-bg)',
-                    color: 'var(--tag-secondary-text)',
-                    borderColor: 'var(--tag-secondary-text)',
+                    backgroundColor: 'rgba(99, 102, 241, 0.1)',
+                    color: '#6366f1',
+                    border: '1px solid rgba(99, 102, 241, 0.2)',
                   }}
                 >
-                  📂 {category.toUpperCase()}
+                  {category}
                 </span>
               </div>
             )}
