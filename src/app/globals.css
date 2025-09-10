@@ -201,7 +201,7 @@ body {
 
 /* Enhanced span tag styles */
 .category-tag {
-  @apply inline-flex items-center justify-center rounded-full text-xs font-semibold transition-all duration-300 min-h-[28px] cursor-default;
+  @apply inline-flex items-center justify-center rounded-full text-xs font-semibold transition-all duration-300 min-h-[28px] cursor-pointer;
   padding: 4px 6px;
   background: var(--tag-secondary-bg);
   color: var(--tag-secondary-text);
