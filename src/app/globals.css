@@ -201,7 +201,8 @@ body {
 
 /* Enhanced span tag styles */
 .category-tag {
-  @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold transition-all duration-300 min-h-[28px] cursor-default;
+  @apply inline-flex items-center justify-center rounded-full text-xs font-semibold transition-all duration-300 min-h-[28px] cursor-default;
+  padding: 4px 6px;
   background: var(--tag-secondary-bg);
   color: var(--tag-secondary-text);
   border: 1px solid var(--border);
@@ -210,6 +211,7 @@ body {
   overflow: hidden;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
+  text-align: center;
 }
 
 .category-tag:hover {
@@ -233,125 +235,125 @@ body {
   left: 100%;
 }
 
-/* Category-specific colors */
+/* Category-specific colors - All using purple/indigo theme */
 .category-web {
-  background: rgba(59, 130, 246, 0.15);
-  color: #3b82f6;
-  border-color: rgba(59, 130, 246, 0.3);
+  background: rgba(99, 102, 241, 0.1);
+  color: rgb(99, 102, 241);
+  border-color: rgba(99, 102, 241, 0.2);
 }
 
 .category-web:hover {
-  background: rgba(59, 130, 246, 0.25);
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+  background: rgba(99, 102, 241, 0.15);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
 }
 
 .category-backend {
-  background: rgba(34, 197, 94, 0.15);
-  color: #22c55e;
-  border-color: rgba(34, 197, 94, 0.3);
+  background: rgba(99, 102, 241, 0.1);
+  color: rgb(99, 102, 241);
+  border-color: rgba(99, 102, 241, 0.2);
 }
 
 .category-backend:hover {
-  background: rgba(34, 197, 94, 0.25);
-  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.2);
+  background: rgba(99, 102, 241, 0.15);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
 }
 
 .category-api {
-  background: rgba(168, 85, 247, 0.15);
-  color: #a855f7;
-  border-color: rgba(168, 85, 247, 0.3);
+  background: rgba(99, 102, 241, 0.1);
+  color: rgb(99, 102, 241);
+  border-color: rgba(99, 102, 241, 0.2);
 }
 
 .category-api:hover {
-  background: rgba(168, 85, 247, 0.25);
-  box-shadow: 0 4px 12px rgba(168, 85, 247, 0.2);
+  background: rgba(99, 102, 241, 0.15);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
 }
 
 .category-game {
-  background: rgba(239, 68, 68, 0.15);
-  color: #ef4444;
-  border-color: rgba(239, 68, 68, 0.3);
+  background: rgba(99, 102, 241, 0.1);
+  color: rgb(99, 102, 241);
+  border-color: rgba(99, 102, 241, 0.2);
 }
 
 .category-game:hover {
-  background: rgba(239, 68, 68, 0.25);
-  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
+  background: rgba(99, 102, 241, 0.15);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
 }
 
 .category-tool {
-  background: rgba(245, 158, 11, 0.15);
-  color: #f59e0b;
-  border-color: rgba(245, 158, 11, 0.3);
+  background: rgba(99, 102, 241, 0.1);
+  color: rgb(99, 102, 241);
+  border-color: rgba(99, 102, 241, 0.2);
 }
 
 .category-tool:hover {
-  background: rgba(245, 158, 11, 0.25);
-  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.2);
+  background: rgba(99, 102, 241, 0.15);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
 }
 
 .category-finance {
-  background: rgba(16, 185, 129, 0.15);
-  color: #10b981;
-  border-color: rgba(16, 185, 129, 0.3);
+  background: rgba(99, 102, 241, 0.1);
+  color: rgb(99, 102, 241);
+  border-color: rgba(99, 102, 241, 0.2);
 }
 
 .category-finance:hover {
-  background: rgba(16, 185, 129, 0.25);
-  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+  background: rgba(99, 102, 241, 0.15);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
 }
 
 .category-system {
-  background: rgba(107, 114, 128, 0.15);
-  color: #6b7280;
-  border-color: rgba(107, 114, 128, 0.3);
+  background: rgba(99, 102, 241, 0.1);
+  color: rgb(99, 102, 241);
+  border-color: rgba(99, 102, 241, 0.2);
 }
 
 .category-system:hover {
-  background: rgba(107, 114, 128, 0.25);
-  box-shadow: 0 4px 12px rgba(107, 114, 128, 0.2);
+  background: rgba(99, 102, 241, 0.15);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
 }
 
 .category-python {
-  background: rgba(251, 191, 36, 0.15);
-  color: #fbbf24;
-  border-color: rgba(251, 191, 36, 0.3);
+  background: rgba(99, 102, 241, 0.1);
+  color: rgb(99, 102, 241);
+  border-color: rgba(99, 102, 241, 0.2);
 }
 
 .category-python:hover {
-  background: rgba(251, 191, 36, 0.25);
-  box-shadow: 0 4px 12px rgba(251, 191, 36, 0.2);
+  background: rgba(99, 102, 241, 0.15);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
 }
 
 .category-ai {
-  background: rgba(139, 92, 246, 0.15);
-  color: #8b5cf6;
-  border-color: rgba(139, 92, 246, 0.3);
+  background: rgba(99, 102, 241, 0.1);
+  color: rgb(99, 102, 241);
+  border-color: rgba(99, 102, 241, 0.2);
 }
 
 .category-ai:hover {
-  background: rgba(139, 92, 246, 0.25);
-  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.2);
+  background: rgba(99, 102, 241, 0.15);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
 }
 
 .category-security {
-  background: rgba(220, 38, 38, 0.15);
-  color: #dc2626;
-  border-color: rgba(220, 38, 38, 0.3);
+  background: rgba(99, 102, 241, 0.1);
+  color: rgb(99, 102, 241);
+  border-color: rgba(99, 102, 241, 0.2);
 }
 
 .category-security:hover {
-  background: rgba(220, 38, 38, 0.25);
-  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.2);
+  background: rgba(99, 102, 241, 0.15);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
 }
 
 .category-reference {
-  background: rgba(99, 102, 241, 0.15);
-  color: #6366f1;
-  border-color: rgba(99, 102, 241, 0.3);
+  background: rgba(99, 102, 241, 0.1);
+  color: rgb(99, 102, 241);
+  border-color: rgba(99, 102, 241, 0.2);
 }
 
 .category-reference:hover {
-  background: rgba(99, 102, 241, 0.25);
+  background: rgba(99, 102, 241, 0.15);
   box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
 }
 
@@ -718,24 +720,7 @@ body {
   border-color: rgba(34, 197, 94, 0.2);
 }
 
-/* Category Tags */
-.category-ai {
-  background: rgba(99, 102, 241, 0.15);
-  color: #6366f1;
-  border-color: rgba(99, 102, 241, 0.2);
-}
-
-.category-security {
-  background: rgba(239, 68, 68, 0.15);
-  color: #ef4444;
-  border-color: rgba(239, 68, 68, 0.2);
-}
-
-.category-reference {
-  background: rgba(34, 197, 94, 0.15);
-  color: #22c55e;
-  border-color: rgba(34, 197, 94, 0.2);
-}
+/* Duplicate category styles removed - using unified purple scheme from above */
 button,
 a,
 input,
