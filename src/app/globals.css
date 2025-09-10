@@ -541,9 +541,9 @@ body {
 }
 
 .tech-cli {
-  background: rgba(107, 114, 128, 0.15);
-  color: #6b7280;
-  border-color: rgba(107, 114, 128, 0.2);
+  background: rgba(71, 85, 105, 0.15);
+  color: #475569;
+  border-color: rgba(71, 85, 105, 0.2);
 }
 
 .tech-automation {
@@ -553,21 +553,21 @@ body {
 }
 
 .tech-scraping {
-  background: rgba(245, 158, 11, 0.15);
-  color: #f59e0b;
-  border-color: rgba(245, 158, 11, 0.2);
+  background: rgba(20, 184, 166, 0.15);
+  color: #14b8a6;
+  border-color: rgba(20, 184, 166, 0.2);
 }
 
 .tech-finance {
-  background: rgba(16, 185, 129, 0.15);
-  color: #10b981;
-  border-color: rgba(16, 185, 129, 0.2);
+  background: rgba(6, 182, 212, 0.15);
+  color: #06b6d4;
+  border-color: rgba(6, 182, 212, 0.2);
 }
 
 .tech-trading {
-  background: rgba(34, 197, 94, 0.15);
-  color: #22c55e;
-  border-color: rgba(34, 197, 94, 0.2);
+  background: rgba(132, 204, 22, 0.15);
+  color: #84cc16;
+  border-color: rgba(132, 204, 22, 0.2);
 }
 
 .tech-analysis {
@@ -625,15 +625,15 @@ body {
 }
 
 .tech-shell {
-  background: rgba(75, 85, 99, 0.15);
-  color: #4b5563;
-  border-color: rgba(75, 85, 99, 0.2);
+  background: rgba(34, 197, 94, 0.15);
+  color: #22c55e;
+  border-color: rgba(34, 197, 94, 0.2);
 }
 
 .tech-unix {
-  background: rgba(107, 114, 128, 0.15);
-  color: #6b7280;
-  border-color: rgba(107, 114, 128, 0.2);
+  background: rgba(251, 146, 60, 0.15);
+  color: #fb923c;
+  border-color: rgba(251, 146, 60, 0.2);
 }
 
 .tech-html {
@@ -716,9 +716,9 @@ body {
 }
 
 .dark .tech-nextjs {
-  background: rgba(0, 0, 0, 0.2);
-  color: #a3a3a3;
-  border-color: rgba(0, 0, 0, 0.3);
+  background: rgba(59, 130, 246, 0.2);
+  color: #60a5fa;
+  border-color: rgba(59, 130, 246, 0.3);
 }
 
 .dark .tech-react {
@@ -740,15 +740,15 @@ body {
 }
 
 .dark .tech-express {
-  background: rgba(34, 197, 94, 0.2);
-  color: #22c55e;
-  border-color: rgba(34, 197, 94, 0.3);
+  background: rgba(168, 85, 247, 0.2);
+  color: #c084fc;
+  border-color: rgba(168, 85, 247, 0.3);
 }
 
 .dark .tech-security {
-  background: rgba(239, 68, 68, 0.2);
-  color: #ef4444;
-  border-color: rgba(239, 68, 68, 0.3);
+  background: rgba(220, 38, 38, 0.2);
+  color: #dc2626;
+  border-color: rgba(220, 38, 38, 0.3);
 }
 
 .dark .tech-cve {
@@ -764,9 +764,9 @@ body {
 }
 
 .dark .tech-pentesting {
-  background: rgba(168, 85, 247, 0.2);
-  color: #a855f7;
-  border-color: rgba(168, 85, 247, 0.3);
+  background: rgba(251, 146, 60, 0.2);
+  color: #fb923c;
+  border-color: rgba(251, 146, 60, 0.3);
 }
 
 .dark .tech-cheatsheets {
@@ -777,20 +777,20 @@ body {
 
 .dark .tech-nodejs {
   background: rgba(34, 197, 94, 0.2);
-  color: #22c55e;
+  color: #4ade80;
   border-color: rgba(34, 197, 94, 0.3);
 }
 
 .dark .tech-fullstack {
-  background: rgba(168, 85, 247, 0.2);
-  color: #a855f7;
-  border-color: rgba(168, 85, 247, 0.3);
+  background: rgba(245, 158, 11, 0.2);
+  color: #f59e0b;
+  border-color: rgba(245, 158, 11, 0.3);
 }
 
 .dark .tech-spring {
-  background: rgba(34, 197, 94, 0.2);
-  color: #22c55e;
-  border-color: rgba(34, 197, 94, 0.3);
+  background: rgba(16, 185, 129, 0.2);
+  color: #34d399;
+  border-color: rgba(16, 185, 129, 0.3);
 }
 
 .dark .tech-redis {
@@ -818,9 +818,9 @@ body {
 }
 
 .dark .tech-python {
-  background: rgba(34, 197, 94, 0.2);
-  color: #22c55e;
-  border-color: rgba(34, 197, 94, 0.3);
+  background: rgba(245, 158, 11, 0.2);
+  color: #fbbf24;
+  border-color: rgba(245, 158, 11, 0.3);
 }
 
 .dark .tech-cli {
@@ -830,27 +830,27 @@ body {
 }
 
 .dark .tech-automation {
-  background: rgba(168, 85, 247, 0.2);
-  color: #a855f7;
-  border-color: rgba(168, 85, 247, 0.3);
+  background: rgba(139, 92, 246, 0.2);
+  color: #a78bfa;
+  border-color: rgba(139, 92, 246, 0.3);
 }
 
 .dark .tech-scraping {
-  background: rgba(34, 197, 94, 0.2);
-  color: #22c55e;
-  border-color: rgba(34, 197, 94, 0.3);
+  background: rgba(20, 184, 166, 0.2);
+  color: #2dd4bf;
+  border-color: rgba(20, 184, 166, 0.3);
 }
 
 .dark .tech-finance {
-  background: rgba(34, 197, 94, 0.2);
-  color: #22c55e;
-  border-color: rgba(34, 197, 94, 0.3);
+  background: rgba(6, 182, 212, 0.2);
+  color: #22d3ee;
+  border-color: rgba(6, 182, 212, 0.3);
 }
 
 .dark .tech-trading {
-  background: rgba(34, 197, 94, 0.2);
-  color: #22c55e;
-  border-color: rgba(34, 197, 94, 0.3);
+  background: rgba(132, 204, 22, 0.2);
+  color: #a3e635;
+  border-color: rgba(132, 204, 22, 0.3);
 }
 
 .dark .tech-analysis {
@@ -860,9 +860,9 @@ body {
 }
 
 .dark .tech-penetration {
-  background: rgba(168, 85, 247, 0.2);
-  color: #a855f7;
-  border-color: rgba(168, 85, 247, 0.3);
+  background: rgba(251, 146, 60, 0.2);
+  color: #fb923c;
+  border-color: rgba(251, 146, 60, 0.3);
 }
 
 .dark .tech-testing {
@@ -878,9 +878,9 @@ body {
 }
 
 .dark .tech-cheatsheet {
-  background: rgba(34, 197, 94, 0.2);
-  color: #22c55e;
-  border-color: rgba(34, 197, 94, 0.3);
+  background: rgba(16, 185, 129, 0.2);
+  color: #34d399;
+  border-color: rgba(16, 185, 129, 0.3);
 }
 
 .dark .tech-restapi {
@@ -938,9 +938,9 @@ body {
 }
 
 .dark .tech-scripts {
-  background: rgba(34, 197, 94, 0.2);
-  color: #22c55e;
-  border-color: rgba(34, 197, 94, 0.3);
+  background: rgba(132, 204, 22, 0.2);
+  color: #a3e635;
+  border-color: rgba(132, 204, 22, 0.3);
 }
 
 .dark .tech-ai {
