@@ -359,10 +359,13 @@ body {
 
 /* Technology tag styles */
 .tech-tag {
-  @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium transition-all duration-300 min-h-[26px];
+  @apply inline-flex items-center justify-center min-h-[28px] text-xs font-semibold rounded-full transition-all duration-300 cursor-pointer;
+  padding: 4px 6px;
   background: var(--tag-bg);
   color: var(--tag-text);
-  border: 1px solid transparent;
+  border: 1px solid var(--border);
+  text-align: center;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   position: relative;
   overflow: hidden;
   backdrop-filter: blur(8px);
@@ -385,24 +388,9 @@ body {
 }
 
 .tech-tag:hover {
-  transform: translateY(-1px) scale(1.05);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   filter: brightness(1.1);
-}
-
-.tech-tag::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left 0.5s;
-}
-
-.tech-tag:hover::before {
-  left: 100%;
 }
 
 /* Staggered animation for tag groups */

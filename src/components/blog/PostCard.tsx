@@ -167,18 +167,7 @@ export default function PostCard({
                 <button
                   key={tag}
                   onClick={e => handleTagClick(tag, e)}
-                  className='inline-flex items-center px-2 sm:px-2.5 py-1 sm:py-0.5 rounded-full text-xs font-medium transition-colors duration-500 focus:outline-none cursor-pointer min-h-[24px]'
-                  style={{
-                    backgroundColor: 'var(--tag-bg)',
-                    color: 'var(--tag-text)',
-                  }}
-                  onMouseEnter={e => {
-                    e.currentTarget.style.backgroundColor =
-                      'var(--tag-hover-bg)';
-                  }}
-                  onMouseLeave={e => {
-                    e.currentTarget.style.backgroundColor = 'var(--tag-bg)';
-                  }}
+                  className='tech-tag'
                   role='listitem'
                   aria-label={`Filter posts by ${tag} tag`}
                   tabIndex={onTagClick ? 0 : -1}
@@ -187,13 +176,7 @@ export default function PostCard({
                 </button>
               ))}
               {tags.length > 3 && (
-                <span
-                  className='inline-flex items-center px-2 sm:px-2.5 py-1 sm:py-0.5 rounded-full text-xs font-medium min-h-[24px]'
-                  style={{
-                    backgroundColor: 'var(--tag-secondary-bg)',
-                    color: 'var(--tag-secondary-text)',
-                  }}
-                >
+                <span className='tech-tag'>
                   +{tags.length - 3} more
                 </span>
               )}
