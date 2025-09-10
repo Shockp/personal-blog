@@ -39,7 +39,7 @@ export default function ProjectsPage() {
                 </svg>
                 <time dateTime='2025-08-10' className='font-medium'>Aug 10, 2025</time>
               </div>
-              <span>web</span>
+              <span className="category-tag category-web">web</span>
             </div>
             <h3 className="text-xl font-bold mb-3 transition-colors duration-500" style={{ color: 'var(--card-text)' }}>
               Personal Blog
@@ -48,28 +48,16 @@ export default function ProjectsPage() {
               Next.js personal blog and portfolio website with React, TypeScript, Tailwind CSS, and responsive design
             </p>
             <div className="flex flex-wrap gap-1.5 mt-auto">
-              <span 
-                className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
-                style={{ backgroundColor: 'rgba(59, 130, 246, 0.2)', color: '#3b82f6', border: '1px solid rgba(59, 130, 246, 0.3)' }}
-              >
+              <span className="tech-tag tech-nextjs">
                 Next.js
               </span>
-              <span 
-                className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
-                style={{ backgroundColor: 'rgba(99, 102, 241, 0.2)', color: '#6366f1', border: '1px solid rgba(99, 102, 241, 0.3)' }}
-              >
+              <span className="tech-tag tech-react">
                 React
               </span>
-              <span 
-                className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
-                style={{ backgroundColor: 'rgba(168, 85, 247, 0.2)', color: '#a855f7', border: '1px solid rgba(168, 85, 247, 0.3)' }}
-              >
+              <span className="tech-tag tech-typescript">
                 TypeScript
               </span>
-              <span 
-                className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
-                style={{ backgroundColor: 'rgba(16, 185, 129, 0.2)', color: '#10b981', border: '1px solid rgba(16, 185, 129, 0.3)' }}
-              >
+              <span className="tech-tag tech-tailwind">
                 Tailwind CSS
               </span>
             </div>
@@ -98,7 +86,7 @@ export default function ProjectsPage() {
                 </svg>
                 <time dateTime='2025-07-25' className='font-medium'>Jul 25, 2025</time>
               </div>
-              <span>backend</span>
+              <span className="category-tag category-backend">backend</span>
             </div>
             <h3 className="text-xl font-bold mb-3 transition-colors duration-500" style={{ color: 'var(--card-text)' }}>
               Unit Converter
@@ -107,22 +95,13 @@ export default function ProjectsPage() {
               Full-stack web application with Node.js/Express backend and responsive frontend for unit conversions
             </p>
             <div className="flex flex-wrap gap-1.5 mt-auto">
-              <span 
-                className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
-                style={{ backgroundColor: 'rgba(34, 197, 94, 0.2)', color: '#22c55e', border: '1px solid rgba(34, 197, 94, 0.3)' }}
-              >
+              <span className="tech-tag tech-nodejs">
                 Node.js
               </span>
-              <span 
-                className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
-                style={{ backgroundColor: 'rgba(168, 85, 247, 0.2)', color: '#a855f7', border: '1px solid rgba(168, 85, 247, 0.3)' }}
-              >
+              <span className="tech-tag tech-express">
                 Express
               </span>
-              <span 
-                className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
-                style={{ backgroundColor: 'rgba(234, 179, 8, 0.2)', color: '#eab308', border: '1px solid rgba(234, 179, 8, 0.3)' }}
-              >
+              <span className="tech-tag tech-fullstack">
                 Full-stack
               </span>
             </div>
@@ -151,7 +130,7 @@ export default function ProjectsPage() {
                 </svg>
                 <time dateTime='2025-07-15' className='font-medium'>Jul 15, 2025</time>
               </div>
-              <span>api</span>
+              <span className="category-tag category-api">api</span>
             </div>
             <h3 className="text-xl font-bold mb-3 transition-colors duration-500" style={{ color: 'var(--card-text)' }}>
               Weather API Wrapper Service
@@ -160,22 +139,13 @@ export default function ProjectsPage() {
               Spring Boot microservice with Redis caching, rate limiting, and Visual Crossing API integration
             </p>
             <div className="flex flex-wrap gap-1.5 mt-auto">
-              <span 
-                className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
-                style={{ backgroundColor: 'rgba(34, 197, 94, 0.2)', color: '#22c55e', border: '1px solid rgba(34, 197, 94, 0.3)' }}
-              >
+              <span className="tech-tag tech-spring">
                 Spring Boot
               </span>
-              <span 
-                className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
-                style={{ backgroundColor: 'rgba(239, 68, 68, 0.2)', color: '#ef4444', border: '1px solid rgba(239, 68, 68, 0.3)' }}
-              >
+              <span className="tech-tag tech-redis">
                 Redis
               </span>
-              <span 
-                className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
-                style={{ backgroundColor: 'rgba(59, 130, 246, 0.2)', color: '#3b82f6', border: '1px solid rgba(59, 130, 246, 0.3)' }}
-              >
+              <span className="tech-tag tech-api">
                 API
               </span>
             </div>
@@ -204,7 +174,7 @@ export default function ProjectsPage() {
                 </svg>
                 <time dateTime='2025-07-05' className='font-medium'>Jul 5, 2025</time>
               </div>
-              <span>game</span>
+              <span className="category-tag category-game">game</span>
             </div>
             <h3 className="text-xl font-bold mb-3 transition-colors duration-500" style={{ color: 'var(--card-text)' }}>
               Number Guessing Game
@@ -213,22 +183,13 @@ export default function ProjectsPage() {
               Java CLI game with hexagonal architecture, multiple difficulty levels, and player management
             </p>
             <div className="flex flex-wrap gap-1.5 mt-auto">
-              <span 
-                className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
-                style={{ backgroundColor: 'rgba(245, 101, 101, 0.2)', color: '#f56565', border: '1px solid rgba(245, 101, 101, 0.3)' }}
-              >
+              <span className="tech-tag tech-java">
                 Java
               </span>
-              <span 
-                className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
-                style={{ backgroundColor: 'rgba(99, 102, 241, 0.2)', color: '#6366f1', border: '1px solid rgba(99, 102, 241, 0.3)' }}
-              >
+              <span className="tech-tag tech-game">
                 Game
               </span>
-              <span 
-                className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
-                style={{ backgroundColor: 'rgba(168, 85, 247, 0.2)', color: '#a855f7', border: '1px solid rgba(168, 85, 247, 0.3)' }}
-              >
+              <span className="tech-tag tech-architecture">
                 Architecture
               </span>
             </div>
@@ -257,7 +218,7 @@ export default function ProjectsPage() {
                 </svg>
                 <time dateTime='2025-06-28' className='font-medium'>Jun 28, 2025</time>
               </div>
-              <span>tool</span>
+              <span className="category-tag category-tool">tool</span>
             </div>
             <h3 className="text-xl font-bold mb-3 transition-colors duration-500" style={{ color: 'var(--card-text)' }}>
               GitHub User Activity
@@ -266,22 +227,13 @@ export default function ProjectsPage() {
               Java CLI tool that fetches and displays recent GitHub activity using REST API
             </p>
             <div className="flex flex-wrap gap-1.5 mt-auto">
-              <span 
-                className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
-                style={{ backgroundColor: 'rgba(245, 101, 101, 0.2)', color: '#f56565', border: '1px solid rgba(245, 101, 101, 0.3)' }}
-              >
+              <span className="tech-tag tech-java">
                 Java
               </span>
-              <span 
-                className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
-                style={{ backgroundColor: 'rgba(59, 130, 246, 0.2)', color: '#3b82f6', border: '1px solid rgba(59, 130, 246, 0.3)' }}
-              >
+              <span className="tech-tag tech-restapi">
                 REST API
               </span>
-              <span 
-                className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
-                style={{ backgroundColor: 'rgba(34, 197, 94, 0.2)', color: '#22c55e', border: '1px solid rgba(34, 197, 94, 0.3)' }}
-              >
+              <span className="tech-tag tech-cli">
                 CLI
               </span>
             </div>
@@ -310,7 +262,7 @@ export default function ProjectsPage() {
                 </svg>
                 <time dateTime='2025-06-20' className='font-medium'>Jun 20, 2025</time>
               </div>
-              <span>finance</span>
+              <span className="category-tag category-finance">finance</span>
             </div>
             <h3 className="text-xl font-bold mb-3 transition-colors duration-500" style={{ color: 'var(--card-text)' }}>
               Expense Tracker
@@ -325,16 +277,10 @@ export default function ProjectsPage() {
               >
                 Java
               </span>
-              <span 
-                className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
-                style={{ backgroundColor: 'rgba(168, 85, 247, 0.2)', color: '#a855f7', border: '1px solid rgba(168, 85, 247, 0.3)' }}
-              >
+              <span className="tech-tag tech-maven">
                 Maven
               </span>
-              <span 
-                className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
-                style={{ backgroundColor: 'rgba(34, 197, 94, 0.2)', color: '#22c55e', border: '1px solid rgba(34, 197, 94, 0.3)' }}
-              >
+              <span className="tech-tag tech-cli">
                 CLI
               </span>
             </div>
@@ -363,7 +309,7 @@ export default function ProjectsPage() {
                 </svg>
                 <time dateTime='2025-06-09' className='font-medium'>Jun 9, 2025</time>
               </div>
-              <span>system</span>
+              <span className="category-tag category-system">system</span>
             </div>
             <h3 className="text-xl font-bold mb-3 transition-colors duration-500" style={{ color: 'var(--card-text)' }}>
               Mini Shell
@@ -372,22 +318,13 @@ export default function ProjectsPage() {
               Implementation of a Unix-like shell interpreter with pipes and redirection support
             </p>
             <div className="flex flex-wrap gap-1.5 mt-auto">
-              <span 
-                className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
-                style={{ backgroundColor: 'rgba(245, 101, 101, 0.2)', color: '#f56565', border: '1px solid rgba(245, 101, 101, 0.3)' }}
-              >
+              <span className="tech-tag tech-c">
                 C
               </span>
-              <span 
-                className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
-                style={{ backgroundColor: 'rgba(34, 197, 94, 0.2)', color: '#22c55e', border: '1px solid rgba(34, 197, 94, 0.3)' }}
-              >
+              <span className="tech-tag tech-shell">
                 Shell
               </span>
-              <span 
-                className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
-                style={{ backgroundColor: 'rgba(168, 85, 247, 0.2)', color: '#a855f7', border: '1px solid rgba(168, 85, 247, 0.3)' }}
-              >
+              <span className="tech-tag tech-unix">
                 Unix
               </span>
             </div>
@@ -416,7 +353,7 @@ export default function ProjectsPage() {
                 </svg>
                 <time dateTime='2025-06-06' className='font-medium'>Jun 6, 2025</time>
               </div>
-              <span>web</span>
+              <span className="category-tag category-web">web</span>
             </div>
             <h3 className="text-xl font-bold mb-3 transition-colors duration-500" style={{ color: 'var(--card-text)' }}>
               Personal Website
@@ -425,22 +362,13 @@ export default function ProjectsPage() {
               GitHub Pages hosted personal portfolio and blog website
             </p>
             <div className="flex flex-wrap gap-1.5 mt-auto">
-              <span 
-                className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
-                style={{ backgroundColor: 'rgba(249, 115, 22, 0.2)', color: '#f97316', border: '1px solid rgba(249, 115, 22, 0.3)' }}
-              >
+              <span className="tech-tag tech-html">
                 HTML
               </span>
-              <span 
-                className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
-                style={{ backgroundColor: 'rgba(59, 130, 246, 0.2)', color: '#3b82f6', border: '1px solid rgba(59, 130, 246, 0.3)' }}
-              >
+              <span className="tech-tag tech-css">
                 CSS
               </span>
-              <span 
-                className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
-                style={{ backgroundColor: 'rgba(16, 185, 129, 0.2)', color: '#10b981', border: '1px solid rgba(16, 185, 129, 0.3)' }}
-              >
+              <span className="tech-tag tech-website">
                 Website
               </span>
             </div>
@@ -469,7 +397,7 @@ export default function ProjectsPage() {
                 </svg>
                 <time dateTime='2024-12-23' className='font-medium'>Dec 23, 2024</time>
               </div>
-              <span>python</span>
+              <span className="category-tag category-python">python</span>
             </div>
             <h3 className="text-xl font-bold mb-3 transition-colors duration-500" style={{ color: 'var(--card-text)' }}>
               Python Projects
@@ -478,22 +406,13 @@ export default function ProjectsPage() {
               Repository with various Python programming projects and scripts
             </p>
             <div className="flex flex-wrap gap-1.5 mt-auto">
-              <span 
-                className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
-                style={{ backgroundColor: 'rgba(234, 179, 8, 0.2)', color: '#eab308', border: '1px solid rgba(234, 179, 8, 0.3)' }}
-              >
+              <span className="tech-tag tech-python">
                 Python
               </span>
-              <span 
-                className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
-                style={{ backgroundColor: 'rgba(99, 102, 241, 0.2)', color: '#6366f1', border: '1px solid rgba(99, 102, 241, 0.3)' }}
-              >
+              <span className="tech-tag tech-programming">
                 Programming
               </span>
-              <span 
-                className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
-                style={{ backgroundColor: 'rgba(168, 85, 247, 0.2)', color: '#a855f7', border: '1px solid rgba(168, 85, 247, 0.3)' }}
-              >
+              <span className="tech-tag tech-scripts">
                 Scripts
               </span>
             </div>
@@ -522,7 +441,7 @@ export default function ProjectsPage() {
                 </svg>
                 <time dateTime='2024-12-19' className='font-medium'>Dec 19, 2024</time>
               </div>
-              <span>ai</span>
+              <span className="category-tag category-ai">ai</span>
             </div>
             <h3 className="text-xl font-bold mb-3 transition-colors duration-500" style={{ color: 'var(--card-text)' }}>
               AI & ML Projects
@@ -531,22 +450,13 @@ export default function ProjectsPage() {
               Collection of artificial intelligence and machine learning projects and experiments
             </p>
             <div className="flex flex-wrap gap-1.5 mt-auto">
-              <span 
-                className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
-                style={{ backgroundColor: 'rgba(234, 179, 8, 0.2)', color: '#eab308', border: '1px solid rgba(234, 179, 8, 0.3)' }}
-              >
+              <span className="tech-tag tech-python">
                 Python
               </span>
-              <span 
-                className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
-                style={{ backgroundColor: 'rgba(99, 102, 241, 0.2)', color: '#6366f1', border: '1px solid rgba(99, 102, 241, 0.3)' }}
-              >
+              <span className="tech-tag tech-ai">
                 AI
               </span>
-              <span 
-                className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
-                style={{ backgroundColor: 'rgba(168, 85, 247, 0.2)', color: '#a855f7', border: '1px solid rgba(168, 85, 247, 0.3)' }}
-              >
+              <span className="tech-tag tech-machinelearning">
                 Machine Learning
               </span>
             </div>
@@ -575,7 +485,7 @@ export default function ProjectsPage() {
                 </svg>
                 <time dateTime='2023-05-24' className='font-medium'>May 24, 2023</time>
               </div>
-              <span>security</span>
+              <span className="category-tag category-security">security</span>
             </div>
             <h3 className="text-xl font-bold mb-3 transition-colors duration-500" style={{ color: 'var(--card-text)' }}>
               CVE Exploits and HackTheBox Writeups
@@ -584,22 +494,13 @@ export default function ProjectsPage() {
               Detailed writeups and exploit code for CVE vulnerabilities and HackTheBox challenges
             </p>
             <div className="flex flex-wrap gap-1.5 mt-auto">
-              <span 
-                className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
-                style={{ backgroundColor: 'rgba(239, 68, 68, 0.2)', color: '#ef4444', border: '1px solid rgba(239, 68, 68, 0.3)' }}
-              >
+              <span className="tech-tag tech-security">
                 Security
               </span>
-              <span 
-                className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
-                style={{ backgroundColor: 'rgba(168, 85, 247, 0.2)', color: '#a855f7', border: '1px solid rgba(168, 85, 247, 0.3)' }}
-              >
+              <span className="tech-tag tech-cve">
                 CVE
               </span>
-              <span 
-                className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
-                style={{ backgroundColor: 'rgba(34, 197, 94, 0.2)', color: '#22c55e', border: '1px solid rgba(34, 197, 94, 0.3)' }}
-              >
+              <span className="tech-tag tech-hackthebox">
                 HackTheBox
               </span>
             </div>
@@ -628,7 +529,7 @@ export default function ProjectsPage() {
                 </svg>
                 <time dateTime='2023-05-16' className='font-medium'>May 16, 2023</time>
               </div>
-              <span>security</span>
+              <span className="category-tag category-security">security</span>
             </div>
             <h3 className="text-xl font-bold mb-3 transition-colors duration-500" style={{ color: 'var(--card-text)' }}>
               Pentesting Scripts
@@ -637,22 +538,13 @@ export default function ProjectsPage() {
               Collection of Python scripts for penetration testing and security assessments
             </p>
             <div className="flex flex-wrap gap-1.5 mt-auto">
-              <span 
-                className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
-                style={{ backgroundColor: 'rgba(234, 179, 8, 0.2)', color: '#eab308', border: '1px solid rgba(234, 179, 8, 0.3)' }}
-              >
+              <span className="tech-tag tech-python">
                 Python
               </span>
-              <span 
-                className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
-                style={{ backgroundColor: 'rgba(239, 68, 68, 0.2)', color: '#ef4444', border: '1px solid rgba(239, 68, 68, 0.3)' }}
-              >
+              <span className="tech-tag tech-security">
                 Security
               </span>
-              <span 
-                className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
-                style={{ backgroundColor: 'rgba(168, 85, 247, 0.2)', color: '#a855f7', border: '1px solid rgba(168, 85, 247, 0.3)' }}
-              >
+              <span className="tech-tag tech-pentesting">
                 Pentesting
               </span>
             </div>
@@ -681,7 +573,7 @@ export default function ProjectsPage() {
                 </svg>
                 <time dateTime='2022-03-15' className='font-medium'>Mar 15, 2022</time>
               </div>
-              <span>reference</span>
+              <span className="category-tag category-reference">reference</span>
             </div>
             <h3 className="text-xl font-bold mb-3 transition-colors duration-500" style={{ color: 'var(--card-text)' }}>
               Pentesting Cheatsheets
@@ -702,10 +594,7 @@ export default function ProjectsPage() {
               >
                 Pentesting
               </span>
-              <span 
-                className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
-                style={{ backgroundColor: 'rgba(16, 185, 129, 0.2)', color: '#10b981', border: '1px solid rgba(16, 185, 129, 0.3)' }}
-              >
+              <span className="tech-tag tech-cheatsheets">
                 Cheatsheets
               </span>
             </div>
