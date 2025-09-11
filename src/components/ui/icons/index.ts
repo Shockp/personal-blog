@@ -45,3 +45,6 @@ export { Terminal } from 'lucide-react';
 export { Monitor } from 'lucide-react';
 export { Cloud } from 'lucide-react';
 export { Shield } from 'lucide-react';
+export { Twitter } from 'lucide-react';
+export { Github } from 'lucide-react';
+export { Instagram } from 'lucide-react';
