@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import Link from 'next/link';
-import { ArrowRight, BookOpen, Users, Code, Github, Linkedin, Mail } from '@/components/ui/icons';
+import { ArrowRight, BookOpen, Users, Code } from '@/components/ui/icons';
 import { getAllPosts } from '@/lib/posts';
 import { getRecentProjects } from '@/lib/projects';
 import PostCard from '@/components/blog/PostCard';
