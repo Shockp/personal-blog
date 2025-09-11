@@ -114,7 +114,7 @@ export default async function Home() {
               <div className='mt-4 flex justify-center space-x-6'>
                 <a
                   href='https://github.com/shockp'
-                  className='transition-colors duration-200 focus:outline-none'
+                  className='transition-all duration-500 hover:scale-110 hover:shadow-lg hover:text-blue-600 dark:hover:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-lg p-1'
                   style={{ color: 'var(--text-secondary)' }}
                   aria-label='GitHub Profile (opens in new tab)'
                   target='_blank'
@@ -126,7 +126,7 @@ export default async function Home() {
                 </a>
                 <a
                   href='https://www.linkedin.com/in/adrian-feito-blazquez-404276209/'
-                  className='transition-colors duration-200 focus:outline-none'
+                  className='transition-all duration-500 hover:scale-110 hover:shadow-lg hover:text-blue-600 dark:hover:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-lg p-1'
                   style={{ color: 'var(--text-secondary)' }}
                   aria-label='LinkedIn Profile (opens in new tab)'
                   target='_blank'
@@ -138,7 +138,7 @@ export default async function Home() {
                 </a>
                 <a
                   href='https://app.hackthebox.com/profile/1317035/'
-                  className='transition-colors duration-200 focus:outline-none'
+                  className='transition-all duration-500 hover:scale-110 hover:shadow-lg hover:text-blue-600 dark:hover:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-lg p-1'
                   style={{ color: 'var(--text-secondary)' }}
                   aria-label='HackTheBox Profile (opens in new tab)'
                   target='_blank'
@@ -150,7 +150,7 @@ export default async function Home() {
                 </a>
                 <a
                   href='https://leetcode.com/u/shockp/'
-                  className='transition-colors duration-200 focus:outline-none'
+                  className='transition-all duration-500 hover:scale-110 hover:shadow-lg hover:text-blue-600 dark:hover:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-lg p-1'
                   style={{ color: 'var(--text-secondary)' }}
                   aria-label='LeetCode Profile (opens in new tab)'
                   target='_blank'
