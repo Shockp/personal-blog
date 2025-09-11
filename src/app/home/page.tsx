@@ -110,74 +110,7 @@ export default async function Home() {
         >
           <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
             <div className='text-center space-y-6 sm:space-y-8'>
-              <div className='space-y-3 sm:space-y-4'>
-                <h1
-                  className='text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight'
-                  style={{ color: 'var(--foreground)' }}
-                >
-                  Welcome to{' '}
-                  <span className='bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent'>
-                    AFB Tech Blog
-                  </span>
-                </h1>
-                <p
-                  className='text-lg sm:text-xl md:text-2xl max-w-4xl mx-auto px-4 sm:px-0'
-                  style={{ color: 'var(--muted-foreground)' }}
-                >
-                  Your go-to resource for software engineering excellence,
-                  scalable architecture patterns, and cutting-edge development
-                  insights. Explore in-depth articles on design patterns, clean
-                  architecture, and modern development practices.
-                </p>
-              </div>
-              <div className='flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4 sm:px-0'>
-                <Link
-                  href='/blog'
-                  className='w-full sm:w-auto group inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all duration-500 shadow-lg hover:shadow-xl min-h-[44px] text-base sm:text-lg'
-                >
-                  <BookOpen className='mr-2 h-5 w-5 group-hover:!text-slate-900 dark:group-hover:text-[var(--hero-gradient-from)] transition-colors duration-500' />
-                  <span className='group-hover:!text-slate-900 dark:group-hover:text-[var(--hero-gradient-from)] transition-colors duration-500'>
-                    Explore Articles
-                  </span>
-                </Link>
-                <Link
-                  href='/about'
-                  className='w-full sm:w-auto group inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 border-2 border-border hover:border-primary text-foreground hover:text-primary font-semibold rounded-lg transition-all duration-500 hover:shadow-lg min-h-[44px] text-base sm:text-lg'
-                >
-                  <Users className='mr-2 h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors duration-500' />
-                  <span className='transition-colors duration-500'>
-                    About Me
-                  </span>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Social Links Section */}
-        <section
-          className='py-12 sm:py-16 lg:py-20'
-          style={{ backgroundColor: 'var(--background)' }}
-          aria-labelledby='social-links-heading'
-        >
-          <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-            <div className='text-center space-y-6 sm:space-y-8'>
-              <div className='space-y-3 sm:space-y-4'>
-                <h2
-                  id='social-links-heading'
-                  className='text-2xl sm:text-3xl md:text-4xl font-bold'
-                  style={{ color: 'var(--foreground)' }}
-                >
-                  Connect With Me
-                </h2>
-                <p
-                  className='text-base sm:text-lg max-w-2xl mx-auto px-4 sm:px-0'
-                  style={{ color: 'var(--muted-foreground)' }}
-                >
-                  Follow my journey in software engineering and stay updated with the latest insights, projects, and tech discussions.
-                </p>
-              </div>
-              
+              {/* Social Media Icons */}
               <div className='mt-4 flex justify-center space-x-6'>
                 <a
                   href='https://github.com/shockp'
@@ -229,14 +162,54 @@ export default async function Home() {
                 </a>
               </div>
               
-              <div className='mt-6'>
-                <p className='text-sm' style={{ color: 'var(--muted-foreground)' }}>
-                  Get in touch: <a href='mailto:shockp.developer@gmail.com' className='font-medium transition-colors duration-500' style={{ color: 'var(--text-accent)' }}>shockp.developer@gmail.com</a>
+              <div className='space-y-3 sm:space-y-4'>
+                <h1
+                  className='text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight'
+                  style={{ color: 'var(--foreground)' }}
+                >
+                  Welcome to{' '}
+                  <span className='bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent'>
+                    AFB Tech Blog
+                  </span>
+                </h1>
+                <p
+                  className='text-lg sm:text-xl md:text-2xl max-w-4xl mx-auto px-4 sm:px-0'
+                  style={{ color: 'var(--muted-foreground)' }}
+                >
+                  Exploring the intersection of technology, cybersecurity, and innovation. 
+                  Join me on a journey through code, security insights, and the latest in tech.
                 </p>
               </div>
+              <div className='flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4 sm:px-0'>
+                <Link
+                  href='/blog'
+                  className='w-full sm:w-auto group inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all duration-500 shadow-lg hover:shadow-xl min-h-[44px] text-base sm:text-lg'
+                >
+                  <BookOpen className='mr-2 h-5 w-5 group-hover:!text-slate-900 dark:group-hover:text-[var(--hero-gradient-from)] transition-colors duration-500' />
+                  <span className='group-hover:!text-slate-900 dark:group-hover:text-[var(--hero-gradient-from)] transition-colors duration-500'>
+                    Explore Articles
+                  </span>
+                </Link>
+                <Link
+                  href='/about'
+                  className='w-full sm:w-auto group inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 border-2 border-border hover:border-primary text-foreground hover:text-primary font-semibold rounded-lg transition-all duration-500 hover:shadow-lg min-h-[44px] text-base sm:text-lg'
+                >
+                  <Users className='mr-2 h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors duration-500' />
+                  <span className='transition-colors duration-500'>
+                    About Me
+                  </span>
+                </Link>
+              </div>
+              
+              {/* Email Contact */}
+              <p className='text-sm' style={{ color: 'var(--muted-foreground)' }}>
+                Get in touch: <a href='mailto:shockp.developer@gmail.com' className='font-medium transition-colors duration-500' style={{ color: 'var(--text-accent)' }}>shockp.developer@gmail.com</a>
+              </p>
             </div>
           </div>
         </section>
+
+
 
         {/* Recent Posts Section */}
         <section
