@@ -270,6 +270,56 @@ export default function AboutPage() {
                 </div>
               </div>
             </div>
+
+            {/* Languages Section */}
+            <div className='mt-16 lg:mt-20'>
+              <div className='text-center mb-8'>
+                <h3 className='text-xl sm:text-2xl font-bold mb-2 text-foreground'>
+                  Languages
+                </h3>
+                <p className='text-muted-foreground'>
+                  Multilingual communication skills
+                </p>
+              </div>
+              
+              <div className='grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 max-w-4xl mx-auto'>
+                {/* Spanish */}
+                <div className='group bg-card/50 backdrop-blur-sm border border-border/50 rounded-xl p-4 sm:p-6 text-center hover:bg-card/80 hover:border-border hover:shadow-lg transition-all duration-300 hover:-translate-y-1'>
+                  <div className='text-3xl sm:text-4xl mb-3' role='img' aria-label='Spanish flag'>
+                    🇪🇸
+                  </div>
+                  <h4 className='font-semibold text-foreground mb-1'>Spanish</h4>
+                  <p className='text-sm text-muted-foreground'>Native</p>
+                </div>
+
+                {/* English */}
+                <div className='group bg-card/50 backdrop-blur-sm border border-border/50 rounded-xl p-4 sm:p-6 text-center hover:bg-card/80 hover:border-border hover:shadow-lg transition-all duration-300 hover:-translate-y-1'>
+                  <div className='text-3xl sm:text-4xl mb-3' role='img' aria-label='English flag'>
+                    🇬🇧
+                  </div>
+                  <h4 className='font-semibold text-foreground mb-1'>English</h4>
+                  <p className='text-sm text-muted-foreground'>C1</p>
+                </div>
+
+                {/* French */}
+                <div className='group bg-card/50 backdrop-blur-sm border border-border/50 rounded-xl p-4 sm:p-6 text-center hover:bg-card/80 hover:border-border hover:shadow-lg transition-all duration-300 hover:-translate-y-1'>
+                  <div className='text-3xl sm:text-4xl mb-3' role='img' aria-label='French flag'>
+                    🇫🇷
+                  </div>
+                  <h4 className='font-semibold text-foreground mb-1'>French</h4>
+                  <p className='text-sm text-muted-foreground'>B1</p>
+                </div>
+
+                {/* German */}
+                <div className='group bg-card/50 backdrop-blur-sm border border-border/50 rounded-xl p-4 sm:p-6 text-center hover:bg-card/80 hover:border-border hover:shadow-lg transition-all duration-300 hover:-translate-y-1'>
+                  <div className='text-3xl sm:text-4xl mb-3' role='img' aria-label='German flag'>
+                    🇩🇪
+                  </div>
+                  <h4 className='font-semibold text-foreground mb-1'>German</h4>
+                  <p className='text-sm text-muted-foreground'>B1</p>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
