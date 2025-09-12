@@ -285,7 +285,7 @@ export default function AboutPage() {
               <div className='grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 max-w-4xl mx-auto'>
                 {/* Spanish */}
                 <div className='group bg-card/50 backdrop-blur-sm border border-border/50 rounded-xl p-4 sm:p-6 text-center hover:bg-card/80 hover:border-border hover:shadow-lg transition-all duration-300 hover:-translate-y-1'>
-                  <div className='text-3xl sm:text-4xl mb-3' role='img' aria-label='Spanish flag'>
+                  <div className='text-3xl sm:text-4xl mb-3' role='img' aria-label='Spain flag'>
                     🇪🇸
                   </div>
                   <h4 className='font-semibold text-foreground mb-1'>Spanish</h4>
@@ -294,7 +294,7 @@ export default function AboutPage() {
 
                 {/* English */}
                 <div className='group bg-card/50 backdrop-blur-sm border border-border/50 rounded-xl p-4 sm:p-6 text-center hover:bg-card/80 hover:border-border hover:shadow-lg transition-all duration-300 hover:-translate-y-1'>
-                  <div className='text-3xl sm:text-4xl mb-3' role='img' aria-label='English flag'>
+                  <div className='text-3xl sm:text-4xl mb-3' role='img' aria-label='United Kingdom flag'>
                     🇬🇧
                   </div>
                   <h4 className='font-semibold text-foreground mb-1'>English</h4>
@@ -303,7 +303,7 @@ export default function AboutPage() {
 
                 {/* French */}
                 <div className='group bg-card/50 backdrop-blur-sm border border-border/50 rounded-xl p-4 sm:p-6 text-center hover:bg-card/80 hover:border-border hover:shadow-lg transition-all duration-300 hover:-translate-y-1'>
-                  <div className='text-3xl sm:text-4xl mb-3' role='img' aria-label='French flag'>
+                  <div className='text-3xl sm:text-4xl mb-3' role='img' aria-label='France flag'>
                     🇫🇷
                   </div>
                   <h4 className='font-semibold text-foreground mb-1'>French</h4>
@@ -312,7 +312,7 @@ export default function AboutPage() {
 
                 {/* German */}
                 <div className='group bg-card/50 backdrop-blur-sm border border-border/50 rounded-xl p-4 sm:p-6 text-center hover:bg-card/80 hover:border-border hover:shadow-lg transition-all duration-300 hover:-translate-y-1'>
-                  <div className='text-3xl sm:text-4xl mb-3' role='img' aria-label='German flag'>
+                  <div className='text-3xl sm:text-4xl mb-3' role='img' aria-label='Germany flag'>
                     🇩🇪
                   </div>
                   <h4 className='font-semibold text-foreground mb-1'>German</h4>
