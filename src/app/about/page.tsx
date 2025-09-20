@@ -282,7 +282,7 @@ export default function AboutPage() {
                 </p>
               </div>
               
-              <div className='grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 max-w-4xl mx-auto'>
+              <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-items-center gap-4 sm:gap-6 max-w-4xl mx-auto'>
                 {/* Spanish */}
                 <div className='group bg-card/50 backdrop-blur-sm border border-border/50 rounded-xl p-4 sm:p-6 text-center hover:bg-card/80 hover:border-border hover:shadow-lg transition-all duration-300 hover:-translate-y-1'>
                   <div className='text-3xl sm:text-4xl mb-3' role='img' aria-label='Spain flag'>
@@ -301,14 +301,7 @@ export default function AboutPage() {
                   <p className='text-sm text-muted-foreground'>C1</p>
                 </div>
 
-                {/* French */}
-                <div className='group bg-card/50 backdrop-blur-sm border border-border/50 rounded-xl p-4 sm:p-6 text-center hover:bg-card/80 hover:border-border hover:shadow-lg transition-all duration-300 hover:-translate-y-1'>
-                  <div className='text-3xl sm:text-4xl mb-3' role='img' aria-label='France flag'>
-                    🇫🇷
-                  </div>
-                  <h4 className='font-semibold text-foreground mb-1'>French</h4>
-                  <p className='text-sm text-muted-foreground'>B1</p>
-                </div>
+
 
                 {/* German */}
                 <div className='group bg-card/50 backdrop-blur-sm border border-border/50 rounded-xl p-4 sm:p-6 text-center hover:bg-card/80 hover:border-border hover:shadow-lg transition-all duration-300 hover:-translate-y-1'>
