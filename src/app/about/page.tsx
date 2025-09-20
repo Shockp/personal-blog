@@ -293,7 +293,7 @@ export default function AboutPage() {
                       alt='Spain flag'
                       width={64}
                       height={64}
-                      className='w-12 h-12 sm:w-16 sm:h-16 mx-auto'
+                      className='w-8 h-8 sm:w-10 sm:h-10 mx-auto'
                     />
                   </div>
                   <h4 className='font-semibold text-foreground mb-1'>Spanish</h4>
@@ -308,7 +308,7 @@ export default function AboutPage() {
                       alt='United Kingdom flag'
                       width={64}
                       height={64}
-                      className='w-12 h-12 sm:w-16 sm:h-16 mx-auto'
+                      className='w-8 h-8 sm:w-10 sm:h-10 mx-auto'
                     />
                   </div>
                   <h4 className='font-semibold text-foreground mb-1'>English</h4>
@@ -325,7 +325,7 @@ export default function AboutPage() {
                       alt='Germany flag'
                       width={64}
                       height={64}
-                      className='w-12 h-12 sm:w-16 sm:h-16 mx-auto'
+                      className='w-8 h-8 sm:w-10 sm:h-10 mx-auto'
                     />
                   </div>
                   <h4 className='font-semibold text-foreground mb-1'>German</h4>
