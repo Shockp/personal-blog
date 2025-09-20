@@ -24,6 +24,8 @@ import ContactCard from '@/components/about/ContactCard';
 import SocialLinks from '@/components/about/SocialLinks';
 import BreadcrumbStructuredData from '@/components/seo/BreadcrumbStructuredData';
 
+// Note: SVG flags are now served from public directory
+
 // Note: SEO metadata moved to layout.tsx since this is now a client component
 
 /**
@@ -286,7 +288,13 @@ export default function AboutPage() {
                 {/* Spanish */}
                 <div className='group bg-card/50 backdrop-blur-sm border border-border/50 rounded-xl p-4 sm:p-6 text-center hover:bg-card/80 hover:border-border hover:shadow-lg transition-all duration-300 hover:-translate-y-1'>
                   <div className='text-3xl sm:text-4xl mb-3' role='img' aria-label='Spain flag'>
-                    🇪🇸
+                    <Image
+                      src='/spain-flag.svg'
+                      alt='Spain flag'
+                      width={64}
+                      height={64}
+                      className='w-12 h-12 sm:w-16 sm:h-16 mx-auto'
+                    />
                   </div>
                   <h4 className='font-semibold text-foreground mb-1'>Spanish</h4>
                   <p className='text-sm text-muted-foreground'>Native</p>
@@ -295,7 +303,13 @@ export default function AboutPage() {
                 {/* English */}
                 <div className='group bg-card/50 backdrop-blur-sm border border-border/50 rounded-xl p-4 sm:p-6 text-center hover:bg-card/80 hover:border-border hover:shadow-lg transition-all duration-300 hover:-translate-y-1'>
                   <div className='text-3xl sm:text-4xl mb-3' role='img' aria-label='United Kingdom flag'>
-                    🇬🇧
+                    <Image
+                      src='/united-kingdom-flag.svg'
+                      alt='United Kingdom flag'
+                      width={64}
+                      height={64}
+                      className='w-12 h-12 sm:w-16 sm:h-16 mx-auto'
+                    />
                   </div>
                   <h4 className='font-semibold text-foreground mb-1'>English</h4>
                   <p className='text-sm text-muted-foreground'>C1</p>
@@ -306,7 +320,13 @@ export default function AboutPage() {
                 {/* German */}
                 <div className='group bg-card/50 backdrop-blur-sm border border-border/50 rounded-xl p-4 sm:p-6 text-center hover:bg-card/80 hover:border-border hover:shadow-lg transition-all duration-300 hover:-translate-y-1'>
                   <div className='text-3xl sm:text-4xl mb-3' role='img' aria-label='Germany flag'>
-                    🇩🇪
+                    <Image
+                      src='/germany-flag.svg'
+                      alt='Germany flag'
+                      width={64}
+                      height={64}
+                      className='w-12 h-12 sm:w-16 sm:h-16 mx-auto'
+                    />
                   </div>
                   <h4 className='font-semibold text-foreground mb-1'>German</h4>
                   <p className='text-sm text-muted-foreground'>B1</p>
