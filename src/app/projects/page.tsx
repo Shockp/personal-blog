@@ -58,7 +58,7 @@ export default function ProjectsPage() {
               </span>
               <span
                 className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
-                style={{ backgroundColor: 'rgba(100, 116, 139, 0.2)', color: '#94a3b8', border: '1px solid rgba(100, 116, 139, 0.3)' }}
+                style={{ backgroundColor: 'rgba(100, 139, 112, 0.2)', color: '#94a3b8', border: '1px solid rgba(100, 139, 112, 0.3)' }}
               >
                 CMake
               </span>
@@ -129,7 +129,7 @@ export default function ProjectsPage() {
               </span>
               <span
                 className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
-                style={{ backgroundColor: 'rgba(100, 116, 139, 0.2)', color: '#94a3b8', border: '1px solid rgba(100, 116, 139, 0.3)' }}
+                style={{ backgroundColor: 'rgba(139, 100, 102, 0.2)', color: '#94a3b8', border: '1px solid rgba(139, 100, 102, 0.3)' }}
               >
                 Hardware Design
               </span>
