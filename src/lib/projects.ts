@@ -5,6 +5,28 @@ import { Project, ProjectSummary, ProjectFilters, ProjectSortOptions } from '@/t
  */
 const projects: Project[] = [
   {
+    id: 'hpc-systems-lab',
+    title: 'HPC & Systems Lab',
+    description: 'Performance-critical C++ repository featuring SIMD vectorization, memory optimization benchmarks, and parallel algorithms (OpenMP/MPI) adhering to Google Style Guide.',
+    date: '2026-02-08',
+    technologies: ['C++20', 'CMake', 'MPI', 'OpenMP'],
+    githubUrl: 'https://github.com/Shockp/HPC-Learning',
+    category: 'systems',
+    status: 'completed',
+    featured: true
+  },
+  {
+    id: 'smart-cane',
+    title: 'SmartCane',
+    description: 'Assistive technology device for the visually impaired using IoT sensors and real-time obstacle detection algorithms.',
+    date: '2025-12-05',
+    technologies: ['C++', 'Arduino/ESP32', 'IoT Sensors', 'Hardware Design'],
+    githubUrl: 'https://github.com/Shockp/SmartCane',
+    category: 'embedded',
+    status: 'completed',
+    featured: true
+  },
+  {
     id: 'personal-blog',
     title: 'Personal Blog',
     description: 'Next.js personal blog and portfolio website with React, TypeScript, Tailwind CSS, and responsive design',
@@ -178,8 +200,8 @@ export function getProjectsByCategory(category: string): Project[] {
  * Get projects by technology
  */
 export function getProjectsByTechnology(technology: string): Project[] {
-  return projects.filter(project => 
-    project.technologies.some(tech => 
+  return projects.filter(project =>
+    project.technologies.some(tech =>
       tech.toLowerCase().includes(technology.toLowerCase())
     )
   );
@@ -219,10 +241,10 @@ export function filterProjects(filters: ProjectFilters): Project[] {
  */
 export function sortProjects(projects: Project[], options: ProjectSortOptions): Project[] {
   const { sortBy, order } = options;
-  
+
   return [...projects].sort((a, b) => {
     let comparison = 0;
-    
+
     switch (sortBy) {
       case 'date':
         comparison = new Date(a.date).getTime() - new Date(b.date).getTime();
@@ -236,7 +258,7 @@ export function sortProjects(projects: Project[], options: ProjectSortOptions): 
       default:
         return 0;
     }
-    
+
     return order === 'desc' ? -comparison : comparison;
   });
 }
@@ -247,11 +269,11 @@ export function sortProjects(projects: Project[], options: ProjectSortOptions): 
 export function getProjectSummaries(limit?: number): ProjectSummary[] {
   const projectSummaries = projects.map(project => ({
     ...project,
-    excerpt: project.description.length > 100 
-      ? project.description.substring(0, 100) + '...' 
+    excerpt: project.description.length > 100
+      ? project.description.substring(0, 100) + '...'
       : project.description
   }));
-  
+
   return limit ? projectSummaries.slice(0, limit) : projectSummaries;
 }
 
@@ -262,7 +284,7 @@ export function getProjectCategories(): string[] {
   const categories = projects
     .map(project => project.category)
     .filter((category): category is string => category !== undefined);
-  
+
   return [...new Set(categories)].sort();
 }
 
@@ -272,6 +294,6 @@ export function getProjectCategories(): string[] {
 export function getProjectTechnologies(): string[] {
   const technologies = projects
     .flatMap(project => project.technologies);
-  
+
   return [...new Set(technologies)].sort();
 }

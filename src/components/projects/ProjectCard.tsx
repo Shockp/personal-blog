@@ -89,6 +89,51 @@ const getTechnologyColors = (technology: string) => {
       backgroundColor: 'rgba(234, 179, 8, 0.2)',
       color: '#eab308',
       border: 'rgba(234, 179, 8, 0.3)'
+    },
+    'C': {
+      backgroundColor: 'rgba(59, 130, 246, 0.2)',
+      color: '#3b82f6',
+      border: 'rgba(59, 130, 246, 0.3)'
+    },
+    'C++': {
+      backgroundColor: 'rgba(59, 130, 246, 0.2)',
+      color: '#3b82f6',
+      border: 'rgba(59, 130, 246, 0.3)'
+    },
+    'C++20': {
+      backgroundColor: 'rgba(59, 130, 246, 0.2)',
+      color: '#3b82f6',
+      border: 'rgba(59, 130, 246, 0.3)'
+    },
+    'CMake': {
+      backgroundColor: 'rgba(100, 116, 139, 0.2)',
+      color: '#94a3b8',
+      border: 'rgba(100, 116, 139, 0.3)'
+    },
+    'MPI': {
+      backgroundColor: 'rgba(249, 115, 22, 0.2)',
+      color: '#f97316',
+      border: 'rgba(249, 115, 22, 0.3)'
+    },
+    'OpenMP': {
+      backgroundColor: 'rgba(239, 68, 68, 0.2)',
+      color: '#ef4444',
+      border: 'rgba(239, 68, 68, 0.3)'
+    },
+    'Arduino/ESP32': {
+      backgroundColor: 'rgba(20, 184, 166, 0.2)',
+      color: '#14b8a6',
+      border: 'rgba(20, 184, 166, 0.3)'
+    },
+    'IoT Sensors': {
+      backgroundColor: 'rgba(168, 85, 247, 0.2)',
+      color: '#a855f7',
+      border: 'rgba(168, 85, 247, 0.3)'
+    },
+    'Hardware Design': {
+      backgroundColor: 'rgba(100, 116, 139, 0.2)',
+      color: '#94a3b8',
+      border: 'rgba(100, 116, 139, 0.3)'
     }
   };
 
