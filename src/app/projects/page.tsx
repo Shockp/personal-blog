@@ -14,10 +14,10 @@ export default function ProjectsPage() {
       <p className="mb-8" style={{ color: 'var(--card-text-secondary)' }}>
         Here are some of the projects I&apos;ve worked on. Each project showcases different technologies and approaches to solving problems.
       </p>
-      
+
       {/* Project cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <a 
+        <a
           href="https://github.com/Shockp/personal-blog"
           target="_blank"
           rel="noopener noreferrer"
@@ -64,7 +64,7 @@ export default function ProjectsPage() {
           </div>
         </a>
 
-        <a 
+        <a
           href="https://github.com/Shockp/Backend-Projects/tree/main/unit-converter"
           target="_blank"
           rel="noopener noreferrer"
@@ -108,7 +108,7 @@ export default function ProjectsPage() {
           </div>
         </a>
 
-        <a 
+        <a
           href="https://github.com/Shockp/Backend-Projects/tree/main/weather-api-wrapper-service"
           target="_blank"
           rel="noopener noreferrer"
@@ -152,7 +152,7 @@ export default function ProjectsPage() {
           </div>
         </a>
 
-        <a 
+        <a
           href="https://github.com/Shockp/Backend-Projects/tree/main/number-guessing-game"
           target="_blank"
           rel="noopener noreferrer"
@@ -196,7 +196,7 @@ export default function ProjectsPage() {
           </div>
         </a>
 
-        <a 
+        <a
           href="https://github.com/Shockp/Backend-Projects/tree/main/github-user-activity"
           target="_blank"
           rel="noopener noreferrer"
@@ -240,7 +240,7 @@ export default function ProjectsPage() {
           </div>
         </a>
 
-        <a 
+        <a
           href="https://github.com/Shockp/Backend-Projects/tree/main/expense-tracker"
           target="_blank"
           rel="noopener noreferrer"
@@ -271,7 +271,7 @@ export default function ProjectsPage() {
               Java CLI application for personal finance management with Maven, JSON storage, and CSV export
             </p>
             <div className="flex flex-wrap gap-1.5 mt-auto">
-              <span 
+              <span
                 className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
                 style={{ backgroundColor: 'rgba(245, 101, 101, 0.2)', color: '#f56565', border: '1px solid rgba(245, 101, 101, 0.3)' }}
               >
@@ -287,7 +287,7 @@ export default function ProjectsPage() {
           </div>
         </a>
 
-        <a 
+        <a
           href="https://github.com/Shockp/Mini-Shell"
           target="_blank"
           rel="noopener noreferrer"
@@ -331,139 +331,7 @@ export default function ProjectsPage() {
           </div>
         </a>
 
-        <a 
-          href="https://github.com/Shockp/shockp.github.io"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group rounded-xl transition-all duration-300 hover:-translate-y-1 hover:scale-105 cursor-pointer hover:shadow-[var(--card-hover-shadow)] flex flex-col h-full block relative"
-          style={{
-            backgroundColor: 'var(--card-background)',
-            border: '1px solid var(--card-border)',
-            boxShadow: 'var(--card-shadow)'
-          }}
-        >
-          <div className="p-4 sm:p-6 flex-1 flex flex-col">
-            <div className="flex flex-col xs:flex-row xs:items-center gap-2 xs:gap-4 text-sm mb-3" style={{ color: 'var(--card-text-secondary)' }}>
-              <div className='flex items-center gap-1'>
-                <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round' className='lucide lucide-calendar w-4 h-4' aria-hidden='true'>
-                  <path d='M8 2v4'></path>
-                  <path d='M16 2v4'></path>
-                  <rect width='18' height='18' x='3' y='4' rx='2'></rect>
-                  <path d='M3 10h18'></path>
-                </svg>
-                <time dateTime='2025-06-06' className='font-medium'>Jun 6, 2025</time>
-              </div>
-              <span className="category-tag category-web">web</span>
-            </div>
-            <h3 className="text-xl font-bold mb-3 transition-colors duration-500" style={{ color: 'var(--card-text)' }}>
-              Personal Website
-            </h3>
-            <p className="text-sm leading-relaxed mb-4 flex-grow" style={{ color: 'var(--card-text-secondary)' }}>
-              GitHub Pages hosted personal portfolio and blog website
-            </p>
-            <div className="flex flex-wrap gap-1.5 mt-auto">
-              <span className="tech-tag tech-html">
-                HTML
-              </span>
-              <span className="tech-tag tech-css">
-                CSS
-              </span>
-              <span className="tech-tag tech-website">
-                Website
-              </span>
-            </div>
-          </div>
-        </a>
-
-        <a 
-          href="https://github.com/Shockp/Python-Projects"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group rounded-xl transition-all duration-300 hover:-translate-y-1 hover:scale-105 cursor-pointer hover:shadow-[var(--card-hover-shadow)] flex flex-col h-full block relative"
-          style={{
-            backgroundColor: 'var(--card-background)',
-            border: '1px solid var(--card-border)',
-            boxShadow: 'var(--card-shadow)'
-          }}
-        >
-          <div className="p-4 sm:p-6 flex-1 flex flex-col">
-            <div className="flex flex-col xs:flex-row xs:items-center gap-2 xs:gap-4 text-sm mb-3" style={{ color: 'var(--card-text-secondary)' }}>
-              <div className='flex items-center gap-1'>
-                <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round' className='lucide lucide-calendar w-4 h-4' aria-hidden='true'>
-                  <path d='M8 2v4'></path>
-                  <path d='M16 2v4'></path>
-                  <rect width='18' height='18' x='3' y='4' rx='2'></rect>
-                  <path d='M3 10h18'></path>
-                </svg>
-                <time dateTime='2024-12-23' className='font-medium'>Dec 23, 2024</time>
-              </div>
-              <span className="category-tag category-python">python</span>
-            </div>
-            <h3 className="text-xl font-bold mb-3 transition-colors duration-500" style={{ color: 'var(--card-text)' }}>
-              Python Projects
-            </h3>
-            <p className="text-sm leading-relaxed mb-4 flex-grow" style={{ color: 'var(--card-text-secondary)' }}>
-              Repository with various Python programming projects and scripts
-            </p>
-            <div className="flex flex-wrap gap-1.5 mt-auto">
-              <span className="tech-tag tech-python">
-                Python
-              </span>
-              <span className="tech-tag tech-programming">
-                Programming
-              </span>
-              <span className="tech-tag tech-scripts">
-                Scripts
-              </span>
-            </div>
-          </div>
-        </a>
-
-        <a 
-          href="https://github.com/Shockp/AI-ML-Projects"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group rounded-xl transition-all duration-300 hover:-translate-y-1 hover:scale-105 cursor-pointer hover:shadow-[var(--card-hover-shadow)] flex flex-col h-full block relative"
-          style={{
-            backgroundColor: 'var(--card-background)',
-            border: '1px solid var(--card-border)',
-            boxShadow: 'var(--card-shadow)'
-          }}
-        >
-          <div className="p-4 sm:p-6 flex-1 flex flex-col">
-            <div className="flex flex-col xs:flex-row xs:items-center gap-2 xs:gap-4 text-sm mb-3" style={{ color: 'var(--card-text-secondary)' }}>
-              <div className='flex items-center gap-1'>
-                <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round' className='lucide lucide-calendar w-4 h-4' aria-hidden='true'>
-                  <path d='M8 2v4'></path>
-                  <path d='M16 2v4'></path>
-                  <rect width='18' height='18' x='3' y='4' rx='2'></rect>
-                  <path d='M3 10h18'></path>
-                </svg>
-                <time dateTime='2024-12-19' className='font-medium'>Dec 19, 2024</time>
-              </div>
-              <span className="category-tag category-ai">ai</span>
-            </div>
-            <h3 className="text-xl font-bold mb-3 transition-colors duration-500" style={{ color: 'var(--card-text)' }}>
-              AI & ML Projects
-            </h3>
-            <p className="text-sm leading-relaxed mb-4 flex-grow" style={{ color: 'var(--card-text-secondary)' }}>
-              Collection of artificial intelligence and machine learning projects and experiments
-            </p>
-            <div className="flex flex-wrap gap-1.5 mt-auto">
-              <span className="tech-tag tech-python">
-                Python
-              </span>
-              <span className="tech-tag tech-ai">
-                AI
-              </span>
-              <span className="tech-tag tech-machinelearning">
-                Machine Learning
-              </span>
-            </div>
-          </div>
-        </a>
-
-        <a 
+        <a
           href="https://github.com/Shockp/CVE-Exploits-and-HackTheBox-Writeups"
           target="_blank"
           rel="noopener noreferrer"
@@ -507,7 +375,7 @@ export default function ProjectsPage() {
           </div>
         </a>
 
-        <a 
+        <a
           href="https://github.com/Shockp/Pentesting-Scripts"
           target="_blank"
           rel="noopener noreferrer"
@@ -551,7 +419,7 @@ export default function ProjectsPage() {
           </div>
         </a>
 
-        <a 
+        <a
           href="https://github.com/Shockp/Pentesting-Cheatsheets"
           target="_blank"
           rel="noopener noreferrer"
@@ -582,13 +450,13 @@ export default function ProjectsPage() {
               Comprehensive collection of penetration testing cheatsheets and reference materials
             </p>
             <div className="flex flex-wrap gap-1.5 mt-auto">
-              <span 
+              <span
                 className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
                 style={{ backgroundColor: 'rgba(239, 68, 68, 0.2)', color: '#ef4444', border: '1px solid rgba(239, 68, 68, 0.3)' }}
               >
                 Security
               </span>
-              <span 
+              <span
                 className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
                 style={{ backgroundColor: 'rgba(168, 85, 247, 0.2)', color: '#a855f7', border: '1px solid rgba(168, 85, 247, 0.3)' }}
               >
