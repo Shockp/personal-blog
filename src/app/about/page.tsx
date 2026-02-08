@@ -228,12 +228,17 @@ export default function AboutPage() {
                   </span>
                 </h1>
                 <p className='text-lg sm:text-xl text-muted-foreground mb-6 sm:mb-8 leading-relaxed px-2 sm:px-0'>
-                  I started in pentesting, reaching top 100 on some Hack The Box
-                  machines worldwide, before transitioning to backend
-                  development. Currently, I study Computer Engineering and
-                  intern in Software Architecture, focusing on scalable systems
-                  and proper design patterns while constantly exploring new
-                  technologies and paying close attention to every detail.
+                  From ranking top 100 worldwide on Hack The Box to architecting
+                  scalable backend systems, my career is defined by a fascination
+                  with how software behaves at its technical limits. Currently a
+                  Computer Engineering student and Software Architecture intern, I
+                  am focusing my professional development on High-Performance
+                  Computing (HPC) and Systems Engineering, treating C++ as a
+                  precision tool for low-level optimization and memory safety. By
+                  strictly adhering to the Google C++ Style Guide, I merge an
+                  adversarial security mindset with rigorous architectural
+                  patterns to build software that is as computationally efficient
+                  as it is robust.
                 </p>
                 <div className='flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-5 justify-center lg:justify-start'>
                   <Link
