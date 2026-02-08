@@ -49,82 +49,85 @@ export default function AboutPage() {
 
   const skills = [
     {
-      name: 'Backend',
-      level: 95,
+      name: 'Systems Programming & Architecture',
+      level: 60,
       icon: Database,
       color: '#2563eb', // blue-600
       techStack: [
-        'Java (17+)',
-        'Spring Boot',
-        'Spring WebFlux',
-        'Spring Security',
-        'Node.js',
-        'Express.js',
+        'Linux System Programming',
+        'POSIX API',
+        'System Calls',
+        'Memory Hierarchy L1/L2/L3',
+        'x86-64 Assembly',
+        'Virtual Memory'
       ],
     },
     {
-      name: 'Architecture & Design Patterns',
-      level: 90,
+      name: 'Performance-Critical C++',
+      level: 70,
       icon: Layers,
       color: '#4f46e5', // indigo-600
       techStack: [
-        'Microservices',
-        'Clean Architecture',
-        'SOLID',
-        'Design Patterns',
+        'Modern C++ 20/23',
+        'RAII & Move Semantics',
+        'Template Metaprogramming',
+        'Google C++ Style Guide',
+        'Data-Oriented Design'
       ],
     },
     {
-      name: 'API & Integration',
-      level: 90,
+      name: 'Parallelism & Distributed Computing',
+      level: 50,
       icon: Network,
       color: '#0d9488', // teal-600
       techStack: [
-        'RESTful API design',
-        'External API integration',
-        'Java HttpClient',
+        'OpenMP',
+        'MPI - Message Passing',
+        'C++ Concurrency',
+        'Lock-free Algorithms',
+        'Atomics',
+        'Memory Barriers'
       ],
     },
     {
-      name: 'Data & Persistence',
-      level: 90,
+      name: 'Optimization & Microbenchmarking',
+      level: 65,
       icon: Server,
       color: '#16a34a', // green-600
-      techStack: ['Redis', 'Gson', 'Jackson', 'Spring Data JPA'],
+      techStack: [
+        'Google Benchmark',
+        'SIMD Vectorization',
+        'Cache Locality Optimization',
+        'Profile-Guided Optimization',
+        'Branch Prediction Tuning'
+      ],
     },
     {
-      name: 'CLI & utilities',
-      level: 85,
+      name: 'Hardware Acceleration & GPGPU',
+      level: 40,
       icon: Terminal,
       color: '#9333ea', // purple-600
-      techStack: ['Apache Commons CLI', 'OpenCSV', 'SLF4J', 'Bucket4j'],
+      techStack: [
+        'CUDA Programming',
+        'Kernel Optimization',
+        'Shared Memory Management',
+        'Warp Occupancy',
+        'Programming Massively Parallel Processors'
+      ],
     },
     {
-      name: 'Frontend & Web',
-      level: 80,
+      name: 'Systems Toolchain & Diagnostics',
+      level: 55,
       icon: Monitor,
       color: '#ea580c', // orange-600
       techStack: [
-        'Next.js',
-        'React',
-        'TypeScript',
-        'Tailwind CSS',
-        'HTML5/CSS3',
+        'CMake Advanced',
+        'GDB Deep Debugging',
+        'Valgrind Memcheck/Cachegrind',
+        'perf / Intel VTune',
+        'Clang-Tidy & Format',
+        'Static Analysis'
       ],
-    },
-    {
-      name: 'DevOps & Deployment',
-      level: 80,
-      icon: Cloud,
-      color: '#dc2626', // red-600
-      techStack: ['Docker', 'Vercel', 'Maven', 'Production deployment'],
-    },
-    {
-      name: 'Testing & Quality',
-      level: 75,
-      icon: Shield,
-      color: '#ca8a04', // yellow-600
-      techStack: ['JUnit 5', 'Mockito', 'Jest', 'Supertest'],
     },
   ];
 
