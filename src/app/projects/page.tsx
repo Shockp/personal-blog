@@ -68,6 +68,53 @@ export default function ProjectsPage() {
         </a>
 
         <a
+          href="https://github.com/Shockp/SmartCane"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group rounded-xl transition-all duration-300 hover:-translate-y-1 hover:scale-105 cursor-pointer hover:shadow-[var(--card-hover-shadow)] flex flex-col h-full block relative"
+          style={{
+            backgroundColor: 'var(--card-background)',
+            border: '1px solid var(--card-border)',
+            boxShadow: 'var(--card-shadow)'
+          }}
+        >
+          <div className="p-4 sm:p-6 flex-1 flex flex-col">
+            <div className="flex flex-col xs:flex-row xs:items-center gap-2 xs:gap-4 text-sm mb-3" style={{ color: 'var(--card-text-secondary)' }}>
+              <div className='flex items-center gap-1'>
+                <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round' className='lucide lucide-calendar w-4 h-4' aria-hidden='true'>
+                  <path d='M8 2v4'></path>
+                  <path d='M16 2v4'></path>
+                  <rect width='18' height='18' x='3' y='4' rx='2'></rect>
+                  <path d='M3 10h18'></path>
+                </svg>
+                <time dateTime='2025-12-05' className='font-medium'>Dec 05, 2025</time>
+              </div>
+              <span className="category-tag category-embedded">embedded</span>
+            </div>
+            <h3 className="text-xl font-bold mb-3 transition-colors duration-500" style={{ color: 'var(--card-text)' }}>
+              SmartCane
+            </h3>
+            <p className="text-sm leading-relaxed mb-4 flex-grow" style={{ color: 'var(--card-text-secondary)' }}>
+              Assistive technology device for the visually impaired using IoT sensors and real-time obstacle detection algorithms.
+            </p>
+            <div className="flex flex-wrap gap-1.5 mt-auto">
+              <span className="tech-tag tech-cpp">
+                C++
+              </span>
+              <span className="tech-tag tech-arduino">
+                Arduino/ESP32
+              </span>
+              <span className="tech-tag tech-iot">
+                IoT Sensors
+              </span>
+              <span className="tech-tag tech-hardware">
+                Hardware Design
+              </span>
+            </div>
+          </div>
+        </a>
+
+        <a
           href="https://github.com/Shockp/personal-blog"
           target="_blank"
           rel="noopener noreferrer"
