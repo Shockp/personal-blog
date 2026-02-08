@@ -12,8 +12,6 @@ import {
   Network,
   Terminal,
   Monitor,
-  Cloud,
-  Shield,
   Sprout,
   TreePine,
   Lightbulb,
