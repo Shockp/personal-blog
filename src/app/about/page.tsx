@@ -284,7 +284,7 @@ export default function AboutPage() {
                 </p>
               </div>
 
-              <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-items-center gap-4 sm:gap-6 max-w-4xl mx-auto'>
+              <div className='flex flex-wrap justify-center gap-4 sm:gap-6 max-w-4xl mx-auto'>
                 {/* Spanish */}
                 <div className='group bg-card/50 backdrop-blur-sm border border-border/50 rounded-xl p-4 sm:p-6 text-center hover:bg-card/80 hover:border-border hover:shadow-lg transition-all duration-300 hover:-translate-y-1'>
                   <div className='text-3xl sm:text-4xl mb-3' role='img' aria-label='Spain flag'>
@@ -313,23 +313,6 @@ export default function AboutPage() {
                   </div>
                   <h4 className='font-semibold text-foreground mb-1'>English</h4>
                   <p className='text-sm text-muted-foreground'>C1</p>
-                </div>
-
-
-
-                {/* German */}
-                <div className='group bg-card/50 backdrop-blur-sm border border-border/50 rounded-xl p-4 sm:p-6 text-center hover:bg-card/80 hover:border-border hover:shadow-lg transition-all duration-300 hover:-translate-y-1'>
-                  <div className='text-3xl sm:text-4xl mb-3' role='img' aria-label='Germany flag'>
-                    <Image
-                      src='/germany-flag.svg'
-                      alt='Germany flag'
-                      width={64}
-                      height={64}
-                      className='w-8 h-8 sm:w-10 sm:h-10 mx-auto'
-                    />
-                  </div>
-                  <h4 className='font-semibold text-foreground mb-1'>German</h4>
-                  <p className='text-sm text-muted-foreground'>B1</p>
                 </div>
               </div>
             </div>
