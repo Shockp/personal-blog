@@ -144,7 +144,7 @@ export default function AboutPage() {
     {
       title: 'Backend Development',
       company: 'Independent Projects',
-      period: '2024 - Present',
+      period: '2024 - 2026',
       description:
         'Working on self-driven backend development projects, designing and building robust and efficient systems. Exploring best practices in software architecture, APIs, and data management.',
       achievements: [
@@ -156,11 +156,11 @@ export default function AboutPage() {
     {
       title: 'Computer Engineering',
       company: 'Rey Juan Carlos University',
-      period: '2023 - Present',
+      period: '2023 - 2026',
       description:
-        'Currently pursuing a degree in Computer Engineering, developing a solid foundation in both software and hardware. Learning to optimize systems and understand how software and electronics work together.',
+        'Graduated in Computer Engineering, developing a solid foundation in both software and hardware. Learning to optimize systems and understand how software and electronics work together.',
       achievements: [
-        'Programming: C, Java, Assembly, Bash',
+        'Programming: C, Java, Assembly, Bash, C++',
         'Hardware & Electronics: VHDL, digital logic, embedded systems',
         'Strengthening understanding of software-hardware integration and system optimization',
         'Received honor mention in some subjects',
