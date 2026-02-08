@@ -83,7 +83,7 @@ export default async function Home() {
   // Fetch recent posts (limit to 3 for homepage)
   const allPosts = await getAllPosts();
   const recentPosts = allPosts.slice(0, 3);
-  
+
   // Fetch recent projects (limit to 3 for homepage)
   const recentProjects = getRecentProjects(3);
 
@@ -161,7 +161,7 @@ export default async function Home() {
                   </svg>
                 </a>
               </div>
-              
+
               <div className='space-y-3 sm:space-y-4'>
                 <h1
                   className='text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight'
@@ -176,7 +176,7 @@ export default async function Home() {
                   className='text-lg sm:text-xl md:text-2xl max-w-4xl mx-auto px-4 sm:px-0'
                   style={{ color: 'var(--muted-foreground)' }}
                 >
-                  Exploring the intersection of technology, cybersecurity, and innovation. 
+                  Exploring the intersection of technology, cybersecurity, and innovation.
                   Join me on a journey through code, security insights, and the latest in tech.
                 </p>
               </div>
@@ -200,10 +200,10 @@ export default async function Home() {
                   </span>
                 </Link>
               </div>
-              
+
               {/* Email Contact */}
               <p className='text-sm' style={{ color: 'var(--muted-foreground)' }}>
-                Get in touch: <a href='mailto:shockp.developer@gmail.com' className='font-medium transition-colors duration-500' style={{ color: 'var(--text-accent)' }}>shockp.developer@gmail.com</a>
+                Get in touch: <a href='mailto:shockp.developer@icloud.com' className='font-medium transition-colors duration-500' style={{ color: 'var(--text-accent)' }}>shockp.developer@icloud.com</a>
               </p>
             </div>
           </div>

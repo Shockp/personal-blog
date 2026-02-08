@@ -283,7 +283,7 @@ export default function AboutPage() {
                   Multilingual communication skills
                 </p>
               </div>
-              
+
               <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-items-center gap-4 sm:gap-6 max-w-4xl mx-auto'>
                 {/* Spanish */}
                 <div className='group bg-card/50 backdrop-blur-sm border border-border/50 rounded-xl p-4 sm:p-6 text-center hover:bg-card/80 hover:border-border hover:shadow-lg transition-all duration-300 hover:-translate-y-1'>
@@ -679,8 +679,8 @@ export default function AboutPage() {
                 iconName='mail'
                 title='Email'
                 description="Let's discuss your project"
-                content='shockp.developer@gmail.com'
-                href='mailto:shockp.developer@gmail.com'
+                content='shockp.developer@icloud.com'
+                href='mailto:shockp.developer@icloud.com'
                 iconBgColor='bg-blue-100 dark:bg-blue-900/20'
                 iconColor='text-blue-600'
                 isLink={true}
