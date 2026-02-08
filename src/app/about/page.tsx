@@ -131,6 +131,18 @@ export default function AboutPage() {
 
   const experiences = [
     {
+      title: 'Software Engineer - Performance & Systems',
+      company: 'Independent Projects',
+      period: '2026 - Present',
+      description:
+        'Conducting advanced independent research and development in High-Performance Computing (HPC) and Systems Engineering. Transitioning from architectural design to low-level optimization, focusing on bridging the gap between software logic and hardware efficiency through rigorous C++ implementation.',
+      achievements: [
+        'Developing high-throughput systems with a focus on cache locality, SIMD vectorization, and lock-free concurrency to maximize hardware utilization.',
+        'Enforcing industrial-grade code quality by strictly adhering to the Google C++ Style Guide and automating performance validation with Google Benchmark and Valgrind.',
+        'Implementing and benchmarking advanced parallel algorithms using MPI and OpenMP, translating theoretical systems concepts into production-ready C++ code.',
+      ],
+    },
+    {
       title: 'Intern – Software Architecture',
       company: 'Sociedad Estatal Correos y Telégrafos, S.A., S.M.E.',
       period: '2025 - Present',
@@ -143,7 +155,7 @@ export default function AboutPage() {
       ],
     },
     {
-      title: 'Backend Development',
+      title: 'Software Engineer - Backend',
       company: 'Independent Projects',
       period: '2024 - 2026',
       description:
