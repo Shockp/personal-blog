@@ -227,7 +227,7 @@ export default function AboutPage() {
                     Adrián Feito Blázquez
                   </span>
                 </h1>
-                <p className='text-lg sm:text-xl text-muted-foreground mb-6 sm:mb-8 leading-relaxed px-2 sm:px-0'>
+                <p className='text-lg sm:text-xl text-muted-foreground mb-6 sm:mb-8 leading-relaxed px-2 sm:px-0 text-justify'>
                   From ranking top 100 worldwide on Hack The Box to architecting
                   scalable backend systems, my career is defined by a fascination
                   with how software behaves at its technical limits. Currently a
