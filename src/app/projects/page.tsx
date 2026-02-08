@@ -50,17 +50,28 @@ export default function ProjectsPage() {
               Performance-critical C++ repository featuring SIMD vectorization, memory optimization benchmarks, and parallel algorithms (OpenMP/MPI) adhering to Google Style Guide.
             </p>
             <div className="flex flex-wrap gap-1.5 mt-auto">
-              {/* You may need to define these new tech-tag classes in your CSS */}
-              <span className="tech-tag tech-cpp">
+              <span
+                className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
+                style={{ backgroundColor: 'rgba(59, 130, 246, 0.2)', color: '#3b82f6', border: '1px solid rgba(59, 130, 246, 0.3)' }}
+              >
                 C++20
               </span>
-              <span className="tech-tag tech-cmake">
+              <span
+                className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
+                style={{ backgroundColor: 'rgba(100, 116, 139, 0.2)', color: '#94a3b8', border: '1px solid rgba(100, 116, 139, 0.3)' }}
+              >
                 CMake
               </span>
-              <span className="tech-tag tech-mpi">
+              <span
+                className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
+                style={{ backgroundColor: 'rgba(249, 115, 22, 0.2)', color: '#f97316', border: '1px solid rgba(249, 115, 22, 0.3)' }}
+              >
                 MPI
               </span>
-              <span className="tech-tag tech-openmp">
+              <span
+                className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
+                style={{ backgroundColor: 'rgba(239, 68, 68, 0.2)', color: '#ef4444', border: '1px solid rgba(239, 68, 68, 0.3)' }}
+              >
                 OpenMP
               </span>
             </div>
@@ -98,16 +109,28 @@ export default function ProjectsPage() {
               Assistive technology device for the visually impaired using IoT sensors and real-time obstacle detection algorithms.
             </p>
             <div className="flex flex-wrap gap-1.5 mt-auto">
-              <span className="tech-tag tech-cpp">
+              <span
+                className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
+                style={{ backgroundColor: 'rgba(59, 130, 246, 0.2)', color: '#3b82f6', border: '1px solid rgba(59, 130, 246, 0.3)' }}
+              >
                 C++
               </span>
-              <span className="tech-tag tech-arduino">
+              <span
+                className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
+                style={{ backgroundColor: 'rgba(20, 184, 166, 0.2)', color: '#14b8a6', border: '1px solid rgba(20, 184, 166, 0.3)' }}
+              >
                 Arduino/ESP32
               </span>
-              <span className="tech-tag tech-iot">
+              <span
+                className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
+                style={{ backgroundColor: 'rgba(168, 85, 247, 0.2)', color: '#a855f7', border: '1px solid rgba(168, 85, 247, 0.3)' }}
+              >
                 IoT Sensors
               </span>
-              <span className="tech-tag tech-hardware">
+              <span
+                className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-500 min-h-[24px]"
+                style={{ backgroundColor: 'rgba(100, 116, 139, 0.2)', color: '#94a3b8', border: '1px solid rgba(100, 116, 139, 0.3)' }}
+              >
                 Hardware Design
               </span>
             </div>
